@@ -5,9 +5,6 @@ import SearchFormReset from './SearchFormReset';
 
 const SearchForm = ({query}: {query: string}) => {
 
-  console.log("query:", query);
-
-
   return (
     <Form
       action="/"

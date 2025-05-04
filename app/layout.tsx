@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import "./globals.css";
+import "easymde/dist/easymde.min.css"
 
 const workSans = localFont({
   src: [
@@ -54,8 +55,8 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "next blog",
-  description: "this is next blogging app",
+  title: "Next Blog",
+  description: "This is next blogging app",
 };
 
 export default function RootLayout({

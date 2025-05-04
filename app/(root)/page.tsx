@@ -1,79 +1,22 @@
-import BlogCard from "@/components/BlogCard";
+import BlogCard, { BlogTypes } from "@/components/BlogCard";
 import SearchForm from "../../components/SearchForm";
+// import { client } from "@/sanity/lib/client";
+import { BLOG_QUERY } from "@/sanity/lib/query";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 
-export default function Home({ searchParams }: { searchParams: { query?: string } }) {
-  const query = searchParams.query ?? "";
+export default async function Home({ searchParams }: { 
+  searchParams: Promise<{ query?: string }>
+}) {
 
-  const posts = [
-    {
-      "_id": "662f4a1b9c5a3e2f789abc1562",
-      "_createdAt": "2025-04-30T10:45:00.000Z",
-      "title": "10 Best Places to Visit in Bangladesh",
-      "description": "Explore the top travel destinations across Bangladesh, from the serene hills of Bandarban to the beaches of Cox’s Bazar.",
-    "image": "https://cdn.prod.website-files.com/65098a155ece52db42b9c30c/65b9070a84f9c24fb8502b74_get-paid-in-crypto.avif",
-      "category": "Travel",
-      "views": 1523,
-      "author":{id: 1, name: "Robiul Hasan"},
-      "slug": "10-best-places-to-visit-bangladesh"
-    },
-    {
-      "_id": "662f4a1b9c5a3e2f7893abc12",
-      "_createdAt": "2025-04-30T10:45:00.000Z",
-      "title": "10 Best Places to Visit in Bangladesh",
-      "description": "Explore the top travel destinations across Bangladesh, from the serene hills of Bandarban to the beaches of Cox’s Bazar.",
-      "image": "https://cdn.prod.website-files.com/65098a155ece52db42b9c30c/65b9070a84f9c24fb8502b74_get-paid-in-crypto.avif",
-      "category": "Travel",
-      "views": 1523,
-      "author":{id: 2, name: "Robiul Hasan"},
-      "slug": "10-best-places-to-visit-bangladesh"
-    },
-    {
-      "_id": "662f4a1b9c5a3e452f789abc12",
-      "_createdAt": "2025-04-30T10:45:00.000Z",
-      "title": "10 Best Places to Visit in Bangladesh",
-      "description": "Explore the top travel destinations across Bangladesh, from the serene hills of Bandarban to the beaches of Cox’s Bazar.",
-      "image": "https://cdn.prod.website-files.com/65098a155ece52db42b9c30c/65b9070a84f9c24fb8502b74_get-paid-in-crypto.avif",
-      "category": "Travel",
-      "views": 1523,
-      "author":{id: 3, name: "Robiul Hasan"},
-      "slug": "10-best-places-to-visit-bangladesh"
-    },
-    {
-      "_id": "662f4a1b9c5a3e452f45789abc12",
-      "_createdAt": new Date(),
-      "title": "10 Best Places to Visit in Bangladesh",
-      "description": "Explore the top travel destinations across Bangladesh, from the serene hills of Bandarban to the beaches of Cox’s Bazar.",
-      "image": "https://cdn.prod.website-files.com/65098a155ece52db42b9c30c/65b9070a84f9c24fb8502b74_get-paid-in-crypto.avif",
-      "category": "Travel",
-      "views": 1523,
-      "author":{id: 4, name: "Robiul Hasan"},
-      "slug": "10-best-places-to-visit-bangladesh"
-    },
-    {
-      "_id": "662f4a1b9c5a3e452f78459abc12",
-     "_createdAt": new Date(),
-      "title": "10 Best Places to Visit in Bangladesh",
-      "description": "Explore the top travel destinations across Bangladesh, from the serene hills of Bandarban to the beaches of Cox’s Bazar.",
-      "image": "https://cdn.prod.website-files.com/65098a155ece52db42b9c30c/65b9070a84f9c24fb8502b74_get-paid-in-crypto.avif",
-      "category": "Travel",
-      "views": 1523,
-      "author":{id: 5, name: "Robiul Hasan"},
-      "slug": "10-best-places-to-visit-bangladesh"
-    },
-    {
-      "_id": "662f4a1b9c5ffa3e452f45789abc12",
-      "_createdAt": new Date(),
-      "title": "10 Best Places to Visit in Bangladesh",
-      "description": "Explore the top travel destinations across Bangladesh, from the serene hills of Bandarban to the beaches of Cox’s Bazar.",
-      "image": "https://cdn.prod.website-files.com/65098a155ece52db42b9c30c/65b9070a84f9c24fb8502b74_get-paid-in-crypto.avif",
-      "category": "Travel",
-      "views": 1523,
-      "author":{id: 6, name: "Robiul Hasan"},
-      "slug": "10-best-places-to-visit-bangladesh"
-    },
+  const query = (await searchParams).query ?? "";
+  const params = {search: query || null};
 
-  ]
+  // const posts = await client.fetch(BLOG_QUERY)
+  const {data: posts} = await sanityFetch({
+    query: BLOG_QUERY,
+    params,
+  })
 
   return (
     <>
@@ -94,10 +37,10 @@ export default function Home({ searchParams }: { searchParams: { query?: string 
         <p className="text-2xl py-6 font-semibold">
           {query ? `Search results for "${query}"` : 'All Blogs'}
         </p>
-        <ul className="grid md:grid-cols-4 sm:grid-cols-2 gap-5">
+        <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6">
           {posts?.length > 0 ? (
-            posts.map((post, index) => (
-              <BlogCard key={post._id || index} post={post} />
+            posts.map((post: BlogTypes) => (
+              <BlogCard key={post._id} post={post} />
             ))
           ) : (
             <p>No blog found</p>
@@ -105,6 +48,7 @@ export default function Home({ searchParams }: { searchParams: { query?: string 
 
         </ul>
       </section>
+      <SanityLive/>
     </>
   );
 }

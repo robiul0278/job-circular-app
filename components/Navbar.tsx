@@ -1,12 +1,13 @@
-
-import { auth, signIn, signOut } from "@/auth";
 import Link from "next/link";
+import DarkButton from "./DarkButton";
 
-const Navbar = async () => {
-    const session = await auth();
-    return (
+const Navbar =  () => {
+    const { auth, signIn, signOut } = [];
+    const session = false;
+   
+    return ( 
         <header>
-            <nav className="bg-white border-b border-gray-200">
+            <nav className="border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16 items-center">
 
@@ -29,9 +30,11 @@ const Navbar = async () => {
                                 <span className="text-gray-600 hover:text-gray-900 text-sm font-medium cursor-pointer">Pricing</span>
                             </Link>
 
+        <DarkButton/>
+
                             {session?.user ? (
                                 <>
-                                    <Link href="/startup/create">
+                                    <Link href="/blog/create">
                                         <span className="text-gray-600 hover:text-gray-900 text-sm font-medium cursor-pointer">Create</span>
                                     </Link>
 

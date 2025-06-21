@@ -1,8 +1,5 @@
 import BlogCard, { BlogTypes } from "@/components/BlogCard";
 import SearchForm from "../../components/SearchForm";
-// import { client } from "@/sanity/lib/client";
-import { BLOG_QUERY } from "@/sanity/lib/query";
-import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 
 export default async function Home({ searchParams }: { 
@@ -12,11 +9,9 @@ export default async function Home({ searchParams }: {
   const query = (await searchParams).query ?? "";
   const params = {search: query || null};
 
-  // const posts = await client.fetch(BLOG_QUERY)
-  const {data: posts} = await sanityFetch({
-    query: BLOG_QUERY,
-    params,
-  })
+console.log(params);
+
+const posts = [{}]
 
   return (
     <>
@@ -38,17 +33,16 @@ export default async function Home({ searchParams }: {
           {query ? `Search results for "${query}"` : 'All Blogs'}
         </p>
         <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6">
-          {posts?.length > 0 ? (
+          {/* {posts?.length > 0 ? (
             posts.map((post: BlogTypes) => (
               <BlogCard key={post._id} post={post} />
             ))
           ) : (
             <p>No blog found</p>
-          )}
+          )} */}
 
         </ul>
       </section>
-      <SanityLive/>
     </>
   );
 }

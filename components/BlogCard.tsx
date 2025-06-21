@@ -32,11 +32,8 @@ const BlogCard = ({ post }: { post: BlogTypes }) => {
         </Link>
       </CardTitle>
       <CardDescription className="text-sm text-muted-foreground">
-  {description?.length > 120 ? `${description?.slice(0, 150)}...` : description}
+  {description?.length > 150 ? `${description?.slice(0, 150)}...` : description}
 </CardDescription>
-
-
-
     </CardContent>
     <CardFooter className="flex items-center justify-between px-3">
       <Link href={`/user/${author?._id}`} className="flex items-center gap-1.5">

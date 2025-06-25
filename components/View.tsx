@@ -1,31 +1,33 @@
-import { client } from "@/sanity/lib/client";
-import Ping from "./Ping";
-import { VIEW_BY_ID_QUERY } from "@/sanity/lib/query";
-import { writeClient } from "@/sanity/lib/write-client";
+"use client";
 
-const View = async ({ id }: { id: string }) => {
-    const data = await client.withConfig({ useCdn: false }).fetch(VIEW_BY_ID_QUERY, { id });
-    const totalViews = data?.views ?? 0;
+import { useEffect, useRef } from "react";
+import { useUpdateViewsMutation } from "@/redux/api/api";
+import PingLoader from "./PingLoader";
 
-    await writeClient
-        .patch(id)
-        .set({views: totalViews + 1})
-        .commit();
+const View = ({ id, views }: { id: string; views: string }) => {
+  const [updateViews] = useUpdateViewsMutation();
+  const hasUpdated = useRef(false); // guard flag
 
-    return (
-        <div className="absolute bottom-2 left-2 bg-pink-100 backdrop-blur-md shadow-lg rounded-xl px-4 py-2 flex items-center gap-2 border border-gray-200 ">
-            <div className="absolute -top-1 -right-1">
-                <Ping />
-            </div>
-            <div className="w-full flex justify-center items-center gap-1">
-                <p className="text-sm font-semibold text-gray-800">
-                    {totalViews.toLocaleString()}
-                </p>
-                <p className="text-sm text-gray-800">views</p>
-            </div>
+  useEffect(() => {
+    if (id && !hasUpdated.current) {
+      hasUpdated.current = true; // mark as triggered
+      updateViews(id)
+    }
+  }, [id, updateViews]);
 
-        </div>
-    );
+  return (
+    <div className="absolute bottom-2 left-2 backdrop-blur-md dark:bg-gray-800 dark:text-white shadow-lg rounded-xl px-4 py-2 flex items-center gap-2">
+      <div className="absolute -top-1 -right-1">
+        <PingLoader />
+      </div>
+      <div className="w-full flex justify-center items-center gap-1">
+        <p className="text-sm font-semibold">
+          {Number(views).toLocaleString()}
+        </p>
+        <p className="text-sm">views</p>
+      </div>
+    </div>
+  );
 };
 
 export default View;

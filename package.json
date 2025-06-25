@@ -14,9 +14,14 @@
     "react-dom": "$react-dom"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-scroll-area": "^1.2.9",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
     "@reduxjs/toolkit": "^2.8.2",
     "class-variance-authority": "^0.7.1",
+    "framer-motion": "^12.19.1",
+    "gsap": "^3.13.0",
+    "ldrs": "^1.1.7",
     "lucide-react": "^0.503.0",
     "next": "15.3.4",
     "next-auth": "^5.0.0-beta.27",

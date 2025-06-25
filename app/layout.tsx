@@ -55,7 +55,7 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Next Blog",
+  title: "Diploma Job Circular",
   description: "This is next blogging app",
 };
 

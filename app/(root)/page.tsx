@@ -1,49 +1,86 @@
-import BlogCard, { BlogTypes } from "@/components/BlogCard";
-import SearchForm from "../../components/SearchForm";
+"use client";
 
+import { ChevronRight, Send } from "lucide-react";
+import { useGetAllJobsQuery } from "@/redux/api/api";
+import { useSearchParams } from "next/navigation";
+import JobCard from "@/components/BlogCard";
+import { IJobPost } from "@/types";
+import Hero from "@/components/Hero";
+import JobCardSkeleton from "@/components/JobCardSkeleton";
+import ErrorMessage from "@/components/ErrorMessage";
+import Categories from "@/components/Categories";
+import Pagination from "@/components/Pagination";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
-export default async function Home({ searchParams }: { 
-  searchParams: Promise<{ query?: string }>
-}) {
+export default function Home() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query") || "";
+  const [currentPage, setCurrentPage] = useState(1); // Pagination
 
-  const query = (await searchParams).query ?? "";
-  const params = {search: query || null};
+  const params = {
+    ...(query && { searchTerm: query }),
+    page: currentPage, // ✅ Include page here
+  };
 
-console.log(params);
+  // Redux Toolkit 
+  const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);
 
-const posts = [{}]
+  if (isError) return <ErrorMessage />;
+
 
   return (
     <>
-      <section className="w-full py-16 flex items-center justify-center bg-gradient-to-r from-amber-400 via-pink-500 to-indigo-600 bg-cover bg-center text-white">
-        <div className="px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 items-center text-center">
-          <div className="flex flex-col items-center text-center space-y-5">
-            <span className="text-3xl sm:text-4xl font-extrabold text-white">
-              Start Your Blogging Journey Today
-            </span>
-            <p className="text-xl sm:text-xl font-light text-gray-100 mb-8">
-              Share your thoughts, ideas, and stories with the world. Create your blog with ease, no coding required!
-            </p>
-            <SearchForm query={query} />
+      <Hero query={query} />
+      <section className="max-w-7xl mx-auto px-4 py-6">
+        <p className="text-xl font-semibold mb-6 flex items-center">
+          {query ? `Search results for "${query}"` : "Latest Job Posts"}
+          {!query && <ChevronRight className="size-6 text-primary" />}
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left: Job Post List */}
+          <div className="lg:col-span-9">
+            <ul className="grid grid-cols-1 gap-4">
+              {isLoading ? (
+                Array.from({ length: 6 }).map((_, i) => (
+                  <JobCardSkeleton key={i} />
+                ))
+              ) : posts?.data.result.length > 0 ? (
+                posts.data.result.map((post: IJobPost) => (
+                  <JobCard key={post.jobId} post={post} />
+                ))
+              ) : (
+                <p className="text-center text-gray-500 dark:text-gray-400 col-span-full">
+                  No job found
+                </p>
+              )}
+            </ul>
+            <Pagination totalPages={posts?.data.meta.totalPage} currentPage={currentPage} setCurrentPageAction={setCurrentPage} />
           </div>
+          {/* Right: Google AdSense or Placeholder */}
+          <aside className="lg:col-span-3 space-y-2">
+            <div className="rounded-lg p-4 border dark:bg-gray-900">
+              <h3 className="font-semibold mb-3 text-sm uppercase">Follow Us</h3>
+              <a href="https://t.me/your_channel_name" target="_blank" rel="noopener noreferrer">
+                <Button className="flex w-full items-center space-x-2 bg-blue-400 hover:bg-blue-500 text-white font-medium px-4 py-2 rounded cursor-pointer">
+                  <Send size={16} />
+                  <span>Telegram</span>
+                </Button>
+              </a>
+            </div>
+            <Categories />
+
+            {/* AdSense Script or Placeholder */}
+            {/* Replace below with actual AdSense code */}
+            <div className="border border-gray-300 dark:border-gray-700 rounded-lg h-96 flex items-center justify-center bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300">
+              <span>Google AdSense Ad</span>
+            </div>
+
+          </aside>
         </div>
       </section>
-      <section className="max-w-7xl mx-auto ">
-        <p className="text-2xl py-6 font-semibold">
-          {query ? `Search results for "${query}"` : 'All Blogs'}
-        </p>
-        <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6">
-          {/* {posts?.length > 0 ? (
-            posts.map((post: BlogTypes) => (
-              <BlogCard key={post._id} post={post} />
-            ))
-          ) : (
-            <p>No blog found</p>
-          )} */}
 
-        </ul>
-      </section>
     </>
   );
 }
-

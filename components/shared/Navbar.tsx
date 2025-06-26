@@ -12,22 +12,19 @@ const Navbar = () => {
       <nav className="border-b border-gray-300 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Link href="/">
-                <div className="cursor-pointer">
-                  <Image
-                    src="/logo.png"
-                    alt="Logo"
-                    width={40} // change as needed
-                    height={40} // change as needed
-                    priority
-                  />
-                </div>
+              <Link href="/" className="flex items-center gap-2 cursor-pointer">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={40}
+                  height={40}
+                  priority
+                />
+                <span className="text-lg font-semibold">Diploma Job Circular</span>
               </Link>
             </div>
-
             {/* Desktop Menu */}
             <div className="hidden sm:flex sm:items-center sm:space-x-8">
               {["Home", "Features", "Pricing"].map((item) => (

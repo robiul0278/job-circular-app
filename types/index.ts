@@ -1,11 +1,16 @@
-export interface IJobPost {
+export type IJobPost = {
   jobId: string;
   jobTitle: string;
   companyName: string;
-  companyLogo: string;
-  deadline: string; 
-  jobDescription: string;
+  image: string;
+  education: string[];
+  description: string;
+  vacancy: number;
   views: number;
-  tags: string[];
-  createdAt: string;
+  published: string;
+  startApply: string;
+  deadline: string;
+  applyLink: string;
+  createdAt: string; 
+  updatedAt?: string;
 }

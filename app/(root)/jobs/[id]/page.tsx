@@ -2,15 +2,19 @@
 
 import { use } from "react";
 import { useGetSingleJobQuery } from "@/redux/api/api";
-
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import View from "@/components/View";
 import Image from "next/image";
-import { Suspense } from "react";
+import { Users, CalendarCheck, BookOpen } from "lucide-react";
+import { formatDateTimeBangla } from "@/lib/formatDateTimeBangla";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -22,10 +26,12 @@ const Page = ({ params }: PageProps) => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Card className="max-w-md bg-red-50 border-red-300">
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <Card className="max-w-md bg-red-50 border border-red-300">
           <CardContent>
-            <p className="text-red-700 font-semibold">❌ Failed to load job details.</p>
+            <p className="text-red-700 font-semibold">
+              ❌ চাকরির বিস্তারিত লোড করতে ব্যর্থ হয়েছে।
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -34,93 +40,141 @@ const Page = ({ params }: PageProps) => {
 
   if (isLoading || !singleJob?.data) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Skeleton className="w-full max-w-3xl h-96" />
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <Skeleton className="w-full max-w-3xl h-96 rounded-lg" />
       </div>
     );
   }
 
   const {
-    jobId,
     jobTitle,
     companyName,
-    companyLogo,
+    image,
+    education,
+    description,
+    vacancy,
+    published,
+    startApply,
     deadline,
-    jobDescription,
-    views,
-    createdAt,
+    applyLink
   } = singleJob.data;
 
   return (
-    <section className="max-w-4xl mx-auto py-10 px-4">
-      {/* Job Header */}
-      <Card>
-        <CardHeader className="flex flex-col sm:flex-row sm:items-center gap-6">
-          <div className="w-24 h-24 rounded-lg bg-gray-100 overflow-hidden shrink-0">
-            {companyLogo ? (
-              <Image
-                src={companyLogo}
-                alt={`${companyName} logo`}
-                width={96}
-                height={96}
-                className="object-contain"
-              />
-            ) : (
-              <div className="flex items-center justify-center h-full text-gray-400">
-                No Logo
+    <section className="max-w-7xl mx-auto py-10 px-6 grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-12">
+      {/* Main Content */}
+      <div className="lg:col-span-3 space-y-8">
+        <Card>
+          <CardHeader className="flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="w-24 h-24 rounded-lg bg-gray-100 overflow-hidden shrink-0">
+              {image ? (
+                <Image
+                  src={image}
+                  alt={`${companyName} logo`}
+                  width={96}
+                  height={96}
+                  className="object-contain"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  No Logo
+                </div>
+              )}
+            </div>
+            <div className="flex-1">
+              <CardTitle className="text-2xl">{jobTitle}</CardTitle>
+              <CardDescription className="text-gray-600 dark:text-gray-400">
+                {companyName}
+              </CardDescription>
+            </div>
+          </CardHeader>
+
+          <CardContent className="space-y-6">
+            {/* Table Title with Icon */}
+            <div className="flex items-center gap-2 mb-3">
+              <CalendarCheck className="w-5 h-5 text-blue-600" />
+              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                সময়সূচী
+              </h4>
+            </div>
+
+       <div className="grid gap-4 md:grid-cols-3">
+  <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">📅 প্রকাশের তারিখ</h4>
+    <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(published)}</p>
+  </div>
+
+  <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">🚀 আবেদন শুরুর তারিখ</h4>
+    <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(startApply)}</p>
+  </div>
+
+  <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">⏰ আবেদনের শেষ তারিখ</h4>
+    <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(deadline)}</p>
+  </div>
+</div>
+
+
+            {/* Vacancy Info */}
+            <p className="flex items-center gap-2 text-gray-800 dark:text-gray-200 font-semibold">
+              <Users className="w-5 h-5 text-blue-500" />
+              পদসংখ্যা: {vacancy ? `${vacancy} জন` : "উল্লেখ নেই"}
+            </p>
+
+            {/* Education */}
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <BookOpen className="w-5 h-5 text-green-600" />
+                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                  শিক্ষাগত যোগ্যতা
+                </h4>
               </div>
-            )}
-          </div>
-          <div className="flex-1">
-            <CardTitle className="text-2xl">{jobTitle}</CardTitle>
-            <CardDescription className="text-gray-600 dark:text-gray-400">
-              {companyName}
-            </CardDescription>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          {/* Meta Info */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            <div>
-              <Badge variant="secondary">Job ID</Badge>
-              <p className="mt-1 font-mono">{jobId}</p>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                {education.map((item: string, i: number) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
             </div>
-            <div>
-              <Badge variant="secondary">Posted On</Badge>
-              <p className="mt-1">{new Date(createdAt).toLocaleDateString()}</p>
-            </div>
-            <div>
-              <Badge variant="secondary">Deadline</Badge>
-              <p className="mt-1">{new Date(deadline).toLocaleDateString()}</p>
-            </div>
-            <div>
-              <Badge variant="secondary">Views</Badge>
-              <p className="mt-1">{views || 0}</p>
-            </div>
-          </div>
 
-          {/* Job Description */}
-          <h3 className="text-lg font-semibold mb-3">Job Description</h3>
-          <ScrollArea className="h-48 rounded-md border p-4 mb-6">
-            <p className="whitespace-pre-wrap leading-relaxed">{jobDescription || "No description available."}</p>
-          </ScrollArea>
+            {/* Description */}
+            <h3 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
+              চাকরির বিবরণ
+            </h3>
+            <ScrollArea className="h-48 rounded-md mb-6 border border-gray-200 dark:border-gray-700 p-4">
+              <p className="whitespace-pre-wrap leading-relaxed text-gray-700 dark:text-gray-300">
+                {description || "বিবরণ পাওয়া যায়নি।"}
+              </p>
+            </ScrollArea>
 
-          {/* Apply Button */}
-          <div className="text-center">
-            <Button size="lg" variant="default">
-              Apply Now
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* View Count fixed bottom left */}
-      <div className="fixed bottom-4 left-4">
-        <Suspense fallback={<Skeleton className="w-20 h-6" />}>
-          <View id={jobId} views={views} />
-        </Suspense>
+            {/* Apply Button */}
+            <div className="text-center">
+              <a href={applyLink} target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto">
+                <Button size="lg">Apply Now</Button>
+              </a>
+            </div>
+          </CardContent>
+        </Card>
       </div>
+
+      {/* Sidebar */}
+      <aside className="space-y-6">
+        <Card className="h-48 flex items-center justify-center">
+          <p className="text-center text-sm text-gray-500">📢 Google Ad Placeholder</p>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">📂 চাকরির ধরন</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm">
+            <p className="hover:underline cursor-pointer">সরকারি</p>
+            <p className="hover:underline cursor-pointer">প্রাইভেট</p>
+            <p className="hover:underline cursor-pointer">এনজিও</p>
+            <p className="hover:underline cursor-pointer">আইটি</p>
+            <p className="hover:underline cursor-pointer">ব্যাংক</p>
+          </CardContent>
+        </Card>
+      </aside>
     </section>
   );
 };

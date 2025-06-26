@@ -2,13 +2,13 @@ import { Badge } from "./ui/badge";
 
 const Categories = () => {
 const jobCategories = [
-  { name: "Civil Engineering", count: 112 },
-  { name: "Electrical Engineering", count: 134 },
-  { name: "Mechanical Engineering", count: 128 },
-  { name: "Computer Engineering", count: 143 },
-  { name: "Power Engineering", count: 95 },
-  { name: "Electronics Engineering", count: 88 },
-  { name: "Architecture Engineering", count: 72 },
+  { name: "Diploma in Civil", count: 112 },
+  { name: "Diploma in Electrical", count: 134 },
+  { name: "Diploma in Mechanical", count: 128 },
+  { name: "Diploma in Computer", count: 143 },
+  { name: "Diploma in Power", count: 95 },
+  { name: "Diploma in Electronics", count: 88 },
+  { name: "Diploma in Architecture", count: 72 },
 ];
 
 

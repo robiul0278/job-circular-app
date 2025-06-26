@@ -22,7 +22,7 @@ export default function Pagination({
 
   // Scroll to top when currentPage changes
   useEffect(() => {
-    animate(window.scrollY, 500, {
+    animate(window.scrollY, 0, {
       duration: 0.5,
       onUpdate: (value) => window.scrollTo(0, value),
     });

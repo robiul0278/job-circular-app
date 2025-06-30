@@ -3,15 +3,15 @@
 import { ChevronRight, Send } from "lucide-react";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 import { useSearchParams } from "next/navigation";
-import JobCard from "@/components/BlogCard";
+import JobCard from "@/components/job-card";
 import { IJobPost } from "@/types";
-import Hero from "@/components/Hero";
-import JobCardSkeleton from "@/components/JobCardSkeleton";
-import ErrorMessage from "@/components/ErrorMessage";
-import Categories from "@/components/Categories";
-import Pagination from "@/components/Pagination";
+import JobCardSkeleton from "@/components/job-card-skeleton";
+import ErrorMessage from "@/components/error-message";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import Hero from "@/components/Hero";
+import Pagination from "@/components/Pagination";
+import Categories from "@/components/Categories";
 
 export default function Home() {
   const searchParams = useSearchParams();

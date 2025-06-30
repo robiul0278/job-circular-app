@@ -1,8 +1,6 @@
 'use client';
 
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,30 +11,46 @@ import {
     FormItem,
     FormMessage,
 } from "../ui/form";
+import { LoginFormType } from "@/types/auth-types";
+import { useLoginUserMutation } from "@/redux/api/api";
+import { toast } from "sonner";
+import { TGenericErrorResponse } from "@/types";
 
-const schema = z.object({
-    email: z.string().email("সঠিক ইমেইল দিন"),
-    password: z.string().min(6, "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে"),
+export default function LoginForm({switchForm, closeModal}: {switchForm : () =>void,  closeModal: () => void}){
+
+const [login] = useLoginUserMutation();
+
+const form = useForm<LoginFormType>({
+  defaultValues: {
+    email: "",
+    password: "",
+  },
 });
 
-type LoginFormType = z.infer<typeof schema>;
 
-export default function LoginForm({
-    switchForm,
-}: {
-    switchForm: () => void;
-}) {
-    const form = useForm<LoginFormType>({
-        resolver: zodResolver(schema),
-        defaultValues: {
-            email: "",
-            password: "",
-        },
+
+const onSubmit = async (data: LoginFormType) => {
+  try {
+    const response = await login(data).unwrap();
+    toast.success(response.message);
+    closeModal()
+  }catch (error: unknown) {
+
+    console.log(error);
+  const err = error as { data: TGenericErrorResponse };
+
+  if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
+    err.data.errorSources.forEach(({ path, message }) => {
+      form.setError(path as keyof LoginFormType, {
+        type: "server",
+        message,
+      });
     });
-
-    const onSubmit = async (data: LoginFormType) => {
-        console.log("লগইন:", data);
-    };
+  } else {
+    toast.error(err?.data?.message);
+  }
+}
+};
 
     return (
         <Form {...form}>
@@ -96,7 +110,7 @@ export default function LoginForm({
 
                 <Button
                     type="submit"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     disabled={form.formState.isSubmitting}
                 >
                     {form.formState.isSubmitting ? "লগইন হচ্ছে..." : "লগইন"}
@@ -106,7 +120,7 @@ export default function LoginForm({
                     একাউন্ট নেই?{" "}
                     <button
                         type="button"
-                        onClick={switchForm}
+                        onClick={switchForm }
                         className="text-blue-600 hover:underline focus:outline-none"
                     >
                         রেজিস্ট্রেশন করুন

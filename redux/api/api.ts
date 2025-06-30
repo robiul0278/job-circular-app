@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/v1' }),
-  tagTypes: ["jobs"],
+  tagTypes: ["jobs", "auth"],
   endpoints: (builder) => ({
     getAllJobs: builder.query({
       query: (params) => {
@@ -38,16 +38,37 @@ export const baseApi = createApi({
     }),
     updateViews: builder.mutation({
       query: (jobId) => {
-        console.log(jobId);
         return {
           url: `/jobs/views/${jobId}`,
           method: "POST",
         }
       },
        invalidatesTags: ["jobs"]
-    })
+    }),
+    registerUser: builder.mutation({
+      query: (data) => {
+        // console.log(data);
+        return {
+          url: `/auth/register`,
+          method: "POST",
+          body: data
+        }
+      },
+       invalidatesTags: ["auth"]
+    }),
+    loginUser: builder.mutation({
+      query: (data) => {
+        // console.log(data);
+        return {
+          url: `/auth/login`,
+          method: "POST",
+          body: data
+        }
+      },
+       invalidatesTags: ["auth"]
+    }),
   }),
 });
 
 
-export const { useGetAllJobsQuery, useCreateJobMutation, useGetSingleJobQuery, useUpdateViewsMutation } = baseApi;
+export const { useGetAllJobsQuery, useCreateJobMutation, useGetSingleJobQuery, useUpdateViewsMutation, useLoginUserMutation, useRegisterUserMutation } = baseApi;

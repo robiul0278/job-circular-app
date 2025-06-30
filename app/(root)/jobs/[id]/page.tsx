@@ -15,7 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import { Users, CalendarCheck, BookOpen } from "lucide-react";
 import { formatDateTimeBangla } from "@/lib/formatDateTimeBangla";
-import View from "@/components/View";
+import View from "@/components/view";
 
 type PageProps = {
   params: Promise<{ id: string }>;

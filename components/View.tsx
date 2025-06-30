@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useUpdateViewsMutation } from "@/redux/api/api";
-import PingLoader from "./PingLoader";
+import PingLoader from "./ping-loader";
 
 const View = ({ id, views }: { id: string; views: string }) => {
   const [updateViews] = useUpdateViewsMutation();

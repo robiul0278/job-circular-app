@@ -14,3 +14,17 @@ export type IJobPost = {
   createdAt: string; 
   updatedAt?: string;
 }
+
+
+export type TErrorSource = {
+  path: string;
+  message: string;
+};
+
+export type TGenericErrorResponse = {
+  success?: boolean;
+  statusCode: number;
+  message: string;
+  errorSources: TErrorSource[];
+  stack?: string;
+};

@@ -5,9 +5,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
-import LoginForm from "./LoginForm";
 import { useState } from "react";
-import RegisterForm from "./RegisterForm";
+import LoginForm from "./login-form";
+import RegisterForm from "./register-form";
 
 export default function AuthModal() {
   const [open, setOpen] = useState(false);
@@ -29,7 +29,7 @@ export default function AuthModal() {
         </DialogTitle>
 
         {formType === "login" ? (
-          <LoginForm switchForm={switchForm}/>
+          <LoginForm switchForm={switchForm} closeModal={() => setOpen(false)}/>
         ) : (
           <RegisterForm switchForm={switchForm} />
         )}

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import DarkButton from "../DarkButton";
+import DarkButton from "../dark-button";
 import { Button } from "../ui/button";
-import AuthModal from "../auth/AuthModal";
+import AuthModal from "../auth/auth-modal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

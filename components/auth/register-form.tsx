@@ -1,48 +1,50 @@
 'use client';
 
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
+import { RegisterFormType } from "@/types/auth-types";
+import { useRegisterUserMutation } from "@/redux/api/api";
+import { TGenericErrorResponse } from "@/types";
 
-const schema = z
-  .object({
-    name: z.string().min(2, "নাম আবশ্যক"),
-    email: z.string().email("সঠিক ইমেইল দিন"),
-    password: z.string().min(6, "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে"),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "পাসওয়ার্ড মিলছে না",
-    path: ["confirmPassword"],
-  });
+export default function RegisterForm({switchForm}: {switchForm: () => void}) {
 
-type RegisterFormType = z.infer<typeof schema>;
+  const [Register] = useRegisterUserMutation()
 
-export default function RegisterForm({
-  switchForm,
-}: {
-  switchForm: () => void;
-}) {
   const form = useForm<RegisterFormType>({
-    resolver: zodResolver(schema),
     defaultValues: {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
   });
 
-  const onSubmit = async (data: RegisterFormType) => {
-    console.log("রেজিস্ট্রেশন:", data);
-    toast.success("সাইনআপ সফল হয়েছে!");
-    switchForm(); // Login ফর্ম দেখাবে
-  };
+const onSubmit = async (data: RegisterFormType) => {
+  try {
+    const response = await Register(data).unwrap();
+    toast.success(response.message);
+    switchForm();
+  }catch (error: unknown) {
+
+    console.log(error);
+  const err = error as { data: TGenericErrorResponse };
+
+  if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
+    err.data.errorSources.forEach(({ path, message }) => {
+      form.setError(path as keyof RegisterFormType, {
+        type: "server",
+        message,
+      });
+    });
+  } else {
+    toast.error(err?.data?.message);
+  }
+}
+};
+
 
   return (
     <Form {...form}>
@@ -96,7 +98,7 @@ export default function RegisterForm({
 
         <Button
           type="submit"
-          className="w-full"
+          className="w-full cursor-pointer"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting ? "সাইন আপ হচ্ছে..." : "সাইন আপ"}

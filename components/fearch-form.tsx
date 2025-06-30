@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import Form from 'next/form'
-import SearchFormReset from './SearchFormReset';
+import SearchFormReset from './search-form-reset';
 
 const SearchForm = ({query}: {query: string}) => {
 

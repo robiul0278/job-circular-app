@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCreateJobMutation } from '@/redux/api/api';
 import { JobFormType, jobSchema } from '@/types/jobSchema';
-import CreateJobForm from '@/components/form/CreateJobForm';
+import CreateJobForm from '@/components/form/create-job-form';
 
 export default function JobForm() {
     const [selectedEducation, setSelectedEducation] = useState<string[]>([]);

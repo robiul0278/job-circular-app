@@ -55,8 +55,8 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Diploma Job Circular",
-  description: "This is next blogging app",
+  title: "Diploma Career",
+  description: "Diploma job circular website",
 };
 
 export default function RootLayout({

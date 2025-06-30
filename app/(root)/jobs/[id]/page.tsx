@@ -15,6 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import { Users, CalendarCheck, BookOpen } from "lucide-react";
 import { formatDateTimeBangla } from "@/lib/formatDateTimeBangla";
+import View from "@/components/View";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -56,7 +57,8 @@ const Page = ({ params }: PageProps) => {
     published,
     startApply,
     deadline,
-    applyLink
+    applyLink,
+    views
   } = singleJob.data;
 
   return (
@@ -175,6 +177,7 @@ const Page = ({ params }: PageProps) => {
           </CardContent>
         </Card>
       </aside>
+      <View id={id} views={views}/>
     </section>
   );
 };

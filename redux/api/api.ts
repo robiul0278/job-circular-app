@@ -17,11 +17,14 @@ export const baseApi = createApi({
       providesTags: ['jobs']
     }),
     createJob: builder.mutation({
-      query: (data) => ({
-        url: "/jobs",
+      query: (data) => {
+        console.log(data);
+        return{
+           url: "/jobs/create",
         method: "POST",
         body: data,
-      }),
+        }
+      },
       invalidatesTags: ["jobs"]
     }),
     getSingleJob: builder.query({

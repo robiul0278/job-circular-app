@@ -99,22 +99,22 @@ const Page = ({ params }: PageProps) => {
               </h4>
             </div>
 
-       <div className="grid gap-4 md:grid-cols-3">
-  <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
-    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">📅 প্রকাশের তারিখ</h4>
-    <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(published)}</p>
-  </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">📅 প্রকাশের তারিখ</h4>
+                <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(published)}</p>
+              </div>
 
-  <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
-    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">🚀 আবেদন শুরুর তারিখ</h4>
-    <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(startApply)}</p>
-  </div>
+              <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">🚀 আবেদন শুরুর তারিখ</h4>
+                <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(startApply)}</p>
+              </div>
 
-  <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
-    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">⏰ আবেদনের শেষ তারিখ</h4>
-    <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(deadline)}</p>
-  </div>
-</div>
+              <div className="p-4 border rounded-xl shadow-sm bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">⏰ আবেদনের শেষ তারিখ</h4>
+                <p className="text-sm text-gray-800 dark:text-gray-300">{formatDateTimeBangla(deadline)}</p>
+              </div>
+            </div>
 
 
             {/* Vacancy Info */}
@@ -177,7 +177,10 @@ const Page = ({ params }: PageProps) => {
           </CardContent>
         </Card>
       </aside>
-      <View id={id} views={views}/>
+      <div className="fixed bottom-4 left-4 z-50">
+        <View id={id} views={views} />
+      </div>
+
     </section>
   );
 };

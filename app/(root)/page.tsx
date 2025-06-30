@@ -51,7 +51,7 @@ export default function Home() {
                   <JobCard key={post.jobId} post={post} />
                 ))
               ) : (
-                <p className="text-center text-gray-500 dark:text-gray-400 col-span-full">
+                <p className="text-center  text-gray-500 dark:text-gray-400 col-span-full">
                   No job found
                 </p>
               )}

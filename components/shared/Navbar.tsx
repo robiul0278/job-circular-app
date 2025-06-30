@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import DarkButton from "../DarkButton";
 import { Button } from "../ui/button";
+import AuthModal from "../auth/AuthModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +64,7 @@ const Navbar = () => {
                 </Link>
               </>
             ) : (
-              <Button onClick={() => signIn("github")} variant="outline">লগইন</Button>
+          <AuthModal />
             )}
           </div>
 

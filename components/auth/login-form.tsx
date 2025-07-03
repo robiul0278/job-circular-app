@@ -15,42 +15,50 @@ import { LoginFormType } from "@/types/auth-types";
 import { useLoginUserMutation } from "@/redux/api/api";
 import { toast } from "sonner";
 import { TGenericErrorResponse } from "@/types";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "@/redux/features/authSlice";
 
-export default function LoginForm({switchForm, closeModal}: {switchForm : () =>void,  closeModal: () => void}){
+export default function LoginForm({ switchForm, closeModal }: { switchForm: () => void, closeModal: () => void }) {
+    const dispatch = useDispatch();
+    const [login] = useLoginUserMutation();
 
-const [login] = useLoginUserMutation();
-
-const form = useForm<LoginFormType>({
-  defaultValues: {
-    email: "",
-    password: "",
-  },
-});
-
-
-
-const onSubmit = async (data: LoginFormType) => {
-  try {
-    const response = await login(data).unwrap();
-    toast.success(response.message);
-    closeModal()
-  }catch (error: unknown) {
-
-    console.log(error);
-  const err = error as { data: TGenericErrorResponse };
-
-  if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
-    err.data.errorSources.forEach(({ path, message }) => {
-      form.setError(path as keyof LoginFormType, {
-        type: "server",
-        message,
-      });
+    const form = useForm<LoginFormType>({
+        defaultValues: {
+            email: "",
+            password: "",
+        },
     });
-  } else {
-    toast.error(err?.data?.message);
-  }
-}
-};
+
+
+
+    const onSubmit = async (data: LoginFormType) => {
+        try {
+            const res = await login(data).unwrap();
+            console.log(res);
+            if (res.statusCode === 200) {
+                // Save to Redux store
+                dispatch(setCredentials({ user: res.data.user }));
+                // Save to localStorage
+                localStorage.setItem("accessToken", res.data.accessToken);
+                toast.success(res.message);
+                closeModal();
+            }
+        } catch (error: unknown) {
+            console.log(error);
+            const err = error as { data: TGenericErrorResponse };
+
+            if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
+                err.data.errorSources.forEach(({ path, message }) => {
+                    form.setError(path as keyof LoginFormType, {
+                        type: "server",
+                        message,
+                    });
+                });
+            } else {
+                toast.error(err?.data?.message);
+            }
+        }
+    };
 
     return (
         <Form {...form}>
@@ -120,7 +128,7 @@ const onSubmit = async (data: LoginFormType) => {
                     একাউন্ট নেই?{" "}
                     <button
                         type="button"
-                        onClick={switchForm }
+                        onClick={switchForm}
                         className="text-blue-600 hover:underline focus:outline-none"
                     >
                         রেজিস্ট্রেশন করুন

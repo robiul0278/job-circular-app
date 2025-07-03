@@ -9,9 +9,9 @@ import JobCardSkeleton from "@/components/job-card-skeleton";
 import ErrorMessage from "@/components/error-message";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import Hero from "@/components/Hero";
-import Pagination from "@/components/Pagination";
-import Categories from "@/components/Categories";
+import Hero from "@/components/hero";
+import Pagination from "@/components/pagination";
+import Categories from "@/components/categories";
 
 export default function Home() {
   const searchParams = useSearchParams();

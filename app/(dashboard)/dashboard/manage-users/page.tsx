@@ -6,34 +6,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from "@/components/ui/table";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
-} from "@/components/ui/select";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select";
+
 import {
   Users,
-  UserPlus,
   Search,
   Filter,
   Edit,
@@ -195,18 +185,17 @@ const Page = () => {
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [isAddUserOpen, setIsAddUserOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isEditUserOpen, setIsEditUserOpen] = useState(false);
 
 
-  console.log(selectedUser,isEditUserOpen );
+  console.log(selectedUser, isEditUserOpen);
 
   // Filter users
   const filteredUsers = users.filter(user => {
     const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.phone.includes(searchTerm);
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.phone.includes(searchTerm);
     const matchesRole = selectedRole === "all" || user.role === selectedRole;
     const matchesStatus = selectedStatus === "all" || user.status === selectedStatus;
     return matchesSearch && matchesRole && matchesStatus;
@@ -275,7 +264,7 @@ const Page = () => {
   };
 
   const handleStatusToggle = (userId: string, newStatus: "active" | "inactive" | "suspended") => {
-    setUsers(users.map(user => 
+    setUsers(users.map(user =>
       user.id === userId ? { ...user, status: newStatus } : user
     ));
   };
@@ -290,56 +279,19 @@ const Page = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">ইউজার ম্যানেজমেন্ট</h1>
-          <p className="text-slate-600 text-sm mt-1">সিস্টেমের সকল ইউজার পরিচালনা করুন</p>
+          <h1 className="text-3xl font-bold text-foreground">ইউজার ম্যানেজমেন্ট</h1>
+          <p className="text-sm mt-1 text-muted-foreground">
+            ইউজার তালিকা পর্যালোচনা করুন ও প্রয়োজনে অ্যাকশন নিন
+          </p>
         </div>
-        <Dialog open={isAddUserOpen} onOpenChange={setIsAddUserOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <UserPlus className="h-4 w-4 mr-2" />
-              নতুন ইউজার যোগ করুন
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>নতুন ইউজার যোগ করুন</DialogTitle>
-              <DialogDescription>
-                নতুন ইউজারের তথ্য পূরণ করুন
-              </DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="name" className="text-right">নাম</Label>
-                <Input id="name" className="col-span-3" />
-              </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="email" className="text-right">ইমেইল</Label>
-                <Input id="email" type="email" className="col-span-3" />
-              </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="phone" className="text-right">ফোন</Label>
-                <Input id="phone" className="col-span-3" />
-              </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="role" className="text-right">ভূমিকা</Label>
-                <Select>
-                  <SelectTrigger className="col-span-3">
-                    <SelectValue placeholder="নির্বাচন করুন" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="user">ইউজার</SelectItem>
-                    <SelectItem value="moderator">মডারেটর</SelectItem>
-                    <SelectItem value="admin">অ্যাডমিন</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button type="submit">সংরক্ষণ করুন</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+        <div className="text-right">
+          <p className="text-sm text-muted-foreground">তারিখ</p>
+          <p className="text-sm font-medium text-foreground">
+            {new Date().toLocaleDateString('bn-BD')}
+          </p>
+        </div>
       </div>
+
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -389,7 +341,7 @@ const Page = () => {
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle className="text-slate-900">ইউজার তালিকা</CardTitle>
+            <CardTitle className="">ইউজার তালিকা</CardTitle>
             <div className="flex items-center space-x-2">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -432,7 +384,7 @@ const Page = () => {
           <div className="rounded-md border">
             <Table>
               <TableHeader>
-                <TableRow className="bg-slate-50">
+                <TableRow className="">
                   <TableHead className="font-semibold text-slate-700">ইউজার</TableHead>
                   <TableHead className="font-semibold text-slate-700">যোগাযোগ</TableHead>
                   <TableHead className="font-semibold text-slate-700">ভূমিকা</TableHead>
@@ -475,20 +427,20 @@ const Page = () => {
                     </TableCell>
                     <TableCell>
                       <Badge className={getRoleColor(user.role)}>
-                        {user.role === "admin" ? "অ্যাডমিন" : 
-                         user.role === "moderator" ? "মডারেটর" : "ইউজার"}
+                        {user.role === "admin" ? "অ্যাডমিন" :
+                          user.role === "moderator" ? "মডারেটর" : "ইউজার"}
                       </Badge>
                     </TableCell>
                     <TableCell>
                       <Badge className={getStatusColor(user.status)}>
-                        {user.status === "active" ? "সক্রিয়" : 
-                         user.status === "inactive" ? "নিষ্ক্রিয়" : "স্থগিত"}
+                        {user.status === "active" ? "সক্রিয়" :
+                          user.status === "inactive" ? "নিষ্ক্রিয়" : "স্থগিত"}
                       </Badge>
                     </TableCell>
                     <TableCell>
                       <Badge className={getVerificationColor(user.verificationStatus)}>
-                        {user.verificationStatus === "verified" ? "যাচাইকৃত" : 
-                         user.verificationStatus === "pending" ? "অপেক্ষমাণ" : "প্রত্যাখ্যাত"}
+                        {user.verificationStatus === "verified" ? "যাচাইকৃত" :
+                          user.verificationStatus === "pending" ? "অপেক্ষমাণ" : "প্রত্যাখ্যাত"}
                       </Badge>
                     </TableCell>
                     <TableCell>
@@ -550,8 +502,8 @@ const Page = () => {
             <div className="flex items-center justify-between mt-6">
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-slate-600">প্রতি পৃষ্ঠায় দেখান:</span>
-                <Select 
-                  value={itemsPerPage.toString()} 
+                <Select
+                  value={itemsPerPage.toString()}
                   onValueChange={(value) => {
                     setItemsPerPage(Number(value));
                     setCurrentPage(1);
@@ -594,7 +546,7 @@ const Page = () => {
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
-                
+
                 {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                   let pageNum;
                   if (totalPages <= 5) {
@@ -606,7 +558,7 @@ const Page = () => {
                   } else {
                     pageNum = currentPage - 2 + i;
                   }
-                  
+
                   return (
                     <Button
                       key={pageNum}

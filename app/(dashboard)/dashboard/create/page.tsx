@@ -53,31 +53,33 @@ export default function JobForm() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-8 px-4">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
-                        Create Job Posting
-                    </h1>
-                    <p className="text-slate-600 dark:text-slate-300 text-lg">
-                        Fill out the details to create a professional job listing
+        <div className="space-y-6">
+            <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-3xl font-bold text-foreground">নতুন চাকরির সার্কুলার যুক্ত করুন</h1>
+                    <p className="text-sm mt-1 text-muted-foreground">
+                        সার্কুলারের শিরোনাম, প্রতিষ্ঠান, ট্রেড, ডেডলাইন সহ প্রয়োজনীয় তথ্য যুক্ত করুন
                     </p>
                 </div>
-
-                <CreateJobForm
-                    onSubmit={onSubmit}
-                    register={register}
-                    handleSubmit={handleSubmit}
-                    control={control}
-                    errors={errors}
-                    setValue={setValue}
-                    selectedEducation={selectedEducation}
-                    addEducation={addEducation}
-                    removeEducation={removeEducation}
-                    isSubmitting={isSubmitting}
-                />
-
+                <div className="text-right">
+                    <p className="text-sm text-muted-foreground">তারিখ</p>
+                    <p className="text-sm font-medium text-foreground">
+                        {new Date().toLocaleDateString('bn-BD')}
+                    </p>
+                </div>
             </div>
+            <CreateJobForm
+                onSubmit={onSubmit}
+                register={register}
+                handleSubmit={handleSubmit}
+                control={control}
+                errors={errors}
+                setValue={setValue}
+                selectedEducation={selectedEducation}
+                addEducation={addEducation}
+                removeEducation={removeEducation}
+                isSubmitting={isSubmitting}
+            />
         </div>
     );
 }

@@ -14,10 +14,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { 
-  Edit, 
-  Trash2, 
-  Eye, 
+import {
+  Edit,
+  Trash2,
+  Eye,
   Search,
   Filter,
   Calendar,
@@ -53,7 +53,7 @@ const mockData: JobCircular[] = [
     publishedAt: "২০২৪-০১-১০"
   },
   {
-    id: "2", 
+    id: "2",
     title: "জুনিয়র অফিসার পদে নিয়োগ",
     institution: "সোনালী ব্যাংক লিমিটেড",
     trade: "ব্যাংকিং",
@@ -184,7 +184,7 @@ export default function AllJobCircular() {
   // Filter data based on search term and trade
   const filteredData = data.filter(item => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.institution.toLowerCase().includes(searchTerm.toLowerCase());
+      item.institution.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTrade = selectedTrade === "all" || item.trade === selectedTrade;
     return matchesSearch && matchesTrade;
   });
@@ -225,226 +225,219 @@ export default function AllJobCircular() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-slate-900">সার্কুলার তালিকা</CardTitle>
-          <div className="flex items-center space-x-2">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-              <Input
-                placeholder="সার্চ করুন..."
-                value={searchTerm}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                className="pl-10 w-64"
-              />
-            </div>
-            <Select value={selectedTrade} onValueChange={handleTradeChange}>
-              <SelectTrigger className="w-40">
-                <Filter className="h-4 w-4 mr-2" />
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {trades.map((trade) => (
-                  <SelectItem key={trade.value} value={trade.value}>
-                    {trade.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-slate-50">
-                <TableHead className="font-semibold text-slate-700">টাইটেল</TableHead>
-                <TableHead className="font-semibold text-slate-700">প্রতিষ্ঠান</TableHead>
-                <TableHead className="font-semibold text-slate-700">ট্রেড</TableHead>
-                <TableHead className="font-semibold text-slate-700">ডেডলাইন</TableHead>
-                <TableHead className="font-semibold text-slate-700">অবস্থা</TableHead>
-                <TableHead className="font-semibold text-slate-700">ভিউ</TableHead>
-                <TableHead className="font-semibold text-slate-700 text-right">অ্যাকশন</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {currentData.map((circular) => (
-                <TableRow key={circular.id} className="hover:bg-slate-50/50">
-                  <TableCell>
-                    <div className="space-y-1">
-                      <div className="font-medium text-slate-900">{circular.title}</div>
-                      <div className="text-xs text-slate-500 flex items-center">
-                        <Calendar className="h-3 w-3 mr-1" />
-                        প্রকাশিত: {circular.publishedAt}
-                      </div>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center text-slate-700">
-                      <Building className="h-4 w-4 mr-2 text-slate-400" />
-                      {circular.institution}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                      {circular.trade}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <div className="text-slate-700">{circular.deadline}</div>
-                  </TableCell>
-                  <TableCell>
-                    <Badge 
-                      variant={circular.status === "ongoing" ? "default" : "secondary"}
-                      className={cn(
-                        circular.status === "ongoing" 
-                          ? "bg-green-100 text-green-800 hover:bg-green-200" 
-                          : "bg-gray-100 text-gray-800"
-                      )}
-                    >
-                      {circular.status === "ongoing" ? "চলমান" : "সমাপ্ত"}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center text-slate-600">
-                      <Eye className="h-4 w-4 mr-1" />
-                      {circular.views.toLocaleString()}
-                    </div>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end space-x-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleEdit(circular.id)}
-                        className="hover:bg-blue-50"
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleDelete(circular.id)}
-                        className="hover:bg-red-50 text-red-600 border-red-200"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-        
-        {currentData.length === 0 && (
-          <div className="text-center py-8 text-slate-500">
-            কোনো সার্কুলার খুঁজে পাওয়া যায়নি।
-          </div>
-        )}
 
-        {/* Pagination Controls */}
-        {totalItems > 0 && (
-          <div className="flex items-center justify-between mt-6">
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground">সকল চাকরির সার্কুলার</h1>
+          <p className="text-sm mt-1 text-muted-foreground">
+            সাম্প্রতিক ও চলমান সকল সরকারি, বেসরকারি, ব্যাংক ও এনজিও চাকরি
+          </p>
+        </div>
+        <div className="text-right">
+          <p className="text-sm text-muted-foreground">সর্বশেষ আপডেট</p>
+          <p className="text-sm font-medium text-foreground">
+            {new Date().toLocaleDateString('bn-BD')}
+          </p>
+        </div>
+      </div>
+
+      {/* Table Card */}
+      <Card>
+        <CardHeader className="border-b">
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-foreground">সার্কুলার তালিকা</CardTitle>
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-slate-600">
-                প্রতি পৃষ্ঠায় দেখান:
-              </span>
-              <Select 
-                value={itemsPerPage.toString()} 
-                onValueChange={(value) => {
-                  setItemsPerPage(Number(value));
-                  setCurrentPage(1);
-                }}
-              >
-                <SelectTrigger className="w-20">
-                  <SelectValue />
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder="সার্চ করুন..."
+                  value={searchTerm}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  className="pl-10 w-64"
+                />
+              </div>
+              <Select value={selectedTrade} onValueChange={handleTradeChange}>
+                <SelectTrigger className="w-40">
+                  <Filter className="h-4 w-4 mr-2" />
+                  <SelectValue placeholder="ট্রেড বাছাই করুন" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="5">৫</SelectItem>
-                  <SelectItem value="10">১০</SelectItem>
-                  <SelectItem value="20">২০</SelectItem>
-                  <SelectItem value="50">৫০</SelectItem>
+                  {trades.map((trade) => (
+                    <SelectItem key={trade.value} value={trade.value}>
+                      {trade.label}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
-
-            <div className="flex items-center space-x-2">
-              <span className="text-sm text-slate-600">
-                {startIndex + 1}-{Math.min(endIndex, totalItems)} এর {totalItems} টি
-              </span>
-            </div>
-
-            <div className="flex items-center space-x-1">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => goToPage(1)}
-                disabled={currentPage === 1}
-                className="h-8 w-8 p-0"
-              >
-                <ChevronsLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => goToPage(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="h-8 w-8 p-0"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              
-              {/* Page Numbers */}
-              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                let pageNum;
-                if (totalPages <= 5) {
-                  pageNum = i + 1;
-                } else if (currentPage <= 3) {
-                  pageNum = i + 1;
-                } else if (currentPage >= totalPages - 2) {
-                  pageNum = totalPages - 4 + i;
-                } else {
-                  pageNum = currentPage - 2 + i;
-                }
-                
-                return (
-                  <Button
-                    key={pageNum}
-                    variant={currentPage === pageNum ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => goToPage(pageNum)}
-                    className="h-8 w-8 p-0"
-                  >
-                    {pageNum}
-                  </Button>
-                );
-              })}
-
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => goToPage(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="h-8 w-8 p-0"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => goToPage(totalPages)}
-                disabled={currentPage === totalPages}
-                className="h-8 w-8 p-0"
-              >
-                <ChevronsRight className="h-4 w-4" />
-              </Button>
-            </div>
           </div>
-        )}
-      </CardContent>
-    </Card>
+        </CardHeader>
+
+        <CardContent>
+          <div className="rounded-md border">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-foreground font-semibold">টাইটেল</TableHead>
+                  <TableHead className="text-foreground font-semibold">প্রতিষ্ঠান</TableHead>
+                  <TableHead className="text-foreground font-semibold">ট্রেড</TableHead>
+                  <TableHead className="text-foreground font-semibold">ডেডলাইন</TableHead>
+                  <TableHead className="text-foreground font-semibold">অবস্থা</TableHead>
+                  <TableHead className="text-foreground font-semibold">ভিউ</TableHead>
+                  <TableHead className="text-foreground font-semibold text-right">অ্যাকশন</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {currentData.map((circular) => (
+                  <TableRow key={circular.id} className="hover:bg-muted/50">
+                    <TableCell>
+                      <div className="space-y-1">
+                        <div className="font-medium text-foreground">{circular.title}</div>
+                        <div className="text-xs text-muted-foreground flex items-center">
+                          <Calendar className="h-3 w-3 mr-1" />
+                          প্রকাশিত: {circular.publishedAt}
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center text-foreground">
+                        <Building className="h-4 w-4 mr-2 text-muted-foreground" />
+                        {circular.institution}
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="secondary" className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+                        {circular.trade}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <div className="text-foreground">{circular.deadline}</div>
+                    </TableCell>
+                    <TableCell>
+                      <Badge
+                        variant={circular.status === 'ongoing' ? 'default' : 'secondary'}
+                        className={cn(
+                          circular.status === 'ongoing'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
+                        )}
+                      >
+                        {circular.status === 'ongoing' ? 'চলমান' : 'সমাপ্ত'}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center text-muted-foreground">
+                        <Eye className="h-4 w-4 mr-1" />
+                        {circular.views.toLocaleString()}
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex justify-end space-x-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleEdit(circular.id)}
+                          className="hover:bg-blue-50 dark:hover:bg-blue-900"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleDelete(circular.id)}
+                          className="hover:bg-red-50 dark:hover:bg-red-900 text-red-600 border-red-200"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          {currentData.length === 0 && (
+            <div className="text-center py-8 text-muted-foreground">
+              কোনো সার্কুলার খুঁজে পাওয়া যায়নি।
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalItems > 0 && (
+            <div className="flex items-center justify-between mt-6">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-muted-foreground">প্রতি পৃষ্ঠায় দেখান:</span>
+                <Select
+                  value={itemsPerPage.toString()}
+                  onValueChange={(value) => {
+                    setItemsPerPage(Number(value))
+                    setCurrentPage(1)
+                  }}
+                >
+                  <SelectTrigger className="w-20">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="5">৫</SelectItem>
+                    <SelectItem value="10">১০</SelectItem>
+                    <SelectItem value="20">২০</SelectItem>
+                    <SelectItem value="50">৫০</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="text-sm text-muted-foreground">
+                {startIndex + 1}-{Math.min(endIndex, totalItems)} এর {totalItems} টি
+              </div>
+
+              <div className="flex items-center space-x-1">
+                <Button variant="outline" size="sm" onClick={() => goToPage(1)} disabled={currentPage === 1} className="h-8 w-8 p-0">
+                  <ChevronsLeft className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="sm" onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="h-8 w-8 p-0">
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+
+                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                  let pageNum
+                  if (totalPages <= 5) {
+                    pageNum = i + 1
+                  } else if (currentPage <= 3) {
+                    pageNum = i + 1
+                  } else if (currentPage >= totalPages - 2) {
+                    pageNum = totalPages - 4 + i
+                  } else {
+                    pageNum = currentPage - 2 + i
+                  }
+
+                  return (
+                    <Button
+                      key={pageNum}
+                      variant={currentPage === pageNum ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => goToPage(pageNum)}
+                      className="h-8 w-8 p-0"
+                    >
+                      {pageNum}
+                    </Button>
+                  )
+                })}
+
+                <Button variant="outline" size="sm" onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages} className="h-8 w-8 p-0">
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="sm" onClick={() => goToPage(totalPages)} disabled={currentPage === totalPages} className="h-8 w-8 p-0">
+                  <ChevronsRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+
   );
 }

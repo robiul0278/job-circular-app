@@ -1,14 +1,14 @@
-import OverviewCharts from "@/components/overview-charts";
-import StatsCard from "@/components/stats-card";
-import { 
-  FileText, 
-  Clock, 
+import OverviewCharts from "@/components/dashboard/overview-charts";
+import StatsCard from "@/components/dashboard/stats-card";
+import {
+  FileText,
+  Clock,
   AlertTriangle,
   Eye,
   TrendingUp
 } from "lucide-react";
 
-export default function OverviewPage() {
+export function DashboardOverview() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -32,7 +32,7 @@ export default function OverviewPage() {
           trendValue="+১২%"
           className="xl:col-span-2"
         />
-        
+
         <StatsCard
           title="আজকের নতুন"
           value="৮"
@@ -42,7 +42,7 @@ export default function OverviewPage() {
           trendValue="+৩৫%"
           className="xl:col-span-1"
         />
-        
+
         <StatsCard
           title="চলমান সার্কুলার"
           value="১৫৬"
@@ -52,7 +52,7 @@ export default function OverviewPage() {
           trendValue="স্থিতিশীল"
           className="xl:col-span-1"
         />
-        
+
         <StatsCard
           title="ডেডলাইনের কাছাকাছি"
           value="২৩"
@@ -62,7 +62,7 @@ export default function OverviewPage() {
           trendValue="-৮%"
           className="xl:col-span-1"
         />
-        
+
         <StatsCard
           title="সর্বাধিক ভিউ"
           value="৩২,৪৫০"
@@ -75,7 +75,7 @@ export default function OverviewPage() {
       </div>
 
       <OverviewCharts />
-      
+
       <div className="grid gap-6 md:grid-cols-2">
         <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-lg p-6 border border-sky-100">
           <h3 className="text-lg font-semibold text-slate-900 mb-2">দ্রুত পরিসংখ্যান</h3>
@@ -98,7 +98,7 @@ export default function OverviewPage() {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border border-green-100">
           <h3 className="text-lg font-semibold text-slate-900 mb-2">সাম্প্রতিক কার্যক্রম</h3>
           <div className="space-y-3">

@@ -2,18 +2,22 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import DarkButton from "../dark-button";
 import { Button } from "../ui/button";
 import AuthModal from "../auth/auth-modal";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/redux/features/authSlice";
+import { persistor, RootState } from "@/redux/store";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const {user} = useSelector((state: RootState) => state.auth);
 
-  // ফেক session (বাস্তবে replace করো)
-  const session = null;
-  const signIn = async (provider: string) => console.log(`Sign in with ${provider}`);
-  const signOut = async () => console.log("Signed out");
+ const handleLogout = () => {
+  dispatch(logout());
+  persistor.purge();
+  localStorage.removeItem("accessToken");
+};
 
   const menuItems = [
     { name: "হোম", href: "/" },
@@ -49,84 +53,20 @@ const Navbar = () => {
           {/* Right Side: Auth / Dark Mode */}
           <div className="hidden md:flex items-center gap-4">
             <DarkButton />
-            {session?.user ? (
+            {user ? (
               <>
-                <Link href="/blog/create">
-                  <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition">
+                <Link href="/dashboard">
+                  <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition cursor-pointer">
                     পোস্ট করুন
                   </span>
                 </Link>
-                <Button onClick={signOut} className="text-sm">লগআউট</Button>
-                <Link href={`/user/${session.id}`}>
-                  <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition">
-                    {session.user.name}
-                  </span>
-                </Link>
+                <Button onClick={handleLogout} className="text-sm cursor-pointer">লগআউট</Button>
               </>
             ) : (
           <AuthModal />
             )}
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 dark:text-gray-200 focus:outline-none"
-            >
-              {isOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden space-y-2 pb-4 mt-2 border-t border-gray-200 dark:border-gray-700">
-            {menuItems.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <span className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md text-base font-medium">
-                  {item.name}
-                </span>
-              </Link>
-            ))}
-
-            {session?.user ? (
-              <>
-                <Link href="/blog/create">
-                  <span className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md">
-                    পোস্ট করুন
-                  </span>
-                </Link>
-                <button
-                  onClick={signOut}
-                  className="block w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-                >
-                  লগআউট
-                </button>
-                <Link href={`/user/${session.id}`}>
-                  <span className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md">
-                    {session.user.name}
-                  </span>
-                </Link>
-              </>
-            ) : (
-              <button
-                onClick={() => signIn("github")}
-                className="block w-full text-left px-3 py-2 text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md font-semibold"
-              >
-                লগইন
-              </button>
-            )}
-          </div>
-        )}
       </nav>
     </header>
   );

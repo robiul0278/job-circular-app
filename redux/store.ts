@@ -1,18 +1,40 @@
-import { configureStore } from '@reduxjs/toolkit'
-import bookmarkReducers from "./features/bookmarkSlice"
-import { baseApi } from './api/api'
+// store.ts
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import authReducers from "./features/authSlice";
+import { baseApi } from './api/api';
 
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage
+import { persistReducer, persistStore } from 'redux-persist';
+
+// redux-persist config
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['auth'], // শুধুমাত্র auth slice persist হবে
+};
+
+// combine reducers
+const rootReducer = combineReducers({
+  [baseApi.reducerPath]: baseApi.reducer,
+  auth: authReducers,
+});
+
+// persist wrapper
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// configure store
 export const store = configureStore({
-  reducer: {
-    [baseApi.reducerPath]: baseApi.reducer,
-    bookmarks: bookmarkReducers,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApi.middleware),
-})
+    getDefaultMiddleware({
+      serializableCheck: false, // redux-persist compatibility
+    }).concat(baseApi.middleware),
+});
 
-// Infer the `RootState`,  `AppDispatch`, and `AppStore` types from the store itself
+// export persistor
+export const persistor = persistStore(store);
+
+// types
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
 export type AppStore = typeof store;

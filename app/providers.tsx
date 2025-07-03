@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'next-themes';
-import { store } from '@/redux/store';
+import { persistor, store } from '@/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 interface ProvidersProps {
     children: React.ReactNode;
@@ -23,7 +24,9 @@ export function Providers({ children }: ProvidersProps) {
     return (
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Provider store={store}>
-                {children}
+                <PersistGate loading={null} persistor={persistor}>
+                    {children}
+                </PersistGate>
             </Provider>
         </ThemeProvider>
     );

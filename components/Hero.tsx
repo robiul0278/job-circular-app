@@ -50,7 +50,7 @@ const Hero = ({ query }: { query: string }) => {
           variants={itemVariants}
           className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100"
         >
-         <span>“ ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির সবচেয়ে সহজ সমাধান ”</span>
+         <span>“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির ওয়েবসাইট”</span>
         </motion.h1>
 
         <motion.p

@@ -1,4 +1,5 @@
 export type IJobPost = {
+  _id: string;
   jobId: string;
   jobTitle: string;
   companyName: string;

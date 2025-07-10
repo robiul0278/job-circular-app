@@ -7,17 +7,20 @@ import { Button } from "../ui/button";
 import AuthModal from "../auth/auth-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/redux/features/authSlice";
-import { persistor, RootState } from "@/redux/store";
+import { RootState } from "@/redux/store";
+import { useRouter } from "next/navigation";
+import BookmarkNavButton from "../bookmark-nav";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const {user} = useSelector((state: RootState) => state.auth);
+  const router = useRouter();
+  const { user } = useSelector((state: RootState) => state.auth);
 
- const handleLogout = () => {
-  dispatch(logout());
-  persistor.purge();
-  localStorage.removeItem("accessToken");
-};
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    dispatch(logout());
+    router.replace('/');
+  };
 
   const menuItems = [
     { name: "হোম", href: "/" },
@@ -39,7 +42,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Menu (center) */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center justify-center flex-grow gap-6">
             {menuItems.map((item) => (
               <Link key={item.name} href={item.href}>
@@ -50,20 +53,29 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right Side: Auth / Dark Mode */}
+          {/* Right Side: Auth / Dark Mode / Bookmark */}
           <div className="hidden md:flex items-center gap-4">
             <DarkButton />
+
+            {/* Bookmark Button */}
+            <BookmarkNavButton />
+
             {user ? (
               <>
-                <Link href="/dashboard">
-                  <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition cursor-pointer">
-                    পোস্ট করুন
-                  </span>
-                </Link>
-                <Button onClick={handleLogout} className="text-sm cursor-pointer">লগআউট</Button>
+                {user.role === 'admin' && (
+                  <Link href="/dashboard">
+                    <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition cursor-pointer">
+                      পোস্ট করুন
+                    </span>
+                  </Link>
+                )}
+
+                <Button onClick={handleLogout} className="text-sm cursor-pointer">
+                  লগআউট
+                </Button>
               </>
             ) : (
-          <AuthModal />
+              <AuthModal />
             )}
           </div>
         </div>

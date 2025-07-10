@@ -47,8 +47,8 @@ export default function Home() {
                   <JobCardSkeleton key={i} />
                 ))
               ) : posts?.data.result.length > 0 ? (
-                posts.data.result.map((post: IJobPost) => (
-                  <JobCard key={post.jobId} post={post} />
+                posts.data.result.map((post: IJobPost, index: number) => (
+                  <JobCard key={index} post={post} index={index} />
                 ))
               ) : (
                 <p className="text-center  text-gray-500 dark:text-gray-400 col-span-full">

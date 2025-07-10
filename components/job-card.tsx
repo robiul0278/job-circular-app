@@ -20,7 +20,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-const JobCard = ({ post }: { post: IJobPost }) => {
+const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
   const {
     jobId,
     jobTitle,
@@ -107,6 +107,14 @@ const JobCard = ({ post }: { post: IJobPost }) => {
           </div>
         </Card>
       </Link>
+      {/* Insert ad after every 4 items */}
+      {(index + 1) % 3 === 0 && (
+        <div className="md:col-span-2 mt-4">
+          <div className="w-full h-24 rounded bg-gray-100 border border-gray-300 flex items-center justify-center text-sm text-gray-400">
+            Google Ad Placeholder (Mid-grid Ad)
+          </div>
+        </div>
+      )}
     </li>
 
   );

@@ -14,7 +14,7 @@ export const baseApi = createApi({
       return headers;
     }
   }),
-  tagTypes: ["jobs", "auth"],
+  tagTypes: ["jobs", "auth", "bookmark"],
   endpoints: (builder) => ({
     getAllJobs: builder.query({
       query: (params) => {
@@ -77,8 +77,54 @@ export const baseApi = createApi({
       },
        invalidatesTags: ["auth"]
     }),
+    getBookmark: builder.query({
+      query: (userId) => {
+        // console.log("API",userId);
+        return {
+          url: `/user/bookmark/${userId}`,
+          method: "GET",
+        }
+      },
+       providesTags: ["bookmark"]
+    }),
+    addBookmark: builder.mutation({
+      query: (data) => {
+        // console.log(data);
+        return {
+          url: `/user/bookmark/add/${data.userId}`,
+          method: "PATCH",
+          body: {jobId: data.jobId}
+        }
+      },
+       invalidatesTags: ["bookmark"]
+    }),
+    removeBookmark: builder.mutation({
+      query: (data) => {
+        // console.log(data);
+        return {
+          url: `/user/bookmark/remove/${data.userId}`,
+          method: "PATCH",
+          body: {jobId: data.jobId}
+        }
+      },
+       invalidatesTags: ["bookmark"]
+    }),
   }),
 });
 
 
-export const { useGetAllJobsQuery, useCreateJobMutation, useGetSingleJobQuery, useUpdateViewsMutation, useLoginUserMutation, useRegisterUserMutation } = baseApi;
+export const { 
+  //job route
+  useGetAllJobsQuery, 
+  useCreateJobMutation, 
+  useGetSingleJobQuery, 
+  useUpdateViewsMutation, 
+  //auth route
+  useLoginUserMutation, 
+  useRegisterUserMutation,
+  //bookmark route
+  useGetBookmarkQuery,
+  useAddBookmarkMutation,
+  useRemoveBookmarkMutation,
+  
+ } = baseApi;

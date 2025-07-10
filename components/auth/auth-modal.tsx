@@ -20,7 +20,7 @@ export default function AuthModal() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Login</Button>
+        <Button variant="outline" className="cursor-pointer">লগইন</Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-md rounded-xl px-6 py-5">

@@ -30,16 +30,16 @@ export default function LoginForm({ switchForm, closeModal }: { switchForm: () =
     });
 
 
-
     const onSubmit = async (data: LoginFormType) => {
         try {
             const res = await login(data).unwrap();
-            console.log(res);
             if (res.statusCode === 200) {
+                const { accessToken, user } = res.data;
+                console.log(user);
                 // Save to Redux store
-                dispatch(setCredentials({ user: res.data.user }));
+                dispatch(setCredentials({user}));
                 // Save to localStorage
-                localStorage.setItem("accessToken", res.data.accessToken);
+                localStorage.setItem("accessToken",accessToken);
                 toast.success(res.message);
                 closeModal();
             }

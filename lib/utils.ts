@@ -81,3 +81,7 @@ export function deadlineCountdown(deadline: string | Date): string {
 
   return "এক সেকেন্ডেরও কম বাকি!";
 }
+
+
+export const formatQuery = (text: string) =>
+  text.charAt(0).toUpperCase() + text.slice(1);

@@ -9,33 +9,38 @@ import JobCardSkeleton from "@/components/job-card-skeleton";
 import ErrorMessage from "@/components/error-message";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import Hero from "@/components/hero";
 import Pagination from "@/components/pagination";
 import Categories from "@/components/categories";
+import { formatQuery } from "@/lib/utils";
 
-export default function Home() {
+export default function JobCategoryPage() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query") || "";
   const [currentPage, setCurrentPage] = useState(1); // Pagination
 
-const params = {
-  ...(query && { searchTerm: query, technology: query }),
-  page: currentPage,
-};
-
+  const params = {
+    ...(query && { technology: query }),
+    page: currentPage, // ✅ Include page here
+  };
 
   // Redux Toolkit 
   const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);
-
   if (isError) return <ErrorMessage />;
 
 
   return (
     <>
-      <Hero query={query} />
       <section className="max-w-7xl mx-auto px-4 py-6">
-        <p className="text-xl font-semibold mb-6 flex items-center">
-          {query ? `Search results for "${query}"` : "Latest Job Posts"}
+        {/* Top AdSense */}
+        <div className="mb-6">
+          <div className="w-full h-28 bg-gray-100 border border-gray-300 dark:border-gray-700 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+            Google AdSense Ad (Top Banner)
+          </div>
+        </div>
+        <p className="text-2xl font-semibold mb-6 flex items-center">
+          {query
+            ? `Results for "Diploma in ${formatQuery(query)}"`
+            : "Latest Job Posts"}
           {!query && <ChevronRight className="size-6 text-primary" />}
         </p>
 
@@ -74,7 +79,7 @@ const params = {
 
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}
-            <div className="bg-gray-100 border border-gray-300 rounded-lg h-96 flex items-center justify-center text-gray-700 dark:text-gray-300">
+            <div className=" bg-gray-100 border border-gray-300 rounded-lg h-96 flex items-center justify-center text-gray-700 dark:text-gray-300">
               <span>Google AdSense Ad</span>
             </div>
 

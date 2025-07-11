@@ -17,14 +17,17 @@ import dynamic from 'next/dynamic';
 import { CreateJobFormProps } from '@/types/jobSchema';
 
 const educationOptions = [
-    'High School Diploma',
-    'Associate Degree',
-    "Bachelor's Degree",
-    "Master's Degree",
-    'PhD/Doctorate',
-    'Professional Certificate',
-    'Vocational Training',
-    'No Formal Education Required',
+    'computer',
+    'electrical',
+    'mechanical',
+    'civil',
+    'power',
+    'electronics',
+    'architecture',
+    'survey',
+    'food',
+    'telecommunication',
+    'সবাই আবেদন করতে পারবে।',
 ];
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {

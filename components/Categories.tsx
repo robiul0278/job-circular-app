@@ -1,17 +1,23 @@
+import Link from "next/link";
 import { Badge } from "./ui/badge";
+import { useGetAllJobsQuery } from "@/redux/api/api";
+import ErrorMessage from "./error-message";
+import Loader from "./loader";
+import { formatQuery } from "@/lib/utils";
+
+type ITechnology = {
+  technology: string;
+  count: number;
+}
 
 const Categories = () => {
-const jobCategories = [
-  { name: "Diploma in Civil", count: 112 },
-  { name: "Diploma in Electrical", count: 134 },
-  { name: "Diploma in Mechanical", count: 128 },
-  { name: "Diploma in Computer", count: 143 },
-  { name: "Diploma in Power", count: 95 },
-  { name: "Diploma in Electronics", count: 88 },
-  { name: "Diploma in Architecture", count: 72 },
-];
+const { data: technology, isLoading, isError } = useGetAllJobsQuery(undefined);
 
+const jobCategories = technology?.data.technologyCount
+console.log("technology",technology?.data.technologyCount);
 
+if (isLoading) return <Loader />;
+if (isError) return <ErrorMessage />;
 
   return (
     <div className="space-y-3 border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
@@ -19,19 +25,20 @@ const jobCategories = [
         Job Categories
       </h4>
 
-      <div className="">
-        {jobCategories.map((category, index) => (
-          <div
+      <div>
+        {jobCategories.map((category: ITechnology, index: number) => (
+          <Link
             key={index}
+            href={`/technology/?query=${category.technology}`}
             className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors text-blue-400 hover:underline"
           >
-            <span className=" dark:text-gray-300 transition-colors text-sm  ">
-              {category.name}
+            <span className="dark:text-gray-300 transition-colors text-sm">
+              Diploma in {formatQuery(category.technology)}
             </span>
-            <Badge variant="outline" className=" dark:bg-gray-500 ">
+            <Badge variant="outline" className="dark:bg-gray-500">
               {category.count}
             </Badge>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

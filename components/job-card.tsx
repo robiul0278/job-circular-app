@@ -7,7 +7,7 @@ import {
   CardContent,
   CardFooter
 } from "@/components/ui/card";
-import { deadlineCountdown, timeAgo } from "@/lib/utils";
+import { deadlineCountdown, formatQuery, timeAgo } from "@/lib/utils";
 import { IJobPost } from "@/types";
 import {
   EyeIcon,
@@ -26,7 +26,7 @@ const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
     jobTitle,
     companyName,
     image,
-    education,
+    technology,
     deadline,
     views,
     vacancy,
@@ -84,8 +84,8 @@ const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
                 <div>
                   <div className="font-medium">শিক্ষাগত যোগ্যতাঃ</div>
                   <ul className="list-disc">
-                    {education?.map((item, index) => (
-                      <li key={index}>{item}</li>
+                    {technology?.map((item, index) => (
+                      <li key={index}>{formatQuery(item)}</li>
                     ))}
                   </ul>
                 </div>

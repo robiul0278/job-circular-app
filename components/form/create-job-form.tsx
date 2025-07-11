@@ -27,7 +27,6 @@ const educationOptions = [
     'survey',
     'food',
     'telecommunication',
-    'সবাই আবেদন করতে পারবে।',
 ];
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {
@@ -321,10 +320,11 @@ const CreateJobForm = ({
                                     {/* Submit Button */}
                 <div className='flex justify-end'>
                     <Button
+                    variant="outline"
                         type="submit"
                         size="lg"
                         disabled={isSubmitting}
-                        className="font-semibold py-2 dark:text-white cursor-pointer disabled:opacity-60 dark:bg-slate-900 border"
+                        className="font-semibold py-2 cursor-pointer disabled:opacity-60"
                     >
                         {isSubmitting ? '🚀 Creating Job...' : '📢 Create Job'}
                     </Button>

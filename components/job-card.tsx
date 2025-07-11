@@ -40,7 +40,7 @@ const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
         className="block"
         aria-label={`View details for ${jobTitle}`}
       >
-        <Card className="flex flex-col sm:flex-row h-full border border-gray-300 dark:border-gray-700 rounded-lg hover:shadow-md transition-all duration-300 p-0 gap-0 bg-white dark:bg-gray-900 cursor-pointer">
+        <Card className="flex flex-col sm:flex-row h-full border border-gray-300 dark:border-gray-700 rounded hover:shadow-md transition-all duration-300 p-0 gap-0 bg-white dark:bg-gray-900 cursor-pointer">
           {/* Left: Logo + Deadline */}
           <div className="sm:w-1/3 border-b sm:border-b-0 sm:border-r border-gray-200 dark:border-gray-700 flex flex-col justify-between">
             <CardHeader className="p-0 flex items-center justify-center h-full">
@@ -49,7 +49,7 @@ const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
                 alt={jobTitle}
                 width={300}
                 height={300}
-                className="w-full object-cover p-2 sm:rounded-l-2xl sm:rounded-tr-none"
+                className="w-full object-cover p-2 sm:rounded-l-lg sm:rounded-tr-none"
               />
             </CardHeader>
             <div className="flex items-center justify-center gap-1 text-sm text-yellow-600 font-medium border-t py-2 rounded-bl-lg">

@@ -40,7 +40,7 @@ const Page = ({ params }: PageProps) => {
     );
   }
 
-  if (isLoading || !singleJob?.data) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4">
         <Skeleton className="w-full max-w-3xl h-96 rounded-lg" />
@@ -53,7 +53,7 @@ const Page = ({ params }: PageProps) => {
     jobTitle,
     companyName,
     image,
-    education,
+    technology,
     description,
     vacancy,
     published,
@@ -128,7 +128,7 @@ const Page = ({ params }: PageProps) => {
                 <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">শিক্ষাগত যোগ্যতা</h4>
               </div>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-                {education.map((item: string, i: number) => (
+                {technology.map((item: string, i: number) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>

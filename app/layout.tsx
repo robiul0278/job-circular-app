@@ -4,7 +4,7 @@ import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "Diploma Career",
+  title: "Diploma Jobs BD",
   description: "Diploma job circular website",
 };
 

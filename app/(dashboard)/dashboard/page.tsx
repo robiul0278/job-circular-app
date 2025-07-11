@@ -1,6 +1,5 @@
 import OverviewCharts from "@/components/dashboard/overview-charts";
 import StatsCard from "@/components/dashboard/stats-card";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   FileText,
   Clock,
@@ -74,65 +73,7 @@ const Home = () => {
           className="xl:col-span-1"
         />
       </div>
-
       <OverviewCharts />
-
- <div className="grid gap-6 md:grid-cols-2">
-      {/* দ্রুত পরিসংখ্যান */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">দ্রুত পরিসংখ্যান</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="flex justify-between items-center">
-            <span>সরকারি চাকরি</span>
-            <span className="font-medium text-slate-900">১১২টি</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span>বেসরকারি চাকরি</span>
-            <span className="font-medium text-slate-900">৮৬টি</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span>ব্যাংক চাকরি</span>
-            <span className="font-medium text-slate-900">৩৭টি</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span>এনজিও চাকরি</span>
-            <span className="font-medium text-slate-900">১৩টি</span>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* সাম্প্রতিক কার্যক্রম */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">সাম্প্রতিক কার্যক্রম</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5"></div>
-            <div>
-              <p className="text-sm ">নতুন সার্কুলার প্রকাশিত</p>
-              <p className="text-xs text-slate-500">২ ঘন্টা আগে</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5"></div>
-            <div>
-              <p className="text-sm ">সার্কুলার আপডেট করা হয়েছে</p>
-              <p className="text-xs text-slate-500">৫ ঘন্টা আগে</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-yellow-500 rounded-full mt-1.5"></div>
-            <div>
-              <p className="text-sm ">ডেডলাইন শেষ হয়েছে</p>
-              <p className="text-xs text-slate-500">১ দিন আগে</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
     </div>
   );
 }

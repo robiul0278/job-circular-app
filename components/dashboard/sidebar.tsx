@@ -15,7 +15,7 @@ import {
   MessageSquare,
   Settings,
   Users,
-  TrendingUp,
+  Home,
 } from 'lucide-react';
 
 const sidebarNavItems = [
@@ -45,9 +45,9 @@ const sidebarNavItems = [
     icon: MessageSquare,
   },
   {
-    title: 'Reports',
-    href: '/reports',
-    icon: TrendingUp,
+    title: 'Home',
+    href: '/',
+    icon: Home,
   },
   {
     title: 'Settings',

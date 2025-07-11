@@ -23,11 +23,10 @@ const Navbar = () => {
   };
 
   const menuItems = [
-    { name: "হোম", href: "/" },
-    { name: "সাম্প্রতিক নিয়োগ", href: "/circulars" },
-    { name: "প্রতিষ্ঠান সমূহ", href: "/organizations" },
-    { name: "বিভাগ অনুযায়ী", href: "/categories" },
-    { name: "পরামর্শ", href: "/guides" },
+    { name: "Home", href: "/" },
+    { name: "Category", href: "/technology" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (

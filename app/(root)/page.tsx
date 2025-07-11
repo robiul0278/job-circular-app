@@ -34,8 +34,8 @@ const params = {
     <>
       <Hero query={query} />
       <section className="max-w-7xl mx-auto px-4 py-6">
-        <p className="text-xl font-semibold mb-6 flex items-center">
-          {query ? `Search results for "${query}"` : "Latest Job Posts"}
+        <p className="text-2xl font-semibold mb-6 flex items-center">
+          {query ? `Search results for "${query}"` : "Latest Job Circular"}
           {!query && <ChevronRight className="size-6 text-primary" />}
         </p>
 

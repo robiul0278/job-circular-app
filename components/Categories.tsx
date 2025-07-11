@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 import ErrorMessage from "./error-message";
-import Loader from "./loader";
 import { formatQuery } from "@/lib/utils";
+import CategoriesSkeleton from "./categories-skeleton";
 
 type ITechnology = {
   technology: string;
@@ -14,9 +14,8 @@ const Categories = () => {
 const { data: technology, isLoading, isError } = useGetAllJobsQuery(undefined);
 
 const jobCategories = technology?.data.technologyCount
-console.log("technology",technology?.data.technologyCount);
 
-if (isLoading) return <Loader />;
+if (isLoading) return <CategoriesSkeleton />;
 if (isError) return <ErrorMessage />;
 
   return (
@@ -26,7 +25,7 @@ if (isError) return <ErrorMessage />;
       </h4>
 
       <div>
-        {jobCategories.map((category: ITechnology, index: number) => (
+        {jobCategories?.map((category: ITechnology, index: number) => (
           <Link
             key={index}
             href={`/technology/?query=${category.technology}`}

@@ -46,6 +46,15 @@ export const baseApi = createApi({
       },
       providesTags: ["jobs"]
     }),
+    deleteJob: builder.mutation({
+      query: (jobId) => {
+        return {
+          url: `/jobs/delete/${jobId}`,
+          method: "DELETE",
+        }
+      },
+      invalidatesTags: ["jobs"]
+    }),
     updateViews: builder.mutation({
       query: (jobId) => {
         return {
@@ -119,6 +128,7 @@ export const {
   useCreateJobMutation, 
   useGetSingleJobQuery, 
   useUpdateViewsMutation, 
+  useDeleteJobMutation,
   //auth route
   useLoginUserMutation, 
   useRegisterUserMutation,

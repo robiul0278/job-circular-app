@@ -40,7 +40,7 @@ export default function JobCategoryPage() {
         <p className="text-2xl font-semibold mb-6 flex items-center">
           {query
             ? `Results for "Diploma in ${formatQuery(query)}"`
-            : "Latest Job Posts"}
+            : "All Job Circular"}
           {!query && <ChevronRight className="size-6 text-primary" />}
         </p>
 

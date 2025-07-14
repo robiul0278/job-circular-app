@@ -16,35 +16,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MarkdownPreview } from "@/components/markdown-preview";
 import { getSingleJob } from "@/lib/api";
-import { Metadata } from "next";
 
+type Props = {
+  params: { id: string };
+};
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  try {
-    const job = await getSingleJob(params.id);
-
-    if (!job) {
-      return {
-        title: "ডিপ্লোমা চাকরি - পাওয়া যায়নি",
-        description: "এই চাকরির বিজ্ঞপ্তিটি খুঁজে পাওয়া যায়নি।",
-      };
-    }
-
-    return {
-      title: `ডিপ্লোমা পাশে ${job.title} - ${job.companyName}`,
-      description: job.description?.slice(0, 160),
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      title: "ত্রুটি ঘটেছে",
-      description: "Metadata তৈরি করতে ব্যর্থ।",
-    };
-  }
-}
-
-
-const CircularViewPage = async ({ params }: { params: { id: string } }) => {
+const CircularViewPage = async ({ params }: Props) => {
   const { id } = params;
   const decodedId = decodeURIComponent(id);
   const job = await getSingleJob(decodedId);

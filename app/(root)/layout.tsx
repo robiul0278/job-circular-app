@@ -1,7 +1,7 @@
-import Footer from "@/components/shared/footer";
-import Navbar from "@/components/shared/navbar";
+import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/shared/Navbar";
 
-const AdminDashboard = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main>
       <Navbar />
@@ -10,4 +10,4 @@ const AdminDashboard = ({ children }: { children: React.ReactNode }) => {
     </main>
   )
 }
-export default AdminDashboard;
+export default RootLayout;

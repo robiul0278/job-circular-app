@@ -6,29 +6,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Head from "next/head";
 
-export const metadata = {
-  title: "About | Diploma Jobs BD",
-  description:
-    "Learn more about Diploma Jobs BD – Bangladesh's dedicated job platform for diploma engineers. Find government and private job circulars, filter by department, and save jobs easily.",
-  keywords: [
-    "Diploma Jobs BD",
-    "Bangladesh diploma job portal",
-    "diploma engineers jobs",
-    "govt job circular diploma",
-    "diploma in computer jobs",
-    "diploma in civil jobs",
-    "job site for diploma engineers"
-  ],
-  openGraph: {
-    title: "About | Diploma Jobs BD",
-    description:
-      "Explore the mission and features of Diploma Jobs BD, a professional job platform built exclusively for Bangladesh’s diploma engineers.",
-    url: "https://diplomajobsbd.com/about",
-    siteName: "Diploma Jobs BD",
-    type: "website"
-  },
-};
-
 export default function AboutPage() {
   return (
     <>

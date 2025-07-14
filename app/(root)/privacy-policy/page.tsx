@@ -1,28 +1,6 @@
 
-import { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, FileText,Lock, Shield, Users } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy | Diploma Jobs BD",
-  description:
-    "Read the Privacy Policy of Diploma Jobs BD to learn how we collect, use, and protect your personal information while you use our job portal.",
-  keywords: [
-    "Diploma Jobs BD",
-    "privacy policy",
-    "data protection",
-    "user privacy",
-    "job portal privacy",
-  ],
-  openGraph: {
-    title: "Privacy Policy | Diploma Jobs BD",
-    description:
-      "Learn how Diploma Jobs BD collects, uses, and safeguards your data when you use our website.",
-    url: "https://diplomajobsbd.com/privacy-policy",
-    siteName: "Diploma Jobs BD",
-    type: "website",
-  },
-};
 
 export default function PrivacyPolicyPage() {
   return (

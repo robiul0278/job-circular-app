@@ -1,14 +1,11 @@
+'use client';
+
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Image from 'next/image';
 import type { Components } from 'react-markdown';
 import type { HTMLAttributes } from 'react';
-
-// 🔧 Fix style typing error by casting
-const syntaxStyle = oneLight as { [key: string]: React.CSSProperties };
 
 interface MarkdownPreviewProps {
   description: string;
@@ -16,7 +13,6 @@ interface MarkdownPreviewProps {
 }
 
 export function MarkdownPreview({ description, className = '' }: MarkdownPreviewProps) {
-  // Convert Blob to object URL if needed
   function getImageSrc(src: string | Blob | undefined): string {
     if (!src) return '';
     return typeof src === 'string' ? src : URL.createObjectURL(src);
@@ -24,29 +20,13 @@ export function MarkdownPreview({ description, className = '' }: MarkdownPreview
 
   const components: Components = {
     code({
-      inline,
       children,
-      className,
       ...props
     }: {
       inline?: boolean;
       className?: string;
       children?: React.ReactNode;
     } & HTMLAttributes<HTMLElement>) {
-      const match = /language-(\w+)/.exec(className || '');
-
-      if (!inline && match) {
-        return (
-          <SyntaxHighlighter
-            style={syntaxStyle}
-            language="tsx"
-            PreTag="div"
-          >
-            {`const x = 42;`}
-          </SyntaxHighlighter>
-
-        );
-      }
 
       return (
         <code
@@ -136,7 +116,9 @@ export function MarkdownPreview({ description, className = '' }: MarkdownPreview
     table({ children }) {
       return (
         <div className="overflow-x-auto my-6">
-          <table className="min-w-full border border-gray-300 dark:border-gray-700 rounded-lg">{children}</table>
+          <table className="min-w-full border border-gray-300 dark:border-gray-700 rounded-lg">
+            {children}
+          </table>
         </div>
       );
     },
@@ -144,7 +126,11 @@ export function MarkdownPreview({ description, className = '' }: MarkdownPreview
       return <thead className="bg-gray-50 dark:bg-gray-800">{children}</thead>;
     },
     tbody({ children }) {
-      return <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">{children}</tbody>;
+      return (
+        <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+          {children}
+        </tbody>
+      );
     },
     th({ children }) {
       return (

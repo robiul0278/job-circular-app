@@ -1,28 +1,5 @@
-
-import { Metadata } from "next";
 import {CheckCircle, FileText, Scale, Shield, XCircle } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
-export const metadata: Metadata = {
-  title: "Terms of Service | Diploma Jobs BD",
-  description:
-    "Read the Terms of Service for Diploma Jobs BD to understand the rules and regulations for using our job portal.",
-  keywords: [
-    "Diploma Jobs BD",
-    "terms of service",
-    "job portal terms",
-    "diploma job rules",
-    "user agreement"
-  ],
-  openGraph: {
-    title: "Terms of Service | Diploma Jobs BD",
-    description:
-      "Understand the terms and conditions for using Diploma Jobs BD’s services.",
-    url: "https://diplomajobsbd.com/terms-of-service",
-    siteName: "Diploma Jobs BD",
-    type: "website",
-  },
-};
 
 export default function TermsOfServicePage() {
   return (

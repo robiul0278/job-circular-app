@@ -10,10 +10,10 @@ import { RootState } from "@/redux/store";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-import DarkButton from "../dark-button";
+import DarkButton from "../DarkButton";
 import { Button } from "../ui/button";
 import AuthModal from "../auth/auth-modal";
-import BookmarkNavButton from "../bookmark-nav";
+import BookmarkNavButton from "../BookmarkNav";
 
 const menuItems = [
   { name: "Home", href: "/" },

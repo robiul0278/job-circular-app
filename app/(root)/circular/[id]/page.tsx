@@ -7,14 +7,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import View from "@/components/view";
-import BookmarkButton from "@/components/bookmark-button";
+import Views from "@/components/Views";
+import BookmarkButton from "@/components/BookmarkButton";
 import Categories from "@/components/Categories";
 import { formatQuery } from "@/utils/utils";
-import CircularTime from "@/components/circular-time";
+import CircularTime from "@/components/CircularTime";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MarkdownPreview } from "@/components/markdown-preview";
+import { MarkdownPreview } from "@/components/MarkdownPreview";
 import { getSingleJob } from "@/lib/api";
 
 type Props = {
@@ -115,7 +115,7 @@ const CircularViewPage = async ({ params }: Props) => {
 
       {/* Views */}
       <div className="fixed bottom-4 left-4 z-50">
-        <View id={decodedId} views={views} />
+        <Views id={decodedId} views={views} />
       </div>
     </section>
   );

@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import { useUpdateViewsMutation } from "@/redux/api/api";
-import PingLoader from "./ping-loader";
+import PingLoader from "./PingLoader";
 
-const View = ({ id, views }: { id: string; views: string }) => {
+const Views = ({ id, views }: { id: string; views: string }) => {
   const [updateViews] = useUpdateViewsMutation();
   const hasUpdated = useRef(false); // guard flag
 
@@ -30,4 +30,4 @@ const View = ({ id, views }: { id: string; views: string }) => {
   );
 };
 
-export default View;
+export default Views;

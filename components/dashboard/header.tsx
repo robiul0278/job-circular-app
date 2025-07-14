@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { MobileSidebar } from './sidebar';
-import DarkButton from '../dark-button';
+import DarkButton from '../DarkButton';
 import { User2 } from 'lucide-react';
 
 export function Header() {
@@ -18,13 +18,13 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-14 items-center px-4">
         <MobileSidebar />
-       <div className="flex flex-1 items-center space-x-2 justify-end">
+        <div className="flex flex-1 items-center space-x-2 justify-end">
           <nav className="flex items-center space-x-2">
-            <DarkButton/>
+            <DarkButton />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                  <User2/>
+                  <User2 />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" align="end" forceMount>

@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { formatQuery } from "@/utils/utils";
-import CategoriesSkeleton from "./categories-skeleton";
-import ErrorMessage from "./error-message";
+import CategoriesSkeleton from "./CategoriesSkeleton";
+import ErrorMessage from "./ErrorMessage";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 
 type ITechnology = {
@@ -11,12 +11,12 @@ type ITechnology = {
   count: number;
 }
 const Categories = () => {
-const { data: technology, isLoading, isError } = useGetAllJobsQuery(undefined);
+  const { data: technology, isLoading, isError } = useGetAllJobsQuery(undefined);
 
-const jobCategories = technology?.data.technologyCount
+  const jobCategories = technology?.data.technologyCount
 
-if (isLoading) return <CategoriesSkeleton />;
-if (isError) return <ErrorMessage />;
+  if (isLoading) return <CategoriesSkeleton />;
+  if (isError) return <ErrorMessage />;
 
 
   return (

@@ -3,10 +3,10 @@
 import { ChevronRight, Send } from "lucide-react";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 import { useSearchParams } from "next/navigation";
-import JobCard from "@/components/job-card";
+import JobCard from "@/components/JobCard";
 import { IJobPost } from "@/types";
-import JobCardSkeleton from "@/components/job-card-skeleton";
-import ErrorMessage from "@/components/error-message";
+import JobCardSkeleton from "@/components/JobCardSkeleton";
+import ErrorMessage from "@/components/ErrorMessage";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Pagination from "@/components/Pagination";

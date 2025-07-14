@@ -2,7 +2,7 @@
 
 import { Header } from '@/components/dashboard/header';
 import { Sidebar } from '@/components/dashboard/sidebar';
-import ProtectedRoute from '@/components/protected-route';
+import PrivateRoute from '@/components/PrivateRoute';
 import { ROLES } from '@/constants/roles';
 
 interface DashboardLayoutProps {
@@ -11,7 +11,7 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <ProtectedRoute role={ROLES.ADMIN}>
+    <PrivateRoute role={ROLES.ADMIN}>
       <div className="min-h-screen flex">
         {/* Desktop Sidebar */}
         <aside className="hidden md:flex w-64 flex-col fixed inset-y-0 z-50 border-r bg-background">
@@ -26,6 +26,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </main>
         </div>
       </div>
-    </ProtectedRoute>
+    </PrivateRoute>
   );
 }

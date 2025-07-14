@@ -12,7 +12,7 @@ interface Props {
     role?: 'admin' | 'user';
 }
 
-const ProtectedRoute = ({ children, role }: Props) => {
+const PrivateRoute = ({ children, role }: Props) => {
     const router = useRouter();
     const { user } = useSelector((state: RootState) => state.auth);
     const [isChecking, setIsChecking] = useState(true);
@@ -60,4 +60,4 @@ const ProtectedRoute = ({ children, role }: Props) => {
     return <>{children}</>;
 };
 
-export default ProtectedRoute;
+export default PrivateRoute;

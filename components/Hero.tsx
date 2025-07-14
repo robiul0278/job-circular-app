@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, Variants, easeOut } from "framer-motion";
-import SearchForm from "./fearch-form";
+import SearchForm from "./SearchForm";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },

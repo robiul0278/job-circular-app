@@ -23,9 +23,9 @@ import {
   Building,
   ListEnd,
 } from "lucide-react";
-import ErrorMessage from "@/components/error-message";
+import ErrorMessage from "@/components/ErrorMessage";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
-import Loader from "@/components/loader";
+import Loader from "@/components/Loader";
 import { IJobPost, TGenericErrorResponse } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import Pagination from "@/components/Pagination";

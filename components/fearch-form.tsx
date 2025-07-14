@@ -23,7 +23,11 @@ const SearchForm = ({query}: {query: string}) => {
         )}
       </div>
 
-      <Button variant="outline" type="submit" className="px-4 py-2  bg-blue-400 hover:bg-blue-500 text-white hover:text-white rounded-md text-sm font-semibold transition-colors duration-200 cursor-pointer">
+      <Button 
+      variant="outline" 
+      type="submit" 
+      className="cursor-pointer "
+      >
         Search
       </Button>
     </Form>

@@ -16,25 +16,22 @@ import Categories from "@/components/categories";
 export default function Home() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query") || "";
-  const [currentPage, setCurrentPage] = useState(1); // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
 
 const params = {
   ...(query && { searchTerm: query, technology: query }),
   page: currentPage,
 };
 
-
   // Redux Toolkit 
   const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);
-
   if (isError) return <ErrorMessage />;
-
 
   return (
     <>
       <Hero query={query} />
-      <section className="max-w-7xl mx-auto px-4 py-6">
-        <p className="text-2xl font-semibold mb-6 flex items-center">
+      <section className="max-w-7xl mx-auto px-2 pb-2 lg:p-0">
+        <p className="text-2xl font-semibold text-slate-600 dark:text-slate-300 py-4 flex items-center">
           {query ? `Search results for "${query}"` : "Latest Job Circular"}
           {!query && <ChevronRight className="size-6 text-primary" />}
         </p>
@@ -64,7 +61,7 @@ const params = {
             <div className="rounded-lg p-4 border dark:bg-gray-900">
               <h3 className="font-semibold mb-3 text-sm uppercase">Follow Us</h3>
               <a href="https://t.me/your_channel_name" target="_blank" rel="noopener noreferrer">
-                <Button className="flex w-full items-center space-x-2 bg-blue-400 hover:bg-blue-500 text-white font-medium px-4 py-2 rounded cursor-pointer">
+                <Button className="flex w-full items-center space-x-2 bg-green-700 hover:bg-green-600 text-white hover:text-white font-medium px-4 py-2 rounded cursor-pointer">
                   <Send size={16} />
                   <span>Telegram</span>
                 </Button>
@@ -74,9 +71,9 @@ const params = {
 
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}
-            <div className="bg-gray-100 border border-gray-300 rounded-lg h-96 flex items-center justify-center text-gray-700 dark:text-gray-300">
+            {/* <div className="bg-gray-100 border border-gray-300 rounded-lg h-96 flex items-center justify-center text-gray-700 dark:text-gray-300">
               <span>Google AdSense Ad</span>
-            </div>
+            </div> */}
 
           </aside>
         </div>

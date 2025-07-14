@@ -1,15 +1,15 @@
+"use client"
 import Link from "next/link";
 import { Badge } from "./ui/badge";
-import { useGetAllJobsQuery } from "@/redux/api/api";
-import ErrorMessage from "./error-message";
-import { formatQuery } from "@/lib/utils";
+import { formatQuery } from "@/utils/utils";
 import CategoriesSkeleton from "./categories-skeleton";
+import ErrorMessage from "./error-message";
+import { useGetAllJobsQuery } from "@/redux/api/api";
 
 type ITechnology = {
   technology: string;
   count: number;
 }
-
 const Categories = () => {
 const { data: technology, isLoading, isError } = useGetAllJobsQuery(undefined);
 
@@ -17,6 +17,7 @@ const jobCategories = technology?.data.technologyCount
 
 if (isLoading) return <CategoriesSkeleton />;
 if (isError) return <ErrorMessage />;
+
 
   return (
     <div className="space-y-3 border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
@@ -28,10 +29,10 @@ if (isError) return <ErrorMessage />;
         {jobCategories?.map((category: ITechnology, index: number) => (
           <Link
             key={index}
-            href={`/technology/?query=${category.technology}`}
-            className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors text-blue-400 hover:underline"
+            href={`/category/?query=${category.technology}`}
+            className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors"
           >
-            <span className="dark:text-gray-300 transition-colors text-sm">
+            <span className="text-green-700 font-medium transition-colors text-sm">
               Diploma in {formatQuery(category.technology)}
             </span>
             <Badge variant="outline" className="dark:bg-gray-500">

@@ -12,10 +12,9 @@ import {
   Building2,
   FileText,
   Menu,
-  MessageSquare,
-  Settings,
   Users,
   Home,
+  CircleDollarSign,
 } from 'lucide-react';
 
 const sidebarNavItems = [
@@ -26,12 +25,12 @@ const sidebarNavItems = [
   },
   {
     title: 'All Circular',
-    href: '/dashboard/all-job-circular',
+    href: '/dashboard/all-circular',
     icon: Building2,
   },
   {
-    title: 'Create Circular',
-    href: '/dashboard/create',
+    title: 'Post Circular',
+    href: '/dashboard/post-circular',
     icon: FileText,
   },
   {
@@ -40,19 +39,14 @@ const sidebarNavItems = [
     icon: Users,
   },
   {
-    title: 'Messages',
-    href: '/messages',
-    icon: MessageSquare,
+    title: 'AdSense',
+    href: '/dashboard/google-ads',
+    icon: CircleDollarSign,
   },
   {
     title: 'Home',
     href: '/',
     icon: Home,
-  },
-  {
-    title: 'Settings',
-    href: '/settings',
-    icon: Settings,
   },
 ];
 
@@ -70,7 +64,7 @@ export function Sidebar({ className }: SidebarProps) {
           <div className="space-y-1">
             <div className="flex items-center px-3 py-2 mb-6">
               <Building2 className="h-8 w-8 text-primary mr-3" />
-              <h2 className="text-2xl font-bold tracking-tight">DashFlow</h2>
+              <h2 className="text-2xl font-bold tracking-tight">Dashboard</h2>
             </div>
             <nav className="space-y-2">
               {sidebarNavItems.map((item) => (

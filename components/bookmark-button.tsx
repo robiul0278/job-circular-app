@@ -44,7 +44,7 @@ useEffect(() => {
 
   const toggleBookmark = async () => {
     if (!userId) {
-      toast.error("User not logged in");
+      toast.error("User not logged in!");
       return;
     }
 
@@ -79,17 +79,17 @@ useEffect(() => {
   className={`group rounded-full px-4 py-2 border border-muted-foreground/20 backdrop-blur-sm
     bg-muted/30 dark:bg-muted/40 text-sm font-medium transition-all duration-200
     hover:shadow-md hover:bg-muted/40 dark:hover:bg-muted/50
-    flex items-center gap-2 cursor-pointer
+    flex items-center cursor-pointer
     ${bookmarked ? "text-blue-600 dark:text-blue-400" : "text-gray-600 dark:text-gray-300"}
   `}
   type="button"
 >
   {bookmarked ? (
-    <BookmarkCheck className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+    <BookmarkCheck className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
   ) : (
-    <Bookmark className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+    <Bookmark className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
   )}
-  <span className="hidden sm:inline">
+  <span className="text-[12px] md:text-sm lg:text-sm">
     {bookmarked ? "Bookmarked" : "Bookmark"}
   </span>
 </Button>

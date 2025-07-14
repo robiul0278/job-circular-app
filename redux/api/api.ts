@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // Define a service using a base URL and expected endpoints
 export const baseApi = createApi({
   reducerPath: 'baseApi',
-    baseQuery: fetchBaseQuery({
+  baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:5000/api/v1',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken');
@@ -29,18 +29,18 @@ export const baseApi = createApi({
     createJob: builder.mutation({
       query: (data) => {
         console.log(data);
-        return{
-           url: "/jobs/create",
-        method: "POST",
-        body: data,
+        return {
+          url: "/jobs/post-circular",
+          method: "POST",
+          body: data,
         }
       },
       invalidatesTags: ["jobs"]
     }),
     getSingleJob: builder.query({
-      query: (jobId) => {
+      query: (slug) => {
         return {
-          url: `/jobs/${jobId}`,
+          url: `/jobs/single/${slug}`,
           method: "GET",
         }
       },
@@ -56,13 +56,13 @@ export const baseApi = createApi({
       invalidatesTags: ["jobs"]
     }),
     updateViews: builder.mutation({
-      query: (jobId) => {
+      query: (slug) => {
         return {
-          url: `/jobs/views/${jobId}`,
+          url: `/jobs/views/${slug}`,
           method: "POST",
         }
       },
-       invalidatesTags: ["jobs"]
+      invalidatesTags: ["jobs"]
     }),
     registerUser: builder.mutation({
       query: (data) => {
@@ -73,7 +73,7 @@ export const baseApi = createApi({
           body: data
         }
       },
-       invalidatesTags: ["auth"]
+      invalidatesTags: ["auth"]
     }),
     loginUser: builder.mutation({
       query: (data) => {
@@ -84,7 +84,7 @@ export const baseApi = createApi({
           body: data
         }
       },
-       invalidatesTags: ["auth"]
+      invalidatesTags: ["auth"]
     }),
     getBookmark: builder.query({
       query: (userId) => {
@@ -94,7 +94,7 @@ export const baseApi = createApi({
           method: "GET",
         }
       },
-       providesTags: ["bookmark"]
+      providesTags: ["bookmark"]
     }),
     addBookmark: builder.mutation({
       query: (data) => {
@@ -102,10 +102,10 @@ export const baseApi = createApi({
         return {
           url: `/user/bookmark/add/${data.userId}`,
           method: "PATCH",
-          body: {jobId: data.jobId}
+          body: { jobId: data.jobId }
         }
       },
-       invalidatesTags: ["bookmark"]
+      invalidatesTags: ["bookmark"]
     }),
     removeBookmark: builder.mutation({
       query: (data) => {
@@ -113,28 +113,28 @@ export const baseApi = createApi({
         return {
           url: `/user/bookmark/remove/${data.userId}`,
           method: "PATCH",
-          body: {jobId: data.jobId}
+          body: { jobId: data.jobId }
         }
       },
-       invalidatesTags: ["bookmark"]
+      invalidatesTags: ["bookmark"]
     }),
   }),
 });
 
 
-export const { 
+export const {
   //job route
-  useGetAllJobsQuery, 
-  useCreateJobMutation, 
-  useGetSingleJobQuery, 
-  useUpdateViewsMutation, 
+  useGetAllJobsQuery,
+  useCreateJobMutation,
+  useGetSingleJobQuery,
+  useUpdateViewsMutation,
   useDeleteJobMutation,
   //auth route
-  useLoginUserMutation, 
+  useLoginUserMutation,
   useRegisterUserMutation,
   //bookmark route
   useGetBookmarkQuery,
   useAddBookmarkMutation,
   useRemoveBookmarkMutation,
-  
- } = baseApi;
+
+} = baseApi;

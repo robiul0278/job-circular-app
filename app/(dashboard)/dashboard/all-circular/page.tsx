@@ -27,21 +27,23 @@ import ErrorMessage from "@/components/error-message";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
 import Loader from "@/components/loader";
 import { IJobPost, TGenericErrorResponse } from "@/types";
-import { formatQuery } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import Pagination from "@/components/pagination";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { formatQuery } from "@/utils/utils";
 
 type ITechnology = {
   technology: string;
   count: number;
 }
 
-export default function AllJobCircular() {
+export default function AllCircularPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTrade, setSelectedTrade] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const router = useRouter()
 
   const params = {
     ...(selectedTrade && { technology: selectedTrade }),
@@ -68,7 +70,9 @@ export default function AllJobCircular() {
   };
 
   const handleEdit = (id: string) => {
+    if (!confirm('Edit this circular?')) return;
     console.log("Edit circular:", id);
+    router.push(`/dashboard/update-circular/${id}`);
   };
 
   const handleDelete = async (id: string) => {
@@ -172,10 +176,10 @@ export default function AllJobCircular() {
                   <TableRow key={index} className="hover:bg-muted/50">
                     <TableCell>
                       <div className="space-y-1">
-                        <div className="font-medium text-foreground">{circular.jobTitle}</div>
+                        <div className="font-medium text-foreground">{circular.title}</div>
                         <div className="text-xs text-muted-foreground flex items-center">
                           <Calendar className="h-3 w-3 mr-1" />
-                          Apply Start: {circular.startApply}
+                          Apply Start: {circular.applyStart}
                         </div>
 
                       </div>
@@ -214,7 +218,7 @@ export default function AllJobCircular() {
                           variant="outline"
                           size="sm"
                           onClick={() => handleEdit(circular._id)}
-                          className="hover:bg-blue-50 dark:hover:bg-blue-900"
+                          className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
                         >
                           <Edit className="h-4 w-4" />
                         </Button>
@@ -222,7 +226,7 @@ export default function AllJobCircular() {
                           variant="outline"
                           size="sm"
                           onClick={() => handleDelete(circular._id)}
-                          className="hover:bg-red-50 dark:hover:bg-red-900 text-red-600 border-red-200"
+                          className="hover:bg-red-50 dark:hover:bg-red-900 text-red-600 border-red-200 cursor-pointer"
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>

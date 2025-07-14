@@ -1,19 +1,17 @@
 export type IJobPost = {
   _id: string;
-  jobId: string;
-  jobTitle: string;
+  slug: string;
+  title: string;
   companyName: string;
   image: string;
   technology: string[];
   description: string;
-  vacancy: number;
-  views: number;
-  published: string;
-  startApply: string;
   deadline: string;
+  vacancy:number;
   applyLink: string;
+  applyStart: string;
+  views: number;
   createdAt: string; 
-  updatedAt?: string;
 }
 
 

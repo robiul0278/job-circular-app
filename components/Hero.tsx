@@ -48,14 +48,14 @@ const Hero = ({ query }: { query: string }) => {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100"
+          className="text-3xl sm:text-4xl font-bold text-gray-900"
         >
-         <span>“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির ওয়েবসাইট”</span>
+         <span className="text-slate-500 dark:text-slate-300">“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির ওয়েবসাইট”</span>
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
-          className="text-lg text-gray-700 dark:text-gray-300"
+          className="text-sm font-medium md:text-lg lg:text-lg text-gray-700 dark:text-gray-300"
         >
           সরকারি হোক বা বেসরকারি — Civil, Electrical, Mechanical, Power বা Computer —
           প্রতিটি ট্রেডের চাকরির বিজ্ঞপ্তি এক জায়গায়।  

@@ -76,7 +76,7 @@ export default function BookmarkPage() {
           <React.Fragment key={index}>
             <Card  className="shadow-md hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-xl">{job.jobTitle}</CardTitle>
+                <CardTitle className="text-xl">{job.title}</CardTitle>
                 <p className="text-sm text-muted-foreground">{job.companyName}</p>
               </CardHeader>
               <CardContent>
@@ -95,7 +95,7 @@ export default function BookmarkPage() {
                     )}
                   </Button>
                   <a
-                    href={`/jobs/${job.jobId}`}
+                    href={`/circular/${job.slug}`}
                     className="text-sm text-blue-600 hover:underline"
                   >
                     View Details

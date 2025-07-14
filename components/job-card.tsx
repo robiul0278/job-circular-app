@@ -7,95 +7,77 @@ import {
   CardContent,
   CardFooter
 } from "@/components/ui/card";
-import { deadlineCountdown, formatQuery, timeAgo } from "@/lib/utils";
 import { IJobPost } from "@/types";
+import { formatDate } from "@/utils/format-date";
+import { timeAgo } from "@/utils/format-time";
 import {
   EyeIcon,
   Timer,
-  CalendarArrowUpIcon,
   Building,
-  GraduationCap,
-  UserPlus
+  Users,
+  ClockFading,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
   const {
-    jobId,
-    jobTitle,
+    slug,
+    title,
     companyName,
     image,
-    technology,
     deadline,
-    views,
     vacancy,
+    views,
     createdAt
   } = post;
 
   return (
     <li className="list-none w-full mx-auto">
       <Link
-        href={`/jobs/${jobId}`}
+        href={`/circular/${slug}`}
         className="block"
-        aria-label={`View details for ${jobTitle}`}
+        aria-label={`View details for ${title}`}
       >
         <Card className="flex flex-col sm:flex-row h-full border border-gray-300 dark:border-gray-700 rounded hover:shadow-md transition-all duration-300 p-0 gap-0 bg-white dark:bg-gray-900 cursor-pointer">
           {/* Left: Logo + Deadline */}
           <div className="sm:w-1/3 border-b sm:border-b-0 sm:border-r border-gray-200 dark:border-gray-700 flex flex-col justify-between">
-            <CardHeader className="p-0 flex items-center justify-center h-full">
+            <CardHeader className="overflow-hidden w-full p-0">
               <Image
                 src={image}
-                alt={jobTitle}
-                width={300}
-                height={300}
-                className="w-full object-cover p-2 sm:rounded-l-lg sm:rounded-tr-none"
+                alt={title}
+                width={1200}
+                height={600} 
+                className="w-full h-48 pt-2"
               />
             </CardHeader>
-            <div className="flex items-center justify-center gap-1 text-sm text-yellow-600 font-medium border-t py-2 rounded-bl-lg">
-              <CalendarArrowUpIcon className="size-4 text-yellow-600" />
-              <span>{deadlineCountdown(deadline)}</span>
-            </div>
           </div>
 
           {/* Right: Content + Footer */}
           <div className="flex flex-col justify-between sm:w-2/3 h-full">
-            <CardContent className="p-4">
-              <CardTitle className="text-lg font-semibold mb-1 leading-snug text-blue-400 dark:text-gray-100">
-                {jobTitle}
+            <CardContent className="px-4 py-2">
+              <CardTitle className="text-lg text-slate-600 dark:text-slate-300 font-semibold mb-1 leading-snug">
+                {title}
               </CardTitle>
 
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-2 flex items-center gap-1 font-semibold">
-                <Building className="size-4 text-gray-600 dark:text-gray-400" />
+              <div className="text-sm text-green-700 mb-2 flex items-center gap-1 font-semibold">
+                <Building className="size-4" />
                 {companyName}
               </div>
-
-              {/* পদসংখ্যা */}
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-2 flex items-start gap-1">
-                <UserPlus className="size-4 mt-0.5 text-gray-600 dark:text-gray-400" />
-                <div>
-                  <span className="font-medium">পদসংখ্যাঃ</span>   {vacancy ? `${vacancy} জন ।` : "উল্লেখ নেই"}
-                </div>
+              <div className="flex gap-1 text-sm  font-medium py-2  dark:text-slate-300">
+                <Timer className="size-4" />
+                <span>আবেদনের শেষ তারিখঃ {formatDate(deadline)}</span>
               </div>
-
-              {/* শিক্ষা যোগ্যতা */}
-              <div className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-1">
-                <GraduationCap className="size-4 mt-0.5 text-gray-600 dark:text-gray-400" />
-                <div>
-                  <div className="font-medium">শিক্ষাগত যোগ্যতাঃ</div>
-                  <ul className="list-disc">
-                    {technology?.map((item, index) => (
-                      <li key={index}>{formatQuery(item)}</li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="flex gap-1 text-sm  font-medium dark:text-slate-300">
+                <Users className="size-4" />
+                <span>ডিপ্লোমা শূন্যপদঃ ({vacancy} জন)</span>
               </div>
             </CardContent>
 
 
             <CardFooter className="flex items-center justify-between py-2 px-4">
               <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                <Timer className="size-4 text-gray-600 dark:text-gray-400" />
+                <ClockFading className="size-4 text-gray-600 dark:text-gray-400" />
                 <span>{timeAgo(createdAt)}</span>
               </div>
 
@@ -108,7 +90,7 @@ const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
         </Card>
       </Link>
       {/* Insert ad after every 4 items */}
-      {(index + 1) % 3 === 0 && (
+      {(index + 1) % 30 === 0 && (
         <div className="md:col-span-2 mt-4">
           <div className="w-full h-24 rounded bg-gray-100 border border-gray-300 flex items-center justify-center text-sm text-gray-400">
             Google Ad Placeholder (Mid-grid Ad)

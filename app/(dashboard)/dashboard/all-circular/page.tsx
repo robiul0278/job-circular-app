@@ -28,7 +28,7 @@ import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
 import Loader from "@/components/loader";
 import { IJobPost, TGenericErrorResponse } from "@/types";
 import { Badge } from "@/components/ui/badge";
-import Pagination from "@/components/pagination";
+import Pagination from "@/components/Pagination";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { formatQuery } from "@/utils/utils";

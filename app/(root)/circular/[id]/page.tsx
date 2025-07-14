@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import View from "@/components/view";
 import BookmarkButton from "@/components/bookmark-button";
-import Categories from "@/components/categories";
+import Categories from "@/components/Categories";
 import { formatQuery } from "@/utils/utils";
 import CircularTime from "@/components/circular-time";
 import Link from "next/link";
@@ -58,7 +58,7 @@ const CircularViewPage = async ({ params }: Props) => {
           </CardHeader>
 
           <CardContent className="space-y-4">
-               <div className="flex lg:hidden md:hidden"><BookmarkButton jobId={_id} /></div>
+            <div className="flex lg:hidden md:hidden"><BookmarkButton jobId={_id} /></div>
             <CircularTime published={published} applyStart={applyStart} deadline={deadline} />
             <hr />
             {/* Education */}

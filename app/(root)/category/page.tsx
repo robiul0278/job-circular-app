@@ -9,9 +9,9 @@ import JobCardSkeleton from "@/components/job-card-skeleton";
 import ErrorMessage from "@/components/error-message";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import Pagination from "@/components/pagination";
+import Pagination from "@/components/Pagination";
 import { formatQuery } from "@/utils/utils";
-import Categories from "@/components/categories";
+import Categories from "@/components/Categories";
 
 export default function JobCategoryPage() {
   const searchParams = useSearchParams();

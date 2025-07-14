@@ -10,18 +10,18 @@ import ErrorMessage from "@/components/error-message";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Hero from "@/components/Hero";
-import Pagination from "@/components/pagination";
-import Categories from "@/components/categories";
+import Pagination from "@/components/Pagination";
+import Categories from "@/components/Categories";
 
 export default function Home() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query") || "";
   const [currentPage, setCurrentPage] = useState(1);
 
-const params = {
-  ...(query && { searchTerm: query, technology: query }),
-  page: currentPage,
-};
+  const params = {
+    ...(query && { searchTerm: query, technology: query }),
+    page: currentPage,
+  };
 
   // Redux Toolkit 
   const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);

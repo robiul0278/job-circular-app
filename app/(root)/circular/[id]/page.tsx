@@ -48,7 +48,7 @@ const CircularViewPage = async ({ params }: PageProps) => {
           <CardHeader className="">
             {/* Top: Title and Bookmark */}
             <div className="flex justify-between items-start gap-2">
-              <CardTitle className="text-lg md:text-2xl lg:text-2xl text-slate-200">{title}</CardTitle>
+              <CardTitle className="text-lg md:text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
               <div className="hidden lg:flex md:flex"><BookmarkButton jobId={_id} /></div>
             </div>
             <div className="text-sm font-medium text-gray-600 dark:text-gray-400">

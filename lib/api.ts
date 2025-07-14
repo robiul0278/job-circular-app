@@ -1,6 +1,6 @@
 export async function getSingleJob(id: string) {
   try {
-    const res = await fetch(`http://localhost:5000/api/v1/jobs/single/${id}`, {
+    const res = await fetch(`https://job-circular-server.vercel.app/api/v1/jobs/single/${id}`, {
       cache: "no-store", // SSR fresh data
     });
 

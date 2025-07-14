@@ -25,7 +25,6 @@ import {
 } from "lucide-react";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
-import Loader from "@/components/Loader";
 import { IJobPost, TGenericErrorResponse } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import Pagination from "@/components/Pagination";
@@ -52,7 +51,7 @@ export default function AllCircularPage() {
     searchTerm: searchTerm,
   };
 
-  const { data, isLoading, isError } = useGetAllJobsQuery(params);
+  const { data, isError } = useGetAllJobsQuery(params);
   const [DeleteJob] = useDeleteJobMutation()
 
   const tableData = data?.data.result;
@@ -93,7 +92,6 @@ export default function AllCircularPage() {
   };
 
 
-  if (isLoading) return <Loader />;
   if (isError) return <ErrorMessage />;
 
 

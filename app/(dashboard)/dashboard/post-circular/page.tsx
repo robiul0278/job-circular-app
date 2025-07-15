@@ -4,7 +4,7 @@ import { useCreateJobMutation } from '@/redux/api/api';
 import { toast } from 'sonner';
 import { TGenericErrorResponse } from '@/types';
 import { Form } from '@/components/ui/form';
-import PostForm from '@/components/dashboard/post-form';
+import PostForm from '@/components/dashboard/PostForm';
 import { useForm } from 'react-hook-form';
 import { PostFormSchema, TPostCircular } from '@/types/form-types';
 import { zodResolver } from '@hookform/resolvers/zod';

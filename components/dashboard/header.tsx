@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { MobileSidebar } from './sidebar';
+import { MobileSidebar } from './Sidebar';
 import DarkButton from '../DarkButton';
 import { User2 } from 'lucide-react';
 

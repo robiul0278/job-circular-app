@@ -1,5 +1,5 @@
-import OverviewCharts from "@/components/dashboard/overview-charts";
-import StatsCard from "@/components/dashboard/stats-card";
+import OverviewCharts from "@/components/dashboard/OverviewCharts";
+import StatsCard from "@/components/dashboard/StatsCard";
 import {
   FileText,
   Clock,

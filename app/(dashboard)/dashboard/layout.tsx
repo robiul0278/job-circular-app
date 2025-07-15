@@ -1,7 +1,7 @@
 'use client';
 
-import { Header } from '@/components/dashboard/header';
-import { Sidebar } from '@/components/dashboard/sidebar';
+import { Header } from '@/components/dashboard/Header';
+import { Sidebar } from '@/components/dashboard/Sidebar';
 import PrivateRoute from '@/components/PrivateRoute';
 import { ROLES } from '@/constants/roles';
 

@@ -17,12 +17,8 @@ import { Button } from "@/components/ui/button";
 import { MarkdownPreview } from "@/components/MarkdownPreview";
 import { getSingleJob } from "@/lib/api";
 
-type Props = {
-  params: { id: string };
-};
-
-const CircularViewPage = async ({ params }: Props) => {
-  const { id } = params;
+const CircularPage = async ({params}:{params: Promise<{id: string}>}) => {
+  const id = (await params).id;
   const decodedId = decodeURIComponent(id);
   const job = await getSingleJob(decodedId);
   if (!job) return notFound();
@@ -121,4 +117,4 @@ const CircularViewPage = async ({ params }: Props) => {
   );
 };
 
-export default CircularViewPage;
+export default CircularPage;

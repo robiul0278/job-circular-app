@@ -43,7 +43,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.png" alt="Logo" width={40} height={40} priority />
-            <span className="text-2xl font-bold text-green-700 dark:text-green-600">
+            <span className="text-2xl font-bold text-green-700 dark:text-green-500">
               ডিপ্লোমা জবস
             </span>
           </Link>

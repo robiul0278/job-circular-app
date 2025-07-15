@@ -1,26 +1,19 @@
 'use client';
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter
-} from "@/components/ui/card";
 import { IJobPost } from "@/types";
 import { formatDate } from "@/utils/format-date";
 import { timeAgo } from "@/utils/format-time";
 import {
-  EyeIcon,
-  Timer,
   Building,
+  Timer,
   Users,
-  ClockFading,
+  Clock,
+  Eye,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
+const JobCard = ({ post, index }: { post: IJobPost; index: number }) => {
   const {
     slug,
     title,
@@ -29,76 +22,76 @@ const JobCard = ({ post, index }: { post: IJobPost, index: number }) => {
     deadline,
     vacancy,
     views,
-    createdAt
+    createdAt,
   } = post;
 
   return (
-    <li className="list-none w-full mx-auto">
+    <li className="list-none w-full">
       <Link
         href={`/circular/${slug}`}
-        className="block"
+        className="block group"
         aria-label={`View details for ${title}`}
       >
-        <Card className="flex flex-col sm:flex-row h-full border border-gray-300 dark:border-gray-700 rounded hover:shadow-md transition-all duration-300 p-0 gap-0 bg-white dark:bg-gray-900 cursor-pointer">
-          {/* Left: Logo + Deadline */}
-          <div className="sm:w-1/3 border-b sm:border-b-0 sm:border-r border-gray-200 dark:border-gray-700 flex flex-col justify-between">
-            <CardHeader className="overflow-hidden w-full p-0">
-              <Image
-                src={image}
-                alt={title}
-                width={1200}
-                height={600} 
-                className="w-full h-48 pt-2"
-              />
-            </CardHeader>
+        <div className="relative flex flex-col sm:flex-row bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+          
+          {/* Image Left */}
+          <div className="sm:w-1/3 h-48 sm:h-auto">
+            <Image
+              src={image}
+              alt={title}
+              width={600}
+              height={400}
+              className="w-full h-full p-2 rounded-2xl"
+            />
           </div>
 
-          {/* Right: Content + Footer */}
-          <div className="flex flex-col justify-between sm:w-2/3 h-full">
-            <CardContent className="px-4 py-2">
-              <CardTitle className="text-lg text-slate-600 dark:text-slate-300 font-semibold mb-1 leading-snug">
+          {/* Right Content */}
+          <div className="relative flex flex-col sm:w-2/3 p-4">
+            <div className="flex-1 pb-14">
+              <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 group-hover:text-green-700 transition-colors">
                 {title}
-              </CardTitle>
-
-              <div className="text-sm text-green-700 mb-2 flex items-center gap-1 font-semibold">
+              </h3>
+              <div className="text-sm font-medium text-green-600 dark:text-green-400 flex items-center gap-1 mt-1">
                 <Building className="size-4" />
                 {companyName}
               </div>
-              <div className="flex gap-1 text-sm  font-medium py-2  dark:text-slate-300">
-                <Timer className="size-4" />
-                <span>আবেদনের শেষ তারিখঃ {formatDate(deadline)}</span>
-              </div>
-              <div className="flex gap-1 text-sm  font-medium dark:text-slate-300">
-                <Users className="size-4" />
-                <span>ডিপ্লোমা শূন্যপদঃ ({vacancy} জন)</span>
-              </div>
-            </CardContent>
 
-
-            <CardFooter className="flex items-center justify-between py-2 px-4">
-              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                <ClockFading className="size-4 text-gray-600 dark:text-gray-400" />
-                <span>{timeAgo(createdAt)}</span>
+              <div className="mt-3 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                <div className="flex items-center gap-2">
+                  <Timer className="size-4 text-gray-500 dark:text-gray-400" />
+                  <span>আবেদনের শেষ তারিখঃ {formatDate(deadline)}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Users className="size-4 text-gray-500 dark:text-gray-400" />
+                  <span>ডিপ্লোমা শূন্যপদঃ ({vacancy} জন)</span>
+                </div>
               </div>
+            </div>
 
-              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                <EyeIcon className="size-4 text-gray-600 dark:text-gray-400" />
-                <span>{views}</span>
+            {/* Sticky Footer */}
+            <div className="absolute bottom-0 left-0 w-full px-4 py-2 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center gap-1">
+                <Clock className="size-4" />
+                {timeAgo(createdAt)}
               </div>
-            </CardFooter>
+              <div className="flex items-center gap-1">
+                <Eye className="size-4" />
+                {views}
+              </div>
+            </div>
           </div>
-        </Card>
+        </div>
       </Link>
-      {/* Insert ad after every 4 items */}
+
+      {/* Optional Ad Slot after every 30 cards */}
       {(index + 1) % 30 === 0 && (
-        <div className="md:col-span-2 mt-4">
-          <div className="w-full h-24 rounded bg-gray-100 border border-gray-300 flex items-center justify-center text-sm text-gray-400">
+        <div className="mt-4">
+          <div className="w-full h-24 bg-gray-100 border border-gray-300 rounded flex items-center justify-center text-sm text-gray-400">
             Google Ad Placeholder (Mid-grid Ad)
           </div>
         </div>
       )}
     </li>
-
   );
 };
 

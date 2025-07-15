@@ -32,7 +32,7 @@ const Categories = () => {
             href={`/category/?query=${category.technology}`}
             className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors"
           >
-            <span className="text-green-700 font-medium transition-colors text-sm">
+            <span className="text-green-500 font-medium transition-colors text-sm">
               Diploma in {formatQuery(category.technology)}
             </span>
             <Badge variant="outline" className="dark:bg-gray-500">

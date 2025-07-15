@@ -22,6 +22,7 @@ import {
   Calendar,
   Building,
   ListEnd,
+  Loader2,
 } from "lucide-react";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
@@ -31,7 +32,6 @@ import Pagination from "@/components/Pagination";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { formatQuery } from "@/utils/utils";
-import Loader from "@/components/Loader";
 
 type ITechnology = {
   technology: string;
@@ -55,7 +55,7 @@ export default function AllCircularPage() {
   const { data, isLoading, isError } = useGetAllJobsQuery(params);
 
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader2 />;
   if (isError) return <ErrorMessage />;
 
 

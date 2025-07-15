@@ -4,9 +4,10 @@ import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "Diploma Jobs BD",
-  description: "Diploma job circular website",
+  title: "ডিপ্লোমা চাকরির খবর - বাংলাদেশ",
+  description: "শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য নির্ভরযোগ্য চাকরির সার্কুলার ও তথ্যভিত্তিক প্ল্যাটফর্ম। প্রতিদিনের আপডেট, সরকারি ও বেসরকারি ডিপ্লোমা চাকরির খবর একসাথে।",
 };
+
 
 export default function RootLayout({
   children,

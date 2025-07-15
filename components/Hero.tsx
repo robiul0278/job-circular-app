@@ -38,7 +38,6 @@ const Hero = ({ query }: { query: string }) => {
           />
         </svg>
       </div>
-
       {/* Hero Content */}
       <motion.div
         variants={containerVariants}
@@ -52,16 +51,13 @@ const Hero = ({ query }: { query: string }) => {
         >
          <span className="text-slate-500 dark:text-slate-300">“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির ওয়েবসাইট”</span>
         </motion.h1>
-
         <motion.p
           variants={itemVariants}
           className="text-sm font-medium md:text-lg lg:text-lg text-gray-700 dark:text-gray-300"
         >
           সরকারি হোক বা বেসরকারি — Civil, Electrical, Mechanical, Power বা Computer —
           প্রতিটি ট্রেডের চাকরির বিজ্ঞপ্তি এক জায়গায়।  
-          
         </motion.p>
-
         <motion.div variants={itemVariants}>
           <SearchForm query={query} />
         </motion.div>

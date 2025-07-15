@@ -22,9 +22,11 @@ export const baseApi = createApi({
           url: "/jobs",
           method: "GET",
           params: params,
+          
         }
       },
-      providesTags: ['jobs']
+      providesTags: ['jobs'],
+      keepUnusedDataFor: 300,
     }),
     createJob: builder.mutation({
       query: (data) => {

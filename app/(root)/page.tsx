@@ -24,7 +24,11 @@ export default function Home() {
   };
 
   // Redux Toolkit 
-  const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);
+  const { data: posts, isLoading, isError } = useGetAllJobsQuery(
+    params, 
+    {refetchOnMountOrArgChange: false}
+  );
+  
   if (isError) return <ErrorMessage />;
 
   return (

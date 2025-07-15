@@ -31,6 +31,7 @@ import Pagination from "@/components/Pagination";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { formatQuery } from "@/utils/utils";
+import Loader from "@/components/Loader";
 
 type ITechnology = {
   technology: string;
@@ -50,9 +51,13 @@ export default function AllCircularPage() {
     limit: itemsPerPage,
     searchTerm: searchTerm,
   };
-
-  const { data, isError } = useGetAllJobsQuery(params);
   const [DeleteJob] = useDeleteJobMutation()
+  const { data, isLoading, isError } = useGetAllJobsQuery(params);
+
+
+  if (isLoading) return <Loader />;
+  if (isError) return <ErrorMessage />;
+
 
   const tableData = data?.data.result;
   const trades = data?.data.technologyCount;
@@ -92,7 +97,6 @@ export default function AllCircularPage() {
   };
 
 
-  if (isError) return <ErrorMessage />;
 
 
   return (
@@ -135,7 +139,7 @@ export default function AllCircularPage() {
                   <SelectValue placeholder="ট্রেড বাছাই করুন" />
                 </SelectTrigger>
                 <SelectContent>
-                  {trades.map((trade: ITechnology, index: number) => (
+                  {trades?.map((trade: ITechnology, index: number) => (
                     <SelectItem
                       key={index}
                       value={trade.technology}
@@ -170,7 +174,7 @@ export default function AllCircularPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {tableData.map((circular: IJobPost, index: number) => (
+                {tableData?.map((circular: IJobPost, index: number) => (
                   <TableRow key={index} className="hover:bg-muted/50">
                     <TableCell>
                       <div className="space-y-1">

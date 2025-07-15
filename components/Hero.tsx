@@ -22,7 +22,7 @@ const Hero = ({ query }: { query: string }) => {
   const waveRef = useRef<SVGPathElement | null>(null);
 
   return (
-    <section className="relative w-full py-28 overflow-hidden bg-gradient-to-br from-blue-50 via-blue to-blue-100 dark:from-gray-900 dark:via-gray dark:to-gray-900">
+    <section className="relative w-full py-28 overflow-hidden bg-gradient-to-br from-green-50 via-slate to-slate-300 dark:from-gray-900 dark:via-gray dark:to-gray-900">
       {/* Static SVG Wave */}
       <div className="absolute inset-0 -z-10">
         <svg
@@ -49,7 +49,7 @@ const Hero = ({ query }: { query: string }) => {
           variants={itemVariants}
           className="text-3xl sm:text-4xl font-bold text-gray-900"
         >
-         <span className="text-slate-500 dark:text-slate-300">“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির ওয়েবসাইট”</span>
+         <span className="text-slate-700 dark:text-slate-300">“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির ওয়েবসাইট”</span>
         </motion.h1>
         <motion.p
           variants={itemVariants}

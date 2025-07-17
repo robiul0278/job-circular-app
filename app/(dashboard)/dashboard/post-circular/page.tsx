@@ -2,38 +2,39 @@
 
 import { useCreateJobMutation } from '@/redux/api/api';
 import { toast } from 'sonner';
-import { TGenericErrorResponse } from '@/types';
+import { TGenericErrorResponse, TJobCircular } from '@/types/types';
 import { Form } from '@/components/ui/form';
 import PostForm from '@/components/dashboard/PostForm';
 import { useForm } from 'react-hook-form';
-import { PostFormSchema, TPostCircular } from '@/types/form-types';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { generateSlug } from '@/utils/utils';
 
 export default function PostCircularPage() {
     const [Post] = useCreateJobMutation();
 
-    const form = useForm<TPostCircular>({
-        resolver: zodResolver(PostFormSchema),
+    const form = useForm<TJobCircular>({
+        // resolver: zodResolver(PostFormSchema),
         defaultValues: {
             title: "",
             companyName: "",
             vacancy: 0,
-            applyLink: "",
+            websiteLink: "",
             published: undefined,
             applyStart: undefined,
             deadline: undefined,
             technology: [],
+            categories: undefined,
             description: "",
-            image: "",
+            banner: "",
+            images: [],
         },
     });
 
-    const onSubmit = async (data: TPostCircular) => {
+    const onSubmit = async (data: TJobCircular) => {
         const slug = generateSlug(data.title);
         const payload = { ...data, slug };
 
-        console.log("Submitting with slug:", payload);
+        console.log(payload);
+
         try {
             const res = await Post(payload).unwrap();
             if (res.statusCode === 200) {
@@ -43,7 +44,17 @@ export default function PostCircularPage() {
         } catch (error: unknown) {
             console.log(error);
             const err = error as { data: TGenericErrorResponse };
-            toast.error(err?.data?.message);
+
+            if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
+                err.data.errorSources.forEach(({ path, message }) => {
+                    form.setError(path as keyof TJobCircular, {
+                        type: "server",
+                        message,
+                    });
+                });
+            } else {
+                toast.error(err?.data?.message);
+            }
         }
     };
 

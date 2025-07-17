@@ -14,7 +14,7 @@ import {
 import { LoginFormType } from "@/types/auth-types";
 import { useLoginUserMutation } from "@/redux/api/api";
 import { toast } from "sonner";
-import { TGenericErrorResponse } from "@/types";
+import { TGenericErrorResponse } from "@/types/types";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/redux/features/authSlice";
 
@@ -37,9 +37,9 @@ export default function LoginForm({ switchForm, closeModal }: { switchForm: () =
                 const { accessToken, user } = res.data;
                 console.log(user);
                 // Save to Redux store
-                dispatch(setCredentials({user}));
+                dispatch(setCredentials({ user }));
                 // Save to localStorage
-                localStorage.setItem("accessToken",accessToken);
+                localStorage.setItem("accessToken", accessToken);
                 toast.success(res.message);
                 closeModal();
             }

@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
-import { IJobPost, TGenericErrorResponse } from "@/types";
+import { IJobPost, TGenericErrorResponse } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
 import Pagination from "@/components/Pagination";
 import { toast } from "sonner";

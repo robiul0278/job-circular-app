@@ -11,7 +11,7 @@ import {
   useGetBookmarkQuery,
 } from "@/redux/api/api";
 import { Button } from "./ui/button";
-import { IJobPost } from "@/types";
+import { IJobPost } from "@/types/types";
 
 type Props = {
   jobId: string;
@@ -28,19 +28,19 @@ const BookmarkButton = ({ jobId }: Props) => {
     skip: !userId,
   });
 
-//   console.log(bookmark?.data.map((job: any) => job._id));
+  //   console.log(bookmark?.data.map((job: any) => job._id));
 
 
   const [addBookmark, { isLoading: isAdding }] = useAddBookmarkMutation();
   const [removeBookmark, { isLoading: isRemoving }] = useRemoveBookmarkMutation();
 
   // Set bookmark state from fetched data
-useEffect(() => {
-  if (bookmark?.data && Array.isArray(bookmark.data)) {
-    const isBookmarked = bookmark.data.some((job: IJobPost) => job._id === jobId);
-    setBookmarked(isBookmarked);
-  }
-}, [bookmark, jobId]);
+  useEffect(() => {
+    if (bookmark?.data && Array.isArray(bookmark.data)) {
+      const isBookmarked = bookmark.data.some((job: IJobPost) => job._id === jobId);
+      setBookmarked(isBookmarked);
+    }
+  }, [bookmark, jobId]);
 
   const toggleBookmark = async () => {
     if (!userId) {
@@ -70,29 +70,29 @@ useEffect(() => {
   };
 
   return (
-<Button
-  variant="ghost"
-  size="sm"
-  onClick={toggleBookmark}
-  disabled={isAdding || isRemoving || isFetching}
-  aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
-  className={`group rounded-full px-4 py-2 border border-muted-foreground/20 backdrop-blur-sm
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={toggleBookmark}
+      disabled={isAdding || isRemoving || isFetching}
+      aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
+      className={`group rounded-full px-4 py-2 border border-muted-foreground/20 backdrop-blur-sm
     bg-muted/30 dark:bg-muted/40 text-sm font-medium transition-all duration-200
     hover:shadow-md hover:bg-muted/40 dark:hover:bg-muted/50
     flex items-center cursor-pointer
     ${bookmarked ? "text-blue-600 dark:text-blue-400" : "text-gray-600 dark:text-gray-300"}
   `}
-  type="button"
->
-  {bookmarked ? (
-    <BookmarkCheck className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
-  ) : (
-    <Bookmark className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
-  )}
-  <span className="text-[12px] md:text-sm lg:text-sm">
-    {bookmarked ? "Bookmarked" : "Bookmark"}
-  </span>
-</Button>
+      type="button"
+    >
+      {bookmarked ? (
+        <BookmarkCheck className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+      ) : (
+        <Bookmark className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+      )}
+      <span className="text-[12px] md:text-sm lg:text-sm">
+        {bookmarked ? "Bookmarked" : "Bookmark"}
+      </span>
+    </Button>
 
   );
 };

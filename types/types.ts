@@ -1,17 +1,21 @@
-export type IJobPost = {
-  _id: string;
+export type Categories = "government" | "private" | "news" | "suggestion";
+
+export type TJobCircular = {
   slug: string;
   title: string;
   companyName: string;
-  image: string;
-  technology: string[];
-  description: string;
-  deadline: string;
-  vacancy:number;
-  applyLink: string;
+  banner: string;
+  images: string[];
+  vacancy: number;
+  websiteLink: string;
+  published: string;
   applyStart: string;
+  deadline: string;
+  technology: string[];
+  categories: Categories;
+  description: string;
   views: number;
-  createdAt: string; 
+  createdAt: string;
 }
 
 

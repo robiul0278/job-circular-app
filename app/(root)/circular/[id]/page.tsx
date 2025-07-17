@@ -9,15 +9,16 @@ import {
 } from "@/components/ui/card";
 import Views from "@/components/Views";
 import BookmarkButton from "@/components/BookmarkButton";
-import Categories from "@/components/Categories";
+import Categories from "@/components/Technology";
 import { formatQuery } from "@/utils/utils";
 import CircularTime from "@/components/CircularTime";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MarkdownPreview } from "@/components/MarkdownPreview";
 import { getSingleJob } from "@/lib/api";
+import Image from "next/image";
 
-const CircularPage = async ({params}:{params: Promise<{id: string}>}) => {
+const CircularPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
   const decodedId = decodeURIComponent(id);
   const job = await getSingleJob(decodedId);
@@ -28,11 +29,12 @@ const CircularPage = async ({params}:{params: Promise<{id: string}>}) => {
     title,
     companyName,
     vacancy,
-    applyLink,
+    websiteLink,
     published,
     applyStart,
     deadline,
     technology,
+    images,
     description,
     views,
   } = job;
@@ -83,7 +85,23 @@ const CircularPage = async ({params}:{params: Promise<{id: string}>}) => {
             <hr />
             <MarkdownPreview description={description} />
 
-            <Link href={applyLink} target="_blank" rel="noopener noreferrer">
+            {/*Job Image Preview */}
+            {images.length > 0 && (
+              <div className="mt-4 grid grid-cols-1">
+                {images.map((src: string, idx: number) => (
+                  <div key={idx} className="flex flex-col items-center space-y-1">
+                    <Image
+                      width={1200}
+                      height={600}
+                      src={src}
+                      alt={`Preview ${idx + 1}`}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+            <Link href={websiteLink} target="_blank" rel="noopener noreferrer">
               <Button className="w-full cursor-pointer" size="lg" variant="outline">
                 বিস্তারিত জানতে ও ফরম ডাউনলোড করতে ভিজিট করুন
               </Button>

@@ -1,6 +1,6 @@
 'use client';
 
-import { IJobPost } from "@/types";
+import { TJobCircular } from "@/types/types";
 import { formatDate } from "@/utils/format-date";
 import { timeAgo } from "@/utils/format-time";
 import {
@@ -12,13 +12,16 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "./ui/badge";
+import { categoryToBangla } from "@/utils/utils";
 
-const JobCard = ({ post, index }: { post: IJobPost; index: number }) => {
+const JobCard = ({ post, index }: { post: TJobCircular; index: number }) => {
   const {
     slug,
     title,
     companyName,
-    image,
+    banner,
+    categories,
     deadline,
     vacancy,
     views,
@@ -33,16 +36,20 @@ const JobCard = ({ post, index }: { post: IJobPost; index: number }) => {
         aria-label={`View details for ${title}`}
       >
         <div className="relative flex flex-col sm:flex-row bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-          
+
           {/* Image Left */}
-          <div className="sm:w-1/3 h-48 sm:h-auto">
+          <div className="sm:w-1/3 h-48 sm:h-auto relative">
             <Image
-              src={image}
+              src={banner}
               alt={title}
               width={600}
               height={400}
               className="w-full h-full p-2 rounded-2xl"
             />
+            <Badge
+              variant="destructive"
+              className="absolute top-3 right-3 rounded-md"
+            >{categoryToBangla(categories)}</Badge>
           </div>
 
           {/* Right Content */}

@@ -4,14 +4,14 @@ import { ChevronRight, Send } from "lucide-react";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 import { useSearchParams } from "next/navigation";
 import JobCard from "@/components/JobCard";
-import { IJobPost } from "@/types";
 import JobCardSkeleton from "@/components/JobCardSkeleton";
 import ErrorMessage from "@/components/ErrorMessage";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Pagination from "@/components/Pagination";
 import { formatQuery } from "@/utils/utils";
-import Categories from "@/components/Categories";
+import Categories from "@/components/Technology";
+import { TJobCircular } from "@/types/types";
 
 export default function JobCategoryPage() {
   const searchParams = useSearchParams();
@@ -53,7 +53,7 @@ export default function JobCategoryPage() {
                   <JobCardSkeleton key={i} />
                 ))
               ) : posts?.data.result.length > 0 ? (
-                posts.data.result.map((post: IJobPost, index: number) => (
+                posts.data.result.map((post: TJobCircular, index: number) => (
                   <JobCard key={index} post={post} index={index} />
                 ))
               ) : (

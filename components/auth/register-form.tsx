@@ -8,9 +8,9 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { toast } from "sonner";
 import { RegisterFormType } from "@/types/auth-types";
 import { useRegisterUserMutation } from "@/redux/api/api";
-import { TGenericErrorResponse } from "@/types";
+import { TGenericErrorResponse } from "@/types/types";
 
-export default function RegisterForm({switchForm}: {switchForm: () => void}) {
+export default function RegisterForm({ switchForm }: { switchForm: () => void }) {
 
   const [Register] = useRegisterUserMutation()
 
@@ -22,28 +22,28 @@ export default function RegisterForm({switchForm}: {switchForm: () => void}) {
     },
   });
 
-const onSubmit = async (data: RegisterFormType) => {
-  try {
-    const response = await Register(data).unwrap();
-    toast.success(response.message);
-    switchForm();
-  }catch (error: unknown) {
+  const onSubmit = async (data: RegisterFormType) => {
+    try {
+      const response = await Register(data).unwrap();
+      toast.success(response.message);
+      switchForm();
+    } catch (error: unknown) {
 
-    console.log(error);
-  const err = error as { data: TGenericErrorResponse };
+      console.log(error);
+      const err = error as { data: TGenericErrorResponse };
 
-  if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
-    err.data.errorSources.forEach(({ path, message }) => {
-      form.setError(path as keyof RegisterFormType, {
-        type: "server",
-        message,
-      });
-    });
-  } else {
-    toast.error(err?.data?.message);
-  }
-}
-};
+      if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
+        err.data.errorSources.forEach(({ path, message }) => {
+          form.setError(path as keyof RegisterFormType, {
+            type: "server",
+            message,
+          });
+        });
+      } else {
+        toast.error(err?.data?.message);
+      }
+    }
+  };
 
 
   return (

@@ -13,10 +13,13 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { X } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '../ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { TFormProps } from '@/types/form-types';
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import ImageUploadInput from './ImageUploadInput';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import MultiImageUploadInput from './MultiImageUploadInput';
 
 const technologyOptions = [
     'computer',
@@ -45,15 +48,38 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                     <CardContent className="p-6 space-y-8">
                         {/*Title, Company Name, Vacancy, Apply Link, Image*/}
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            {/*Category Post*/}
+                            <FormField
+                                control={form.control}
+                                name="categories"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>ক্যাটাগরিঃ</FormLabel>
+                                        <FormControl>
+                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <SelectTrigger className="w-full">
+                                                    <SelectValue placeholder="একটি ক্যাটাগরি নির্বাচন করুন" />
+                                                </SelectTrigger>
+                                                <SelectContent className='w-full'>
+                                                    <SelectItem value="government">সরকারি চাকরি</SelectItem>
+                                                    <SelectItem value="private">বেসরকারি চাকরি</SelectItem>
+                                                    <SelectItem value="autonomous">স্বায়ত্তশাসিত</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                             {/*Title*/}
                             <FormField
                                 control={form.control}
                                 name="title"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="title">Title</Label>
+                                        <Label htmlFor="title">চাকরির শিরোনামঃ</Label>
                                         <FormControl>
-                                            <Input id="title" placeholder="circular title" {...field} />
+                                            <Input id="title" placeholder="চাকরির নাম লিখুন (যেমন: উপ-সহকারী প্রকৌশলী)" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -65,23 +91,9 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 name="companyName"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="companyName">Company Name</Label>
+                                        <Label htmlFor="companyName">কোন কোম্পানিতে চাকরিঃ</Label>
                                         <FormControl>
-                                            <Input id="companyName" placeholder="company name" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            {/*Upload Image*/}
-                            <FormField
-                                control={form.control}
-                                name="image"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="image">Image Link</Label>
-                                        <FormControl>
-                                            <Input id="image" type='url' placeholder="image link" {...field} />
+                                            <Input id="companyName" placeholder="কোম্পানির নাম লিখুন" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -90,12 +102,12 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                             {/*Apply Link*/}
                             <FormField
                                 control={form.control}
-                                name="applyLink"
+                                name="websiteLink"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="applyLink">Apply Link</Label>
+                                        <Label htmlFor="websiteLink">কোম্পানির ওয়েবসাইট লিঙ্কঃ</Label>
                                         <FormControl>
-                                            <Input id="applyLink" type='url' placeholder="apply link" {...field} />
+                                            <Input id="websiteLink" type='url' placeholder="https://example.com" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -110,11 +122,11 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 name="published"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="published">Published</Label>
+                                        <Label htmlFor="published">প্রকাশের তারিখঃ</Label>
                                         <FormControl>
                                             <ReactDatePicker
                                                 id="published"
-                                                placeholderText='Select Date & Time'
+                                                placeholderText="তারিখ নির্বাচন করুন"
                                                 selected={field.value ? new Date(field.value) : null}
                                                 onChange={field.onChange}
                                                 showTimeSelect
@@ -133,11 +145,11 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 name="applyStart"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="applyStart">Apply Start</Label>
+                                        <Label htmlFor="applyStart">আবেদন শুরুর দিনঃ</Label>
                                         <FormControl>
                                             <ReactDatePicker
                                                 id="applyStart"
-                                                placeholderText='Select Date & Time'
+                                                placeholderText="তারিখ নির্বাচন করুন"
                                                 selected={field.value ? new Date(field.value) : null}
                                                 onChange={field.onChange}
                                                 showTimeSelect
@@ -155,11 +167,11 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 name="deadline"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="deadline">Deadline</Label>
+                                        <Label htmlFor="deadline">আবেদনের শেষ দিনঃ</Label>
                                         <FormControl>
                                             <ReactDatePicker
                                                 id="deadline"
-                                                placeholderText='Select Date & Time'
+                                                placeholderText="তারিখ নির্বাচন করুন"
                                                 selected={field.value ? new Date(field.value) : null}
                                                 onChange={field.onChange}
                                                 showTimeSelect
@@ -177,9 +189,9 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 name="vacancy"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="vacancy">Vacancy</Label>
+                                        <Label htmlFor="vacancy">ডিপ্লোমাদের জন্য শূন্য পদঃ</Label>
                                         <FormControl>
-                                            <Input id="vacancy" type='number' placeholder="circular vacancy" {...field} />
+                                            <Input id="vacancy" type='number' {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -192,7 +204,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                             name="technology"
                             render={({ field }) => (
                                 <FormItem>
-                                    <Label className="text-sm font-medium">Technology</Label>
+                                    <Label className="text-sm font-medium">শিক্ষাগত যোগ্যতাঃ</Label>
                                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                         {technologyOptions.map((tech) => {
                                             const isSelected = field.value?.includes(tech);
@@ -248,8 +260,16 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 </FormItem>
                             )}
                         />
-
-
+                    </CardContent>
+                </Card>
+                <Card className="border rounded-lg overflow-hidden">
+                    <CardContent className="space-y-8 flex ">
+                        <div className="flex-2/6">
+                            <ImageUploadInput control={form.control} name="banner" label="ব্যানার আপলোডঃ" />
+                        </div>
+                        <div className="flex-4/6">
+                            <MultiImageUploadInput control={form.control} name="images" label="বিজ্ঞপ্তির ছবি আপলোডঃ" />
+                        </div>
                     </CardContent>
                 </Card>
 
@@ -299,7 +319,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 disabled={form.formState.isSubmitting}
                                 className="font-semibold py-2 cursor-pointer disabled:opacity-60"
                             >
-                                {form.formState.isSubmitting ? "🚀 Posting..." : "📢 Post"}
+                                {form.formState.isSubmitting ? "🚀 Posting..." : "📢 Post Circular"}
                             </Button>
                         </div>
                     </CardContent>

@@ -4,14 +4,17 @@ import { ChevronRight, Send } from "lucide-react";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 import { useSearchParams } from "next/navigation";
 import JobCard from "@/components/JobCard";
-import { IJobPost } from "@/types";
+
 import JobCardSkeleton from "@/components/JobCardSkeleton";
 import ErrorMessage from "@/components/ErrorMessage";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Hero from "@/components/Hero";
 import Pagination from "@/components/Pagination";
+
+import { TJobCircular } from "@/types/types";
 import Categories from "@/components/Categories";
+import Technology from "@/components/Technology";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -19,16 +22,16 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const params = {
-    ...(query && { searchTerm: query, technology: query }),
+    ...(query && { searchTerm: query }),
     page: currentPage,
   };
 
   // Redux Toolkit 
   const { data: posts, isLoading, isError } = useGetAllJobsQuery(
-    params, 
-    {refetchOnMountOrArgChange: false}
+    params,
+    { refetchOnMountOrArgChange: false }
   );
-  
+
   if (isError) return <ErrorMessage />;
 
   return (
@@ -49,7 +52,7 @@ export default function Home() {
                   <JobCardSkeleton key={i} />
                 ))
               ) : posts?.data.result.length > 0 ? (
-                posts.data.result.map((post: IJobPost, index: number) => (
+                posts.data.result.map((post: TJobCircular, index: number) => (
                   <JobCard key={index} post={post} index={index} />
                 ))
               ) : (
@@ -71,7 +74,9 @@ export default function Home() {
                 </Button>
               </a>
             </div>
+
             <Categories />
+            <Technology/>
 
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}

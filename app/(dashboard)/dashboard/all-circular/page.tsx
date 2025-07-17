@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
-import { IJobPost, TGenericErrorResponse } from "@/types/types";
+import {  TGenericErrorResponse, TJobCircular } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
 import Pagination from "@/components/Pagination";
 import { toast } from "sonner";
@@ -174,7 +174,7 @@ export default function AllCircularPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {tableData?.map((circular: IJobPost, index: number) => (
+                {tableData?.map((circular: TJobCircular, index: number) => (
                   <TableRow key={index} className="hover:bg-muted/50">
                     <TableCell>
                       <div className="space-y-1">

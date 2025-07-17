@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { useGetBookmarkQuery, useRemoveBookmarkMutation } from "@/redux/api/api";
-import { IJobPost, TGenericErrorResponse } from "@/types/types";
+import { TGenericErrorResponse, TJobCircular } from "@/types/types";
 import React from "react";
 
 export default function BookmarkPage() {
@@ -72,7 +72,7 @@ export default function BookmarkPage() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {bookmark?.data.map((job: IJobPost, index: number) => (
+        {bookmark?.data.map((job: TJobCircular, index: number) => (
           <React.Fragment key={index}>
             <Card className="shadow-md hover:shadow-lg transition-shadow">
               <CardHeader>

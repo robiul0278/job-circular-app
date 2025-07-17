@@ -1,6 +1,7 @@
 export type Categories = "government" | "private" | "news" | "suggestion";
 
 export type TJobCircular = {
+  _id: string;
   slug: string;
   title: string;
   companyName: string;

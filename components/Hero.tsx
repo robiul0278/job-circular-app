@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef } from "react";
 import { motion, Variants, easeOut } from "framer-motion";
 import SearchForm from "./SearchForm";
 
@@ -19,25 +18,10 @@ const itemVariants: Variants = {
 };
 
 const Hero = ({ query }: { query: string }) => {
-  const waveRef = useRef<SVGPathElement | null>(null);
 
   return (
-    <section className="relative w-full py-28 overflow-hidden bg-gradient-to-br from-green-50 via-slate to-slate-300 dark:from-gray-900 dark:via-gray dark:to-gray-900">
-      {/* Static SVG Wave */}
-      <div className="absolute inset-0 -z-10">
-        <svg
-          className="w-full h-full object-cover"
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none"
-        >
-          <path
-            ref={waveRef}
-            fill="#d1d5db"
-            className="dark:fill-[#374151]"
-            d="M0,64L48,96C96,128,192,192,288,192C384,192,480,128,576,112C672,96,768,128,864,128C960,128,1056,96,1152,80C1248,64,1344,64,1392,64L1440,64L1440,320L0,320Z"
-          />
-        </svg>
-      </div>
+    <section className="hero relative w-full py-28 overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-gray dark:to-gray-900">
+
       {/* Hero Content */}
       <motion.div
         variants={containerVariants}

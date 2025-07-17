@@ -4,8 +4,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({
-    // baseUrl: 'http://localhost:5000/api/v1',
-    baseUrl: 'https://job-circular-server.vercel.app/api/v1',
+    baseUrl: 'http://localhost:5000/api/v1',
+    // baseUrl: 'https://job-circular-server.vercel.app/api/v1',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken');
 
@@ -15,7 +15,7 @@ export const baseApi = createApi({
       return headers;
     }
   }),
-  tagTypes: ["jobs", "auth", "bookmark"],
+  tagTypes: ["jobs", "auth", "bookmark", "notice"],
   endpoints: (builder) => ({
     getAllJobs: builder.query({
       query: (params) => {
@@ -121,6 +121,27 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["bookmark"]
     }),
+    addNotice: builder.mutation({
+      query: (data) => {
+        // console.log(data);
+        return {
+          url: "/notice/create-notice",
+          method: "POST",
+          body: data
+        }
+      },
+      invalidatesTags: ["notice"]
+    }),
+    allNotice: builder.query({
+      query: () => {
+        // console.log(data);
+        return {
+          url: "/notice",
+          method: "GET",
+        }
+      },
+      providesTags: ["notice"]
+    }),
   }),
 });
 
@@ -139,5 +160,8 @@ export const {
   useGetBookmarkQuery,
   useAddBookmarkMutation,
   useRemoveBookmarkMutation,
+  //Notice
+  useAddNoticeMutation,
+  useAllNoticeQuery,
 
 } = baseApi;

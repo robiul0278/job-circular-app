@@ -17,8 +17,6 @@ const Categories = () => {
   
     const categories = circular?.data.categoryCount;
 
-    console.log(categories);
-  
     if (isLoading) return <CategoriesSkeleton />;
     if (isError) return <ErrorMessage />;
   return (

@@ -15,6 +15,7 @@ import {
   Users,
   Home,
   CircleDollarSign,
+  Bell,
 } from 'lucide-react';
 
 const sidebarNavItems = [
@@ -32,6 +33,11 @@ const sidebarNavItems = [
     title: 'Post Circular',
     href: '/dashboard/post-circular',
     icon: FileText,
+  },
+  {
+    title: 'Post Notice',
+    href: '/dashboard/notice',
+    icon: Bell,
   },
   {
     title: 'Manage Users',

@@ -19,6 +19,9 @@ export type TJobCircular = {
   createdAt: string;
 }
 
+export type TNotice = {
+    notice: string;
+}
 
 export type TErrorSource = {
   path: string;

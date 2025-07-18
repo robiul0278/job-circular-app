@@ -29,7 +29,7 @@ const Technology = () => {
         {jobCategories?.map((category: ITechnology, index: number) => (
           <Link
             key={index}
-            href={`/category?/technology/query=${category.technology}`}
+            href={`/category?query=${category.technology}`}
             className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors"
           >
             <span className="text-green-500 font-medium transition-colors text-sm">

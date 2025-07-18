@@ -13,8 +13,8 @@ import Hero from "@/components/Hero";
 import Pagination from "@/components/Pagination";
 
 import { TJobCircular } from "@/types/types";
-import Categories from "@/components/Categories";
 import Technology from "@/components/Technology";
+import NoticeMarquee from "@/components/NoticeMarquee";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -36,6 +36,7 @@ export default function Home() {
 
   return (
     <>
+      <NoticeMarquee/>
       <Hero query={query} />
       <section className="max-w-7xl mx-auto px-2 pb-2 lg:p-0">
         <p className="text-lg md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 py-4 flex items-center">
@@ -75,7 +76,7 @@ export default function Home() {
               </a>
             </div>
 
-            <Categories />
+            {/* <Categories /> */}
             <Technology/>
 
             {/* AdSense Script or Placeholder */}

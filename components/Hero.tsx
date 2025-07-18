@@ -27,13 +27,13 @@ const Hero = ({ query }: { query: string }) => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto space-y-6"
+        className="relative text-center max-w-3xl mx-auto space-y-6"
       >
         <motion.h1
           variants={itemVariants}
           className="text-3xl sm:text-4xl font-bold text-gray-900"
         >
-         <span className="text-slate-700 dark:text-slate-300">“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির ওয়েবসাইট”</span>
+         <span className="text-slate-700 dark:text-slate-300">“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির খবর”</span>
         </motion.h1>
         <motion.p
           variants={itemVariants}

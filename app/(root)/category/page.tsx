@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Pagination from "@/components/Pagination";
 import { formatQuery } from "@/utils/utils";
-import Categories from "@/components/Technology";
 import { TJobCircular } from "@/types/types";
+import Technology from "@/components/Technology";
 
 export default function JobCategoryPage() {
   const searchParams = useSearchParams();
@@ -20,7 +20,7 @@ export default function JobCategoryPage() {
 
   const params = {
     ...(query && { technology: query }),
-    page: currentPage, // ✅ Include page here
+    page: currentPage,
   };
 
   // Redux Toolkit 
@@ -75,7 +75,8 @@ export default function JobCategoryPage() {
                 </Button>
               </a>
             </div>
-            <Categories />
+            {/* <Categories /> */}
+            <Technology/>
 
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}

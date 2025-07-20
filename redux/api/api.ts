@@ -59,9 +59,9 @@ export const baseApi = createApi({
       invalidatesTags: ["jobs"]
     }),
     updateViews: builder.mutation({
-      query: (slug) => {
+      query: (id) => {
         return {
-          url: `/jobs/views/${slug}`,
+          url: `/jobs/views/${id}`,
           method: "POST",
         }
       },

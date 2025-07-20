@@ -12,16 +12,22 @@ import Pagination from "@/components/Pagination";
 import { formatQuery } from "@/utils/utils";
 import { TJobCircular } from "@/types/types";
 import Technology from "@/components/Technology";
+import Categories from "@/components/Categories";
 
 export default function JobCategoryPage() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query") || "";
-  const [currentPage, setCurrentPage] = useState(1); // Pagination
+  const [currentPage, setCurrentPage] = useState(1); 
 
-  const params = {
-    ...(query && { technology: query }),
-    page: currentPage,
-  };
+
+const specialCategories = ['government', 'private', 'autonomous'];
+
+const params = {
+  ...(specialCategories.includes(query) ? { categories: query } : { technology: query }),
+  page: currentPage,
+};
+
+console.log(params);
 
   // Redux Toolkit 
   const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);
@@ -75,7 +81,7 @@ export default function JobCategoryPage() {
                 </Button>
               </a>
             </div>
-            {/* <Categories /> */}
+            <Categories />
             <Technology/>
 
             {/* AdSense Script or Placeholder */}

@@ -28,7 +28,7 @@ const Categories = () => {
         {categories?.map((data: ITechnology, index: number) => (
           <Link
             key={index}
-            href={`/category?query=${data.category}`}
+            href={`/categories?query=${data.category}`}
             className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors"
           >
             <span className="text-green-500 font-medium transition-colors text-sm">

@@ -15,6 +15,7 @@ import Pagination from "@/components/Pagination";
 import { TJobCircular } from "@/types/types";
 import Technology from "@/components/Technology";
 import NoticeMarquee from "@/components/NoticeMarquee";
+import Categories from "@/components/Categories";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -76,7 +77,7 @@ export default function Home() {
               </a>
             </div>
 
-            {/* <Categories /> */}
+            <Categories />
             <Technology/>
 
             {/* AdSense Script or Placeholder */}

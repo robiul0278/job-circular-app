@@ -53,7 +53,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center justify-center flex-grow gap-6">
             {menuItems.map((item) => (
               <Link key={item.name} href={item.href}>
-                <span className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-green-400 transition">
+                <span className="text-md font-medium text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-green-400 transition">
                   {item.name}
                 </span>
               </Link>

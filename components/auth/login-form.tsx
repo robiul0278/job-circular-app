@@ -35,7 +35,6 @@ export default function LoginForm({ switchForm, closeModal }: { switchForm: () =
             const res = await login(data).unwrap();
             if (res.statusCode === 200) {
                 const { accessToken, user } = res.data;
-                console.log(user);
                 // Save to Redux store
                 dispatch(setCredentials({ user }));
                 // Save to localStorage

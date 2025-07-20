@@ -27,7 +27,6 @@ const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
 
   const { data: singleJob, isLoading, isError } = useGetSingleJobQuery(id);
 
-  console.log(singleJob);
 
   if (isLoading) return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-2">
@@ -62,7 +61,7 @@ const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
 <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         {/* Main Content */}
       <div className="lg:col-span-3 space-y-8">
-        <Card className="">
+        <Card className="rounded-none">
           <CardHeader className="">
             {/* Top: Title and Bookmark */}
             <div className="flex justify-between items-start gap-2">

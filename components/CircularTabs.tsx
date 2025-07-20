@@ -33,7 +33,7 @@ export default function CircularTabs() {
     if (isError) return <ErrorMessage />;
 
     return (
-        <Tabs value={tabValue} onValueChange={setTabValue} className=" mx-auto border shadow rounded-xl p-4">
+        <Tabs value={tabValue} onValueChange={setTabValue} className=" mx-auto border shadow p-4">
             <TabsList className="mb-2">
                 {categories.map((data: ICategory, i: number) => (
                     <TabsTrigger key={i} value={data.category}>{categoryToBangla(data.category)}

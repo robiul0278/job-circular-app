@@ -17,6 +17,7 @@ export default function BookmarkPage() {
     skip: !user,
   });
 
+
   const handleRemove = async (jobId: string) => {
     if (!user?._id) {
       toast.error("User not logged in");

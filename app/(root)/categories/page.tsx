@@ -37,7 +37,7 @@ const params = {
       <section className="max-w-7xl mx-auto px-4 py-6">
         {/* Top AdSense */}
         <div className="mb-6">
-          <div className="w-full h-28 bg-gray-100 border border-gray-300 dark:border-gray-700 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+          <div className="w-full h-28  border  flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
             Google AdSense Ad (Top Banner)
           </div>
         </div>
@@ -76,7 +76,7 @@ const params = {
 
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}
-            <div className=" bg-gray-100 border border-gray-300 rounded-lg h-96 flex items-center justify-center text-gray-700 dark:text-gray-300">
+            <div className=" border rounded-lg h-96 flex items-center justify-center text-gray-700 ">
               <span>Google AdSense Ad</span>
             </div>
 

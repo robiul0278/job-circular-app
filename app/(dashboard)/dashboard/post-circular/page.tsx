@@ -33,7 +33,6 @@ export default function PostCircularPage() {
         const slug = generateSlug(data.title);
         const payload = { ...data, slug };
 
-        console.log(payload);
 
         try {
             const res = await Post(payload).unwrap();

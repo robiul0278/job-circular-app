@@ -1,6 +1,6 @@
-// app/circular/[id]/page.tsx
-import { notFound } from "next/navigation";
-import { Send, Users } from "lucide-react";
+"use client"
+
+import { Loader, Send, Users } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -15,14 +15,29 @@ import CircularTime from "@/components/CircularTime";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MarkdownPreview } from "@/components/MarkdownPreview";
-import { getSingleJob } from "@/lib/api";
 import Image from "next/image";
+import { use } from "react";
+import { useGetSingleJobQuery } from "@/redux/api/api";
 
-const CircularPage = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const id = (await params).id;
-  const decodedId = decodeURIComponent(id);
-  const job = await getSingleJob(decodedId);
-  if (!job) return notFound();
+const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = use(params);
+
+  const { data: singleJob, isLoading, isError } = useGetSingleJobQuery(id);
+
+  console.log(singleJob);
+
+  if (isLoading) return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-2">
+      <Loader />
+      <p className="text-sm text-muted-foreground">চাকরির বিস্তারিত লোড হচ্ছে...</p>
+    </div>
+
+  );
+  if (isError) return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-2">
+      <p className="text-red-500">Failed to load project details.</p>;
+    </div>
+  );
 
   const {
     _id,
@@ -37,7 +52,7 @@ const CircularPage = async ({ params }: { params: Promise<{ id: string }> }) => 
     images,
     description,
     views,
-  } = job;
+  } = singleJob.data;
 
   return (
     <section className="max-w-7xl mx-auto py-2 grid grid-cols-1 lg:grid-cols-4 gap-5 px-2">
@@ -129,7 +144,7 @@ const CircularPage = async ({ params }: { params: Promise<{ id: string }> }) => 
 
       {/* Views */}
       <div className="fixed bottom-4 left-4 z-50">
-        <Views id={decodedId} views={views} />
+        <Views id={_id} views={views} />
       </div>
     </section>
   );

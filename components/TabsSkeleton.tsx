@@ -3,7 +3,7 @@ import { Skeleton } from './ui/skeleton'
 
 const TabsSkeleton = () => {
     return (
-        <div className="max-w-3xl mx-auto pt-10 space-y-4">
+        <div className="w-full mx-auto pt-4 space-y-4 border shadow rounded-xl p-4">
             <div className="flex space-x-2">
                 <Skeleton className="h-10 w-28 rounded-md" />
                 <Skeleton className="h-10 w-28 rounded-md" />

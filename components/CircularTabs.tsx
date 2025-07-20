@@ -8,6 +8,8 @@ import { TJobCircular } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/utils/format-date";
 import TabsSkeleton from "./TabsSkeleton";
+import { categoryToBangla } from "@/utils/utils";
+import Link from "next/link";
 
 type ICategory = {
     category: string;
@@ -19,6 +21,7 @@ export default function CircularTabs() {
 
     const params = {
         ...((tabValue) && { categories: tabValue }),
+        limit: 5,
     };
 
     const { data: circular, isLoading, isError } = useGetAllJobsQuery(params);
@@ -33,7 +36,7 @@ export default function CircularTabs() {
         <Tabs value={tabValue} onValueChange={setTabValue} className=" mx-auto border shadow rounded-xl p-4">
             <TabsList className="mb-2">
                 {categories.map((data: ICategory, i: number) => (
-                    <TabsTrigger key={i} value={data.category}>{data.category}
+                    <TabsTrigger key={i} value={data.category}>{categoryToBangla(data.category)}
                         <Badge variant="outline" className="dark:bg-gray-500">
                             {data.count}
                         </Badge>
@@ -41,14 +44,19 @@ export default function CircularTabs() {
 
                 ))}
             </TabsList>
-
             <TabsContent value={tabValue}>
                 {Jobs.length > 0 ? (
                     <ul className="space-y-3">
                         {Jobs.map((job: TJobCircular) => (
                             <li key={job._id} className="border rounded-md p-3 hover:shadow-md transition-shadow">
-                                <h3 className="font-semibold">{job.title}</h3>
-                             <span>আবেদনের শেষ তারিখঃ {formatDate(job.deadline)}</span>
+                                <Link
+                                    href={`/circular/${job.slug}`}
+                                    className="block group"
+                                    aria-label={`View details for ${job.title}`}
+                                >
+                                    <h3 className="font-semibold">{job.title}</h3>
+                                    <span>আবেদনের শেষ তারিখঃ {formatDate(job.deadline)}</span>
+                                </Link>
                             </li>
                         ))}
                     </ul>

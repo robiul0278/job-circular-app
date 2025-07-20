@@ -20,6 +20,7 @@ import { useGetSingleJobQuery } from "@/redux/api/api";
 import Telegram from "@/components/Telegram";
 import Technology from "@/components/Technology";
 import Categories from "@/components/Categories";
+import CircularTabs from "@/components/CircularTabs";
 
 const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);
@@ -57,8 +58,9 @@ const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
   } = singleJob.data;
 
   return (
-    <section className="max-w-7xl mx-auto py-2 grid grid-cols-1 lg:grid-cols-4 gap-5 px-2">
-      {/* Main Content */}
+    <section className="max-w-7xl mx-auto py-2  px-2">
+<div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
+        {/* Main Content */}
       <div className="lg:col-span-3 space-y-8">
         <Card className="">
           <CardHeader className="">
@@ -125,6 +127,8 @@ const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
             </Link>
           </CardContent>
         </Card>
+<CircularTabs/>
+
       </div>
 
       {/* Sidebar */}
@@ -137,6 +141,8 @@ const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
           <span>Google AdSense Ad</span>
         </div> */}
       </aside>
+</div>
+
 
       {/* Views */}
       <div className="fixed bottom-4 left-4 z-50">

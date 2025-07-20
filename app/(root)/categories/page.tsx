@@ -27,8 +27,6 @@ const params = {
   page: currentPage,
 };
 
-console.log(params);
-
   // Redux Toolkit 
   const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);
   if (isError) return <ErrorMessage />;

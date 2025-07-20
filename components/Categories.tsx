@@ -6,7 +6,7 @@ import { useGetAllJobsQuery } from "@/redux/api/api";
 import CategoriesSkeleton from "./CategoriesSkeleton";
 import ErrorMessage from "./ErrorMessage";
 
-type ITechnology = {
+type ICategory = {
   category: string;
   count: number;
 };
@@ -25,7 +25,7 @@ const Categories = () => {
         Job by Category
       </h4>
       <div>
-        {categories?.map((data: ITechnology, index: number) => (
+        {categories?.map((data: ICategory, index: number) => (
           <Link
             key={index}
             href={`/categories?query=${data.category}`}

@@ -29,7 +29,7 @@ const JobCard = ({ post, index }: { post: TJobCircular; index: number }) => {
   } = post;
 
   return (
-    <li className="list-none w-full">
+    <li className="list-none w-full px-2 lg:p-0">
       <Link
         href={`/circular/${slug}`}
         className="block group"

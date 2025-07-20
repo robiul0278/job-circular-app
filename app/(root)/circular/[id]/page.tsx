@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import Views from "@/components/Views";
 import BookmarkButton from "@/components/BookmarkButton";
-import Categories from "@/components/Technology";
 import { formatQuery } from "@/utils/utils";
 import CircularTime from "@/components/CircularTime";
 import Link from "next/link";
@@ -20,6 +19,7 @@ import { use } from "react";
 import { useGetSingleJobQuery } from "@/redux/api/api";
 import Telegram from "@/components/Telegram";
 import Technology from "@/components/Technology";
+import Categories from "@/components/Categories";
 
 const CircularPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);

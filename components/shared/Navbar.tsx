@@ -16,11 +16,12 @@ import AuthModal from "../auth/auth-modal";
 import BookmarkNavButton from "../BookmarkNav";
 
 const menuItems = [
-  { name: "Home", href: "/" },
-  { name: "Categories", href: "/category" },
-  { name: "About Us", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "হোম", href: "/" },
+  { name: "ক্যাটাগরিস", href: "/categories" },
+  { name: "আমাদের সম্পর্কে", href: "/about" },
+  { name: "যোগাযোগ", href: "/contact" },
 ];
+
 
 const Navbar = () => {
   const dispatch = useDispatch();

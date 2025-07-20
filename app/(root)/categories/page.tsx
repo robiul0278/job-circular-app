@@ -1,18 +1,18 @@
 "use client";
 
-import { ChevronRight, Send } from "lucide-react";
+import { ChevronRight} from "lucide-react";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 import { useSearchParams } from "next/navigation";
 import JobCard from "@/components/JobCard";
 import JobCardSkeleton from "@/components/JobCardSkeleton";
 import ErrorMessage from "@/components/ErrorMessage";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Pagination from "@/components/Pagination";
 import { formatQuery } from "@/utils/utils";
 import { TJobCircular } from "@/types/types";
 import Technology from "@/components/Technology";
 import Categories from "@/components/Categories";
+import Telegram from "@/components/Telegram";
 
 export default function JobCategoryPage() {
   const searchParams = useSearchParams();
@@ -72,15 +72,7 @@ console.log(params);
           </div>
           {/* Right: Google AdSense or Placeholder */}
           <aside className="lg:col-span-3 space-y-2">
-            <div className="rounded-lg p-4 border dark:bg-gray-900">
-              <h3 className="font-semibold mb-3 text-sm uppercase">Follow Us</h3>
-              <a href="https://t.me/diplomajobsbd" target="_blank" rel="noopener noreferrer">
-                <Button className="flex w-full items-center space-x-2 bg-green-700 hover:bg-green-600 text-white font-medium px-4 py-2 rounded cursor-pointer">
-                  <Send size={16} />
-                  <span>Telegram</span>
-                </Button>
-              </a>
-            </div>
+ <Telegram />
             <Categories />
             <Technology/>
 

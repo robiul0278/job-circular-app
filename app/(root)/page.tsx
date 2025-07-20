@@ -1,13 +1,12 @@
 "use client";
 
-import { ChevronRight, Send } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useGetAllJobsQuery } from "@/redux/api/api";
 import { useSearchParams } from "next/navigation";
 import JobCard from "@/components/JobCard";
 
 import JobCardSkeleton from "@/components/JobCardSkeleton";
 import ErrorMessage from "@/components/ErrorMessage";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Hero from "@/components/Hero";
 import Pagination from "@/components/Pagination";
@@ -16,6 +15,7 @@ import { TJobCircular } from "@/types/types";
 import Technology from "@/components/Technology";
 import NoticeMarquee from "@/components/NoticeMarquee";
 import Categories from "@/components/Categories";
+import Telegram from "@/components/Telegram";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <>
-      <NoticeMarquee/>
+      <NoticeMarquee />
       <Hero query={query} />
       <section className="max-w-7xl mx-auto px-2 pb-2 lg:p-0">
         <p className="text-lg md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 py-4 flex items-center">
@@ -67,18 +67,10 @@ export default function Home() {
           </div>
           {/* Right: Google AdSense or Placeholder */}
           <aside className="lg:col-span-3 space-y-2">
-            <div className="rounded-lg p-4 border dark:bg-gray-900">
-              <h3 className="font-semibold mb-3 text-sm uppercase">Follow Us</h3>
-              <a href="https://t.me/diplomajobsbd" target="_blank" rel="noopener noreferrer">
-                <Button className="flex w-full items-center space-x-2 bg-green-700 hover:bg-green-600 text-white hover:text-white font-medium px-4 py-2 rounded cursor-pointer">
-                  <Send size={16} />
-                  <span>Telegram</span>
-                </Button>
-              </a>
-            </div>
 
+            <Telegram />
             <Categories />
-            <Technology/>
+            <Technology />
 
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}

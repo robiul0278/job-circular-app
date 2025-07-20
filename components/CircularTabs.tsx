@@ -34,14 +34,13 @@ export default function CircularTabs() {
 
     return (
         <Tabs value={tabValue} onValueChange={setTabValue} className=" mx-auto border shadow p-4">
-            <TabsList className="mb-2">
+            <TabsList className="mb-2 w-full">
                 {categories.map((data: ICategory, i: number) => (
                     <TabsTrigger key={i} value={data.category}>{categoryToBangla(data.category)}
                         <Badge variant="outline" className="dark:bg-gray-500">
                             {data.count}
                         </Badge>
                     </TabsTrigger>
-
                 ))}
             </TabsList>
             <TabsContent value={tabValue}>

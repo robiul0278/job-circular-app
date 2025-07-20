@@ -25,8 +25,8 @@ export function numberToBangla(num: number | string): string {
 
 export function categoryToBangla(category: string): string {
   const enToBnCategory: Record<string, string> = {
-    'government': 'সরকারি চাকরি',
-    'private': 'বেসরকারি চাকরি',
+    'government': 'সরকারি',
+    'private': 'বেসরকারি',
     'autonomous': 'স্বায়ত্তশাসিত',
   };
 

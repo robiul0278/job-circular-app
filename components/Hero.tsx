@@ -17,7 +17,7 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { ease: easeOut } },
 };
 
-const Hero = ({ query }: { query: string }) => {
+const Hero = ({ query }: { query?: string }) => {
 
   return (
     <section className="hero relative w-full py-28 overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-gray dark:to-gray-900">

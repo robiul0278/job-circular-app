@@ -1,45 +1,34 @@
 'use client';
 
-import { useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { animate } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import Form from 'next/form';
 
-type PaginationProps = {
-  totalPages: number;
-  currentPage: number;
-  setCurrentPageAction: (page: number) => void;
-};
-
-export default function Pagination({
-  totalPages,
+export default function PaginationForm({
   currentPage,
-  setCurrentPageAction,
-}: PaginationProps) {
-  const handlePageChange = (newPage: number) => {
-    setCurrentPageAction(Math.max(1, Math.min(newPage, totalPages)));
-  };
-
-  // Scroll to top when currentPage changes
-  useEffect(() => {
-    animate(window.scrollY, 0, {
-      duration: 0.5,
-      onUpdate: (value) => window.scrollTo(0, value),
-    });
-  }, [currentPage]);
+  totalPages,
+}: {
+  currentPage: number;
+  totalPages: number;
+}) {
+  const prevPage = Math.max(1, currentPage - 1);
+  const nextPage = Math.min(totalPages, currentPage + 1);
 
   return (
     <div className="flex items-center justify-center gap-4 py-6 text-gray-700 dark:text-gray-300">
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className="flex items-center gap-2 cursor-pointer"
-      >
-        <ChevronLeft className="h-4 w-4" />
-        Previous
-      </Button>
+      <Form action="/">
+        <input type="hidden" name="page" value={prevPage} />
+        <Button
+          variant="outline"
+          size="sm"
+          type="submit"
+          disabled={currentPage === 1}
+          className="flex items-center gap-2 cursor-pointer"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          Previous
+        </Button>
+      </Form>
 
       <div className="text-sm">
         Page{' '}
@@ -50,16 +39,19 @@ export default function Pagination({
         <span className="font-medium">{totalPages}</span>
       </div>
 
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className="flex items-center gap-2 cursor-pointer"
-      >
-        Next
-        <ChevronRight className="h-4 w-4" />
-      </Button>
+      <Form action="/">
+        <input type="hidden" name="page" value={nextPage} />
+        <Button
+          variant="outline"
+          size="sm"
+          type="submit"
+          disabled={currentPage === totalPages}
+          className="flex items-center gap-2 cursor-pointer"
+        >
+          Next
+          <ChevronRight className="h-4 w-4" />
+        </Button>
+      </Form>
     </div>
   );
 }

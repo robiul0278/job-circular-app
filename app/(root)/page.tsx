@@ -1,39 +1,32 @@
-"use client";
 
 import { ChevronRight } from "lucide-react";
-import { useGetAllJobsQuery } from "@/redux/api/api";
-import { useSearchParams } from "next/navigation";
 import JobCard from "@/components/JobCard";
-
-import JobCardSkeleton from "@/components/JobCardSkeleton";
-import ErrorMessage from "@/components/ErrorMessage";
-import { useState } from "react";
 import Hero from "@/components/Hero";
 import Pagination from "@/components/Pagination";
-
 import { TJobCircular } from "@/types/types";
 import Technology from "@/components/Technology";
 import NoticeMarquee from "@/components/NoticeMarquee";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
+import { getAllJobQuery } from "@/lib/api";
 
-export default function Home() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query") || "";
-  const [currentPage, setCurrentPage] = useState(1);
+export default async function Home({ searchParams }: {
+  searchParams: Promise<{ query?: string; page?: string }>
+}) {
 
-  const params = {
-    ...(query && { searchTerm: query }),
-    page: currentPage,
-  };
+  const resolvedParams = await searchParams;
 
-  // Redux Toolkit 
-  const { data: posts, isLoading, isError } = useGetAllJobsQuery(
-    params,
-    { refetchOnMountOrArgChange: false }
-  );
+  const query = resolvedParams.query;
+  const currentPage = parseInt(resolvedParams.page || '1');
 
-  if (isError) return <ErrorMessage />;
+  const params = new URLSearchParams();
+
+  if (query) {
+    params.set("searchTerm", query);
+  }
+  params.set("page", resolvedParams.page || "1");
+
+  const jobs = await getAllJobQuery(params.toString());
 
   return (
     <>
@@ -49,31 +42,21 @@ export default function Home() {
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">
             <ul className="grid grid-cols-1 gap-4">
-              {isLoading ? (<JobCardSkeleton/>) :  (
-                posts.data.result.map((post: TJobCircular, index: number) => (
-                  <JobCard key={index} post={post} index={index} />
-                ))
-              )}
+              {jobs.result.map((post: TJobCircular, index: number) => (
+                <JobCard key={index} post={post} index={index} />
+              ))
+              }
             </ul>
-            <Pagination totalPages={posts?.data.meta.totalPage} currentPage={currentPage} setCurrentPageAction={setCurrentPage} />
+            <Pagination totalPages={jobs?.meta.totalPage} currentPage={currentPage} />
           </div>
-          {/* Right: Google AdSense or Placeholder */}
+          {/* Right */}
           <aside className="lg:col-span-3 space-y-2">
-
             <Telegram />
             <Categories />
             <Technology />
-
-            {/* AdSense Script or Placeholder */}
-            {/* Replace below with actual AdSense code */}
-            {/* <div className="bg-gray-100 border border-gray-300 rounded-lg h-96 flex items-center justify-center text-gray-700 dark:text-gray-300">
-              <span>Google AdSense Ad</span>
-            </div> */}
-
           </aside>
         </div>
       </section>
-
     </>
   );
 }

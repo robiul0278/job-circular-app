@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useGetAllJobsQuery } from "@/redux/api/api";
-import ErrorMessage from "@/components/ErrorMessage";
 import { TJobCircular } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/utils/format-date";
@@ -24,13 +23,12 @@ export default function CircularTabs() {
         limit: 5,
     };
 
-    const { data: circular, isLoading, isError } = useGetAllJobsQuery(params);
+    const { data: circular, isLoading} = useGetAllJobsQuery(params);
 
     const categories = circular?.data.categoryCount;
     const Jobs = circular?.data.result;
 
     if (isLoading) return <TabsSkeleton />;
-    if (isError) return <ErrorMessage />;
 
     return (
         <Tabs value={tabValue} onValueChange={setTabValue} className=" mx-auto border shadow p-4">

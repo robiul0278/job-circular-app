@@ -24,7 +24,6 @@ import {
   ListEnd,
   Loader2,
 } from "lucide-react";
-import ErrorMessage from "@/components/ErrorMessage";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
 import {  TGenericErrorResponse, TJobCircular } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
@@ -52,11 +51,10 @@ export default function AllCircularPage() {
     searchTerm: searchTerm,
   };
   const [DeleteJob] = useDeleteJobMutation()
-  const { data, isLoading, isError } = useGetAllJobsQuery(params);
+  const { data, isLoading } = useGetAllJobsQuery(params);
 
 
   if (isLoading) return <Loader2 />;
-  if (isError) return <ErrorMessage />;
 
 
   const tableData = data?.data.result;
@@ -262,7 +260,7 @@ export default function AllCircularPage() {
                 </SelectContent>
               </Select>
             </div>
-            <Pagination totalPages={data?.data.meta.totalPage} currentPage={currentPage} setCurrentPageAction={setCurrentPage} />
+            <Pagination totalPages={data?.data.meta.totalPage} currentPage={currentPage}/>
           </div>
         </CardContent>
       </Card>

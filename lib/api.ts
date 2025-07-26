@@ -1,15 +1,38 @@
-export async function getSingleJob(id: string) {
-  try {
-    const res = await fetch(`https://job-circular-server.vercel.app/api/v1/jobs/single/${id}`, {
-      cache: "no-store", // SSR fresh data
-    });
+import { notFound } from "next/navigation";
 
-    if (!res.ok) return null;
+//Get Single Job Details
+export async function getAllJobQuery(params: string) {
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
 
-    const json = await res.json();
-    return json.data;
-  } catch (err) {
-    console.error("Error fetching single job:", err);
-    return null;
+  const res = await fetch(`${BASE_URL}/jobs?${params}`);
+
+  if (res.status === 404) {
+    return notFound();
   }
+  if (!res.ok) {
+    throw new Error("আমরা সার্কুলার লোড করতে পারছি না। দয়া করে আবার চেষ্টা করুন।");
+  }
+
+  const json = await res.json();
+  return json.data;
+}
+
+//Get Single Job Details
+export async function getSingleJob(id: string) {
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
+
+  const res = await fetch(`${BASE_URL}/jobs/single/${id}`, {
+    cache: "no-store",
+  });
+
+  if (res.status === 404) {
+    return notFound();
+  }
+
+  if (!res.ok) {
+    throw new Error("আমরা সার্কুলারটি লোড করতে পারছি না। দয়া করে আবার চেষ্টা করুন।");
+  }
+
+  const json = await res.json();
+  return json.data;
 }

@@ -31,7 +31,7 @@ const JobCard = ({ post, index }: { post: TJobCircular; index: number }) => {
   return (
     <li className="list-none w-full px-2 lg:p-0">
       <Link
-        href={`/circular/${slug}`}
+        href={`/job/${slug}`}
         className="block group"
         aria-label={`View details for ${title}`}
       >
@@ -64,8 +64,8 @@ const JobCard = ({ post, index }: { post: TJobCircular; index: number }) => {
               </div>
 
               <div className="mt-3 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                <div className="flex items-center gap-2">
-                  <Timer className="size-4 text-gray-500 dark:text-gray-400" />
+                <div className="flex items-center gap-2 text-yellow-600">
+                  <Timer className="size-4" />
                   <span>আবেদনের শেষ তারিখঃ {formatDate(deadline)}</span>
                 </div>
                 <div className="flex items-center gap-2">

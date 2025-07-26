@@ -2,21 +2,33 @@
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { formatQuery } from "@/utils/utils";
-import CategoriesSkeleton from "./CategoriesSkeleton";
-import ErrorMessage from "./ErrorMessage";
 import { useGetAllJobsQuery } from "@/redux/api/api";
+import { Skeleton } from "./ui/skeleton";
 
 type ITechnology = {
   technology: string;
   count: number;
 }
 const Technology = () => {
-  const { data: technology, isLoading, isError } = useGetAllJobsQuery(undefined);
+  const { data: technology, isLoading } = useGetAllJobsQuery(undefined);
 
   const jobCategories = technology?.data.technologyCount
 
-  if (isLoading) return <CategoriesSkeleton />;
-  if (isError) return <ErrorMessage />;
+  if (isLoading) {
+    return (
+            <div className="rounded-md border bg-card p-4">
+        <p className="text-sm font-medium text-muted-foreground mb-3">JOB BY TECHNOLOGY</p>
+        <div className="space-y-2">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="flex items-center justify-between">
+              <Skeleton className="h-4 w-40" />
+              <Skeleton className="h-6 w-6 rounded-full" />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
 
 
   return (

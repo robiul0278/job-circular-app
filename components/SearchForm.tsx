@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import Form from 'next/form'
 import SearchFormReset from './SearchFormReset';
 
-const SearchForm = ({query}: {query: string}) => {
+const SearchForm = ({query}: {query?: string}) => {
 
   return (
     <Form
@@ -34,4 +34,4 @@ const SearchForm = ({query}: {query: string}) => {
   )
 }
 
-export default SearchForm
+export default SearchForm;

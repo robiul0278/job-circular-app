@@ -1,35 +1,38 @@
-"use client";
 
-import { ChevronRight} from "lucide-react";
-import { useGetAllJobsQuery } from "@/redux/api/api";
-import { useSearchParams } from "next/navigation";
+import { ChevronRight } from "lucide-react";
 import JobCard from "@/components/JobCard";
-import JobCardSkeleton from "@/components/JobCardSkeleton";
-import ErrorMessage from "@/components/ErrorMessage";
-import { useState } from "react";
 import Pagination from "@/components/Pagination";
 import { formatQuery } from "@/utils/utils";
 import { TJobCircular } from "@/types/types";
 import Technology from "@/components/Technology";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
+import { getAllJobQuery } from "@/lib/api";
 
-export default function JobCategoryPage() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query") || "";
-  const [currentPage, setCurrentPage] = useState(1); 
+export default async function JobCategoryPage({ searchParams }: {
+  searchParams: Promise<{ query?: string; page?: string }>
+}) {
 
+  const resolvedParams = await searchParams;
 
-const specialCategories = ['government', 'private', 'autonomous'];
+  const query = resolvedParams.query;
+  const currentPage = parseInt(resolvedParams.page || '1');
 
-const params = {
-  ...(specialCategories.includes(query) ? { categories: query } : { technology: query }),
-  page: currentPage,
-};
+  const specialCategories = ['government', 'private', 'autonomous'];
 
-  // Redux Toolkit 
-  const { data: posts, isLoading, isError } = useGetAllJobsQuery(params);
-  if (isError) return <ErrorMessage />;
+  const urlParams = new URLSearchParams();
+
+  if (query) {
+    if (specialCategories.includes(query)) {
+      urlParams.set("categories", query);
+    } else {
+      urlParams.set("technology", query);
+    }
+  }
+
+  urlParams.set("page", currentPage.toString());
+
+  const jobs = await getAllJobQuery(urlParams.toString());
 
 
   return (
@@ -52,27 +55,18 @@ const params = {
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">
             <ul className="grid grid-cols-1 gap-4">
-              {isLoading ? (
-                Array.from({ length: 6 }).map((_, i) => (
-                  <JobCardSkeleton key={i} />
-                ))
-              ) : posts?.data.result.length > 0 ? (
-                posts.data.result.map((post: TJobCircular, index: number) => (
-                  <JobCard key={index} post={post} index={index} />
-                ))
-              ) : (
-                <p className="text-center  text-gray-500 dark:text-gray-400 col-span-full">
-                  No job found
-                </p>
-              )}
+              {jobs.result.map((post: TJobCircular, index: number) => (
+                <JobCard key={index} post={post} index={index} />
+              ))
+              }
             </ul>
-            <Pagination totalPages={posts?.data.meta.totalPage} currentPage={currentPage} setCurrentPageAction={setCurrentPage} />
+            <Pagination totalPages={jobs.meta.totalPage} currentPage={currentPage} />
           </div>
           {/* Right: Google AdSense or Placeholder */}
           <aside className="lg:col-span-3 space-y-2">
- <Telegram />
+            <Telegram />
             <Categories />
-            <Technology/>
+            <Technology />
 
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}

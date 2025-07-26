@@ -44,7 +44,7 @@ const BookmarkButton = ({ jobId }: Props) => {
 
   const toggleBookmark = async () => {
     if (!userId) {
-      toast.error("User not logged in!");
+    toast.error("অনুগ্রহ করে আগে লগইন করুন!");
       return;
     }
 

@@ -67,6 +67,16 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["jobs"]
     }),
+    analytics: builder.query({
+      query: () => {
+        return {
+          url: `/jobs/analytics`,
+          method: "GET",
+        }
+      },
+      providesTags: ["jobs"]
+    }),
+    //Auth route
     registerUser: builder.mutation({
       query: (data) => {
         // console.log(data);
@@ -163,5 +173,6 @@ export const {
   //Notice
   useAddNoticeMutation,
   useAllNoticeQuery,
-
+  //Dashboard analytics
+  useAnalyticsQuery,
 } = baseApi;

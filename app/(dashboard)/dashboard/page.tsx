@@ -1,14 +1,44 @@
+"use client"
+
 import OverviewCharts from "@/components/dashboard/OverviewCharts";
 import StatsCard from "@/components/dashboard/StatsCard";
+import { useAnalyticsQuery } from "@/redux/api/api";
 import {
   FileText,
   Clock,
   AlertTriangle,
   Eye,
-  TrendingUp
+  Loader,
 } from "lucide-react";
 
 const Home = () => {
+  const { data: analytics, isLoading, isError } = useAnalyticsQuery(undefined);
+
+
+
+  if (isLoading) return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-2">
+      <Loader />
+      <p className="text-sm text-muted-foreground">Analytics বিস্তারিত লোড হচ্ছে...</p>
+    </div>
+
+  );
+  if (isError) return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-2">
+      <p className="text-red-500">Failed to load Analytics details.</p>;
+    </div>
+  );
+
+  const {
+    totalCirculars,
+    ongoingCirculars,
+    nearDeadlineCirculars,
+    totalViews,
+    // monthlyTrend,
+    // categoryWiseCount,
+    // weeklyTrend,
+  } = analytics.data;
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -25,51 +55,36 @@ const Home = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         <StatsCard
           title="মোট সার্কুলার"
-          value="২৪৮"
+          value={totalCirculars}
           description="সর্বমোট প্রকাশিত সার্কুলার"
           icon={FileText}
           trend="up"
-          trendValue="+১২%"
           className="xl:col-span-2"
         />
-
-        <StatsCard
-          title="আজকের নতুন"
-          value="৮"
-          description="আজ প্রকাশিত নতুন সার্কুলার"
-          icon={TrendingUp}
-          trend="up"
-          trendValue="+৩৫%"
-          className="xl:col-span-1"
-        />
-
         <StatsCard
           title="চলমান সার্কুলার"
-          value="১৫৬"
+          value={ongoingCirculars}
           description="বর্তমানে সক্রিয় সার্কুলার"
           icon={Clock}
           trend="neutral"
-          trendValue="স্থিতিশীল"
           className="xl:col-span-1"
         />
 
         <StatsCard
           title="ডেডলাইনের কাছাকাছি"
-          value="২৩"
+          value={nearDeadlineCirculars}
           description="৭ দিনের মধ্যে শেষ হবে"
           icon={AlertTriangle}
           trend="down"
-          trendValue="-৮%"
           className="xl:col-span-1"
         />
 
         <StatsCard
-          title="সর্বাধিক ভিউ"
-          value="৩২,৪৫০"
-          description="এই মাসের মোট ভিউ"
+          title="মোট ভিউ"
+          value={totalViews}
+          description="সর্বাধিক ভিউ"
           icon={Eye}
           trend="up"
-          trendValue="+২৮%"
           className="xl:col-span-1"
         />
       </div>

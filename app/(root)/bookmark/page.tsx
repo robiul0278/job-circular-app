@@ -39,9 +39,10 @@ export default function BookmarkPage() {
 
   if (!user?._id) {
     return (
-      <div className="flex items-center justify-center h-[70vh]">
-        <p className="text-lg text-gray-500">Please login to view your saved jobs.</p>
-      </div>
+<div className="flex items-center justify-center h-[70vh]">
+  <p className="text-lg text-gray-500">সংরক্ষিত চাকরিগুলো দেখতে হলে অনুগ্রহ করে লগইন করুন।</p>
+</div>
+
     );
   }
 

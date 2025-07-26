@@ -33,7 +33,7 @@ const Hero = ({ query }: { query: string }) => {
           variants={itemVariants}
           className="text-3xl sm:text-4xl font-bold text-gray-900"
         >
-         <span className="text-slate-700 dark:text-slate-300">“শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির খবর”</span>
+         <span className="text-slate-700 dark:text-slate-300">“একই জায়গায় ডিপ্লোমা ইঞ্জিনিয়ারদের সব চাকরির সার্কুলার”</span>
         </motion.h1>
         <motion.p
           variants={itemVariants}

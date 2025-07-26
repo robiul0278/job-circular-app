@@ -43,7 +43,6 @@ export default function StatsCard({
             )}>
               {trendValue}
             </span>
-            <span className="text-slate-500 ml-1">গত সপ্তাহ থেকে</span>
           </div>
         )}
       </CardContent>

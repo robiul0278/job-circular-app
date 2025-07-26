@@ -1,7 +1,7 @@
 import {CheckCircle, FileText, Scale, Shield, XCircle } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function TermsOfServicePage() {
+export default async function TermsOfServicePage() {
   return (
     <div className="max-w-5xl mx-auto px-4  py-12">
       {/* Hero Section */}

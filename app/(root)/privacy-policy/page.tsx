@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, FileText,Lock, Shield, Users } from "lucide-react";
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Hero Section */}

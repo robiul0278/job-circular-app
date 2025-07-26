@@ -13,7 +13,7 @@ type TTimeTable = {
     deadline: string;
 }
 
-export default function JobCircularTimeTable({published,applyStart,deadline}:TTimeTable) {
+export default async function JobCircularTimeTable({published,applyStart,deadline}:TTimeTable) {
     return (
         <div className="">
             <h3 className="flex items-center text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -51,7 +51,7 @@ export default function JobCircularTimeTable({published,applyStart,deadline}:TTi
                             <Hourglass className="w-4 h-4 animate-pulse" />
                             <span className="font-medium">আবেদন শেষ হতেঃ</span>
                         </TableCell>
-                        <TableCell className="text-right font-medium text-amber-500">{deadlineCountdown(deadline)}</TableCell>
+                        <TableCell className="text-right font-medium text-amber-600">{deadlineCountdown(deadline)}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

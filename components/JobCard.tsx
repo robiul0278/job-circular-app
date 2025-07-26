@@ -1,5 +1,3 @@
-'use client';
-
 import { TJobCircular } from "@/types/types";
 import { formatDate } from "@/utils/format-date";
 import { timeAgo } from "@/utils/format-time";
@@ -15,7 +13,8 @@ import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { categoryToBangla } from "@/utils/utils";
 
-const JobCard = ({ post, index }: { post: TJobCircular; index: number }) => {
+const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) => {
+
   const {
     slug,
     title,
@@ -55,7 +54,7 @@ const JobCard = ({ post, index }: { post: TJobCircular; index: number }) => {
           {/* Right Content */}
           <div className="relative flex flex-col sm:w-2/3 p-4">
             <div className="flex-1 pb-14">
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 group-hover:text-green-700 transition-colors">
+              <h3 className="text-lg font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {title}
               </h3>
               <div className="text-sm font-medium text-green-600 dark:text-green-400 flex items-center gap-1 mt-1">

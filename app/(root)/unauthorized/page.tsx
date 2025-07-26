@@ -1,11 +1,9 @@
-'use client';
 
 import { Button } from '@/components/ui/button';
 import { ShieldOff } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-const Unauthorized = () => {
-  const router = useRouter();
+const Unauthorized = async () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-muted/40">
@@ -18,9 +16,11 @@ const Unauthorized = () => {
           You do not have permission to view this page.
         </p>
 
-        <Button className="mt-6 w-full cursor-pointer" onClick={() => router.push('/')}>
-          Go Back to Home
-        </Button>
+        <Link href='/'>
+          <Button className="mt-6 w-full cursor-pointer">
+            Go Back to Home
+          </Button>
+        </Link>
       </div>
     </div>
   );

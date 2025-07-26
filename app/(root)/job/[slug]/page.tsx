@@ -12,13 +12,13 @@ import { formatQuery } from "@/utils/utils";
 import CircularTime from "@/components/CircularTime";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MarkdownPreview } from "@/components/MarkdownPreview";
 import Image from "next/image";
 import Telegram from "@/components/Telegram";
 import Technology from "@/components/Technology";
 import Categories from "@/components/Categories";
-import CircularTabs from "@/components/CircularTabs";
 import { getSingleJob } from "@/lib/api";
+import ShowMoreJobs from "@/components/ShowMoreJobs";
+import MarkdownPreview from "@/components/MarkdownPreview";
 
 const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const slug = (await params).slug;
@@ -51,7 +51,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
                 <CardTitle className="text-lg md:text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
                 <div className="hidden lg:flex md:flex"><BookmarkButton jobId={_id} /></div>
               </div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <div className="text-sm font-medium text-green-600">
                 {companyName}
               </div>
             </CardHeader>
@@ -102,14 +102,14 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
                   ))}
                 </div>
               )}
-              <Link href={websiteLink} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full cursor-pointer" size="lg" variant="outline">
-                  বিস্তারিত জানতে ও ফরম ডাউনলোড করতে ভিজিট করুন
+              <Link href={websiteLink} target="_blank" rel="noopener noreferrer" className="flex justify-end">
+                <Button className="bg-amber-600 cursor-pointer" size="default">
+                  Apply করতে বা বিস্তারিত জানতে ভিজিট করুন । 
                 </Button>
               </Link>
             </CardContent>
           </Card>
-          <CircularTabs />
+          <ShowMoreJobs />
 
         </div>
 
@@ -119,9 +119,6 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
           <Telegram />
           <Categories />
           <Technology />
-          {/* <div className="bg-gray-100 border border-gray-300 rounded-lg h-96 flex items-center justify-center text-gray-700 dark:text-gray-300">
-          <span>Google AdSense Ad</span>
-        </div> */}
         </aside>
       </div>
 

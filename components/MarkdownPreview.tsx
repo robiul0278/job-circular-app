@@ -1,4 +1,3 @@
-'use client';
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -12,7 +11,7 @@ interface MarkdownPreviewProps {
   className?: string;
 }
 
-export function MarkdownPreview({ description, className = '' }: MarkdownPreviewProps) {
+export default async function MarkdownPreview({ description, className = '' }: MarkdownPreviewProps) {
   function getImageSrc(src: string | Blob | undefined): string {
     if (!src) return '';
     return typeof src === 'string' ? src : URL.createObjectURL(src);

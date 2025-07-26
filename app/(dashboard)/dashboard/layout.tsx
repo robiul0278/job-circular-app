@@ -1,7 +1,7 @@
 'use client';
 
 import DarkButton from '@/components/DarkButton';
-import { MobileSidebar, Sidebar } from '@/components/Sidebar';
+import { MobileSidebar, Sidebar } from '@/components/dashboard/Sidebar';
 import PrivateRoute from '@/components/PrivateRoute';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';

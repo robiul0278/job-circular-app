@@ -4,32 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import Head from "next/head";
 
-export default function AboutPage() {
+export default async function AboutPage() {
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Diploma Jobs BD",
-              "url": "https://diplomajobsbd.com",
-              "logo": "https://diplomajobsbd.com/logo.png",
-              "sameAs": [
-                "https://facebook.com/diplomajobsbd",
-                "https://t.me/diplomajobsbd"
-              ],
-              "description":
-                "Diploma Jobs BD is a professional job portal built for diploma engineers in Bangladesh, providing the latest govt and private job circulars."
-            })
-          }}
-        />
-      </Head>
-
       <section className="max-w-5xl mx-auto px-4 py-16">
         <div className="mb-14 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary">About Diploma Jobs BD</h1>

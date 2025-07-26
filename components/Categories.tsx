@@ -1,9 +1,7 @@
-"use client";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { categoryToBangla } from "@/utils/utils";
-import { useGetAllJobsQuery } from "@/redux/api/api";
-import { Skeleton } from "./ui/skeleton";
+import { JobCategories } from "@/lib/api";
 
 type ICategory = {
   category: string;
@@ -11,33 +9,17 @@ type ICategory = {
 };
 
 
-const Categories = () => {
-  const { data: circular, isLoading } = useGetAllJobsQuery(undefined);
+const Categories = async () => {
 
-  const categories = circular?.data.categoryCount;
+  const {category} = await JobCategories();
 
-  if (isLoading) {
-    return (
-      <div className="rounded-md border bg-card p-4">
-        <p className="text-sm font-medium text-muted-foreground mb-3">JOB BY CATEGORY</p>
-        <div className="space-y-2">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="flex items-center justify-between">
-              <Skeleton className="h-4 w-32" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
       <h4 className="font-semibold text-sm uppercase flex items-center dark:text-gray-100 p-2">
         Job by Category
       </h4>
       <div>
-        {categories?.map((data: ICategory, index: number) => (
+        {category?.map((data: ICategory, index: number) => (
           <Link
             key={index}
             href={`/categories?query=${data.category}`}

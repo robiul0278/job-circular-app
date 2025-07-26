@@ -20,9 +20,9 @@ import Categories from "@/components/Categories";
 import CircularTabs from "@/components/CircularTabs";
 import { getSingleJob } from "@/lib/api";
 
-const JobDetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const id = (await params).id;
-  const singleJob = await getSingleJob(id);
+const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const slug = (await params).slug;
+  const singleJob = await getSingleJob(slug);
 
   const {
     _id,

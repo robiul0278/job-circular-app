@@ -1,35 +1,14 @@
-"use client"
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { formatQuery } from "@/utils/utils";
-import { useGetAllJobsQuery } from "@/redux/api/api";
-import { Skeleton } from "./ui/skeleton";
+import { JobCategories } from "@/lib/api";
 
 type ITechnology = {
   technology: string;
   count: number;
 }
-const Technology = () => {
-  const { data: technology, isLoading } = useGetAllJobsQuery(undefined);
-
-  const jobCategories = technology?.data.technologyCount
-
-  if (isLoading) {
-    return (
-            <div className="rounded-md border bg-card p-4">
-        <p className="text-sm font-medium text-muted-foreground mb-3">JOB BY TECHNOLOGY</p>
-        <div className="space-y-2">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="flex items-center justify-between">
-              <Skeleton className="h-4 w-40" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
-
+const Technology = async () => {
+const {technology} = await JobCategories();
 
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
@@ -38,7 +17,7 @@ const Technology = () => {
       </h4>
 
       <div>
-        {jobCategories?.map((category: ITechnology, index: number) => (
+        {technology?.map((category: ITechnology, index: number) => (
           <Link
             key={index}
             href={`/categories?query=${category.technology}`}

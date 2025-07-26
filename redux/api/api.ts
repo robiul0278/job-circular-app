@@ -131,6 +131,7 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["bookmark"]
     }),
+    // Notice
     addNotice: builder.mutation({
       query: (data) => {
         // console.log(data);

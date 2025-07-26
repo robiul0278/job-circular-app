@@ -1,10 +1,9 @@
-'use client';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Form from 'next/form';
 
-export default function PaginationForm({
+export default async function PaginationForm({
   currentPage,
   totalPages,
 }: {

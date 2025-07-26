@@ -8,6 +8,8 @@ export default function NoticeMarquee() {
   const { data: notice, isLoading } = useAllNoticeQuery(undefined);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  console.log(notice);
+
   const notices = useMemo(() => notice?.data || [], [notice]);
   const combined = [...notices, ...notices]; // duplicate for seamless
 

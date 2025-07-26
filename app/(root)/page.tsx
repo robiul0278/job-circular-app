@@ -15,7 +15,6 @@ export default async function Home({ searchParams }: {
 }) {
 
   const resolvedParams = await searchParams;
-
   const query = resolvedParams.query;
   const currentPage = parseInt(resolvedParams.page || '1');
 

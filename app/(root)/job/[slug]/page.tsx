@@ -20,6 +20,8 @@ import { getSingleJob } from "@/lib/api";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
 import MarkdownPreview from "@/components/MarkdownPreview";
 
+export const dynamic = "force-static";
+
 const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const slug = (await params).slug;
   const singleJob = await getSingleJob(slug);

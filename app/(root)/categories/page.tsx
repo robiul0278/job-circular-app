@@ -14,7 +14,6 @@ export default async function JobCategoryPage({ searchParams }: {
 }) {
 
   const resolvedParams = await searchParams;
-
   const query = resolvedParams.query;
   const currentPage = parseInt(resolvedParams.page || '1');
 

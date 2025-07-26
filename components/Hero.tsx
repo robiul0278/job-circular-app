@@ -1,5 +1,7 @@
 import SearchForm from "./SearchForm";
 
+export const dynamic = "force-static";
+
 const Hero = ({ query }: { query?: string;}) => {
 
   return (

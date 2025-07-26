@@ -13,6 +13,8 @@ import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { categoryToBangla } from "@/utils/utils";
 
+export const dynamic = "force-static";
+
 const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) => {
 
   const {

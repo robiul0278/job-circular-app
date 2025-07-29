@@ -10,7 +10,7 @@ export default function Error({
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
-      <h1 className="text-3xl font-bold text-red-600">😥 কিছু ভুল হয়েছে</h1>
+      <h1 className="text-3xl font-bold text-red-600">😥 কিছু ভুল হয়েছে [JOBS]</h1>
       <p className="mt-3 text-green-600">
         {error.message}
       </p>

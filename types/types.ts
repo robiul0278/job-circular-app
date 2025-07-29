@@ -1,4 +1,4 @@
-export type Categories = "government" | "private" | "news" | "suggestion";
+export type Categories = "government" | "private" | "autonomous" 
 
 export type TJobCircular = {
   _id: string;
@@ -7,7 +7,7 @@ export type TJobCircular = {
   companyName: string;
   banner: string;
   images: string[];
-  vacancy: number;
+  vacancy: string;
   websiteLink: string;
   published: string;
   applyStart: string;

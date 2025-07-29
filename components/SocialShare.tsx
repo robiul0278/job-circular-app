@@ -1,0 +1,38 @@
+"use client"
+import {
+    FacebookShareButton,
+    WhatsappShareButton,
+    LinkedinShareButton,
+    TelegramShareButton,
+    FacebookIcon,
+    WhatsappIcon,
+    LinkedinIcon,
+    TelegramIcon,
+} from "react-share";
+
+const SocialShare = ({ title, slug }: { title: string; slug: string }) => {
+    const slugs = decodeURIComponent(slug);
+    return (
+        <div className="mt-6">
+            <h3 className="text-sm font-medium mb-2">শেয়ার করুন:</h3>
+            <div className="flex gap-4 items-center">
+                {[FacebookShareButton, WhatsappShareButton, TelegramShareButton, LinkedinShareButton].map((ShareBtn, idx) => {
+                    const Icon = [FacebookIcon, WhatsappIcon, TelegramIcon, LinkedinIcon][idx];
+                    return (
+                        <ShareBtn
+                            key={idx}
+                            url={`http://localhost:3000/circular/${slugs}`}
+                            title={title}
+                            className="transition-transform hover:scale-110 hover:shadow-lg rounded-full"
+                        >
+                            <Icon size={40} round />
+                        </ShareBtn>
+                    );
+                })}
+            </div>
+
+        </div>
+    )
+}
+
+export default SocialShare;

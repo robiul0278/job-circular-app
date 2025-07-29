@@ -18,7 +18,7 @@ import { toast } from "sonner";
 
 
 export default function NoticePage() {
-    const [Post] = useAddNoticeMutation();
+    const [Post, {isLoading}] = useAddNoticeMutation();
 
     const form = useForm<TNotice>({
         defaultValues: {
@@ -31,6 +31,7 @@ export default function NoticePage() {
             const res = await Post(data).unwrap();
             if (res.statusCode === 200) {
                 toast.success(res.message);
+                 form.reset();
             }
         } catch (error: unknown) {
             console.log(error);
@@ -64,7 +65,7 @@ export default function NoticePage() {
                                     <Textarea
                                         {...field}
                                         placeholder="এখানে নোটিশ লিখুন..."
-                                        rows={10}
+                                        rows={5}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -72,7 +73,7 @@ export default function NoticePage() {
                         )}
                     />
                     <div className="flex justify-end">
-                        <Button className="cursor-pointer" type="submit">পোস্ট করুন</Button>
+                        <Button variant="outline" disabled={isLoading} className="cursor-pointer" type="submit">পোস্ট করুন</Button>
                     </div>
                 </form>
             </Form>

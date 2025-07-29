@@ -1,18 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import {
+  Control,
+  FieldPath,
+  FieldValues,
+  useWatch,
+  useController,
+} from "react-hook-form";
+import {
   FormField,
   FormItem,
+  FormLabel,
   FormControl,
   FormMessage,
-} from "../ui/form";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { Control, FieldPath, FieldValues } from "react-hook-form";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 
 type ImageUploadInputProps<T extends FieldValues> = {
   control: Control<T>;
@@ -27,81 +34,89 @@ export default function ImageUploadInput<T extends FieldValues>({
   label = "Upload Image",
   onUpload,
 }: ImageUploadInputProps<T>) {
-  const [preview, setPreview] = useState<string | null>(null);
-  const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
+  const { field } = useController({ control, name });
+  const watchedValue = useWatch({ control, name });
+
+  const [preview, setPreview] = useState<string | null>(watchedValue || null);
+  const [uploadedUrl, setUploadedUrl] = useState<string | null>(watchedValue || null);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+  if (watchedValue) {
+    setPreview(watchedValue);
+    setUploadedUrl(watchedValue);
+  }
+}, [watchedValue]);
+
+  const handleUpload = async (file: File) => {
+    setError(null);
+    setIsUploading(true);
+    const localPreview = URL.createObjectURL(file);
+    setPreview(localPreview);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET!);
+    formData.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!);
+
+    try {
+      const res = await axios.post(
+        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        formData
+      );
+      const url = res.data.secure_url;
+      setUploadedUrl(url);
+      field.onChange(url);
+      onUpload?.(url);
+    } catch (err) {
+      console.error(err);
+      setError("Failed to upload image. Try again.");
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   return (
     <FormField
       control={control}
       name={name}
-      render={({ field }) => (
+      render={() => (
         <FormItem className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor={name}>{label}</Label>
+            <FormLabel>{label}</FormLabel>
             <FormControl>
               <Input
-                id={name}
                 type="file"
                 accept="image/*"
                 disabled={isUploading}
-                onChange={async (e) => {
+                onChange={(e) => {
                   const file = e.target.files?.[0];
-                  if (!file) return;
-
-                  setError(null);
-                  setIsUploading(true);
-                  setPreview(URL.createObjectURL(file));
-
-                  const data = new FormData();
-                  data.append("file", file);
-                  data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET!);
-                  data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!);
-
-                  try {
-                    const res = await axios.post(
-                      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-                      data
-                    );
-
-                    const url = res.data.secure_url;
-                    setUploadedUrl(url);
-                    field.onChange(url); // ✅ set Cloudinary URL into RHF
-                    onUpload?.(url);     // optional callback
-                  } catch (err) {
-                    console.error(err);
-                    setError("Failed to upload image. Try again.");
-                  } finally {
-                    setIsUploading(false);
-                  }
+                  if (file) handleUpload(file);
                 }}
               />
             </FormControl>
             <FormMessage />
-            {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
+            {error && <p className="text-sm text-red-500">{error}</p>}
 
-                      {/* Show uploaded URL */}
-          {uploadedUrl && (
-            <div className="space-y-2 mt-4">
-              <Label>আপলোড করা ছবি লিঙ্কঃ </Label>
-              <div className="flex items-center gap-2">
-                <Input readOnly value={uploadedUrl} />
-                <Button
-                  type="button"
-                  size="sm"
-                  variant="outline"
-                  className="cursor-pointer"
-                  onClick={() => navigator.clipboard.writeText(uploadedUrl)}
-                >
-                  Copy
-                </Button>
+            {uploadedUrl && (
+              <div className="space-y-2 mt-4">
+                <Label>আপলোড করা ছবি লিঙ্কঃ</Label>
+                <div className="flex items-center gap-2">
+                  <Input readOnly value={uploadedUrl} />
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => navigator.clipboard.writeText(uploadedUrl)}
+                  >
+                    Copy
+                  </Button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
           </div>
 
-          {/* Preview */}
           {preview && (
             <div className="mt-4">
               <Image

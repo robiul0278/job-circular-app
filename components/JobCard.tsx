@@ -46,8 +46,8 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
               className="w-full h-full p-2 rounded-2xl"
             />
             <Badge
-              variant="destructive"
-              className="absolute top-3 right-3 rounded-md"
+              variant="outline"
+              className="absolute top-3 right-3 text-white"
             >{categoryToBangla(categories)}</Badge>
           </div>
 
@@ -63,13 +63,15 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
               </div>
 
               <div className="mt-3 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                <div className="flex items-center gap-2 text-yellow-600">
+                <div className="flex items-center gap-2 text-red-800">
                   <Timer className="size-4" />
                   <span>আবেদনের শেষ তারিখঃ {formatDate(deadline)}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="size-4 text-gray-500 dark:text-gray-400" />
-                  <span>ডিপ্লোমা শূন্যপদঃ ({vacancy} জন)</span>
+                  <span>
+                    ডিপ্লোমা শূন্যপদঃ <strong>{vacancy}</strong> টি
+                  </span>
                 </div>
               </div>
             </div>

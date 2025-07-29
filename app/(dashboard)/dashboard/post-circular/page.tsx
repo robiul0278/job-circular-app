@@ -12,14 +12,10 @@ export default function PostCircularPage() {
     const [Post] = useCreateJobMutation();
 
     const form = useForm<TJobCircular>({
-        // resolver: zodResolver(PostFormSchema),
         defaultValues: {
             title: "",
             companyName: "",
-            vacancy: 0,
-            websiteLink: "",
-            published: undefined,
-            applyStart: undefined,
+            vacancy: "",
             deadline: undefined,
             technology: [],
             categories: undefined,
@@ -32,7 +28,6 @@ export default function PostCircularPage() {
     const onSubmit = async (data: TJobCircular) => {
         const slug = generateSlug(data.title);
         const payload = { ...data, slug };
-
 
         try {
             const res = await Post(payload).unwrap();

@@ -31,10 +31,20 @@ export const baseApi = createApi({
     }),
     createJob: builder.mutation({
       query: (data) => {
-        console.log(data);
         return {
           url: "/jobs/post-circular",
           method: "POST",
+          body: data,
+        }
+      },
+      invalidatesTags: ["jobs"]
+    }),
+    updateJob: builder.mutation({
+      query: (data) => {
+        console.log(data);
+        return {
+          url: `/jobs/update/${data._id}`,
+          method: "PATCH",
           body: data,
         }
       },
@@ -66,6 +76,15 @@ export const baseApi = createApi({
         }
       },
       invalidatesTags: ["jobs"]
+    }),
+    getCategories: builder.query({
+      query: () => {
+        return {
+          url: `/jobs/categories`,
+          method: "GET",
+        }
+      },
+      providesTags: ["jobs"]
     }),
     analytics: builder.query({
       query: () => {
@@ -161,9 +180,11 @@ export const {
   //job route
   useGetAllJobsQuery,
   useCreateJobMutation,
+  useUpdateJobMutation,
   useGetSingleJobQuery,
   useUpdateViewsMutation,
   useDeleteJobMutation,
+  useGetCategoriesQuery,
   //auth route
   useLoginUserMutation,
   useRegisterUserMutation,

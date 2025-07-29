@@ -33,6 +33,7 @@ export default async function JobCategoryPage({ searchParams }: {
 
   const jobs = await getAllJobQuery(urlParams.toString());
 
+  
 
   return (
     <>
@@ -45,7 +46,7 @@ export default async function JobCategoryPage({ searchParams }: {
         </div>
         <p className="text-2xl font-semibold mb-6 flex items-center">
           {query
-            ? `Results for "Diploma in ${formatQuery(query)}"`
+            ? `Results for "${formatQuery(query)}"`
             : "All Job Circular"}
           {!query && <ChevronRight className="size-6 text-primary" />}
         </p>

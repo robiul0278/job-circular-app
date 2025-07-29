@@ -45,6 +45,7 @@
     "react-hook-form": "^7.59.0",
     "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
+    "react-share": "^5.2.2",
     "recharts": "^3.0.2",
     "redux-persist": "^6.0.0",
     "remark-gfm": "^4.0.1",

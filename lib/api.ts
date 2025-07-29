@@ -40,7 +40,7 @@ export async function getSingleJob(id: string) {
   const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
 
   const res = await fetch(`${BASE_URL}/jobs/single/${id}`, {
-    next: { revalidate: 86400 }, // ১ দিনে একবার রিফ্রেশ হবে
+    cache: "no-store",
   });
 
   if (res.status === 404) {
@@ -59,7 +59,7 @@ export async function getNotice() {
   const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
 
   const res = await fetch(`${BASE_URL}/notice`, {
-     next: { revalidate: 30 },
+     next: { revalidate: 300 },
   });
 
   if (res.status === 404) {

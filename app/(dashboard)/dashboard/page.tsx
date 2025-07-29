@@ -5,8 +5,6 @@ import StatsCard from "@/components/dashboard/StatsCard";
 import { useAnalyticsQuery } from "@/redux/api/api";
 import {
   FileText,
-  Clock,
-  AlertTriangle,
   Eye,
   Loader,
 } from "lucide-react";
@@ -15,13 +13,11 @@ const Home = () => {
   const { data: analytics, isLoading, isError } = useAnalyticsQuery(undefined);
 
 
-
   if (isLoading) return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-2">
       <Loader />
       <p className="text-sm text-muted-foreground">Analytics বিস্তারিত লোড হচ্ছে...</p>
     </div>
-
   );
   if (isError) return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-2">
@@ -31,12 +27,9 @@ const Home = () => {
 
   const {
     totalCirculars,
-    ongoingCirculars,
-    nearDeadlineCirculars,
     totalViews,
-    // monthlyTrend,
-    // categoryWiseCount,
-    // weeklyTrend,
+    monthlyTrend,
+    categoryWiseCount,
   } = analytics.data;
 
   return (
@@ -62,24 +55,6 @@ const Home = () => {
           className="xl:col-span-2"
         />
         <StatsCard
-          title="চলমান সার্কুলার"
-          value={ongoingCirculars}
-          description="বর্তমানে সক্রিয় সার্কুলার"
-          icon={Clock}
-          trend="neutral"
-          className="xl:col-span-1"
-        />
-
-        <StatsCard
-          title="ডেডলাইনের কাছাকাছি"
-          value={nearDeadlineCirculars}
-          description="৭ দিনের মধ্যে শেষ হবে"
-          icon={AlertTriangle}
-          trend="down"
-          className="xl:col-span-1"
-        />
-
-        <StatsCard
           title="মোট ভিউ"
           value={totalViews}
           description="সর্বাধিক ভিউ"
@@ -88,7 +63,7 @@ const Home = () => {
           className="xl:col-span-1"
         />
       </div>
-      <OverviewCharts />
+      <OverviewCharts monthlyTrend={monthlyTrend} categoryWiseCount={categoryWiseCount}/>
     </div>
   );
 }

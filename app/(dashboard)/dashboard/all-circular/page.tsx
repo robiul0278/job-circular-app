@@ -19,18 +19,21 @@ import {
   Eye,
   Search,
   Filter,
-  Calendar,
   Building,
-  ListEnd,
-  Loader2,
+  TimerReset,
+  Loader,
+  User,
+  View,
 } from "lucide-react";
-import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
-import {  TGenericErrorResponse, TJobCircular } from "@/types/types";
+import { useDeleteJobMutation, useGetAllJobsQuery, useGetCategoriesQuery } from "@/redux/api/api";
+import { TGenericErrorResponse, TJobCircular } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
-import Pagination from "@/components/Pagination";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { formatQuery } from "@/utils/utils";
+import { categoryToBangla, formatQuery } from "@/utils/utils";
+import { formatDate } from "@/utils/format-date";
+import Pagination from "@/components/dashboard/Pagination";
+import Link from "next/link";
 
 type ITechnology = {
   technology: string;
@@ -52,14 +55,17 @@ export default function AllCircularPage() {
   };
   const [DeleteJob] = useDeleteJobMutation()
   const { data, isLoading } = useGetAllJobsQuery(params);
+  const { data: categories } = useGetCategoriesQuery(undefined);
 
-
-  if (isLoading) return <Loader2 />;
+  if (isLoading) return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-2">
+      <Loader />
+      <p className="text-sm text-muted-foreground">সকল সার্কুলার লোড হচ্ছে...</p>
+    </div>
+  );
 
 
   const tableData = data?.data.result;
-  const trades = data?.data.technologyCount;
-
   // Reset to first page when filters change
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
@@ -94,11 +100,7 @@ export default function AllCircularPage() {
     }
   };
 
-
-
-
   return (
-
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -137,7 +139,7 @@ export default function AllCircularPage() {
                   <SelectValue placeholder="ট্রেড বাছাই করুন" />
                 </SelectTrigger>
                 <SelectContent>
-                  {trades?.map((trade: ITechnology, index: number) => (
+                  {categories?.data.technology.map((trade: ITechnology, index: number) => (
                     <SelectItem
                       key={index}
                       value={trade.technology}
@@ -164,11 +166,13 @@ export default function AllCircularPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-foreground font-semibold">টাইটেল</TableHead>
-                  <TableHead className="text-foreground font-semibold">প্রতিষ্ঠান</TableHead>
-                  <TableHead className="text-foreground font-semibold">ট্রেড</TableHead>
-                  <TableHead className="text-foreground font-semibold">ভিউ</TableHead>
-                  <TableHead className="text-foreground font-semibold text-right">অ্যাকশন</TableHead>
+                  <TableHead className="text-foreground font-semibold">Job Title</TableHead>
+                  <TableHead className="text-foreground font-semibold">Categories</TableHead>
+                  <TableHead className="text-foreground font-semibold">Organization</TableHead>
+                  <TableHead className="text-foreground font-semibold">Vacancy</TableHead>
+                  <TableHead className="text-foreground font-semibold">Deadline</TableHead>
+                  <TableHead className="text-foreground font-semibold">Views</TableHead>
+                  <TableHead className="text-foreground font-semibold text-right">Action</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -177,11 +181,11 @@ export default function AllCircularPage() {
                     <TableCell>
                       <div className="space-y-1">
                         <div className="font-medium text-foreground">{circular.title}</div>
-                        <div className="text-xs text-muted-foreground flex items-center">
-                          <Calendar className="h-3 w-3 mr-1" />
-                          Apply Start: {circular.applyStart}
-                        </div>
-
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="space-y-1">
+                        <div className="font-medium text-foreground">{categoryToBangla(circular.categories)}</div>
                       </div>
                     </TableCell>
                     <TableCell>
@@ -189,23 +193,20 @@ export default function AllCircularPage() {
                         <Building className="h-4 w-4 mr-2 text-muted-foreground" />
                         {circular.companyName}
                       </div>
-                      <div className="text-xs text-muted-foreground flex items-center">
-                        <ListEnd className="h-3 w-3 mr-1" />
-                        Deadline: {circular.deadline}</div>
+
                     </TableCell>
                     <TableCell>
-                      <ul className="flex flex-wrap gap-">
-                        {circular.technology.map((trade, index) => (
-                          <li
-                            key={index}
-                            className="bg-slate-100 text-sm font-medium px-2 py-1 rounded-md dark:bg-slate-800"
-                          >
-                            {formatQuery(trade)}
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="text-xs text-muted-foreground flex items-center">
+                        <User className="h-3 w-3 mr-1" />
+                        {circular.vacancy}
+                      </div>
                     </TableCell>
-
+                    <TableCell>
+                      <div className="text-xs text-muted-foreground flex items-center">
+                        <TimerReset className="h-3 w-3 mr-1" />
+                        {formatDate(circular.deadline)}
+                      </div>
+                    </TableCell>
                     <TableCell>
                       <div className="flex items-center text-muted-foreground">
                         <Eye className="h-4 w-4 mr-1" />
@@ -214,57 +215,66 @@ export default function AllCircularPage() {
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end space-x-2">
+                        <Link href={`/job/${circular.slug}`}>
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => handleEdit(circular._id)}
                           className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
                         >
-                          <Edit className="h-4 w-4" />
+                          <View className="h-4 w-4" />
                         </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleDelete(circular._id)}
-                          className="hover:bg-red-50 dark:hover:bg-red-900 text-red-600 border-red-200 cursor-pointer"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </TableCell>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleEdit(circular.slug)}
+                        className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
+                      >
+                        <Edit className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleDelete(circular._id)}
+                        className="hover:bg-red-50 dark:hover:bg-red-900 text-red-600 border-red-200 cursor-pointer"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </TableCell>
                   </TableRow>
                 ))}
-              </TableBody>
-            </Table>
-          </div>
+            </TableBody>
+          </Table>
+        </div>
 
-          {/* Pagination */}
-          <div className="flex items-center justify-between mt-6">
-            <div className="flex items-center space-x-2">
-              <span className="text-sm text-muted-foreground">প্রতি পৃষ্ঠায় দেখান:</span>
-              <Select
-                value={itemsPerPage.toString()}
-                onValueChange={(value) => {
-                  setItemsPerPage(Number(value))
-                  setCurrentPage(1)
-                }}
-              >
-                <SelectTrigger className="w-20">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="5">৫</SelectItem>
-                  <SelectItem value="10">১০</SelectItem>
-                  <SelectItem value="20">২০</SelectItem>
-                  <SelectItem value="50">৫০</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Pagination totalPages={data?.data.meta.totalPage} currentPage={currentPage}/>
+        {/* Pagination */}
+        <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-muted-foreground">প্রতি পৃষ্ঠায় দেখান:</span>
+            <Select
+              value={itemsPerPage.toString()}
+              onValueChange={(value) => {
+                setItemsPerPage(Number(value))
+                setCurrentPage(1)
+              }}
+            >
+              <SelectTrigger className="w-20">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="5">৫</SelectItem>
+                <SelectItem value="10">১০</SelectItem>
+                <SelectItem value="20">২০</SelectItem>
+                <SelectItem value="50">৫০</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+          <Pagination totalPage={data?.data.meta.totalPage} page={currentPage} setPageAction={setCurrentPage} />
+        </div>
+      </CardContent>
+    </Card>
+    </div >
 
   );
 }

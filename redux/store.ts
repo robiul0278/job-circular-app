@@ -29,7 +29,16 @@ export const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false, // redux-persist compatibility
     }).concat(baseApi.middleware),
+  devTools: process.env.NODE_ENV !== 'production'
+
 });
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log("Dev mode");
+} else {
+  console.log("Prod mode");
+}
+
 
 // export persistor
 export const persistor = persistStore(store);

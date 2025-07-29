@@ -20,6 +20,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import ImageUploadInput from './ImageUploadInput';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import MultiImageUploadInput from './MultiImageUploadInput';
+import { Textarea } from '../ui/textarea';
 
 const technologyOptions = [
     'computer',
@@ -46,8 +47,43 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <Card className="border rounded-lg overflow-hidden">
                     <CardContent className="p-6 space-y-8">
-                        {/*Title, Company Name, Vacancy, Apply Link, Image*/}
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 gap-6">
+                            {/*Title*/}
+                            <FormField
+                                control={form.control}
+                                name="title"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <Label htmlFor="title">চাকরির শিরোনামঃ</Label>
+                                        <FormControl>
+                                            <Textarea
+                                                {...field}
+                                                id="title"
+                                                placeholder="চাকরির নাম লিখুন (যেমন: উপ-সহকারী প্রকৌশলী)"
+                                                rows={5}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            {/*Company Name*/}
+                            <FormField
+                                control={form.control}
+                                name="companyName"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <Label htmlFor="companyName">কোন কোম্পানিতে চাকরিঃ</Label>
+                                        <FormControl>
+                                            <Textarea id="companyName" placeholder="কোম্পানির নাম লিখুন" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        {/*Title, Company Name, Vacancy,*/}
+                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                             {/*Category Post*/}
                             <FormField
                                 control={form.control}
@@ -56,7 +92,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                     <FormItem>
                                         <FormLabel>ক্যাটাগরিঃ</FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                            <Select onValueChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className="w-full">
                                                     <SelectValue placeholder="একটি ক্যাটাগরি নির্বাচন করুন" />
                                                 </SelectTrigger>
@@ -71,91 +107,16 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                     </FormItem>
                                 )}
                             />
-                            {/*Title*/}
-                            <FormField
-                                control={form.control}
-                                name="title"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="title">চাকরির শিরোনামঃ</Label>
-                                        <FormControl>
-                                            <Input id="title" placeholder="চাকরির নাম লিখুন (যেমন: উপ-সহকারী প্রকৌশলী)" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            {/*Company Name*/}
-                            <FormField
-                                control={form.control}
-                                name="companyName"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="companyName">কোন কোম্পানিতে চাকরিঃ</Label>
-                                        <FormControl>
-                                            <Input id="companyName" placeholder="কোম্পানির নাম লিখুন" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            {/*Apply Link*/}
-                            <FormField
-                                control={form.control}
-                                name="websiteLink"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="websiteLink">কোম্পানির ওয়েবসাইট লিঙ্কঃ</Label>
-                                        <FormControl>
-                                            <Input id="websiteLink" type='url' placeholder="https://example.com" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                        </div>
-                        {/*Published Date, Apply Start, Apply End*/}
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                            {/*Published Date*/}
-                            <FormField
-                                control={form.control}
-                                name="published"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="published">প্রকাশের তারিখঃ</Label>
-                                        <FormControl>
-                                            <ReactDatePicker
-                                                id="published"
-                                                placeholderText="তারিখ নির্বাচন করুন"
-                                                selected={field.value ? new Date(field.value) : null}
-                                                onChange={field.onChange}
-                                                showTimeSelect
-                                                dateFormat="Pp"
-                                                className="border p-1 rounded-lg w-full"
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
 
-                            {/*Apply Start*/}
+                            {/*Vacancy*/}
                             <FormField
                                 control={form.control}
-                                name="applyStart"
+                                name="vacancy"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="applyStart">আবেদন শুরুর দিনঃ</Label>
+                                        <Label htmlFor="vacancy">ডিপ্লোমাদের জন্য শূন্য পদঃ</Label>
                                         <FormControl>
-                                            <ReactDatePicker
-                                                id="applyStart"
-                                                placeholderText="তারিখ নির্বাচন করুন"
-                                                selected={field.value ? new Date(field.value) : null}
-                                                onChange={field.onChange}
-                                                showTimeSelect
-                                                dateFormat="Pp"
-                                                className="border p-1 rounded-lg w-full"
-                                            />
+                                            <Input id="vacancy" placeholder="N" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -183,20 +144,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                     </FormItem>
                                 )}
                             />
-                            {/*Vacancy*/}
-                            <FormField
-                                control={form.control}
-                                name="vacancy"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="vacancy">ডিপ্লোমাদের জন্য শূন্য পদঃ</Label>
-                                        <FormControl>
-                                            <Input id="vacancy" type='number' {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+
                         </div>
                         {/* Technology */}
                         <FormField
@@ -319,7 +267,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 disabled={form.formState.isSubmitting}
                                 className="font-semibold py-2 cursor-pointer disabled:opacity-60"
                             >
-                                {form.formState.isSubmitting ? "🚀 Posting..." : "📢 Post Circular"}
+                                {form.formState.isSubmitting ? "🚀 Posting..." : "🚀 Click"}
                             </Button>
                         </div>
                     </CardContent>

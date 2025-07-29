@@ -1,5 +1,4 @@
 
-import { Users } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -8,17 +7,17 @@ import {
 } from "@/components/ui/card";
 import Views from "@/components/Views";
 import BookmarkButton from "@/components/BookmarkButton";
-import { formatQuery } from "@/utils/utils";
 import CircularTime from "@/components/CircularTime";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Telegram from "@/components/Telegram";
 import Technology from "@/components/Technology";
 import Categories from "@/components/Categories";
 import { getSingleJob } from "@/lib/api";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
 import MarkdownPreview from "@/components/MarkdownPreview";
+import ImageWithDownload from "@/components/ImageWithDownload";
+import SocialShare from "@/components/SocialShare";
+
+
 
 export const dynamic = "force-static";
 
@@ -30,15 +29,9 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
     _id,
     title,
     companyName,
-    vacancy,
-    websiteLink,
-    published,
-    applyStart,
     deadline,
-    technology,
     images,
     description,
-    views,
   } = singleJob;
 
   return (
@@ -60,55 +53,24 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
 
             <CardContent className="space-y-4">
               <div className="flex lg:hidden md:hidden"><BookmarkButton jobId={_id} /></div>
-              <CircularTime published={published} applyStart={applyStart} deadline={deadline} />
-              <hr />
-              {/* Education */}
-              <div>
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  শিক্ষাগত যোগ্যতাঃ
-                </h4>
-                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-                  {technology.map((item: string, i: number) => (
-                    <li key={i}>Diploma in {formatQuery(item)}</li>
-                  ))}
-                </ul>
-
+              <CircularTime deadline={deadline} />
+              <div className="flex items-center gap-2 my-4">
+                <hr className="flex-grow border-gray-300" />
+                <p className="text-center text-sm font-medium whitespace-nowrap">বিস্তারিত</p>
+                <hr className="flex-grow border-gray-300" />
               </div>
-              <hr />
-              {/* শূন্য আসন */}
-              <div className="mb-2">
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  ডিপ্লোমা পাশে শূন্য আসনঃ
-                </h4>
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4" />
-                  <span>{vacancy} জন।</span>
-                </div>
-              </div>
-              <hr />
+              {/*Markdown Preview */}
               <MarkdownPreview description={description} />
-
               {/*Job Image Preview */}
               {images.length > 0 && (
-                <div className="mt-4 grid grid-cols-1">
+                <div className="mt-4 grid grid-cols-1 gap-4">
                   {images.map((src: string, idx: number) => (
-                    <div key={idx} className="flex flex-col items-center space-y-1">
-                      <Image
-                        width={1200}
-                        height={600}
-                        src={src}
-                        alt={`Preview ${idx + 1}`}
-                        className="w-full h-auto"
-                      />
-                    </div>
+                    <ImageWithDownload key={idx} src={src} index={idx} />
                   ))}
                 </div>
               )}
-              <Link href={websiteLink} target="_blank" rel="noopener noreferrer" className="flex justify-end">
-                <Button className="bg-amber-600 cursor-pointer" size="default">
-                  Apply করতে বা বিস্তারিত জানতে ভিজিট করুন । 
-                </Button>
-              </Link>
+              {/* ✅ Social Share Buttons */}
+              <SocialShare title={title} slug={slug}/>
             </CardContent>
           </Card>
           <ShowMoreJobs />
@@ -127,7 +89,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
 
       {/* Views */}
       <div className="fixed bottom-4 left-4 z-50">
-        <Views id={_id} views={views} />
+        <Views id={_id} />
       </div>
     </section>
   );

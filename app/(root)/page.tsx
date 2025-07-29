@@ -13,7 +13,6 @@ import { getAllJobQuery } from "@/lib/api";
 export default async function Home({ searchParams }: {
   searchParams: Promise<{ query?: string; page?: string }>
 }) {
-
   const resolvedParams = await searchParams;
   const query = resolvedParams.query;
   const currentPage = parseInt(resolvedParams.page || '1');
@@ -24,7 +23,6 @@ export default async function Home({ searchParams }: {
     params.set("searchTerm", query);
   }
   params.set("page", resolvedParams.page || "1");
-
   const jobs = await getAllJobQuery(params.toString());
 
   return (

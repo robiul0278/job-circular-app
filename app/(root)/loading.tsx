@@ -11,21 +11,27 @@ export default function Loading() {
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-4 text-center">
-            <Skeleton className="h-8 w-3/4 mx-auto" />
-            <Skeleton className="h-8 w-62 mx-auto mt-4" />
-            <Skeleton className="h-4 w-1/2 mx-auto" />
-            <Skeleton className="h-4 w-1/4 mx-auto" />
-            <div className="flex items-center gap-2 max-w-md mx-auto mt-10 border border-muted rounded-2xl shadow-sm p-2">
-              <Skeleton className="h-10 flex-1 rounded-md" />
-              <Skeleton className="h-10 w-20 rounded-md" />
-            </div>
+    <section className="hero relative w-full py-10 md:py-28 lg:py-28 overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <div className="relative text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
+        {/* Headline */}
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-300">
+          <Skeleton className="h-8 sm:h-10 w-[90%] mx-auto rounded-md" />
+        </h1>
+        {/* Subheadline */}
+        <div className="text-center max-w-2xl mx-auto">
+          <Skeleton className="h-4 md:h-5 w-[95%] sm:w-[90%] mx-auto rounded-md" />
+          <Skeleton className="h-4 md:h-5 w-[80%] sm:w-[75%] mx-auto mt-2 rounded-md" />
+        </div>
+
+        {/* Search Form */}
+        <div className="w-full max-w-xl mx-auto px-8 md:px-4 lg:px-4 py-4">
+          <div className="flex items-center gap-3 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md border dark:border-gray-700">
+            <Skeleton className="h-10 flex-1 rounded-lg" />
+            <Skeleton className="h-10 w-24 rounded-lg" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Card Header */}
       <div className="max-w-6xl pl-3 lg:p-0 mx-auto flex items-center gap-2">
@@ -52,13 +58,13 @@ export default function Loading() {
 
                   {/* Right Content */}
                   <div className="relative flex flex-col sm:w-2/3 p-4">
-                    <div className="flex-1 pb-14 space-y-2">
+                    <div className="flex-1 pb-8 space-y-2">
                       <Skeleton className="h-5 w-3/4" /> {/* Title */}
-                      <Skeleton className="h-4 w-1/2" /> {/* Company */}
+                      <Skeleton className="h-3 w-1/2" /> {/* Company */}
 
                       <div className="mt-3 space-y-2">
-                        <Skeleton className="h-4 w-2/3" /> {/* Deadline */}
-                        <Skeleton className="h-4 w-2/4" /> {/* Vacancy */}
+                        <Skeleton className="h-3 w-2/3" /> {/* Deadline */}
+                        <Skeleton className="h-3 w-2/4" /> {/* Vacancy */}
                       </div>
                     </div>
 

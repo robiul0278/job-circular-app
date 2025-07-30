@@ -53,7 +53,7 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
 
           {/* Right Content */}
           <div className="relative flex flex-col sm:w-2/3 p-4">
-            <div className="flex-1 pb-14">
+            <div className="flex-1 pb-8">
               <h3 className="text-lg font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {title}
               </h3>

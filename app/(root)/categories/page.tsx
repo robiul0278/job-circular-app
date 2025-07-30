@@ -38,13 +38,7 @@ export default async function JobCategoryPage({ searchParams }: {
   return (
     <>
       <section className="max-w-7xl mx-auto px-4 py-6">
-        {/* Top AdSense */}
-        <div className="mb-6">
-          <div className="w-full h-28  border  flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
-            Google AdSense Ad (Top Banner)
-          </div>
-        </div>
-        <p className="text-2xl font-semibold mb-6 flex items-center">
+        <p className="text-2xl font-semibold mb-2 flex items-center">
           {query
             ? `Results for "${formatQuery(query)}"`
             : "All Job Circular"}

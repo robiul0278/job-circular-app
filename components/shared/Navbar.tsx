@@ -1,7 +1,6 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -18,6 +17,7 @@ import BookmarkNavButton from "../BookmarkNav";
 const menuItems = [
   { name: "হোম", href: "/" },
   { name: "ক্যাটাগরিস", href: "/categories" },
+  { name: "ব্লগ", href: "/blog" },
   { name: "আমাদের সম্পর্কে", href: "/about" },
   { name: "যোগাযোগ", href: "/contact" },
 ];
@@ -42,11 +42,15 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Logo" width={40} height={40} priority />
-            <span className="text-2xl font-bold text-green-700 dark:text-green-500">
-              Diploma Jobs BD
-            </span>
+          <Link href="/" className="">
+            <div className="border border-black dark:border-white inline-flex items-center">
+              <div className="bg-green-700 dark:bg-green-600 px-2 py-1">
+                <span className="text-white font-bold text-lg">Diploma</span>
+              </div>
+              <div className="px-2 py-1">
+                <span className="text-green-700 dark:text-green-300 font-bold text-lg">Jobs BD</span>
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Menu */}

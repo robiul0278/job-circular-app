@@ -1,46 +1,45 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export default async function AboutPage() {
+export default function AboutPage() {
   return (
     <>
       <section className="max-w-5xl mx-auto px-4 py-16">
         <div className="mb-14 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary">About Diploma Jobs BD</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary">আমাদের সম্পর্কে</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Your trusted platform dedicated to empowering diploma engineers in Bangladesh with verified job circulars, career resources, and opportunities to thrive.
+            ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য নির্ভরযোগ্য একটি প্ল্যাটফর্ম যেখানে পাবেন যাচাইকৃত চাকরির বিজ্ঞপ্তি, ক্যারিয়ার গাইডলাইন ও সাফল্যের সুযোগ।
           </p>
         </div>
 
         <div className="space-y-12 text-gray-700 dark:text-gray-300">
           <div>
-            <h2 className="text-2xl font-semibold mb-3 text-primary">🎯 Our Mission</h2>
+            <h2 className="text-2xl font-semibold mb-3 text-primary">🎯 আমাদের লক্ষ্য</h2>
             <p>
-              At <strong>Diploma Jobs BD</strong>, our mission is to simplify the job search for diploma engineers by offering a tailored platform where they can explore government and private sector job circulars easily, filtered by department, location, and relevance.
+              <strong>Diploma Jobs BD</strong> - এর লক্ষ্য হলো বাংলাদেশে ডিপ্লোমা ইঞ্জিনিয়ারদের চাকরি অনুসন্ধান সহজতর করা। এখানে সরকারি ও বেসরকারি চাকরিগুলো বিভাগের ভিত্তিতে, অবস্থান অনুযায়ী ও প্রাসঙ্গিকভাবে খুঁজে পাওয়া যাবে।
             </p>
           </div>
 
           <Separator />
 
           <div>
-            <h2 className="text-2xl font-semibold mb-3 text-primary">💡 What We Offer</h2>
+            <h2 className="text-2xl font-semibold mb-3 text-primary">💡 আমরা যা অফার করি</h2>
             <ul className="list-disc list-inside space-y-2">
-              <li>Real-time updates of verified job circulars</li>
-              <li>Smart filtering by engineering departments</li>
-              <li>Save/bookmark jobs for future reference</li>
-              <li>Mobile-friendly design with dark mode</li>
-              <li>Secure and fast custom authentication</li>
+              <li>রিয়েল-টাইমে যাচাইকৃত চাকরির বিজ্ঞপ্তি</li>
+              <li>ডিপার্টমেন্ট অনুযায়ী স্মার্ট ফিল্টারিং</li>
+              <li>পছন্দের চাকরি বুকমার্ক করে রাখা</li>
+              <li>মোবাইল ফ্রেন্ডলি ডিজাইন ও ডার্ক মোড</li>
+              <li>সিকিউর ও দ্রুত কাস্টম অথেনটিকেশন</li>
             </ul>
           </div>
 
           <Separator />
 
           <div>
-            <h2 className="text-2xl font-semibold mb-3 text-primary">🛠 Technology Stack</h2>
+            <h2 className="text-2xl font-semibold mb-3 text-primary">🛠 প্রযুক্তি স্ট্যাক</h2>
             <div className="flex flex-wrap gap-3">
               <Badge variant="outline">Next.js</Badge>
               <Badge variant="outline">TypeScript</Badge>
@@ -55,19 +54,19 @@ export default async function AboutPage() {
           <Separator />
 
           <div>
-            <h2 className="text-2xl font-semibold mb-3 text-primary">📫 Contact Information</h2>
+            <h2 className="text-2xl font-semibold mb-3 text-primary">📫 যোগাযোগ করুন</h2>
             <p>
-              For any suggestions, collaborations, or feedback – we’d love to hear from you!
+              কোনো পরামর্শ, সহযোগিতা বা মতামত জানাতে চাইলে – আমরা জানতে আগ্রহী!
             </p>
             <p className="mt-2">
-              Email: <a href="mailto:support@diplomajobsbd.com" className="text-blue-500 underline">support@diplomajobsbd.com</a>
+              ইমেইল: <a href="mailto:support@diplomajobsbd.com" className="text-blue-500 underline">support@diplomajobsbd.com</a>
             </p>
           </div>
 
           <div className="mt-8 text-center">
             <Link href="/">
               <Button size="lg" variant="default" className="px-6">
-                Browse Jobs <ArrowRight className="ml-2 w-4 h-4" />
+                চাকরি দেখুন <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>

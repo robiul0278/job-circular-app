@@ -35,7 +35,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
   } = singleJob;
 
   return (
-    <section className="max-w-7xl mx-auto py-2  px-2">
+    <section className="max-w-7xl mx-auto py-2">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         {/* Main Content */}
         <div className="lg:col-span-3 space-y-8">

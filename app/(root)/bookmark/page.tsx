@@ -97,7 +97,7 @@ export default function BookmarkPage() {
                     )}
                   </Button>
                   <a
-                    href={`/circular/${job.slug}`}
+                    href={`/job/${job.slug}`}
                     className="text-sm text-blue-600 hover:underline"
                   >
                     View Details

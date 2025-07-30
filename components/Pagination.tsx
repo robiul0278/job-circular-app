@@ -17,6 +17,8 @@ export default function PaginationForm({
 
   const handlePagination = (page: number) => {
     startTransition(() => {
+      // 👇 Smooth scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       router.push(`/?page=${page}`);
     });
   };
@@ -33,7 +35,11 @@ export default function PaginationForm({
         onClick={() => handlePagination(prevPage)}
         className="flex items-center gap-2"
       >
-        {isPending ? <Loader/> : <><ChevronLeft className="h-4 w-4" />Previous</>}
+        {isPending ? <Loader className="h-4 w-4 animate-spin" /> : (
+          <>
+            <ChevronLeft className="h-4 w-4" /> Previous
+          </>
+        )}
       </Button>
 
       <div className="text-sm">
@@ -41,8 +47,7 @@ export default function PaginationForm({
         <span className="font-medium text-primary dark:text-primary-light">
           {currentPage}
         </span>{' '}
-        of{' '}
-        <span className="font-medium">{totalPages}</span>
+        of <span className="font-medium">{totalPages}</span>
       </div>
 
       <Button
@@ -52,7 +57,11 @@ export default function PaginationForm({
         onClick={() => handlePagination(nextPage)}
         className="flex items-center gap-2"
       >
-        {isPending ? <Loader/> : <>Next<ChevronRight className="h-4 w-4" /></>}
+        {isPending ? <Loader className="h-4 w-4 animate-spin" /> : (
+          <>
+            Next <ChevronRight className="h-4 w-4" />
+          </>
+        )}
       </Button>
     </div>
   );

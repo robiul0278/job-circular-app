@@ -40,17 +40,18 @@ const Navbar = () => {
   return (
     <header className="w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-0">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-12">
           {/* Logo */}
-          <Link href="/" className="">
-            <div className="border border-black dark:border-white inline-flex items-center">
-              <div className="bg-green-700 dark:bg-green-600 px-2 py-1">
-                <span className="text-white font-bold text-lg">Diploma</span>
-              </div>
-              <div className="px-2 py-1">
-                <span className="text-green-700 dark:text-green-300 font-bold text-lg">Jobs BD</span>
-              </div>
-            </div>
+          <Link href="/">
+<div className="border border-black dark:border-white inline-flex items-center">
+  <div className="bg-green-700 dark:bg-green-600 px-1.5 py-0.5">
+    <span className="text-white font-bold text-sm">Diploma</span>
+  </div>
+  <div className="px-1.5 py-0.5">
+    <span className="text-green-700 dark:text-green-300 font-bold text-sm">Jobs BD</span>
+  </div>
+</div>
+
           </Link>
 
           {/* Desktop Menu */}

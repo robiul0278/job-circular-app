@@ -20,7 +20,7 @@ export async function getAllJobQuery(params: string) {
 }
 //Get Job Categories
 export async function JobCategories() {
-  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 
   const res = await fetch(`${BASE_URL}/jobs/categories`);
 
@@ -37,7 +37,7 @@ export async function JobCategories() {
 
 //Get Single Job Details
 export async function getSingleJob(id: string) {
-  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 
   const res = await fetch(`${BASE_URL}/jobs/single/${id}`, {
     cache: "no-store",
@@ -56,7 +56,7 @@ export async function getSingleJob(id: string) {
 
 //Get Notice
 export async function getNotice() {
-  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 
   const res = await fetch(`${BASE_URL}/notice`, {
      next: { revalidate: 300 },

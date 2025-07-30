@@ -37,7 +37,7 @@ export default async function JobCategoryPage({ searchParams }: {
 
   return (
     <>
-      <section className="max-w-6xl mx-auto px-4 py-6">
+      <section className="max-w-6xl mx-auto px-4 lg:px-0 md:px-0 py-6">
         <p className="text-2xl font-semibold mb-2 flex items-center">
           {query
             ? `Results for "${formatQuery(query)}"`
@@ -45,7 +45,7 @@ export default async function JobCategoryPage({ searchParams }: {
           {!query && <ChevronRight className="size-6 text-primary" />}
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">
             <ul className="grid grid-cols-1 gap-4">
@@ -57,7 +57,7 @@ export default async function JobCategoryPage({ searchParams }: {
             <Pagination totalPages={jobs.meta.totalPage} currentPage={currentPage} />
           </div>
           {/* Right: Google AdSense or Placeholder */}
-          <aside className="lg:col-span-3 space-y-2">
+          <aside className="lg:col-span-3 space-y-4">
             <Telegram />
             <Categories />
             <Technology />

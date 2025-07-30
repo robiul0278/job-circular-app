@@ -2,7 +2,6 @@ import { TJobCircular } from "@/types/types";
 import { formatDate } from "@/utils/format-date";
 import { timeAgo } from "@/utils/format-time";
 import {
-  Building,
   Timer,
   Users,
   Clock,
@@ -58,7 +57,6 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
                 {title}
               </h3>
               <div className="text-sm font-medium text-green-600 dark:text-green-400 flex items-center gap-1 mb-1">
-                <Building className="size-4" />
                 {companyName}
               </div>
 

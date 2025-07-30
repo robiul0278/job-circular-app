@@ -58,7 +58,7 @@ export default function Loading() {
 
                   {/* Right Content */}
                   <div className="relative flex flex-col sm:w-2/3 p-4">
-                    <div className="flex-1 pb-8 space-y-2">
+                    <div className="flex-1 space-y-2">
                       <Skeleton className="h-5 w-3/4" /> {/* Title */}
                       <Skeleton className="h-3 w-1/2" /> {/* Company */}
 

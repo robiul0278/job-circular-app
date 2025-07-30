@@ -51,7 +51,7 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
           </div>
 
           {/* Right Content */}
-          <div className="relative flex flex-col sm:w-2/3 p-4">
+          <div className="relative flex flex-col sm:w-2/3 p-3">
             <div className="flex-1 pb-6">
               <h3 className="text-lg font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {title}
@@ -75,7 +75,7 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
             </div>
 
             {/* Sticky Footer */}
-            <div className="absolute bottom-0 left-0 w-full px-4 py-1 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+            <div className="absolute bottom-0 left-0 w-full px-3 py-1 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-1">
                 <Clock className="size-4" />
                 {timeAgo(createdAt)}

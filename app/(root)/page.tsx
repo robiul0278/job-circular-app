@@ -35,7 +35,7 @@ export default async function Home({ searchParams }: {
           {!query && <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />}
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-2">
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">
             <ul className="grid grid-cols-1 gap-4">

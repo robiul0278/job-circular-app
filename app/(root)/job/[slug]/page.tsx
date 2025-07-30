@@ -52,7 +52,9 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
             </CardHeader>
 
             <CardContent className="space-y-4 px-2">
+                {/*BookmarkButton  */}
               <div className="flex lg:hidden md:hidden"><BookmarkButton jobId={_id} /></div>
+                {/*CircularTime */}
               <CircularTime deadline={deadline} />
               <div className="flex items-center gap-2 my-4">
                 <hr className="flex-grow border-gray-300" />

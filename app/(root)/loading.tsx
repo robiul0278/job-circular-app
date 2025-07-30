@@ -15,12 +15,12 @@ export default function Loading() {
       <div className="relative text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
         {/* Headline */}
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-300">
-          <Skeleton className="h-8 sm:h-10 w-[90%] mx-auto rounded-md" />
+          <Skeleton className="h-6 sm:h-10 w-[90%] mx-auto rounded-md" />
         </h1>
         {/* Subheadline */}
         <div className="text-center max-w-2xl mx-auto">
-          <Skeleton className="h-4 md:h-5 w-[95%] sm:w-[90%] mx-auto rounded-md" />
-          <Skeleton className="h-4 md:h-5 w-[80%] sm:w-[75%] mx-auto mt-2 rounded-md" />
+          <Skeleton className="h-4 md:h-4 w-[95%] sm:w-[90%] mx-auto rounded-md" />
+          <Skeleton className="h-4 md:h-4 w-[80%] sm:w-[75%] mx-auto mt-2 rounded-md" />
         </div>
 
         {/* Search Form */}
@@ -34,15 +34,15 @@ export default function Loading() {
     </section>
 
       {/* Card Header */}
-      <div className="max-w-6xl pl-3 lg:p-0 mx-auto flex items-center gap-2">
-        <Skeleton className="h-6 md:h-8 w-48 md:w-48 bg-slate-200 dark:bg-slate-700" />
-        <Skeleton className="size-7 hidden md:inline-block bg-slate-200 dark:bg-slate-700 rounded-full" />
+      <div className="max-w-6xl pl-3 lg:pl-3 mx-auto flex items-center gap-2">
+        <Skeleton className="h-6 md:h-6 w-48 md:w-48 bg-slate-200 dark:bg-slate-700" />
+        <Skeleton className="size-5 hidden md:inline-block bg-slate-200 dark:bg-slate-700 rounded-full" />
       </div>
 
       {/* Main Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] max-w-6xl mx-auto gap-6 py-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 max-w-6xl mx-auto gap-5 py-6">
         {/* Left: Job Cards */}
-        <div className="space-y-4">
+        <div className=" lg:col-span-9 space-y-4">
           {Array.from({ length: 6 }).map((_, index) => (
             <li key={index} className="list-none w-full px-2 lg:p-0">
               <div className="block group">
@@ -58,7 +58,7 @@ export default function Loading() {
 
                   {/* Right Content */}
                   <div className="relative flex flex-col sm:w-2/3 p-4">
-                    <div className="flex-1 space-y-2">
+                    <div className="flex-1 pb-6 space-y-2">
                       <Skeleton className="h-5 w-3/4" /> {/* Title */}
                       <Skeleton className="h-3 w-1/2" /> {/* Company */}
 
@@ -81,7 +81,7 @@ export default function Loading() {
         </div>
 
         {/* Right Sidebar */}
-        <div className="space-y-4 animate-pulse">
+        <div className="lg:col-span-3 space-y-4 animate-pulse">
           {/* FOLLOW US */}
           <div className="rounded-md border bg-card p-4">
             <p className="text-sm font-medium text-muted-foreground mb-3">FOLLOW US</p>

@@ -4,7 +4,6 @@ import JobCard from "@/components/JobCard";
 import Hero from "@/components/Hero";
 import Pagination from "@/components/Pagination";
 import { TJobCircular } from "@/types/types";
-import Technology from "@/components/Technology";
 import NoticeMarquee from "@/components/NoticeMarquee";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
@@ -50,7 +49,6 @@ export default async function Home({ searchParams }: {
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
             <Categories />
-            <Technology />
           </aside>
         </div>
       </section>

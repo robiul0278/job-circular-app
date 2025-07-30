@@ -4,7 +4,6 @@ import JobCard from "@/components/JobCard";
 import Pagination from "@/components/Pagination";
 import { formatQuery } from "@/utils/utils";
 import { TJobCircular } from "@/types/types";
-import Technology from "@/components/Technology";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
 import { getAllJobQuery } from "@/lib/api";
@@ -60,8 +59,6 @@ export default async function JobCategoryPage({ searchParams }: {
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
             <Categories />
-            <Technology />
-
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}
             <div className=" border rounded-lg h-96 flex items-center justify-center text-gray-700 ">

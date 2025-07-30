@@ -16,7 +16,6 @@ import BookmarkNavButton from "../BookmarkNav";
 
 const menuItems = [
   { name: "হোম", href: "/" },
-  { name: "ক্যাটাগরিস", href: "/categories" },
   { name: "ব্লগ", href: "/blog" },
   { name: "আমাদের সম্পর্কে", href: "/about" },
   { name: "যোগাযোগ", href: "/contact" },

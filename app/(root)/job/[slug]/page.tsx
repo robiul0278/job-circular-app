@@ -9,7 +9,6 @@ import Views from "@/components/Views";
 import BookmarkButton from "@/components/BookmarkButton";
 import CircularTime from "@/components/CircularTime";
 import Telegram from "@/components/Telegram";
-import Technology from "@/components/Technology";
 import Categories from "@/components/Categories";
 import { getSingleJob } from "@/lib/api";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
@@ -84,7 +83,6 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
 
           <Telegram />
           <Categories />
-          <Technology />
         </aside>
       </div>
 

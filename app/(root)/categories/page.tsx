@@ -33,11 +33,11 @@ export default async function JobCategoryPage({ searchParams }: {
 
   const jobs = await getAllJobQuery(urlParams.toString());
 
-  
+
 
   return (
     <>
-      <section className="max-w-7xl mx-auto px-4 py-6">
+      <section className="max-w-6xl mx-auto px-4 py-6">
         <p className="text-2xl font-semibold mb-2 flex items-center">
           {query
             ? `Results for "${formatQuery(query)}"`

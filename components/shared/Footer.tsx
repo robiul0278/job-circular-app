@@ -22,7 +22,7 @@ const menuItems: IMenu[] = [
 export default function Footer() {
   return (
     <footer className="bg-gray-50 border-t-2 dark:bg-gray-900 text-gray-700 dark:text-gray-300 py-10">
-      <div className="max-w-7xl mx-auto px-4 text-center space-y-8">
+      <div className="max-w-6xl mx-auto px-4 text-center space-y-8">
 
         {/* Top Links */}
         <nav className="flex flex-wrap justify-center gap-4 md:gap-6 text-sm text-gray-600 dark:text-gray-400" aria-label="Footer Navigation">

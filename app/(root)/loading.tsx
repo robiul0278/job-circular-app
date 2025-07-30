@@ -5,7 +5,7 @@ export default function Loading() {
     <div className="animate-pulse">
       {/* Alert bar */}
       <div className="relative w-full bg-yellow-100 dark:bg-yellow-900 py-1.5 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">
-        <div className="max-w-7xl mx-auto flex space-x-8">
+        <div className="max-w-6xl mx-auto flex space-x-8">
           <Skeleton className="h-5 w-20 bg-yellow-200/70" />
           <Skeleton className="h-5 w-full bg-yellow-200/70" />
         </div>
@@ -13,7 +13,7 @@ export default function Loading() {
 
       {/* Hero Section */}
       <section className="py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-4 text-center">
             <Skeleton className="h-8 w-3/4 mx-auto" />
             <Skeleton className="h-8 w-62 mx-auto mt-4" />
@@ -28,13 +28,13 @@ export default function Loading() {
       </section>
 
       {/* Card Header */}
-      <div className="max-w-7xl pl-3 lg:p-0 mx-auto flex items-center gap-2">
+      <div className="max-w-6xl pl-3 lg:p-0 mx-auto flex items-center gap-2">
         <Skeleton className="h-6 md:h-8 w-48 md:w-48 bg-slate-200 dark:bg-slate-700" />
         <Skeleton className="size-7 hidden md:inline-block bg-slate-200 dark:bg-slate-700 rounded-full" />
       </div>
 
       {/* Main Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] max-w-7xl mx-auto gap-6 py-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] max-w-6xl mx-auto gap-6 py-6">
         {/* Left: Job Cards */}
         <div className="space-y-4">
           {Array.from({ length: 6 }).map((_, index) => (

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 
 export default function Loading() {
   return (
-    <section className="max-w-7xl mx-auto py-2 px-2">
+    <section className="max-w-6xl mx-auto py-2 px-2">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         {/* Main Content */}
         <div className="lg:col-span-3 space-y-8">
@@ -67,7 +67,7 @@ export default function Loading() {
 
         {/* Sidebar */}
         <aside className="space-y-4 animate-pulse">
-        {/* Right Sidebar */}
+          {/* Right Sidebar */}
           {/* FOLLOW US */}
           <div className="rounded-md border bg-card p-4">
             <p className="text-sm font-medium text-muted-foreground mb-3">FOLLOW US</p>

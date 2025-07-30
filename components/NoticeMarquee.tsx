@@ -20,7 +20,7 @@ export default function NoticeMarquee() {
     const duration = Math.max(totalWidth / speed, 5);
 
     // Reset position to 0 first before anim start, to avoid jump on re-render
-    gsap.set(el, { x: 200});
+    gsap.set(el, { x: 200 });
 
     const anim = gsap.to(el, {
       x: -totalWidth,
@@ -34,10 +34,10 @@ export default function NoticeMarquee() {
     };
   }, [notices]);
 
-    if (isLoading) {
+  if (isLoading) {
     return (
       <div className="relative w-full bg-yellow-100 dark:bg-yellow-900 py-1.5 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">
-        <div className="max-w-7xl mx-auto animate-pulse flex space-x-8 ">
+        <div className="max-w-6xl mx-auto animate-pulse flex space-x-8 ">
           <div className="h-5 w-20 bg-yellow-200/70 rounded" />
           <div className="h-5 w-full bg-yellow-200/70 rounded" />
         </div>
@@ -47,7 +47,7 @@ export default function NoticeMarquee() {
 
   return (
     <div className="relative w-full bg-yellow-100 dark:bg-yellow-900 py-1 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">
-      <div className="max-w-7xl mx-auto flex items-center space-x-4 px-4 lg:p-0">
+      <div className="max-w-6xl mx-auto flex items-center space-x-4 px-4 lg:p-0">
         <div className="text-sm font-semibold text-yellow-800 dark:text-yellow-200 whitespace-nowrap">
           Notice:
         </div>

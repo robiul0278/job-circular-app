@@ -75,7 +75,7 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
             </div>
 
             {/* Sticky Footer */}
-            <div className="absolute bottom-0 left-0 w-full px-4 py-2 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+            <div className="absolute bottom-0 left-0 w-full px-4 py-1 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-1">
                 <Clock className="size-4" />
                 {timeAgo(createdAt)}

@@ -56,18 +56,19 @@ const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) =
               <h3 className="text-lg leading-tight font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {title}
               </h3>
-              <div className="text-sm font-medium text-green-600 dark:text-green-400 flex items-center gap-1 mb-1">
+              <div className="text-sm font-medium text-green-600 dark:text-green-400 flex items-center gap-1 mb-2">
                 {companyName}
               </div>
 
               <div className="text-sm text-gray-700 dark:text-gray-300">
-                <div className="flex items-center gap-2 text-red-800">
+                <div className="flex items-center gap-2">
                   <Timer className="size-4" />
-                  <span>আবেদনের শেষ তারিখঃ {formatDate(deadline)}</span>
+                  <span className="font-medium">
+                    আবেদনের শেষ তারিখঃ <strong>{formatDate(deadline)}</strong> </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="size-4 text-gray-500 dark:text-gray-400" />
-                  <span>
+                  <span className="font-medium">
                     ডিপ্লোমা শূন্যপদঃ <strong>{vacancy}</strong> টি
                   </span>
                 </div>

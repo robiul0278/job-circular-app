@@ -8,11 +8,7 @@ export type TJobCircular = {
   banner: string;
   images: string[];
   vacancy: string;
-  websiteLink: string;
-  published: string;
-  applyStart: string;
   deadline: string;
-  technology: string[];
   categories: Categories;
   description: string;
   views: number;

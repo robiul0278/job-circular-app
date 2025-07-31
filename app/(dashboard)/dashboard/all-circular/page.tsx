@@ -35,20 +35,23 @@ import { formatDate } from "@/utils/format-date";
 import Pagination from "@/components/dashboard/Pagination";
 import Link from "next/link";
 
-type ITechnology = {
-  technology: string;
+type TCategories = {
+  category: string;
   count: number;
 }
 
+
 export default function AllCircularPage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTrade, setSelectedTrade] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const router = useRouter()
 
+  console.log(selectedCategory);
+
   const params = {
-    ...(selectedTrade && { technology: selectedTrade }),
+    ...(selectedCategory && { categories: selectedCategory }),
     page: currentPage,
     limit: itemsPerPage,
     searchTerm: searchTerm,
@@ -57,13 +60,13 @@ export default function AllCircularPage() {
   const { data, isLoading } = useGetAllJobsQuery(params);
   const { data: categories } = useGetCategoriesQuery(undefined);
 
+
   if (isLoading) return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-2">
       <Loader />
       <p className="text-sm text-muted-foreground">সকল সার্কুলার লোড হচ্ছে...</p>
     </div>
   );
-
 
   const tableData = data?.data.result;
   // Reset to first page when filters change
@@ -72,8 +75,12 @@ export default function AllCircularPage() {
     setCurrentPage(1);
   };
 
-  const handleTradeChange = (value: string) => {
-    setSelectedTrade(value);
+  const handleCategoryChange = (value: string) => {
+   if (value === "all") {
+    setSelectedCategory("");
+   }else{
+    setSelectedCategory(value);
+   }
     setCurrentPage(1);
   };
 
@@ -133,21 +140,28 @@ export default function AllCircularPage() {
                   className="pl-10 w-64"
                 />
               </div>
-              <Select value={selectedTrade} onValueChange={handleTradeChange}>
+              <Select value={selectedCategory} onValueChange={handleCategoryChange}>
                 <SelectTrigger className="w-52">
                   <Filter className="h-4 w-4 mr-2" />
                   <SelectValue placeholder="ট্রেড বাছাই করুন" />
                 </SelectTrigger>
+
                 <SelectContent>
-                  {categories?.data.technology.map((trade: ITechnology, index: number) => (
+                                  {/* Optional: Empty/default item */}
+                <SelectItem value="all" className="!p-0">
+                  <div className="flex justify-between items-center px-3 py-2 w-full">
+                    <span>সব ট্রেড</span>
+                  </div>
+                </SelectItem>
+                  {categories?.data.category.map((trade: TCategories, index: number) => (
                     <SelectItem
                       key={index}
-                      value={trade.technology}
+                      value={trade.category}
                       className="!p-0" // remove default padding to style our div fully
                     >
                       <div className="flex justify-between items-center px-3 py-2 w-full">
 
-                        <span>{formatQuery(trade.technology)}</span>
+                        <span>{formatQuery(trade.category)}</span>
                         <Badge variant="outline" className="ml-2 dark:bg-gray-600 text-xs">
                           {trade.count}
                         </Badge>
@@ -216,64 +230,64 @@ export default function AllCircularPage() {
                     <TableCell className="text-right">
                       <div className="flex justify-end space-x-2">
                         <Link href={`/job/${circular.slug}`}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
+                          >
+                            <View className="h-4 w-4" />
+                          </Button>
+                        </Link>
                         <Button
                           variant="outline"
                           size="sm"
+                          onClick={() => handleEdit(circular.slug)}
                           className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
                         >
-                          <View className="h-4 w-4" />
+                          <Edit className="h-4 w-4" />
                         </Button>
-                      </Link>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleEdit(circular.slug)}
-                        className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleDelete(circular._id)}
-                        className="hover:bg-red-50 dark:hover:bg-red-900 text-red-600 border-red-200 cursor-pointer"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </TableCell>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleDelete(circular._id)}
+                          className="hover:bg-red-50 dark:hover:bg-red-900 text-red-600 border-red-200 cursor-pointer"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
                   </TableRow>
                 ))}
-            </TableBody>
-          </Table>
-        </div>
-
-        {/* Pagination */}
-        <div className="flex items-center justify-between mt-6">
-          <div className="flex items-center space-x-2">
-            <span className="text-sm text-muted-foreground">প্রতি পৃষ্ঠায় দেখান:</span>
-            <Select
-              value={itemsPerPage.toString()}
-              onValueChange={(value) => {
-                setItemsPerPage(Number(value))
-                setCurrentPage(1)
-              }}
-            >
-              <SelectTrigger className="w-20">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="5">৫</SelectItem>
-                <SelectItem value="10">১০</SelectItem>
-                <SelectItem value="20">২০</SelectItem>
-                <SelectItem value="50">৫০</SelectItem>
-              </SelectContent>
-            </Select>
+              </TableBody>
+            </Table>
           </div>
-          <Pagination totalPage={data?.data.meta.totalPage} page={currentPage} setPageAction={setCurrentPage} />
-        </div>
-      </CardContent>
-    </Card>
+
+          {/* Pagination */}
+          <div className="flex items-center justify-between mt-6">
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-muted-foreground">প্রতি পৃষ্ঠায় দেখান:</span>
+              <Select
+                value={itemsPerPage.toString()}
+                onValueChange={(value) => {
+                  setItemsPerPage(Number(value))
+                  setCurrentPage(1)
+                }}
+              >
+                <SelectTrigger className="w-20">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="5">৫</SelectItem>
+                  <SelectItem value="10">১০</SelectItem>
+                  <SelectItem value="20">২০</SelectItem>
+                  <SelectItem value="50">৫০</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <Pagination totalPage={data?.data.meta.totalPage} page={currentPage} setPageAction={setCurrentPage} />
+          </div>
+        </CardContent>
+      </Card>
     </div >
 
   );

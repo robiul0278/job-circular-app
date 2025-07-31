@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -10,8 +8,6 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { X } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { TFormProps } from '@/types/form-types';
@@ -22,20 +18,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import MultiImageUploadInput from './MultiImageUploadInput';
 import { Textarea } from '../ui/textarea';
 
-const technologyOptions = [
-    'computer',
-    'electrical',
-    'mechanical',
-    'civil',
-    'power',
-    'electronics',
-    'architecture',
-    'survey',
-    'food',
-    'telecommunication',
-    'marine',
-    'shipbuilding'
-];
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {
     ssr: false,
@@ -107,7 +89,6 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                     </FormItem>
                                 )}
                             />
-
                             {/*Vacancy*/}
                             <FormField
                                 control={form.control}
@@ -146,72 +127,10 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                             />
 
                         </div>
-                        {/* Technology */}
-                        <FormField
-                            control={form.control}
-                            name="technology"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <Label className="text-sm font-medium">শিক্ষাগত যোগ্যতাঃ</Label>
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                        {technologyOptions.map((tech) => {
-                                            const isSelected = field.value?.includes(tech);
-                                            return (
-                                                <Button
-                                                    key={tech}
-                                                    type="button"
-                                                    variant={isSelected ? "default" : "outline"}
-                                                    size="sm"
-                                                    onClick={() => {
-                                                        const updated = isSelected
-                                                            ? field.value.filter((t: string) => t !== tech)
-                                                            : [...(field.value || []), tech];
-
-                                                        field.onChange(updated);
-                                                    }}
-                                                    className="text-left py-2 px-3"
-                                                >
-                                                    {tech}
-                                                </Button>
-                                            );
-                                        })}
-                                    </div>
-
-                                    {field.value?.length > 0 && (
-                                        <div className="space-y-2 mt-2">
-                                            <Label>Selected:</Label>
-                                            <div className="flex flex-wrap gap-2">
-                                                {field.value.map((tech: string) => (
-                                                    <Badge
-                                                        key={tech}
-                                                        variant="secondary"
-                                                        className="px-3 py-1"
-                                                    >
-                                                        {tech}
-                                                        <Button
-                                                            type="button"
-                                                            variant="ghost"
-                                                            size="sm"
-                                                            onClick={() =>
-                                                                field.onChange(field.value.filter((t: string) => t !== tech))
-                                                            }
-                                                            className="ml-1 h-4 w-4 p-0"
-                                                        >
-                                                            <X className="h-3 w-3" />
-                                                        </Button>
-                                                    </Badge>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
                     </CardContent>
                 </Card>
                 <Card className="border rounded-lg overflow-hidden">
-                    <CardContent className="space-y-8 flex ">
+                    <CardContent className="space-y-8 flex flex-col md:flex-row">
                         <div className="flex-2/6">
                             <ImageUploadInput control={form.control} name="banner" label="ব্যানার আপলোডঃ" />
                         </div>

@@ -78,7 +78,7 @@ export default function MultiImageUploadInput<T extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className="space-y-2 flex gap-6">
+        <FormItem className="space-y-2 flex flex-col md:flex-row gap-6">
           <div className="space-y-2">
             <Label htmlFor={name}>{label}</Label>
             <FormControl>

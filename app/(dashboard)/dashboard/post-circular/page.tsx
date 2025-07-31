@@ -17,7 +17,6 @@ export default function PostCircularPage() {
             companyName: "",
             vacancy: "",
             deadline: undefined,
-            technology: [],
             categories: undefined,
             description: "",
             banner: "",

@@ -2,7 +2,7 @@
 import { ChevronRight } from "lucide-react";
 import JobCard from "@/components/JobCard";
 import Pagination from "@/components/Pagination";
-import { formatQuery } from "@/utils/utils";
+import { categoryToBangla } from "@/utils/utils";
 import { TJobCircular } from "@/types/types";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
@@ -15,9 +15,7 @@ export default async function JobCategoryPage({ searchParams }: {
   const resolvedParams = await searchParams;
   const query = resolvedParams.query;
   const currentPage = parseInt(resolvedParams.page || '1');
-
   const specialCategories = ['government', 'private', 'autonomous'];
-
   const urlParams = new URLSearchParams();
 
   if (query) {
@@ -29,7 +27,6 @@ export default async function JobCategoryPage({ searchParams }: {
   }
 
   urlParams.set("page", currentPage.toString());
-
   const jobs = await getAllJobQuery(urlParams.toString());
 
 
@@ -39,7 +36,7 @@ export default async function JobCategoryPage({ searchParams }: {
       <section className="max-w-6xl mx-auto px-4 lg:px-0 md:px-0 py-6">
         <p className="text-2xl font-semibold mb-2 flex items-center">
           {query
-            ? `Results for "${formatQuery(query)}"`
+            ? `Results for "${categoryToBangla(query)}"`
             : "All Job Circular"}
           {!query && <ChevronRight className="size-6 text-primary" />}
         </p>

@@ -98,7 +98,7 @@ export default function BookmarkPage() {
                   </Button>
                   <a
                     href={`/job/${job.slug}`}
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-sm text-teal-600 hover:underline"
                   >
                     View Details
                   </a>

@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Eye, FileText,Lock, Shield, Users } from "lucide-react";
+import { Eye, FileText, Lock, Shield, Users } from "lucide-react";
 
 export default async function PrivacyPolicyPage() {
   return (
@@ -8,23 +8,23 @@ export default async function PrivacyPolicyPage() {
       {/* Hero Section */}
       <section className="text-center mb-16">
         <div className="flex justify-center mb-6">
-          <div className="p-4 bg-blue-100 rounded-full">
-            <Shield className="h-12 w-12 text-blue-600" />
+          <div className="p-4 bg-teal-100 rounded-full">
+            <Shield className="h-12 w-12 text-teal-600" />
           </div>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Privacy Policy</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Your privacy is important to us. This policy explains how we collect, use, and protect 
+          Your privacy is important to us. This policy explains how we collect, use, and protect
           your personal information when you use our services.
         </p>
         <div className="mt-6 text-sm text-muted-foreground">
-        <p>Last updated: July 11, 2025</p>
+          <p>Last updated: July 11, 2025</p>
         </div>
       </section>
 
       {/* Quick Overview */}
       <section className=" max-w-5xl mx-auto px-4 mb-16">
-        <Card className="p-6 bg-blue-50 dark:bg-blue-900/20">
+        <Card className="p-6 bg-teal-50 dark:bg-teal-900/20">
           <CardHeader>
             <CardTitle className="text-2xl">Privacy at a Glance</CardTitle>
             <CardDescription>
@@ -34,7 +34,7 @@ export default async function PrivacyPolicyPage() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-start space-x-3">
-                <Eye className="h-6 w-6 text-blue-600 mt-1" />
+                <Eye className="h-6 w-6 text-teal-600 mt-1" />
                 <div>
                   <h4 className="font-medium">Data Collection</h4>
                   <p className="text-sm text-muted-foreground">
@@ -43,7 +43,7 @@ export default async function PrivacyPolicyPage() {
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <Lock className="h-6 w-6 text-green-600 mt-1" />
+                <Lock className="h-6 w-6 text-teal-600 mt-1" />
                 <div>
                   <h4 className="font-medium">Data Security</h4>
                   <p className="text-sm text-muted-foreground">
@@ -70,7 +70,7 @@ export default async function PrivacyPolicyPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <FileText className="mr-2 h-6 w-6 text-blue-600" />
+              <FileText className="mr-2 h-6 w-6 text-teal-600" />
               Information We Collect
             </CardTitle>
           </CardHeader>
@@ -84,11 +84,11 @@ export default async function PrivacyPolicyPage() {
                 <li>Skills and qualifications</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-2">Cookies and Tracking</h4>
               <p className="text-muted-foreground">
-                We use cookies to enhance your experience, remember your preferences, and analyze site usage. 
+                We use cookies to enhance your experience, remember your preferences, and analyze site usage.
                 You can control cookie settings through your browser.
               </p>
             </div>
@@ -98,7 +98,7 @@ export default async function PrivacyPolicyPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Lock className="mr-2 h-6 w-6 text-green-600" />
+              <Lock className="mr-2 h-6 w-6 text-teal-600" />
               Data Security
             </CardTitle>
           </CardHeader>
@@ -129,7 +129,7 @@ export default async function PrivacyPolicyPage() {
                 <li>Delete your account at any time</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-2">Data Rights</h4>
               <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
@@ -139,11 +139,11 @@ export default async function PrivacyPolicyPage() {
                 <li>Object to processing of your data</li>
               </ul>
             </div>
-            
-            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+
+            <div className="bg-teal-50 dark:bg-teal-900/20 p-4 rounded-lg">
               <h4 className="font-semibold mb-2">Exercise Your Rights</h4>
               <p className="text-muted-foreground">
-                To exercise any of these rights, please contact us at privacy@diplomajobs.com 
+                To exercise any of these rights, please contact us at privacy@diplomajobs.com
                 or use the settings in your account dashboard.
               </p>
             </div>

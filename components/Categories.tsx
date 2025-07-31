@@ -11,7 +11,7 @@ type ICategory = {
 
 const Categories = async () => {
 
-  const {category} = await JobCategories();
+  const { category } = await JobCategories();
 
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
@@ -25,7 +25,7 @@ const Categories = async () => {
             href={`/categories?query=${data.category}`}
             className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors"
           >
-            <span className="text-green-500 font-medium transition-colors text-sm">
+            <span className="text-teal-600 font-medium transition-colors text-sm">
               {categoryToBangla(data.category)}
             </span>
             <Badge variant="outline" className="dark:bg-gray-500">

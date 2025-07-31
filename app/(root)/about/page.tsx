@@ -59,7 +59,7 @@ export default function AboutPage() {
               কোনো পরামর্শ, সহযোগিতা বা মতামত জানাতে চাইলে – আমরা জানতে আগ্রহী!
             </p>
             <p className="mt-2">
-              ইমেইল: <a href="mailto:support@diplomajobsbd.com" className="text-blue-500 underline">support@diplomajobsbd.com</a>
+              ইমেইল: <a href="mailto:support@diplomajobsbd.com" className="text-teal-500 underline">support@diplomajobsbd.com</a>
             </p>
           </div>
 

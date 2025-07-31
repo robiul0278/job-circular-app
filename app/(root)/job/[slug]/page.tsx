@@ -45,15 +45,15 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
                 <CardTitle className="text-lg md:text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
                 <div className="hidden lg:flex md:flex"><BookmarkButton jobId={_id} /></div>
               </div>
-              <div className="text-sm font-medium text-green-600">
+              <div className="text-sm font-medium text-teal-600">
                 {companyName}
               </div>
             </CardHeader>
 
             <CardContent className="space-y-4 px-2">
-                {/*BookmarkButton  */}
+              {/*BookmarkButton  */}
               <div className="flex lg:hidden md:hidden"><BookmarkButton jobId={_id} /></div>
-                {/*CircularTime */}
+              {/*CircularTime */}
               <CircularTime deadline={deadline} />
               <div className="flex items-center gap-2 my-4">
                 <hr className="flex-grow border-gray-300" />

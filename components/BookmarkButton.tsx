@@ -44,7 +44,7 @@ const BookmarkButton = ({ jobId }: Props) => {
 
   const toggleBookmark = async () => {
     if (!userId) {
-    toast.error("অনুগ্রহ করে আগে লগইন করুন!");
+      toast.error("অনুগ্রহ করে আগে লগইন করুন!");
       return;
     }
 
@@ -80,7 +80,7 @@ const BookmarkButton = ({ jobId }: Props) => {
     bg-muted/30 dark:bg-muted/40 text-sm font-medium transition-all duration-200
     hover:shadow-md hover:bg-muted/40 dark:hover:bg-muted/50
     flex items-center cursor-pointer
-    ${bookmarked ? "text-blue-600 dark:text-blue-400" : "text-gray-600 dark:text-gray-300"}
+    ${bookmarked ? "text-teal-600 dark:text-teal-400" : "text-gray-600 dark:text-gray-300"}
   `}
       type="button"
     >

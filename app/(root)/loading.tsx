@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <div className="animate-pulse">
       {/* Alert bar */}
-      <div className="relative w-full px-4 md:px-0 lg-px-0 bg-yellow-100 dark:bg-yellow-900 py-1.5 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">
+      <div className="relative w-full px-4 md:px-0 lg-px-0 bg-yellow-100 dark:bg-yellow-800 py-1.5 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">
         <div className="max-w-6xl mx-auto flex space-x-8">
           <Skeleton className="h-5 w-20 bg-yellow-200/70" />
           <Skeleton className="h-5 w-full bg-yellow-200/70" />

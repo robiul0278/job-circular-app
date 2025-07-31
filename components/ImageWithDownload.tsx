@@ -38,9 +38,9 @@ export default function ImageWithDownload({ src, index }: ImageWithDownloadProps
                 className="w-full h-auto rounded-md"
             />
             <Button
-            variant="link"
+                variant="link"
                 onClick={handleImageDownload}
-                className="text-sm text-blue-600 hover:underline "
+                className="text-sm text-teal-600 hover:underline "
             >
                 ডাউনলোড করুন (Image-{index + 1})
             </Button>

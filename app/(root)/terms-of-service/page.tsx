@@ -1,4 +1,4 @@
-import {CheckCircle, FileText, Scale, Shield, XCircle } from "lucide-react";
+import { CheckCircle, FileText, Scale, Shield, XCircle } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default async function TermsOfServicePage() {
@@ -7,13 +7,13 @@ export default async function TermsOfServicePage() {
       {/* Hero Section */}
       <section className="text-center mb-16">
         <div className="flex justify-center mb-6">
-          <div className="p-4 bg-green-100 rounded-full">
-            <Scale className="h-12 w-12 text-green-600" />
+          <div className="p-4 bg-teal-100 rounded-full">
+            <Scale className="h-12 w-12 text-teal-600" />
           </div>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Terms of Service</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          These terms govern your use of our platform and services. Please read them carefully 
+          These terms govern your use of our platform and services. Please read them carefully
           before using Diploma Jobs.
         </p>
         <div className="mt-6 text-sm text-muted-foreground">
@@ -23,7 +23,7 @@ export default async function TermsOfServicePage() {
 
       {/* Quick Summary */}
       <section className="max-w-5xl mx-auto px-4 mb-16">
-        <Card className="p-6 bg-green-50 dark:bg-green-900/20">
+        <Card className="p-6 bg-teal-50 dark:bg-teal-900/20">
           <CardHeader>
             <CardTitle className="text-2xl">Terms Summary</CardTitle>
             <CardDescription>
@@ -34,7 +34,7 @@ export default async function TermsOfServicePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-teal-600 mt-0.5" />
                   <div>
                     <h4 className="font-medium">Free for Job Seekers</h4>
                     <p className="text-sm text-muted-foreground">
@@ -43,7 +43,7 @@ export default async function TermsOfServicePage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-teal-600 mt-0.5" />
                   <div>
                     <h4 className="font-medium">Respectful Use</h4>
                     <p className="text-sm text-muted-foreground">
@@ -52,7 +52,7 @@ export default async function TermsOfServicePage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-teal-600 mt-0.5" />
                   <div>
                     <h4 className="font-medium">Accurate Information</h4>
                     <p className="text-sm text-muted-foreground">
@@ -100,23 +100,23 @@ export default async function TermsOfServicePage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <FileText className="mr-2 h-6 w-6 text-blue-600" />
+              <FileText className="mr-2 h-6 w-6 text-teal-600" />
               1. Acceptance of Terms
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-muted-foreground">
-              By accessing and using Diploma Jobs (the Platform), you accept and agree to be bound by the 
-              terms and provision of this agreement. If you do not agree to abide by the above, please do 
+              By accessing and using Diploma Jobs (the Platform), you accept and agree to be bound by the
+              terms and provision of this agreement. If you do not agree to abide by the above, please do
               not use this service.
             </p>
             <p className="text-muted-foreground">
-              These Terms of Service (Terms) govern your use of our website located at diplomajobs.com 
+              These Terms of Service (Terms) govern your use of our website located at diplomajobs.com
               (the Service) operated by Diploma Jobs (us, we, or our).
             </p>
             <p className="text-muted-foreground">
-              We reserve the right to modify these terms at any time. Changes will be effective immediately 
-              upon posting. Your continued use of the platform after changes are posted constitutes acceptance 
+              We reserve the right to modify these terms at any time. Changes will be effective immediately
+              upon posting. Your continued use of the platform after changes are posted constitutes acceptance
               of the modified terms.
             </p>
           </CardContent>
@@ -125,7 +125,7 @@ export default async function TermsOfServicePage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Shield className="mr-2 h-6 w-6 text-green-600" />
+              <Shield className="mr-2 h-6 w-6 text-teal-600" />
               2. User Accounts
             </CardTitle>
           </CardHeader>
@@ -138,7 +138,7 @@ export default async function TermsOfServicePage() {
                 <li>You must notify us immediately of any unauthorized access</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-2">Account Responsibilities</h4>
               <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
@@ -148,11 +148,11 @@ export default async function TermsOfServicePage() {
                 <li>Dont share your account with others</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-2">Account Termination</h4>
               <p className="text-muted-foreground">
-                You may terminate your account at any time. We may terminate or suspend your account 
+                You may terminate your account at any time. We may terminate or suspend your account
                 if you violate these terms or engage in prohibited activities.
               </p>
             </div>
@@ -164,7 +164,7 @@ export default async function TermsOfServicePage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-muted-foreground">
-              Your privacy is important to us. Our Privacy Policy explains how we collect, use, and 
+              Your privacy is important to us. Our Privacy Policy explains how we collect, use, and
               protect your personal information. By using our platform, you agree to our Privacy Policy.
             </p>
             <div>

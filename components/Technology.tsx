@@ -8,7 +8,7 @@ type ITechnology = {
   count: number;
 }
 const Technology = async () => {
-const {technology} = await JobCategories();
+  const { technology } = await JobCategories();
 
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
@@ -23,7 +23,7 @@ const {technology} = await JobCategories();
             href={`/categories?query=${category.technology}`}
             className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors"
           >
-            <span className="text-green-500 font-medium transition-colors text-sm">
+            <span className="text-teal-500 font-medium transition-colors text-sm">
               Diploma in {formatQuery(category.technology)}
             </span>
             <Badge variant="outline" className="dark:bg-gray-500">

@@ -76,11 +76,11 @@ export default function AllCircularPage() {
   };
 
   const handleCategoryChange = (value: string) => {
-   if (value === "all") {
-    setSelectedCategory("");
-   }else{
-    setSelectedCategory(value);
-   }
+    if (value === "all") {
+      setSelectedCategory("");
+    } else {
+      setSelectedCategory(value);
+    }
     setCurrentPage(1);
   };
 
@@ -147,12 +147,12 @@ export default function AllCircularPage() {
                 </SelectTrigger>
 
                 <SelectContent>
-                                  {/* Optional: Empty/default item */}
-                <SelectItem value="all" className="!p-0">
-                  <div className="flex justify-between items-center px-3 py-2 w-full">
-                    <span>সব ট্রেড</span>
-                  </div>
-                </SelectItem>
+                  {/* Optional: Empty/default item */}
+                  <SelectItem value="all" className="!p-0">
+                    <div className="flex justify-between items-center px-3 py-2 w-full">
+                      <span>সব ট্রেড</span>
+                    </div>
+                  </SelectItem>
                   {categories?.data.category.map((trade: TCategories, index: number) => (
                     <SelectItem
                       key={index}
@@ -233,7 +233,7 @@ export default function AllCircularPage() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
+                            className="hover:bg-teal-50 dark:hover:bg-teal-900 cursor-pointer"
                           >
                             <View className="h-4 w-4" />
                           </Button>
@@ -242,7 +242,7 @@ export default function AllCircularPage() {
                           variant="outline"
                           size="sm"
                           onClick={() => handleEdit(circular.slug)}
-                          className="hover:bg-blue-50 dark:hover:bg-blue-900 cursor-pointer"
+                          className="hover:bg-teal-50 dark:hover:bg-teal-900 cursor-pointer"
                         >
                           <Edit className="h-4 w-4" />
                         </Button>

@@ -109,7 +109,7 @@ export default function RegisterForm({ switchForm }: { switchForm: () => void })
           <button
             type="button"
             onClick={switchForm}
-            className="text-blue-600 hover:underline focus:outline-none"
+            className="text-teal-600 hover:underline focus:outline-none"
           >
             লগইন করুন
           </button>

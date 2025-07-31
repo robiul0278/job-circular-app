@@ -2,11 +2,9 @@
 import {
     FacebookShareButton,
     WhatsappShareButton,
-    LinkedinShareButton,
     TelegramShareButton,
     FacebookIcon,
     WhatsappIcon,
-    LinkedinIcon,
     TelegramIcon,
 } from "react-share";
 
@@ -16,8 +14,8 @@ const SocialShare = ({ title, slug }: { title: string; slug: string }) => {
         <div className="mt-6">
             <h3 className="text-sm font-medium mb-2">শেয়ার করুন:</h3>
             <div className="flex gap-4 items-center">
-                {[FacebookShareButton, WhatsappShareButton, TelegramShareButton, LinkedinShareButton].map((ShareBtn, idx) => {
-                    const Icon = [FacebookIcon, WhatsappIcon, TelegramIcon, LinkedinIcon][idx];
+                {[FacebookShareButton, WhatsappShareButton, TelegramShareButton].map((ShareBtn, idx) => {
+                    const Icon = [FacebookIcon, WhatsappIcon, TelegramIcon][idx];
                     return (
                         <ShareBtn
                             key={idx}
@@ -30,7 +28,6 @@ const SocialShare = ({ title, slug }: { title: string; slug: string }) => {
                     );
                 })}
             </div>
-
         </div>
     )
 }

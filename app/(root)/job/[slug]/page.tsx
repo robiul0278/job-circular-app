@@ -38,12 +38,12 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         {/* Main Content */}
         <div className="lg:col-span-3 space-y-8">
-          <Card className="rounded px-1 py-2">
-            <CardHeader className="px-2">
+          <Card className="rounded px-1 py-3">
+            <CardHeader className="px-2 relative">
               {/* Top: Title and Bookmark */}
               <div className="flex justify-between items-start gap-2">
-                <CardTitle className="text-lg md:text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
-                <div className="hidden lg:flex md:flex"><BookmarkButton jobId={_id} /></div>
+                <CardTitle className="text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
+                <div className="absolute right-1"><BookmarkButton jobId={_id} /></div>
               </div>
               <div className="text-sm font-medium text-teal-600">
                 {companyName}
@@ -51,8 +51,6 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
             </CardHeader>
 
             <CardContent className="space-y-4 px-2">
-              {/*BookmarkButton  */}
-              <div className="flex lg:hidden md:hidden"><BookmarkButton jobId={_id} /></div>
               {/*CircularTime */}
               <CircularTime deadline={deadline} />
               <div className="flex items-center gap-2 my-4">

@@ -42,11 +42,11 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/">
             <div className="border border-black dark:border-white inline-flex items-center">
-              <div className="bg-teal-600 dark:bg-teal-800 px-1.5 py-0.5">
+              <div className="bg-teal-600 dark:bg-teal-700 px-1.5 py-0.5">
                 <span className="text-white font-bold text-sm">Diploma</span>
               </div>
               <div className="px-1.5 py-0.5">
-                <span className="text-teal-600 dark:text-teal-600 font-bold text-sm">Jobs BD</span>
+                <span className="text-teal-600 dark:text-teal-500 font-bold text-sm">Jobs BD</span>
               </div>
             </div>
 
@@ -79,7 +79,7 @@ const Navbar = () => {
                 <Button
                   variant="default"
                   onClick={handleLogout}
-                  className="text-sm cursor-pointer bg-teal-600 hover:bg-teal-600 dark:bg-teal-800 dark:hover:bg-teal-700 text-white hover:text-white"
+                  className="text-sm cursor-pointer bg-teal-600 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-500 text-white hover:text-white"
                 >
                   লগআউট
                 </Button>

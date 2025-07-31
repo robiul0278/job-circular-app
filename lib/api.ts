@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 //Get All Job
 export async function getAllJobQuery(params: string) {
-  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL || "http://localhost:5000/api/v1";
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 
   const res = await fetch(`${BASE_URL}/jobs?${params}`, {
       next: { revalidate: 60 },

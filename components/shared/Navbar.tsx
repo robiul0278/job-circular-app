@@ -21,7 +21,6 @@ const menuItems = [
   { name: "যোগাযোগ", href: "/contact" },
 ];
 
-
 const Navbar = () => {
   const dispatch = useDispatch();
   const router = useRouter();

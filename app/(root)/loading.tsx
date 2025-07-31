@@ -11,32 +11,40 @@ export default function Loading() {
         </div>
       </div>
 
-    <section className="hero relative w-full py-10 md:py-28 lg:py-28 overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="relative text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
-        {/* Headline */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-300">
-          <Skeleton className="h-6 sm:h-10 w-[90%] mx-auto rounded-md" />
-        </h1>
-        {/* Subheadline */}
-        <div className="text-center max-w-2xl mx-auto">
-          <Skeleton className="h-4 md:h-4 w-[95%] sm:w-[90%] mx-auto rounded-md" />
-          <Skeleton className="h-4 md:h-4 w-[80%] sm:w-[75%] mx-auto mt-2 rounded-md" />
-        </div>
+      <section className="hero relative w-full py-10 md:py-28 lg:py-28 overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="relative text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
+          {/* Headline */}
+          {/* Desktop & Tablet: Single Skeleton */}
+          <h1 className="hidden sm:block text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-300">
+            <Skeleton className="h-6 sm:h-10 w-[90%] mx-auto rounded-md" />
+          </h1>
 
-        {/* Search Form */}
-        <div className="w-full max-w-xl mx-auto px-8 md:px-4 lg:px-4 py-4">
-          <div className="flex items-center gap-3 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md border dark:border-gray-700">
-            <Skeleton className="h-10 flex-1 rounded-lg" />
-            <Skeleton className="h-10 w-24 rounded-lg" />
+          {/* Mobile: 3 Skeleton lines */}
+          <div className="block sm:hidden space-y-2 text-2xl font-bold text-gray-900 dark:text-slate-300">
+            <Skeleton className="h-5 w-[90%] mx-auto rounded-md" />
+            <Skeleton className="h-5 w-[85%] mx-auto rounded-md" />
+            <Skeleton className="h-5 w-[70%] mx-auto rounded-md" />
+          </div>
+          {/* Subheadline */}
+          <div className="text-center max-w-2xl mx-auto">
+            <Skeleton className="h-4 md:h-4 w-[95%] sm:w-[90%] mx-auto rounded-md" />
+            <Skeleton className="h-4 md:h-4 w-[80%] sm:w-[75%] mx-auto mt-2 rounded-md" />
+          </div>
+
+          {/* Search Form */}
+          <div className="w-full max-w-xl mx-auto px-8 md:px-4 lg:px-4 py-4">
+            <div className="flex items-center gap-3 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md border dark:border-gray-700">
+              <Skeleton className="h-10 flex-1 rounded-lg" />
+              <Skeleton className="h-10 w-24 rounded-lg" />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* Card Header */}
       <div className="max-w-6xl pl-3 lg:pl-3 mx-auto flex items-center gap-2">
         <Skeleton className="h-6 md:h-6 w-48 md:w-48 bg-slate-200 dark:bg-slate-700" />
-        <Skeleton className="size-5 hidden md:inline-block bg-slate-200 dark:bg-slate-700 rounded-full" />
+        <Skeleton className="size-5  bg-slate-200 dark:bg-slate-700 rounded-full" />
       </div>
 
       {/* Main Content */}

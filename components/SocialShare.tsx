@@ -23,7 +23,7 @@ const SocialShare = ({ title, slug }: { title: string; slug: string }) => {
                             title={title}
                             className="transition-transform hover:scale-110 hover:shadow-lg rounded-full"
                         >
-                            <Icon size={40} round />
+                            <Icon size={30} round />
                         </ShareBtn>
                     );
                 })}

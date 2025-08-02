@@ -11,7 +11,7 @@ type ICategory = {
 
 const Categories = async () => {
 
-  const { category } = await JobCategories();
+  const { categories } = await JobCategories();
 
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
@@ -19,7 +19,7 @@ const Categories = async () => {
         Job by Category
       </h4>
       <div>
-        {category?.map((data: ICategory, index: number) => (
+        {categories?.map((data: ICategory, index: number) => (
           <Link
             key={index}
             href={`/categories?query=${data.category}`}

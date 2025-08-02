@@ -8,6 +8,7 @@ import NoticeMarquee from "@/components/NoticeMarquee";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
 import { getAllJobQuery } from "@/lib/api";
+import Departments from "@/components/Departments";
 
 export default async function Home({ searchParams }: {
   searchParams: Promise<{ query?: string; page?: string }>
@@ -15,13 +16,12 @@ export default async function Home({ searchParams }: {
   const resolvedParams = await searchParams;
   const query = resolvedParams.query;
   const currentPage = parseInt(resolvedParams.page || '1');
+  const path = "";
+const params = new URLSearchParams({
+  ...(query ? { searchTerm: query } : {}),
+  page: resolvedParams.page || "1",
+});
 
-  const params = new URLSearchParams();
-
-  if (query) {
-    params.set("searchTerm", query);
-  }
-  params.set("page", resolvedParams.page || "1");
   const jobs = await getAllJobQuery(params.toString());
 
   return (
@@ -43,12 +43,13 @@ export default async function Home({ searchParams }: {
               ))
               }
             </ul>
-            <Pagination totalPages={jobs?.meta.totalPage} currentPage={currentPage} />
+            <Pagination totalPages={jobs?.meta.totalPage} currentPage={currentPage} path={path} />
           </div>
           {/* Right */}
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
             <Categories />
+            <Departments/>
           </aside>
         </div>
       </section>

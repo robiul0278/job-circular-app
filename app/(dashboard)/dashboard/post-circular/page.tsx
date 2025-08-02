@@ -18,6 +18,7 @@ export default function PostCircularPage() {
             vacancy: "",
             deadline: undefined,
             categories: undefined,
+            departments: [],
             description: "",
             banner: "",
             images: [],
@@ -32,7 +33,7 @@ export default function PostCircularPage() {
             const res = await Post(payload).unwrap();
             if (res.statusCode === 200) {
                 toast.success(res.message);
-                // form.reset();
+                form.reset();
             }
         } catch (error: unknown) {
             console.log(error);

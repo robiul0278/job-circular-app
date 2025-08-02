@@ -3,31 +3,30 @@ import { Badge } from "./ui/badge";
 import { formatQuery } from "@/utils/utils";
 import { JobCategories } from "@/lib/api";
 
-type ITechnology = {
-  technology: string;
+type IDepartments = {
   count: number;
+  department: string;
 }
-const Technology = async () => {
-  const { technology } = await JobCategories();
+const Departments = async () => {
+  const { departments } = await JobCategories();
 
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
       <h4 className="font-semibold text-sm uppercase flex items-center dark:text-gray-100 p-2">
-        Job by Technology
+        Job by Departments
       </h4>
-
       <div>
-        {technology?.map((category: ITechnology, index: number) => (
+        {departments?.map((department: IDepartments, index: number) => (
           <Link
             key={index}
-            href={`/categories?query=${category.technology}`}
+            href={`/categories?query=${department.department}`}
             className="flex items-center justify-between group cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 transition-colors"
           >
             <span className="text-teal-500 font-medium transition-colors text-sm">
-              Diploma in {formatQuery(category.technology)}
+              Diploma in {formatQuery(department.department)}
             </span>
             <Badge variant="outline" className="dark:bg-gray-500">
-              {category.count}
+              {department.count}
             </Badge>
           </Link>
         ))}
@@ -36,4 +35,4 @@ const Technology = async () => {
   );
 };
 
-export default Technology;
+export default Departments;

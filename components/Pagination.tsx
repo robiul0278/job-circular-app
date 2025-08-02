@@ -8,9 +8,11 @@ import { useRouter } from 'next/navigation';
 export default function PaginationForm({
   currentPage,
   totalPages,
+  path,
 }: {
   currentPage: number;
   totalPages: number;
+  path: string;
 }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -19,7 +21,7 @@ export default function PaginationForm({
     startTransition(() => {
       // 👇 Smooth scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      router.push(`/?page=${page}`);
+      router.push(`/${path}?page=${page}`);
     });
   };
 

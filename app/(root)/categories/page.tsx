@@ -7,6 +7,7 @@ import { TJobCircular } from "@/types/types";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
 import { getAllJobQuery } from "@/lib/api";
+import Departments from "@/components/Departments";
 
 export default async function JobCategoryPage({ searchParams }: {
   searchParams: Promise<{ query?: string; page?: string }>
@@ -16,18 +17,20 @@ export default async function JobCategoryPage({ searchParams }: {
   const query = resolvedParams.query;
   const currentPage = parseInt(resolvedParams.page || '1');
   const specialCategories = ['government', 'private', 'autonomous'];
-  const urlParams = new URLSearchParams();
+  const path = "categories";
 
+  const params = new URLSearchParams();
   if (query) {
     if (specialCategories.includes(query)) {
-      urlParams.set("categories", query);
+      params.set("categories", query);
     } else {
-      urlParams.set("technology", query);
+      params.set("departments", query);
     }
   }
+  params.set("page", currentPage.toString());
 
-  urlParams.set("page", currentPage.toString());
-  const jobs = await getAllJobQuery(urlParams.toString());
+  console.log(params);
+  const jobs = await getAllJobQuery(params.toString());
 
 
 
@@ -50,18 +53,18 @@ export default async function JobCategoryPage({ searchParams }: {
               ))
               }
             </ul>
-            <Pagination totalPages={jobs.meta.totalPage} currentPage={currentPage} />
+            <Pagination totalPages={jobs.meta.totalPage} currentPage={currentPage} path={path}/>
           </div>
           {/* Right: Google AdSense or Placeholder */}
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
             <Categories />
+            <Departments/>
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}
             <div className=" border rounded-lg h-96 flex items-center justify-center text-gray-700 ">
               <span>Google AdSense Ad</span>
             </div>
-
           </aside>
         </div>
       </section>

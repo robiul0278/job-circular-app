@@ -17,6 +17,24 @@ import ImageUploadInput from './ImageUploadInput';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import MultiImageUploadInput from './MultiImageUploadInput';
 import { Textarea } from '../ui/textarea';
+import { X } from 'lucide-react';
+import { Badge } from '../ui/badge';
+
+const categories = [
+    { value: "government", name: "সরকারি চাকরি" },
+    { value: "private", name: "বেসরকারি চাকরি" },
+    { value: "autonomous", name: "স্বায়ত্তশাসিত" },
+];
+
+const departments = [
+    'engineering',
+    'marine',
+    'textile',
+    'agriculture',
+    'livestock',
+    'fisheries',
+    'forestry',
+];
 
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {
@@ -78,10 +96,12 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                                 <SelectTrigger className="w-full">
                                                     <SelectValue placeholder="একটি ক্যাটাগরি নির্বাচন করুন" />
                                                 </SelectTrigger>
-                                                <SelectContent className='w-full'>
-                                                    <SelectItem value="government">সরকারি চাকরি</SelectItem>
-                                                    <SelectItem value="private">বেসরকারি চাকরি</SelectItem>
-                                                    <SelectItem value="autonomous">স্বায়ত্তশাসিত</SelectItem>
+                                                <SelectContent className="w-full">
+                                                    {categories.map((category) => (
+                                                        <SelectItem key={category.value} value={category.value}>
+                                                            {category.name}
+                                                        </SelectItem>
+                                                    ))}
                                                 </SelectContent>
                                             </Select>
                                         </FormControl>
@@ -109,7 +129,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 name="deadline"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label htmlFor="deadline">আবেদনের শেষ দিনঃ</Label>
+                                        <Label htmlFor="deadline">আবেদনের শেষ তারিখঃ</Label>
                                         <FormControl>
                                             <ReactDatePicker
                                                 id="deadline"
@@ -137,6 +157,71 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                         <div className="flex-4/6">
                             <MultiImageUploadInput control={form.control} name="images" label="বিজ্ঞপ্তির ছবি আপলোডঃ" />
                         </div>
+                    </CardContent>
+                </Card>
+                <Card className="border rounded-lg overflow-hidden">
+                    <CardContent className="">
+                        <FormField
+                            control={form.control}
+                            name="departments"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <Label className="text-sm font-medium">ডিপ্লোমা বিভাগ:</Label>
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        {departments.map((department) => {
+                                            const isSelected = field.value?.includes(department);
+                                            return (
+                                                <Button
+                                                    key={department}
+                                                    type="button"
+                                                    variant={isSelected ? "default" : "outline"}
+                                                    size="sm"
+                                                    onClick={() => {
+                                                        const updated = isSelected
+                                                            ? field.value.filter((t: string) => t !== department)
+                                                            : [...(field.value || []), department];
+
+                                                        field.onChange(updated);
+                                                    }}
+                                                    className="text-left py-2 px-3"
+                                                >
+                                                    {department}
+                                                </Button>
+                                            );
+                                        })}
+                                    </div>
+
+                                    {field.value?.length > 0 && (
+                                        <div className="space-y-2 mt-2">
+                                            <Label>Selected:</Label>
+                                            <div className="flex flex-wrap gap-2">
+                                                {field.value.map((department: string) => (
+                                                    <Badge
+                                                        key={department}
+                                                        variant="secondary"
+                                                        className="px-3 py-1"
+                                                    >
+                                                        {department}
+                                                        <Button
+                                                            type="button"
+                                                            variant="ghost"
+                                                            size="sm"
+                                                            onClick={() =>
+                                                                field.onChange(field.value.filter((t: string) => t !== department))
+                                                            }
+                                                            className="ml-1 h-4 w-4 p-0"
+                                                        >
+                                                            <X className="h-3 w-3" />
+                                                        </Button>
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                     </CardContent>
                 </Card>
 

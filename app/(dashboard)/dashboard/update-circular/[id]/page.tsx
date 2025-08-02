@@ -10,13 +10,13 @@ import { generateSlug } from '@/utils/utils';
 import { use } from 'react';
 
 type PageProps = {
-  params: Promise<{ id: string }>;
+    params: Promise<{ id: string }>;
 };
 
-export default function UpdateCircularPage({ params }: PageProps)  {
+export default function UpdateCircularPage({ params }: PageProps) {
 
-   const { id } = use(params);
-   const {data: SingleJob} = useGetSingleJobQuery(id)
+    const { id } = use(params);
+    const { data: SingleJob } = useGetSingleJobQuery(id)
     const [Update] = useUpdateJobMutation();
 
     const form = useForm<TJobCircular>({
@@ -25,12 +25,9 @@ export default function UpdateCircularPage({ params }: PageProps)  {
             title: "",
             companyName: "",
             vacancy: "",
-            websiteLink: "",
-            published: undefined,
-            applyStart: undefined,
             deadline: undefined,
-            technology: [],
-            categories: "",
+            categories: undefined,
+            departments: [],
             description: "",
             banner: "",
             images: [],

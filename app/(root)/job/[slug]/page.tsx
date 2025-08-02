@@ -15,6 +15,7 @@ import ShowMoreJobs from "@/components/ShowMoreJobs";
 import MarkdownPreview from "@/components/MarkdownPreview";
 import ImageWithDownload from "@/components/ImageWithDownload";
 import SocialShare from "@/components/SocialShare";
+import Departments from "@/components/Departments";
 
 
 
@@ -81,6 +82,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
 
           <Telegram />
           <Categories />
+          <Departments/>
         </aside>
       </div>
 

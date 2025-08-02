@@ -48,8 +48,6 @@ export default function AllCircularPage() {
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const router = useRouter()
 
-  console.log(selectedCategory);
-
   const params = {
     ...(selectedCategory && { categories: selectedCategory }),
     page: currentPage,
@@ -153,7 +151,7 @@ export default function AllCircularPage() {
                       <span>সব ট্রেড</span>
                     </div>
                   </SelectItem>
-                  {categories?.data.category.map((trade: TCategories, index: number) => (
+                  {categories?.data.categories.map((trade: TCategories, index: number) => (
                     <SelectItem
                       key={index}
                       value={trade.category}

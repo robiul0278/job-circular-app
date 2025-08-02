@@ -111,7 +111,7 @@ export default function Loading() {
 
           {/* JOB BY TECHNOLOGY */}
           <div className="rounded-md border bg-card p-4">
-            <p className="text-sm font-medium text-muted-foreground mb-3">JOB BY TECHNOLOGY</p>
+            <p className="text-sm font-medium text-muted-foreground mb-3">JOB BY DEPARTMENTS</p>
             <div className="space-y-2">
               {Array.from({ length: 4 }).map((_, i) => (
                 <div key={i} className="flex items-center justify-between">

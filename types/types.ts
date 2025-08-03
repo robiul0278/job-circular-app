@@ -1,6 +1,6 @@
 export type Categories = "government" | "private" | "autonomous" 
 
-export type TJobCircular = {
+export interface IJobCircular {
   _id: string;
   slug: string;
   title: string;

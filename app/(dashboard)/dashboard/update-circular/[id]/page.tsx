@@ -2,7 +2,7 @@
 
 import { useGetSingleJobQuery, useUpdateJobMutation } from '@/redux/api/api';
 import { toast } from 'sonner';
-import { TGenericErrorResponse, TJobCircular } from '@/types/types';
+import { TGenericErrorResponse, IJobCircular } from '@/types/types';
 import { Form } from '@/components/ui/form';
 import PostForm from '@/components/dashboard/PostForm';
 import { useForm } from 'react-hook-form';
@@ -19,7 +19,7 @@ export default function UpdateCircularPage({ params }: PageProps) {
     const { data: SingleJob } = useGetSingleJobQuery(id)
     const [Update] = useUpdateJobMutation();
 
-    const form = useForm<TJobCircular>({
+    const form = useForm<IJobCircular>({
         // resolver: zodResolver(PostFormSchema),
         values: SingleJob?.data || {
             title: "",
@@ -34,7 +34,7 @@ export default function UpdateCircularPage({ params }: PageProps) {
         },
     });
 
-    const onSubmit = async (data: TJobCircular) => {
+    const onSubmit = async (data: IJobCircular) => {
         const slug = generateSlug(data.title);
         const payload = { ...data, slug };
 
@@ -50,7 +50,7 @@ export default function UpdateCircularPage({ params }: PageProps) {
 
             if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
                 err.data.errorSources.forEach(({ path, message }) => {
-                    form.setError(path as keyof TJobCircular, {
+                    form.setError(path as keyof IJobCircular, {
                         type: "server",
                         message,
                     });

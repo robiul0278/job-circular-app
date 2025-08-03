@@ -1,4 +1,4 @@
-import { TJobCircular } from "@/types/types";
+"use client"
 import { formatDate } from "@/utils/format-date";
 import { timeAgo } from "@/utils/format-time";
 import {
@@ -11,95 +11,83 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { categoryToBangla } from "@/utils/utils";
+import { IJobCircular } from "@/types/types";
 
-const JobCard = async ({ post, index }: { post: TJobCircular; index: number }) => {
+export interface JobProps {
+  jobs: IJobCircular[] | null;
+}
 
-  const {
-    slug,
-    title,
-    companyName,
-    banner,
-    categories,
-    deadline,
-    vacancy,
-    views,
-    createdAt,
-  } = post;
+export function JobCard({ jobs }: JobProps) {
 
   return (
-    <li className="list-none w-full px-2 lg:p-0">
-      <Link
-        href={`/job/${slug}`}
-        className="block group"
-        aria-label={`View details for ${title}`}
-      >
-        <div className="relative flex flex-col sm:flex-row bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-
-          {/* Image Left */}
-          <div className="sm:w-1/3 h-48 sm:h-auto relative">
-            <Image
-              src={banner}
-              alt={title}
-              width={600}
-              height={400}
-              className="w-full h-full p-2 rounded-2xl"
-            />
-            <Badge
-              variant="outline"
-              className="absolute top-3 right-3 text-white"
-            >{categoryToBangla(categories)}</Badge>
-          </div>
-
-          {/* Right Content */}
-          <div className="relative flex flex-col sm:w-2/3 p-3">
-            <div className="flex-1 pb-6">
-              <h3 className="text-lg leading-tight font-semibold group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-                {title}
-              </h3>
-              <div className="text-sm font-medium text-teal-600 dark:text-teal-600 flex items-center gap-1 mb-2">
-                {companyName}
+    <ul className="">
+      {jobs?.map((job) => (
+        <li key={job._id} className="list-none w-full px-2 lg:p-0 mb-4">
+          <Link
+            href={`/job/${job.slug}`}
+            className="block group"
+            aria-label={`View details for ${job.title}`}
+          >
+            <div className="relative flex flex-col sm:flex-row bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+              {/* Image Left */}
+              <div className="sm:w-1/3 h-48 sm:h-auto relative">
+                <Image
+                  src={job.banner}
+                  alt={job.title}
+                  width={600}
+                  height={400}
+                  className="w-full h-full p-2 rounded-2xl"
+                />
+                <Badge
+                  variant="outline"
+                  className="absolute top-3 right-3 text-white"
+                >
+                  {categoryToBangla(job.categories)}
+                </Badge>
               </div>
 
-              <div className="text-sm text-gray-700 dark:text-gray-300">
-                <div className="flex items-center gap-2">
-                  <Timer className="size-4" />
-                  <span className="font-medium">
-                    আবেদনের শেষ তারিখঃ <strong>{formatDate(deadline)}</strong> </span>
+              {/* Right Content */}
+              <div className="relative flex flex-col sm:w-2/3 p-3">
+                <div className="flex-1 pb-6">
+                  <h3 className="text-lg leading-tight font-semibold group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                    {job.title}
+                  </h3>
+                  <div className="text-sm font-medium text-teal-600 dark:text-teal-600 flex items-center gap-1 mb-2">
+                    {job.companyName}
+                  </div>
+
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    <div className="flex items-center gap-2">
+                      <Timer className="size-4" />
+                      <span className="font-medium">
+                        আবেদনের শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="size-4 text-gray-500 dark:text-gray-400" />
+                      <span className="font-medium">
+                        ডিপ্লোমা শূন্যপদঃ <strong>{job.vacancy}</strong> টি
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Users className="size-4 text-gray-500 dark:text-gray-400" />
-                  <span className="font-medium">
-                    ডিপ্লোমা শূন্যপদঃ <strong>{vacancy}</strong> টি
-                  </span>
+
+                {/* Sticky Footer */}
+                <div className="absolute bottom-0 left-0 w-full px-3 py-1 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center gap-1">
+                    <Clock className="size-4" />
+                    {timeAgo(job.createdAt)}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Eye className="size-4" />
+                    {job.views}
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Sticky Footer */}
-            <div className="absolute bottom-0 left-0 w-full px-3 py-1 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-              <div className="flex items-center gap-1">
-                <Clock className="size-4" />
-                {timeAgo(createdAt)}
-              </div>
-              <div className="flex items-center gap-1">
-                <Eye className="size-4" />
-                {views}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Link>
-
-      {/* Optional Ad Slot after every 30 cards */}
-      {(index + 1) % 30 === 0 && (
-        <div className="mt-4">
-          <div className="w-full h-24 bg-gray-100 border border-gray-300 rounded flex items-center justify-center text-sm text-gray-400">
-            Google Ad Placeholder (Mid-grid Ad)
-          </div>
-        </div>
-      )}
-    </li>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
-};
-
-export default JobCard;
+}

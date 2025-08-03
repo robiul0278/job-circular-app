@@ -1,13 +1,12 @@
 
 import { ChevronRight } from "lucide-react";
-import JobCard from "@/components/JobCard";
 import Pagination from "@/components/Pagination";
 import { categoryToBangla } from "@/utils/utils";
-import { TJobCircular } from "@/types/types";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
-import { getAllJobQuery } from "@/lib/api";
 import Departments from "@/components/Departments";
+import { getAllJobQuery } from "@/lib/api";
+import { JobCard } from "@/components/JobCard";
 
 export default async function JobCategoryPage({ searchParams }: {
   searchParams: Promise<{ query?: string; page?: string }>
@@ -29,7 +28,6 @@ export default async function JobCategoryPage({ searchParams }: {
   }
   params.set("page", currentPage.toString());
 
-  console.log(params);
   const jobs = await getAllJobQuery(params.toString());
 
 
@@ -48,18 +46,15 @@ export default async function JobCategoryPage({ searchParams }: {
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">
             <ul className="grid grid-cols-1 gap-4">
-              {jobs.result.map((post: TJobCircular, index: number) => (
-                <JobCard key={index} post={post} index={index} />
-              ))
-              }
+              <JobCard jobs={jobs.result} />
             </ul>
-            <Pagination totalPages={jobs.meta.totalPage} currentPage={currentPage} path={path}/>
+            <Pagination totalPages={jobs.meta.totalPage} currentPage={currentPage} path={path} />
           </div>
           {/* Right: Google AdSense or Placeholder */}
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
             <Categories />
-            <Departments/>
+            <Departments />
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}
             <div className=" border rounded-lg h-96 flex items-center justify-center text-gray-700 ">

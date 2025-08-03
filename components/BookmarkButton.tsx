@@ -11,7 +11,7 @@ import {
   useGetBookmarkQuery,
 } from "@/redux/api/api";
 import { Button } from "./ui/button";
-import { TJobCircular } from "@/types/types";
+import { IJobCircular } from "@/types/types";
 
 type Props = {
   jobId: string;
@@ -37,7 +37,7 @@ const BookmarkButton = ({ jobId }: Props) => {
   // Set bookmark state from fetched data
   useEffect(() => {
     if (bookmark?.data && Array.isArray(bookmark.data)) {
-      const isBookmarked = bookmark.data.some((job: TJobCircular) => job._id === jobId);
+      const isBookmarked = bookmark.data.some((job: IJobCircular) => job._id === jobId);
       setBookmarked(isBookmarked);
     }
   }, [bookmark, jobId]);

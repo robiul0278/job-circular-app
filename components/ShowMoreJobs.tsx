@@ -1,4 +1,4 @@
-import { TJobCircular } from "@/types/types";
+import { IJobCircular } from "@/types/types";
 import { formatDate } from "@/utils/format-date";
 import Link from "next/link";
 import { getAllJobQuery } from "@/lib/api";
@@ -20,7 +20,7 @@ export default async function ShowMoreJobs() {
 
             {result.length > 0 ? (
                 <ul className="space-y-3">
-                    {result.map((job: TJobCircular) => (
+                    {result.map((job: IJobCircular) => (
                         <li
                             key={job._id}
                             className="border rounded-md p-3 hover:shadow-md transition-shadow"

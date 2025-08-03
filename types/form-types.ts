@@ -1,14 +1,14 @@
 import { Control, FieldErrors, UseFormRegister, UseFormSetValue, UseFormHandleSubmit, UseFormReturn } from 'react-hook-form';
-import { TJobCircular } from './types';
+import { IJobCircular } from './types';
 
 
 export type TFormProps = {
-  onSubmit: (data: TJobCircular) => void;
-  register: UseFormRegister<TJobCircular>;
-  handleSubmit: UseFormHandleSubmit<TJobCircular>;
-  control: Control<TJobCircular>;
-  errors: FieldErrors<TJobCircular>;
-  setValue: UseFormSetValue<TJobCircular>;
-  form: UseFormReturn<TJobCircular>;
+  onSubmit: (data: IJobCircular) => void;
+  register: UseFormRegister<IJobCircular>;
+  handleSubmit: UseFormHandleSubmit<IJobCircular>;
+  control: Control<IJobCircular>;
+  errors: FieldErrors<IJobCircular>;
+  setValue: UseFormSetValue<IJobCircular>;
+  form: UseFormReturn<IJobCircular>;
   isSubmitting: boolean;
 };

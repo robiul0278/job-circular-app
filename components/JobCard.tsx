@@ -60,7 +60,7 @@ export function JobCard({ jobs }: JobProps) {
                     <div className="flex items-center gap-2">
                       <Timer className="size-4" />
                       <span className="font-medium">
-                        আবেদনের শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
+                        Deadline: <strong>{formatDate(job.deadline)}</strong>
                       </span>
                     </div>
                     <div className="flex items-center gap-2">

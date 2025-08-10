@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
-export default function PaginationForm({
+export default function Pagination({
   currentPage,
   totalPages,
   path,
@@ -17,13 +17,16 @@ export default function PaginationForm({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const handlePagination = (page: number) => {
-    startTransition(() => {
-      // 👇 Smooth scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      router.push(`/${path}?page=${page}`);
-    });
-  };
+const handlePagination = (page: number) => {
+  startTransition(() => {
+    const current = new URLSearchParams(window.location.search);
+    current.set("page", page.toString()); // page overwrite করো
+    const query = current.toString(); // নতুন query string
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    router.push(`/${path}?${query}`);
+  });
+};
 
   const prevPage = Math.max(1, currentPage - 1);
   const nextPage = Math.min(totalPages, currentPage + 1);

@@ -14,7 +14,7 @@ const SearchForm = async ({ query }: { query?: string }) => {
       <div className="flex items-center gap-3 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md border dark:border-gray-700">
         <div className="relative flex-1 w-full">
           <Input
-            name="search"
+            name="query"
             placeholder="🔍 চাকরি খুঁজুন..."
             className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-teal-500"
           />

@@ -5,21 +5,24 @@ import NoticeMarquee from "@/components/NoticeMarquee";
 import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
 import Departments from "@/components/Departments";
-import { getAllJobQuery } from "@/lib/fetch-job";
 import { JobCard } from "@/components/JobCard";
-import { LoadMore } from "@/components/load-more";
+import { getAllJobQuery } from "@/lib/api";
+import Pagination from "@/components/Pagination";
 
 export default async function Home({ searchParams }: {
-  searchParams: Promise<{ search?: string; }>
+  searchParams: Promise<{ query?: string; page?: string}>
 }) {
-  const query = (await searchParams).search;
+const resolvedParams = await searchParams;
+const query = resolvedParams.query;
+const currentPage = parseInt(resolvedParams.page || '1');
+  const path = "/"
 
   const params = {
     ...(query ? { searchTerm: query } : {}),
-    page: "1",
+    page: (currentPage).toString() ,
   };
 
-  const jobs = await getAllJobQuery({ params });
+  const {result, meta} = await getAllJobQuery({params});
 
   return (
     <>
@@ -34,7 +37,7 @@ export default async function Home({ searchParams }: {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-2">
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">
-            {jobs.length === 0 ? (
+            {result.length === 0 ? (
               <div className="text-center py-8 text-slate-600 dark:text-slate-400">
                 <p className="text-xl font-medium">
                   {query ? `"${query}" এর জন্য কোনো চাকরির বিজ্ঞপ্তি পাওয়া যায়নি।` : "এই মুহূর্তে কোনো চাকরির বিজ্ঞপ্তি পাওয়া যাচ্ছে না।"}
@@ -42,9 +45,9 @@ export default async function Home({ searchParams }: {
                 <p className="text-sm mt-2">দয়া করে অন্য কীওয়ার্ড দিয়ে আবার চেষ্টা করুন।</p>
               </div>
             ) : (
-              <JobCard jobs={jobs} />
+              <JobCard jobs={result} />
             )}
-            <LoadMore />
+             <Pagination  totalPages={meta.totalPage} currentPage={currentPage} path={path} />
           </div>
           {/* Right */}
           <aside className="lg:col-span-3 space-y-4">

@@ -1,16 +1,25 @@
 import { notFound } from "next/navigation";
 
-//Get All Job
-export async function getAllJobQuery(params: string) {
+type TParams = {
+  searchTerm?: string;
+  page?: string;
+  departments?: string;
+  categories?: string;
+}
+
+export async function getAllJobQuery({params}: {params?:TParams}) {
   const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 
-  const res = await fetch(`${BASE_URL}/jobs?${params}`, {
-      next: { revalidate: 60 },
+  const queryString = new URLSearchParams(params).toString();
+
+  const res = await fetch(`${BASE_URL}/jobs?${queryString}`, {
+      next: { revalidate: 10 },
   });
 
   if (res.status === 404) {
     return notFound();
   }
+  
   if (!res.ok) {
     throw new Error("আমরা সার্কুলার লোড করতে পারছি না। দয়া করে আবার চেষ্টা করুন।");
   }

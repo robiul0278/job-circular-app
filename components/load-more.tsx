@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Spinner } from "./ui/spinner";
-import { getAllJobQuery } from "@/lib/fetch-job";
 import { IJobCircular } from "@/types/types";
 import { JobCard } from "./JobCard";
+import { getAllJobQuery } from "@/lib/api";
 
 export function LoadMore() {
   const [jobs, setJobs] = useState<IJobCircular[]>([]);

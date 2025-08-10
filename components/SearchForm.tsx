@@ -11,7 +11,7 @@ const SearchForm = async ({ query }: { query?: string }) => {
       id="search-form"
       className="w-full max-w-xl mx-auto px-10 md:px-4 lg:px-4"
     >
-      <div className="flex items-center gap-3 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md border dark:border-gray-700">
+      <div className="flex items-center gap-1 bg-white dark:bg-gray-900 p-2 rounded-xl shadow-md border dark:border-gray-700">
         <div className="relative flex-1 w-full">
           <Input
             name="query"

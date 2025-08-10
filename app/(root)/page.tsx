@@ -10,19 +10,19 @@ import { getAllJobQuery } from "@/lib/api";
 import Pagination from "@/components/Pagination";
 
 export default async function Home({ searchParams }: {
-  searchParams: Promise<{ query?: string; page?: string}>
+  searchParams: Promise<{ query?: string; page?: string }>
 }) {
-const resolvedParams = await searchParams;
-const query = resolvedParams.query;
-const currentPage = parseInt(resolvedParams.page || '1');
+  const resolvedParams = await searchParams;
+  const query = resolvedParams.query;
+  const currentPage = parseInt(resolvedParams.page || '1');
   const path = "/"
 
-  const params = {
+  const params: Record<string, string> = {
     ...(query ? { searchTerm: query } : {}),
-    page: (currentPage).toString() ,
+    page: (currentPage).toString(),
   };
 
-  const {result, meta} = await getAllJobQuery({params});
+  const { result, meta } = await getAllJobQuery({ params });
 
   return (
     <>
@@ -47,7 +47,7 @@ const currentPage = parseInt(resolvedParams.page || '1');
             ) : (
               <JobCard jobs={result} />
             )}
-             <Pagination  totalPages={meta.totalPage} currentPage={currentPage} path={path} />
+            <Pagination totalPages={meta.totalPage} currentPage={currentPage} path={path} />
           </div>
           {/* Right */}
           <aside className="lg:col-span-3 space-y-4">

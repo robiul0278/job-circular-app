@@ -9,7 +9,9 @@ export default async function ShowMoreJobs() {
         limit: "5",
     };
 
-    const { result } = await getAllJobQuery(params);
+    console.log(params);
+
+    const { result } = await getAllJobQuery({params});
 
     return (
         <div className="border shadow p-4 rounded-lg">

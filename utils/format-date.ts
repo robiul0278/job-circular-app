@@ -24,7 +24,7 @@ export function deadlineCountdown(deadline: string | Date): string {
   for (const [secs, label] of intervals) {
     const count = Math.floor(diff / secs);
     if (count >= 1) {
-      return `(${count} ${label})`;
+      return `${count} ${label}`;
     }
   }
 

@@ -12,32 +12,23 @@ export default async function JobCategoryPage({ searchParams }: {
   searchParams: Promise<{ query?: string; page?: string }>
 }) {
 
-const resolvedParams = await searchParams;
-const query = resolvedParams.query;
-const currentPage = parseInt(resolvedParams.page || '1');
-const specialCategories = ['government', 'private', 'autonomous'];
-const path = "/categories"
+  const resolvedParams = await searchParams;
+  const query = resolvedParams.query;
+  const currentPage = parseInt(resolvedParams.page || '1');
+  const specialCategories = ['government', 'private', 'autonomous'];
+  const path = "categories"
 
-type TParams = {
-  searchTerm?: string;
-  page?: string;
-  departments?: string;
-  categories?: string;
-}
-
-const params: TParams = {
+const params: Record<string, string> = {
+  ...(query
+    ? specialCategories.includes(query)
+      ? { categories: query }
+      : { departments: query }
+    : {}),
   page: currentPage.toString(),
 };
 
-if (query) {
-  if (specialCategories.includes(query)) {
-    params.categories = query;
-  } else {
-    params.departments = query;
-  }
-}
-
-const jobs = await getAllJobQuery({ params });
+console.log(params);
+  const jobs = await getAllJobQuery({ params });
 
   return (
     <>

@@ -2,7 +2,6 @@
 import { ChevronRight } from "lucide-react";
 import Pagination from "@/components/Pagination";
 import { categoryToBangla } from "@/utils/utils";
-import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
 import Departments from "@/components/Departments";
 import { getAllJobQuery } from "@/lib/api";
@@ -51,7 +50,6 @@ console.log(params);
           {/* Right: Google AdSense or Placeholder */}
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
-            <Categories />
             <Departments />
             {/* AdSense Script or Placeholder */}
             {/* Replace below with actual AdSense code */}

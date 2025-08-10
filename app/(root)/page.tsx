@@ -1,13 +1,12 @@
 
 import { ChevronRight } from "lucide-react";
-import Hero from "@/components/Hero";
 import NoticeMarquee from "@/components/NoticeMarquee";
-import Categories from "@/components/Categories";
 import Telegram from "@/components/Telegram";
 import Departments from "@/components/Departments";
 import { JobCard } from "@/components/JobCard";
 import { getAllJobQuery } from "@/lib/api";
 import Pagination from "@/components/Pagination";
+import Heros from "@/components/Hero";
 
 export default async function Home({ searchParams }: {
   searchParams: Promise<{ query?: string; page?: string }>
@@ -27,7 +26,7 @@ export default async function Home({ searchParams }: {
   return (
     <>
       <NoticeMarquee />
-      <Hero query={query} />
+      <Heros query={query} />
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0">
         <p className="text-lg md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 py-4 pl-3 flex items-center">
           {query ? `Search results for "${query}"` : "সর্বশেষ চাকরির বিজ্ঞপ্তি"}
@@ -52,7 +51,6 @@ export default async function Home({ searchParams }: {
           {/* Right */}
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
-            <Categories />
             <Departments />
           </aside>
         </div>

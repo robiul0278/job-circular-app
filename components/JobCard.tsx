@@ -22,7 +22,7 @@ export function JobCard({ jobs }: JobProps) {
   return (
     <ul className="">
       {jobs?.map((job) => (
-        <li key={job._id} className="list-none w-full px-2 lg:p-0 mb-4">
+        <li key={job._id} className="list-none w-full mb-4">
           <Link
             href={`/job/${job.slug}`}
             className="block group"

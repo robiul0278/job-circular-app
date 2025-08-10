@@ -35,7 +35,7 @@ const Categories = async () => {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-col md:flex-row lg:flex-row gap-2">
       {filtered?.map((data: ICategory) => (
         <Link
           key={data.category}
@@ -45,10 +45,10 @@ const Categories = async () => {
           <Card className="p-2 border-2 border-green-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
             <CardContent className="flex items-center gap-2">
               {getIcon(data.category)}
-              <p className="text-2xl font-bold text-green-700">
+              <p className="text-2xl font-bold text-green-600">
                 {data.count}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm ">
                 {categoryToBangla(data.category)}
               </p>
             </CardContent>

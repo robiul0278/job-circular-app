@@ -49,7 +49,7 @@ export default async function Home({ searchParams }: {
             <Pagination totalPages={meta.totalPage} currentPage={currentPage} path={path} />
           </div>
           {/* Right */}
-          <aside className="lg:col-span-3 space-y-4">
+          <aside className="lg:col-span-3  space-y-4">
             <Telegram />
             <Departments />
           </aside>

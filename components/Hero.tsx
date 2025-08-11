@@ -37,7 +37,7 @@ export default function Hero({ categories, departments, query }: { categories?: 
                         ].map((item, i) => (
                             <div
                                 key={i}
-                                className="bg-green-800 text-white rounded-lg p-3 text-center"
+                                className="bg-green-800 text-white rounded-lg p-3 text-center flex justify-between items-center"
                             >
                                 <p className="text-base sm:text-lg font-bold">{item.count}</p>
                                 <p className="text-xs sm:text-sm font-medium">{item.label}</p>

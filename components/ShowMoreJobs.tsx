@@ -11,7 +11,7 @@ export default async function ShowMoreJobs() {
 
     console.log(params);
 
-    const { result } = await getAllJobQuery({params});
+    const { result } = await getAllJobQuery({ params });
 
     return (
         <div className="border shadow p-4 rounded-lg">
@@ -31,10 +31,10 @@ export default async function ShowMoreJobs() {
                                 className="block group"
                                 aria-label={`View details for ${job.title}`}
                             >
-                                <h3 className="font-semibold group-hover:text-teal-600 dark:group-hover:text-teal-400">
+                                <h3 className="font-semibold group-hover:text-green-600 dark:group-hover:text-green-400">
                                     {job.title}
                                 </h3>
-                                <span className="text-sm text-teal-600">
+                                <span className="text-sm text-green-600">
                                     আবেদনের শেষ তারিখঃ {formatDate(job.deadline)}
                                 </span>
                             </Link>

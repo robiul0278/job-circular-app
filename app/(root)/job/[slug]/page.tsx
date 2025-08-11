@@ -42,7 +42,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
                 <CardTitle className="text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
                 <div className="absolute right-1"><BookmarkButton jobId={_id} /></div>
               </div>
-              <div className="text-sm font-medium text-teal-600">
+              <div className="text-sm font-medium text-green-600">
                 {companyName}
               </div>
             </CardHeader>

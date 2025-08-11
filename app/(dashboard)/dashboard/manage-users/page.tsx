@@ -230,16 +230,16 @@ const Page = () => {
   const getRoleColor = (role: string) => {
     switch (role) {
       case "admin": return "bg-red-100 text-red-800";
-      case "moderator": return "bg-teal-100 text-teal-800";
-      case "user": return "bg-teal-100 text-teal-800";
+      case "moderator": return "bg-green-100 text-green-800";
+      case "user": return "bg-green-100 text-green-800";
       default: return "bg-gray-100 text-gray-800";
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "active": return "bg-teal-100 text-teal-800";
-      case "inactive": return "bg-teal-100 text-teal-800";
+      case "active": return "bg-green-100 text-green-800";
+      case "inactive": return "bg-green-100 text-green-800";
       case "suspended": return "bg-red-100 text-red-800";
       default: return "bg-gray-100 text-gray-800";
     }
@@ -247,8 +247,8 @@ const Page = () => {
 
   const getVerificationColor = (status: string) => {
     switch (status) {
-      case "verified": return "bg-teal-100 text-teal-800";
-      case "pending": return "bg-teal-100 text-teal-800";
+      case "verified": return "bg-green-100 text-green-800";
+      case "pending": return "bg-green-100 text-green-800";
       case "rejected": return "bg-red-100 text-red-800";
       default: return "bg-gray-100 text-gray-800";
     }
@@ -460,7 +460,7 @@ const Page = () => {
                           variant="outline"
                           size="sm"
                           onClick={() => handleEditUser(user)}
-                          className="hover:bg-teal-50"
+                          className="hover:bg-green-50"
                         >
                           <Edit className="h-4 w-4" />
                         </Button>
@@ -469,8 +469,8 @@ const Page = () => {
                           size="sm"
                           onClick={() => handleStatusToggle(user.id, user.status === "active" ? "suspended" : "active")}
                           className={cn(
-                            "hover:bg-teal-50",
-                            user.status === "suspended" && "text-teal-600 border-teal-200"
+                            "hover:bg-green-50",
+                            user.status === "suspended" && "text-green-600 border-green-200"
                           )}
                         >
                           {user.status === "suspended" ? <CheckCircle className="h-4 w-4" /> : <Ban className="h-4 w-4" />}

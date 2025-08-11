@@ -8,11 +8,9 @@ import { useRouter } from 'next/navigation';
 export default function Pagination({
   currentPage,
   totalPages,
-  path,
 }: {
   currentPage: number;
   totalPages: number;
-  path: string;
 }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -24,7 +22,7 @@ const handlePagination = (page: number) => {
     const query = current.toString(); // নতুন query string
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    router.push(`/${path}?${query}`);
+    router.push(`/${query}`);
   });
 };
 

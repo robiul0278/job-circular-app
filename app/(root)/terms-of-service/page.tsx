@@ -7,8 +7,8 @@ export default async function TermsOfServicePage() {
       {/* Hero Section */}
       <section className="text-center mb-16">
         <div className="flex justify-center mb-6">
-          <div className="p-4 bg-teal-100 rounded-full">
-            <Scale className="h-12 w-12 text-teal-600" />
+          <div className="p-4 bg-green-100 rounded-full">
+            <Scale className="h-12 w-12 text-green-600" />
           </div>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Terms of Service</h1>
@@ -23,7 +23,7 @@ export default async function TermsOfServicePage() {
 
       {/* Quick Summary */}
       <section className="max-w-5xl mx-auto px-4 mb-16">
-        <Card className="p-6 bg-teal-50 dark:bg-teal-900/20">
+        <Card className="p-6 bg-green-50 dark:bg-green-900/20">
           <CardHeader>
             <CardTitle className="text-2xl">Terms Summary</CardTitle>
             <CardDescription>
@@ -34,7 +34,7 @@ export default async function TermsOfServicePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-teal-600 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
                   <div>
                     <h4 className="font-medium">Free for Job Seekers</h4>
                     <p className="text-sm text-muted-foreground">
@@ -43,7 +43,7 @@ export default async function TermsOfServicePage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-teal-600 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
                   <div>
                     <h4 className="font-medium">Respectful Use</h4>
                     <p className="text-sm text-muted-foreground">
@@ -52,7 +52,7 @@ export default async function TermsOfServicePage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-teal-600 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
                   <div>
                     <h4 className="font-medium">Accurate Information</h4>
                     <p className="text-sm text-muted-foreground">
@@ -100,7 +100,7 @@ export default async function TermsOfServicePage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <FileText className="mr-2 h-6 w-6 text-teal-600" />
+              <FileText className="mr-2 h-6 w-6 text-green-600" />
               1. Acceptance of Terms
             </CardTitle>
           </CardHeader>
@@ -125,7 +125,7 @@ export default async function TermsOfServicePage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Shield className="mr-2 h-6 w-6 text-teal-600" />
+              <Shield className="mr-2 h-6 w-6 text-green-600" />
               2. User Accounts
             </CardTitle>
           </CardHeader>

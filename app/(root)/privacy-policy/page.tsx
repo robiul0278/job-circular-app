@@ -8,8 +8,8 @@ export default async function PrivacyPolicyPage() {
       {/* Hero Section */}
       <section className="text-center mb-16">
         <div className="flex justify-center mb-6">
-          <div className="p-4 bg-teal-100 rounded-full">
-            <Shield className="h-12 w-12 text-teal-600" />
+          <div className="p-4 bg-green-100 rounded-full">
+            <Shield className="h-12 w-12 text-green-600" />
           </div>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Privacy Policy</h1>
@@ -24,7 +24,7 @@ export default async function PrivacyPolicyPage() {
 
       {/* Quick Overview */}
       <section className=" max-w-5xl mx-auto px-4 mb-16">
-        <Card className="p-6 bg-teal-50 dark:bg-teal-900/20">
+        <Card className="p-6 bg-green-50 dark:bg-green-900/20">
           <CardHeader>
             <CardTitle className="text-2xl">Privacy at a Glance</CardTitle>
             <CardDescription>
@@ -34,7 +34,7 @@ export default async function PrivacyPolicyPage() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-start space-x-3">
-                <Eye className="h-6 w-6 text-teal-600 mt-1" />
+                <Eye className="h-6 w-6 text-green-600 mt-1" />
                 <div>
                   <h4 className="font-medium">Data Collection</h4>
                   <p className="text-sm text-muted-foreground">
@@ -43,7 +43,7 @@ export default async function PrivacyPolicyPage() {
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <Lock className="h-6 w-6 text-teal-600 mt-1" />
+                <Lock className="h-6 w-6 text-green-600 mt-1" />
                 <div>
                   <h4 className="font-medium">Data Security</h4>
                   <p className="text-sm text-muted-foreground">
@@ -70,7 +70,7 @@ export default async function PrivacyPolicyPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <FileText className="mr-2 h-6 w-6 text-teal-600" />
+              <FileText className="mr-2 h-6 w-6 text-green-600" />
               Information We Collect
             </CardTitle>
           </CardHeader>
@@ -98,7 +98,7 @@ export default async function PrivacyPolicyPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Lock className="mr-2 h-6 w-6 text-teal-600" />
+              <Lock className="mr-2 h-6 w-6 text-green-600" />
               Data Security
             </CardTitle>
           </CardHeader>
@@ -140,7 +140,7 @@ export default async function PrivacyPolicyPage() {
               </ul>
             </div>
 
-            <div className="bg-teal-50 dark:bg-teal-900/20 p-4 rounded-lg">
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
               <h4 className="font-semibold mb-2">Exercise Your Rights</h4>
               <p className="text-muted-foreground">
                 To exercise any of these rights, please contact us at privacy@diplomajobs.com

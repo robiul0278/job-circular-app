@@ -21,7 +21,6 @@ export default async function Home({ searchParams }: {
   const resolvedParams = await searchParams;
   const { categories, departments, query } = resolvedParams;
   const currentPage = parseInt(resolvedParams.page || '1');
-  const path = "/"
 
   const params: Record<string, string> = {
     ...(categories ? { categories: categories } : {}),
@@ -59,7 +58,7 @@ export default async function Home({ searchParams }: {
             ) : (
               <JobCard jobs={result} />
             )}
-            <Pagination totalPages={meta.totalPage} currentPage={currentPage} path={path} />
+            <Pagination totalPages={meta.totalPage} currentPage={currentPage}/>
           </div>
           {/* Right */}
           <aside className="lg:col-span-3  space-y-4">

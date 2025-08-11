@@ -48,17 +48,17 @@ export function JobCard({ jobs }: JobProps) {
                   variant="outline"
                   className="absolute top-3 left-3 text-white"
                 >
-                   <span className="text-amber-400 text-[12px]">{deadlineCountdown(job.deadline)}</span>
+                  <span className="text-amber-400 text-[12px]">{deadlineCountdown(job.deadline)}</span>
                 </Badge>
               </div>
 
               {/* Right Content */}
               <div className="relative flex flex-col sm:w-2/3 p-3">
                 <div className="flex-1 pb-6">
-                  <h3 className="text-lg leading-tight font-semibold group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                  <h3 className="text-lg leading-tight font-semibold group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                     {job.title}
                   </h3>
-                  <div className="text-sm font-medium text-teal-600 dark:text-teal-600 flex items-center gap-1 mb-2">
+                  <div className="text-sm font-medium text-green-600 dark:text-green-600 flex items-center gap-1 mb-2">
                     {job.companyName}
                   </div>
 
@@ -66,12 +66,12 @@ export function JobCard({ jobs }: JobProps) {
                     <div className="flex items-center gap-2">
                       <Timer className="size-4" />
                       <span className="font-medium">
-                        Deadline: <strong>{formatDate(job.deadline)}</strong> 
-                        
+                        Deadline: <strong>{formatDate(job.deadline)}</strong>
+
                       </span>
-                      
+
                     </div>
-                    
+
                     <div className="flex items-center gap-2">
                       <Users className="size-4 text-gray-500 dark:text-gray-400" />
                       <span className="font-medium">

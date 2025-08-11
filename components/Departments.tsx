@@ -27,17 +27,16 @@ const Departments = async ({ department }: { department?: string }) => {
               className={`
                 flex items-center justify-between group cursor-pointer rounded-lg p-1 border
                 transition-colors duration-300 ease-in-out
-                ${
-                  isActive
-                    ? "border-teal-500 bg-teal-50 dark:bg-teal-900 shadow-lg"
-                    : "border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105 hover:shadow-md"
+                ${isActive
+                  ? "border-green-500 bg-green-50 dark:bg-green-900 shadow-lg"
+                  : "border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105 hover:shadow-md"
                 }
               `}
             >
               <span
                 className={`
                   text-sm font-medium transition-colors duration-300 ease-in-out
-                  ${isActive ? "" : "text-teal-500"}
+                  ${isActive ? "" : "text-green-500"}
                 `}
               >
                 {formatQuery(dept.department)}

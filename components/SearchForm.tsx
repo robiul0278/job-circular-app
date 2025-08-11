@@ -15,7 +15,7 @@ const SearchForm = async () => {
           <Input
             name="query"
             placeholder="🔍 চাকরি খুঁজুন..."
-            className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-teal-500"
+            className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-green-500"
           />
         </div>
 

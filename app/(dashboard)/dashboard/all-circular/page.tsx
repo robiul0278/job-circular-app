@@ -231,7 +231,7 @@ export default function AllCircularPage() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="hover:bg-teal-50 dark:hover:bg-teal-900 cursor-pointer"
+                            className="hover:bg-green-50 dark:hover:bg-green-900 cursor-pointer"
                           >
                             <View className="h-4 w-4" />
                           </Button>
@@ -240,7 +240,7 @@ export default function AllCircularPage() {
                           variant="outline"
                           size="sm"
                           onClick={() => handleEdit(circular.slug)}
-                          className="hover:bg-teal-50 dark:hover:bg-teal-900 cursor-pointer"
+                          className="hover:bg-green-50 dark:hover:bg-green-900 cursor-pointer"
                         >
                           <Edit className="h-4 w-4" />
                         </Button>

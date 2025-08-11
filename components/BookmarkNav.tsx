@@ -21,7 +21,7 @@ const BookmarkNavButton = () => {
                 <Button
                     size="icon"
                     variant="ghost"
-                    className="  hover:text-teal-600 dark:hover:text-white transition-all cursor-pointer"
+                    className="  hover:text-green-600 dark:hover:text-white transition-all cursor-pointer"
                 >
                     <Bookmark className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform" />
                 </Button>

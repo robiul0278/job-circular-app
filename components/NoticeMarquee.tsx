@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { useAllNoticeQuery } from "@/redux/api/api";
 
+export const dynamic = 'force-static';
+
 export default function NoticeMarquee() {
   const { data: notice, isLoading } = useAllNoticeQuery(undefined);
   const contentRef = useRef<HTMLDivElement>(null);

@@ -8,6 +8,8 @@ import Pagination from "@/components/Pagination";
 import Hero from "@/components/Hero";
 import Blog from "@/components/Blog";
 
+export const dynamic = 'force-static';
+
 export default async function Home({ searchParams }: {
   searchParams: Promise<
     {

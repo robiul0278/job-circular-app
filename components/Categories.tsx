@@ -10,7 +10,11 @@ type ICategory = {
   count: number;
 };
 
-const Categories = async () => {
+const Categories = async ({ category }: { category?: string }) => {
+
+
+  console.log(category); //categories query params
+
   const { categories } = await JobCategories();
 
   // নির্দিষ্ট ৩ ক্যাটাগরি ফিল্টার
@@ -39,21 +43,38 @@ const Categories = async () => {
       {filtered?.map((data: ICategory) => (
         <Link
           key={data.category}
-          href={`/categories?query=${data.category}`}
+          href={`?categories=${data.category}`}
           className="flex-1"
         >
-          <Card className="p-2 border-2 border-green-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <Card
+            className={`
+      p-2 rounded border-dashed border-green-200
+      transition-colors duration-300 ease-in-out
+      ${category === data.category
+                ? "border-green-500 bg-green-50 dark:bg-green-900 shadow-lg"
+                : "hover:border-green-500 hover:bg-green-100 dark:hover:bg-green-800"
+              }
+    `}
+          >
             <CardContent className="flex items-center gap-2">
               {getIcon(data.category)}
-              <p className="text-2xl font-bold text-green-600">
+              <p
+                className={`
+          text-2xl font-bold
+          transition-colors duration-300 ease-in-out
+          ${category === data.category
+                    ? ""
+                    : "text-green-600"
+                  }
+        `}
+              >
                 {data.count}
               </p>
-              <p className="text-sm ">
-                {categoryToBangla(data.category)}
-              </p>
+              <p className="text-sm">{categoryToBangla(data.category)}</p>
             </CardContent>
           </Card>
         </Link>
+
       ))}
     </div>
   );

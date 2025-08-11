@@ -1,9 +1,8 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Form from 'next/form';
-import SearchFormReset from './SearchFormReset';
 
-const SearchForm = async ({ query }: { query?: string }) => {
+const SearchForm = async () => {
   return (
     <Form
       action="/"
@@ -18,11 +17,6 @@ const SearchForm = async ({ query }: { query?: string }) => {
             placeholder="🔍 চাকরি খুঁজুন..."
             className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-teal-500"
           />
-          {query && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2">
-              <SearchFormReset />
-            </div>
-          )}
         </div>
 
         <Button

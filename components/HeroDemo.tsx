@@ -2,7 +2,7 @@ import SearchForm from "./SearchForm";
 
 export const dynamic = "force-static";
 
-const Hero = ({ query }: { query?: string; }) => {
+const Hero = () => {
 
   return (
     <section className="hero relative w-full py-10 md:py-28 lg:py-28  overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-gray dark:to-gray-900">
@@ -20,7 +20,7 @@ const Hero = ({ query }: { query?: string; }) => {
           </p>
         </div>
         <div>
-          <SearchForm query={query} />
+          <SearchForm />
         </div>
       </div>
     </section>

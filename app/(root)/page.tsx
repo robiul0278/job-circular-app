@@ -2,21 +2,30 @@
 import { ChevronRight } from "lucide-react";
 import NoticeMarquee from "@/components/NoticeMarquee";
 import Telegram from "@/components/Telegram";
-import Departments from "@/components/Departments";
 import { JobCard } from "@/components/JobCard";
 import { getAllJobQuery } from "@/lib/api";
 import Pagination from "@/components/Pagination";
-import Heros from "@/components/Hero";
+import Hero from "@/components/Hero";
+import Blog from "@/components/Blog";
 
 export default async function Home({ searchParams }: {
-  searchParams: Promise<{ query?: string; page?: string }>
+  searchParams: Promise<
+    {
+      categories?: string;
+      departments?: string;
+      query?: string;
+      page?: string
+    }
+  >
 }) {
   const resolvedParams = await searchParams;
-  const query = resolvedParams.query;
+  const { categories, departments, query } = resolvedParams;
   const currentPage = parseInt(resolvedParams.page || '1');
   const path = "/"
 
   const params: Record<string, string> = {
+    ...(categories ? { categories: categories } : {}),
+    ...(departments ? { departments: departments } : {}),
     ...(query ? { searchTerm: query } : {}),
     page: (currentPage).toString(),
   };
@@ -26,7 +35,7 @@ export default async function Home({ searchParams }: {
   return (
     <>
       <NoticeMarquee />
-      <Heros query={query} />
+      <Hero  categories={categories} departments={departments} query={query}/>
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0">
         <p className="text-lg md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 py-4 pl-3 flex items-center">
           {query ? `Search results for "${query}"` : "সর্বশেষ চাকরির বিজ্ঞপ্তি"}
@@ -51,7 +60,7 @@ export default async function Home({ searchParams }: {
           {/* Right */}
           <aside className="lg:col-span-3  space-y-4">
             <Telegram />
-            <Departments />
+            <Blog />
           </aside>
         </div>
       </section>

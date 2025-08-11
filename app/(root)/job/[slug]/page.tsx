@@ -9,15 +9,11 @@ import Views from "@/components/Views";
 import BookmarkButton from "@/components/BookmarkButton";
 import CircularTime from "@/components/CircularTime";
 import Telegram from "@/components/Telegram";
-import Categories from "@/components/Categories";
 import { getSingleJob } from "@/lib/api";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
 import MarkdownPreview from "@/components/MarkdownPreview";
 import ImageWithDownload from "@/components/ImageWithDownload";
 import SocialShare from "@/components/SocialShare";
-import Departments from "@/components/Departments";
-
-
 
 export const dynamic = "force-static";
 
@@ -81,8 +77,6 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
         <aside className="space-y-4">
 
           <Telegram />
-          <Categories />
-          <Departments/>
         </aside>
       </div>
 

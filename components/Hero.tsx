@@ -12,7 +12,7 @@ export default function Hero({ categories, departments, query }: { categories?: 
                 {/* Left Side */}
                 <div className="space-y-4 w-full md:w-2/3">
                     <div className="flex flex-col">
-                        <h1 className="text-2xl md:text-3xl font-bold dark:text-green-500 text-green-600">
+                        <h1 className="text-2xl md:text-3xl font-bold dark:text-green-600 text-green-700">
                             ডিপ্লোমা চাকরির সার্কুলার
                         </h1>
                         <p className="text-sm md:text-lg">

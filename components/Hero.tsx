@@ -6,8 +6,8 @@ import SearchFormReset from "./SearchFormReset";
 
 export default function Hero({ categories, departments, query }: { categories?: string; departments?: string; query?: string; }) {
     return (
-        <section className="max-w-6xl mx-auto px-2 md:px-0 lg:px-0 py-6 md:py-12 lg:py-12">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <section className=" hero px-2 md:px-0 lg:px-0 py-6 md:py-12 lg:py-12">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
                 {/* Left Side */}
                 <div className="space-y-4">

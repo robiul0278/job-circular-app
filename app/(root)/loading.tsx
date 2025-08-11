@@ -1,3 +1,4 @@
+import HeroSkeleton from "@/components/HeroSkeleton";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
@@ -10,39 +11,10 @@ export default function Loading() {
           <Skeleton className="h-5 w-full bg-yellow-200/70" />
         </div>
       </div>
-
-      <section className="hero relative w-full py-10 md:py-28 lg:py-28 overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="relative text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
-          {/* Headline */}
-          {/* Desktop & Tablet: Single Skeleton */}
-          <h1 className="hidden sm:block text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-300">
-            <Skeleton className="h-6 sm:h-10 w-[90%] mx-auto rounded-md" />
-          </h1>
-
-          {/* Mobile: 3 Skeleton lines */}
-          <div className="block sm:hidden space-y-2 text-2xl font-bold text-gray-900 dark:text-slate-300">
-            <Skeleton className="h-5 w-[90%] mx-auto rounded-md" />
-            <Skeleton className="h-5 w-[85%] mx-auto rounded-md" />
-            <Skeleton className="h-5 w-[70%] mx-auto rounded-md" />
-          </div>
-          {/* Subheadline */}
-          <div className="text-center max-w-2xl mx-auto">
-            <Skeleton className="h-4 md:h-4 w-[95%] sm:w-[90%] mx-auto rounded-md" />
-            <Skeleton className="h-4 md:h-4 w-[80%] sm:w-[75%] mx-auto mt-2 rounded-md" />
-          </div>
-
-          {/* Search Form */}
-          <div className="w-full max-w-xl mx-auto px-8 md:px-4 lg:px-4 py-4">
-            <div className="flex items-center gap-3 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-md border dark:border-gray-700">
-              <Skeleton className="h-10 flex-1 rounded-lg" />
-              <Skeleton className="h-10 w-24 rounded-lg" />
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* Hero Skeleton*/}
+      <HeroSkeleton />
       {/* Card Header */}
-      <div className="max-w-6xl pl-3 lg:pl-3 mx-auto flex items-center gap-2">
+      <div className="max-w-6xl pl-3 lg:pl-3 mx-auto flex items-center gap-2 mt-4">
         <Skeleton className="h-6 md:h-6 w-48 md:w-48 bg-slate-200 dark:bg-slate-700" />
         <Skeleton className="size-5  bg-slate-200 dark:bg-slate-700 rounded-full" />
       </div>
@@ -91,36 +63,33 @@ export default function Loading() {
         {/* Right Sidebar */}
         <div className="lg:col-span-3 space-y-4 animate-pulse">
           {/* FOLLOW US */}
-          <div className="rounded-md border bg-card p-4">
-            <p className="text-sm font-medium text-muted-foreground mb-3">FOLLOW US</p>
-            <Skeleton className="h-8 w-full rounded-md" />
+          <div className="rounded-lg p-4 border dark:bg-gray-900">
+            <Skeleton className="w-24 h-5 mb-3 rounded-md" />
+            <Skeleton className="w-full h-10 rounded-md" />
           </div>
 
-          {/* JOB BY CATEGORY */}
-          <div className="rounded-md border bg-card p-4">
-            <p className="text-sm font-medium text-muted-foreground mb-3">JOB BY CATEGORY</p>
-            <div className="space-y-2">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="flex items-center justify-between">
-                  <Skeleton className="h-4 w-32" />
-                  <Skeleton className="h-6 w-6 rounded-full" />
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* সাম্প্রতিক আপডেট */}
+          <aside className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
+            {/* Title Skeleton: matches <h4> text size (text-sm, font-semibold), approx 10px height, width to fit the text */}
+            <Skeleton className="w-40 h-5 mb-3 rounded-md" />
 
-          {/* JOB BY TECHNOLOGY */}
-          <div className="rounded-md border bg-card p-4">
-            <p className="text-sm font-medium text-muted-foreground mb-3">JOB BY DEPARTMENTS</p>
-            <div className="space-y-2">
-              {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="flex items-center justify-between">
-                  <Skeleton className="h-4 w-40" />
-                  <Skeleton className="h-6 w-6 rounded-full" />
-                </div>
+            {/* List Skeleton */}
+            <ul className="space-y-3">
+              {[1, 2, 3].map((_, i) => (
+                <li
+                  key={i}
+                  className="border-b border-gray-200 dark:border-gray-700 pb-2 last:border-none"
+                >
+                  <div className="block">
+                    {/* Notice title: text-sm font-medium line-clamp-2 → approx 1.25rem height per line, 2 lines → ~2.5rem height */}
+                    <Skeleton className="w-full h-10 mb-1 rounded-md" />
+                    {/* Date span: text-xs → ~0.75rem height, small width */}
+                    <Skeleton className="w-24 h-3 rounded-md" />
+                  </div>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </aside>
         </div>
       </div>
     </div>

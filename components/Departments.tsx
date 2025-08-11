@@ -1,7 +1,5 @@
-import Link from "next/link";
-import { Badge } from "./ui/badge";
-import { formatQuery } from "@/utils/utils";
 import { JobCategories } from "@/lib/api";
+import DepartmentCard from "./DepartmentCard";
 
 type IDepartments = {
   count: number;
@@ -20,32 +18,9 @@ const Departments = async ({ department }: { department?: string }) => {
         {departments?.map((dept: IDepartments, index: number) => {
           const isActive = department === dept.department;
 
-          return (
-            <Link
-              key={index}
-              href={`?departments=${dept.department}`}
-              className={`
-                flex items-center justify-between group cursor-pointer rounded-lg p-1 border
-                transition-colors duration-300 ease-in-out
-                ${isActive
-                  ? "border-green-500 bg-green-50 dark:bg-green-900 shadow-lg"
-                  : "border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105 hover:shadow-md"
-                }
-              `}
-            >
-              <span
-                className={`
-                  text-sm font-medium transition-colors duration-300 ease-in-out
-                  ${isActive ? "" : "text-green-500"}
-                `}
-              >
-                {formatQuery(dept.department)}
-              </span>
-              <Badge variant="outline" className="dark:bg-gray-500">
-                {dept.count}
-              </Badge>
-            </Link>
-          );
+         return (
+           <DepartmentCard  dept={dept} isActive={isActive} key={index}/>
+         )
         })}
       </div>
     </div>

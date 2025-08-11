@@ -22,7 +22,7 @@ const handlePagination = (page: number) => {
     const query = current.toString(); // নতুন query string
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    router.push(`/${query}`);
+    router.push(`/?${query}`);
   });
 };
 

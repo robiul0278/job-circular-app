@@ -29,6 +29,8 @@ export default async function Home({ searchParams }: {
     page: (currentPage).toString(),
   };
 
+  console.log(params);
+
   const { result, meta } = await getAllJobQuery({ params });
 
   return (

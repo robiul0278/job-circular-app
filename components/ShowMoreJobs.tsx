@@ -9,8 +9,6 @@ export default async function ShowMoreJobs() {
         limit: "5",
     };
 
-    console.log(params);
-
     const { result } = await getAllJobQuery({ params });
 
     return (

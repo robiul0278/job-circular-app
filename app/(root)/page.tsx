@@ -29,8 +29,6 @@ export default async function Home({ searchParams }: {
     page: (currentPage).toString(),
   };
 
-  console.log(params);
-
   const { result, meta } = await getAllJobQuery({ params });
 
   return (
@@ -38,7 +36,7 @@ export default async function Home({ searchParams }: {
       <NoticeMarquee />
       <Hero categories={categories} departments={departments} query={query} />
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0">
-        <p className="text-lg md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 pb-4 pl-3 flex items-center">
+        <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 pb-4 pl-3 flex items-center">
           {(query || departments || categories)
             ? `Results for "${[query, departments, categories].filter(Boolean).join(' | ')}"`
             : "সর্বশেষ চাকরির বিজ্ঞপ্তি"}

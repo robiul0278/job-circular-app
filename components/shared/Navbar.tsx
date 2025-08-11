@@ -42,11 +42,11 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/">
             <div className="border border-black dark:border-white inline-flex items-center">
-              <div className="bg-green-600 dark:bg-green-700 px-1.5 py-0.5">
+              <div className="bg-green-700 dark:bg-green-700 px-1.5 py-0.5">
                 <span className="text-white font-bold text-sm">Diploma</span>
               </div>
               <div className="px-1.5 py-0.5">
-                <span className="text-green-600 dark:text-green-500 font-bold text-sm">Jobs BD</span>
+                <span className="text-green-700 dark:text-green-700 font-bold text-sm">Jobs BD</span>
               </div>
             </div>
 
@@ -71,7 +71,7 @@ const Navbar = () => {
               <>
                 {user.role === 'admin' && (
                   <Link href="/dashboard">
-                    <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-white transition cursor-pointer">
+                    <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-white transition cursor-pointer">
                       পোস্ট করুন
                     </span>
                   </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 <Button
                   variant="default"
                   onClick={handleLogout}
-                  className="text-sm cursor-pointer bg-green-600 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-500 text-white hover:text-white"
+                  className="text-sm cursor-pointer bg-green-700 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-700 text-white hover:text-white"
                 >
                   লগআউট
                 </Button>
@@ -122,7 +122,7 @@ const Navbar = () => {
                 <>
                   {user.role === 'admin' && (
                     <Link href="/dashboard" onClick={() => setIsOpen(false)}>
-                      <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-white transition cursor-pointer">
+                      <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-white transition cursor-pointer">
                         পোস্ট করুন
                       </span>
                     </Link>
@@ -133,7 +133,7 @@ const Navbar = () => {
                       handleLogout();
                       setIsOpen(false);
                     }}
-                    className="mt-2 text-sm bg-green-700 text-white hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-600"
+                    className="mt-2 text-sm bg-green-700 text-white hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-700"
                   >
                     লগআউট
                   </Button>

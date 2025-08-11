@@ -26,24 +26,24 @@ const SearchForm = () => {
       action="/"
       scroll={false}
       id="search-form"
-      className="w-full max-w-xl mx-auto"
+      className="w-full"
       onSubmit={handlePagination}
     >
-      <div className="flex items-center gap-1 bg-white dark:bg-gray-900 p-2 rounded-xl shadow-md border dark:border-gray-700">
+      <div className="flex gap-1 bg-white dark:bg-gray-900 p-2 rounded-xl shadow-md border dark:border-gray-700">
         <div className="relative flex-1 w-full">
           <Input
             name="query"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             placeholder="🔍 চাকরি খুঁজুন..."
-            className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-green-500"
+            className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-green-700"
           />
         </div>
 
         <Button
           variant="outline"
           type="submit"
-          className="px-6 py-2 text-sm sm:text-base rounded-lg cursor-pointer"
+          className="px-6  py-2 text-sm sm:text-base text-white bg-green-700 rounded-lg cursor-pointer"
         >
           Search
         </Button>

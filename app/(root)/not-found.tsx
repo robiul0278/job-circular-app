@@ -6,7 +6,7 @@ export default function NotFound() {
       <h1 className="text-5xl font-extrabold text-red-600 mb-4 select-none">
         😞 সার্কুলার পাওয়া যায়নি
       </h1>
-      <p className="max-w-md text-green-600 mb-6 leading-relaxed">
+      <p className="max-w-md text-green-700 mb-6 leading-relaxed">
         দুঃখিত, আপনি যে সার্কুলার খুঁজছেন তা হয়তো বর্তমানে নেই।
       </p>
       <Link

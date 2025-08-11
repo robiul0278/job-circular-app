@@ -13,7 +13,7 @@ export async function getAllJobQuery({params}: {params?:TParams}) {
   const queryString = new URLSearchParams(params).toString();
 
   const res = await fetch(`${BASE_URL}/jobs?${queryString}`, {
-      next: { revalidate: 10 },
+      next: { revalidate: 300 },
   });
 
   if (res.status === 404) {

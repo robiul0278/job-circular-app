@@ -86,7 +86,7 @@ export default async function MarkdownPreview({ description, className = '' }: M
     },
     blockquote({ children }) {
       return (
-        <blockquote className="border-l-4 border-green-500 pl-6 py-2 my-6 bg-gray-50 dark:bg-gray-800 rounded-r-lg">
+        <blockquote className="border-l-4 border-green-700 pl-6 py-2 my-6 bg-gray-50 dark:bg-gray-800 rounded-r-lg">
           <div className="text-gray-700 dark:text-gray-300 italic">{children}</div>
         </blockquote>
       );
@@ -95,7 +95,7 @@ export default async function MarkdownPreview({ description, className = '' }: M
       return (
         <a
           href={href ?? ''}
-          className="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 underline decoration-green-300 hover:decoration-green-500 transition-colors duration-200"
+          className="text-green-700 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 underline decoration-green-300 hover:decoration-green-700 transition-colors duration-200"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -20,7 +20,7 @@ const Categories = async ({ category }: { category?: string }) => {
 
 
   return (
-    <div className="flex flex-col md:flex-row lg:flex-row gap-2">
+    <div className="flex md:flex-row lg:flex-row gap-2">
       {filtered?.map((data: ICategory, i: number) => (
       <CategoryCard data={data} key={i} category={category}/>
 

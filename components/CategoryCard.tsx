@@ -24,55 +24,61 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
         });
     };
 
-  // প্রতিটা ক্যাটাগরির জন্য আইকন সিলেকশন
-  const getIcon = (category: string) => {
-    if (category === "government") {
-      return (
-        <Image
-          src="/govt.png"
-          alt="govt"
-          width={30}
-          height={30}
-        />
-      );
-    }
-    return <Users />;
-  };
+    // প্রতিটা ক্যাটাগরির জন্য আইকন সিলেকশন
+    const getIcon = (category: string) => {
+        if (category === "government") {
+            return (
+                <Image
+                    src="/govt.png"
+                    alt="govt"
+                    width={30}
+                    height={30}
+                />
+            );
+        }
+        return <Users />;
+    };
 
 
     return (
         <div
             onClick={() => handlePagination(data.category)}
-            className="flex-1"
+            className="flex-1 min-w-[120px] sm:min-w-[150px] md:min-w-[180px] lg:min-w-[200px]"
         >
             <Card
                 className={`
-      p-2 rounded border-dashed border-green-200
-      transition-colors duration-300 ease-in-out cursor-pointer
+      p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200
+      transition-colors duration-300 ease-in-out cursor-pointer select-none
       ${category === data.category
-                        ? "border-green-500 bg-green-50 dark:bg-green-900 shadow-lg"
-                        : "hover:border-green-500 hover:bg-green-100 dark:hover:bg-green-800"
+                        ? "border-green-700 bg-green-200 dark:bg-green-900 shadow-lg"
+                        : "hover:border-green-700 hover:bg-green-100 dark:hover:bg-green-800"
                     }
     `}
             >
-                <CardContent className="flex items-center gap-2">
-                    {getIcon(data.category)}
-                    <p
-                        className={`
-          text-2xl font-bold
-          transition-colors duration-300 ease-in-out
-          ${category === data.category
-                                ? ""
-                                : "text-green-600"
-                            }
-        `}
-                    >
-                        {data.count}
-                    </p>
-                    <p className="text-sm">{categoryToBangla(data.category)}</p>
+                <CardContent className="flex items-center gap-3">
+                    {/* Icon scales based on device */}
+                    <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl">
+                        {getIcon(data.category)}
+                    </div>
+
+                    <div>
+                        <p
+                            className={`
+            text-xl sm:text-2xl md:text-3xl font-bold leading-tight
+            transition-colors duration-300 ease-in-out
+            ${category === data.category ? "" : "text-green-700"}
+          `}
+                        >
+                            {data.count}
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-base">
+                            {categoryToBangla(data.category)}
+                        </p>
+                    </div>
                 </CardContent>
             </Card>
         </div>
+
     )
 }
 

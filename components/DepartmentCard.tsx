@@ -29,15 +29,15 @@ const DepartmentCard = ({ dept, isActive }: { dept: IDepartments; isActive?: boo
                 flex items-center justify-between group cursor-pointer rounded-lg p-1 border
                 transition-colors duration-300 ease-in-out
                 ${isActive
-                    ? "border-green-500 dark:bg-green-900 shadow-lg"
-                    : "border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700  hover:shadow-md"
+                    ? "border-green-700 bg-green-200 dark:bg-green-900 shadow-lg"
+                    : "border-gray-300 dark:border-gray-700 hover:bg-green-200 dark:hover:bg-gray-700  hover:shadow-md"
                 }
               `}
         >
             <span
                 className={`
                   text-sm font-medium transition-colors duration-300 ease-in-out
-                  ${isActive ? "" : "text-green-500"}
+                  ${isActive ? "" : "text-green-700"}
                 `}
             >
                 {formatQuery(dept.department)}

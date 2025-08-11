@@ -16,7 +16,7 @@ const Departments = async ({ department }: { department?: string }) => {
       <h4 className="font-semibold text-sm uppercase flex items-center dark:text-gray-100 pb-2">
         Job by Departments
       </h4>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 md:grid-cols-3 gap-2">
         {departments?.map((dept: IDepartments, index: number) => {
           const isActive = department === dept.department;
 

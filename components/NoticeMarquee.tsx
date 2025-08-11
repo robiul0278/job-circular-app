@@ -47,7 +47,7 @@ export default function NoticeMarquee() {
 
   return (
     <div className="relative w-full bg-yellow-100 dark:bg-yellow-800  py-1 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">
-      <div className="max-w-6xl mx-auto flex items-center space-x-4 px-4 lg:p-0">
+      <div className="max-w-6xl mx-auto flex items-center space-x-4 px-2 lg:p-0">
         <div className="text-sm font-semibold text-yellow-800 dark:text-yellow-200 whitespace-nowrap">
           Notice:
         </div>

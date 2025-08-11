@@ -13,7 +13,7 @@ export default function Hero({ categories, departments, query }: { categories?: 
                 <div className="space-y-4 w-full md:w-2/3">
                     <div className="flex flex-col">
                         <h1 className="text-2xl md:text-3xl font-bold dark:text-green-600 text-green-700">
-                            ডিপ্লোমা চাকরির সার্কুলার
+                            ডিপ্লোমা জব সার্কুলার
                         </h1>
                         <p className="text-sm md:text-lg">
                             Diploma Engineer চাকরির খবর এক জায়গায় এক ক্লিকে!

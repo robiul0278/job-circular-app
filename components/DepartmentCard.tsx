@@ -37,7 +37,7 @@ const DepartmentCard = ({ dept, isActive }: { dept: IDepartments; isActive?: boo
             <span
                 className={`
                   text-sm font-medium transition-colors duration-300 ease-in-out
-                  ${isActive ? "" : "text-green-700"}
+                  ${isActive ? "" : "dark:text-white"}
                 `}
             >
                 {formatQuery(dept.department)}

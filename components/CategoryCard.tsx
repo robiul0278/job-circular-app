@@ -50,8 +50,8 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
       p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200
       transition-colors duration-300 ease-in-out cursor-pointer select-none
       ${category === data.category
-                        ? "border-green-700 bg-green-200 dark:bg-green-900 shadow-lg"
-                        : "hover:border-green-700 hover:bg-green-100 dark:hover:bg-green-800"
+                        ? "border-green-700  bg-green-200 dark:bg-green-900 shadow-lg"
+                        : "hover:border-green-700  hover:bg-green-100 dark:hover:bg-green-800 "
                     }
     `}
             >
@@ -65,8 +65,8 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
                         <p
                             className={`
             text-xl sm:text-2xl md:text-3xl font-bold leading-tight
-            transition-colors duration-300 ease-in-out
-            ${category === data.category ? "" : "text-green-700"}
+            transition-colors duration-300 ease-in-out 
+            ${category === data.category ? "" : " dark:text-white"}
           `}
                         >
                             {data.count}

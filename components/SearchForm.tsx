@@ -26,7 +26,7 @@ const SearchForm = () => {
       action="/"
       scroll={false}
       id="search-form"
-      className="w-full"
+      className="w-full max-w-xl"
       onSubmit={handlePagination}
     >
       <div className="flex gap-1 bg-white dark:bg-gray-900 p-2 rounded-xl shadow-md border dark:border-gray-700">

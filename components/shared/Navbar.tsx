@@ -42,11 +42,11 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/">
             <div className="border border-black dark:border-white inline-flex items-center">
-              <div className="bg-green-700 dark:bg-green-700 px-1.5 py-0.5">
+              <div className="bg-green-800 dark:bg-green-800 px-1.5 py-0.5">
                 <span className="text-white font-bold text-sm">Diploma</span>
               </div>
               <div className="px-1.5 py-0.5">
-                <span className="text-green-700 dark:text-green-700 font-bold text-sm">Jobs BD</span>
+                <span className="text-green-800 dark:text-green-800 font-bold text-sm">Jobs BD</span>
               </div>
             </div>
 
@@ -56,7 +56,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center justify-center flex-grow gap-6">
             {menuItems.map((item) => (
               <Link key={item.name} href={item.href}>
-                <span className="text-md font-medium text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-green-400 transition">
+                <span className="text-md font-medium text-gray-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition">
                   {item.name}
                 </span>
               </Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
               <>
                 {user.role === 'admin' && (
                   <Link href="/dashboard">
-                    <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-white transition cursor-pointer">
+                    <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-white transition cursor-pointer">
                       পোস্ট করুন
                     </span>
                   </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 <Button
                   variant="default"
                   onClick={handleLogout}
-                  className="text-sm cursor-pointer bg-green-700 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-700 text-white hover:text-white"
+                  className="text-sm cursor-pointer bg-green-800 hover:bg-green-800 dark:bg-green-800 dark:hover:bg-green-800 text-white hover:text-white"
                 >
                   লগআউট
                 </Button>
@@ -113,7 +113,7 @@ const Navbar = () => {
             <div className="flex flex-col gap-3 pt-4">
               {menuItems.map((item) => (
                 <Link key={item.name} href={item.href} onClick={() => setIsOpen(false)}>
-                  <span className="block text-base font-medium text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-green-400 transition">
+                  <span className="block text-base font-medium text-gray-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition">
                     {item.name}
                   </span>
                 </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
                 <>
                   {user.role === 'admin' && (
                     <Link href="/dashboard" onClick={() => setIsOpen(false)}>
-                      <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-white transition cursor-pointer">
+                      <span className="text-sm text-gray-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-white transition cursor-pointer">
                         পোস্ট করুন
                       </span>
                     </Link>
@@ -133,7 +133,7 @@ const Navbar = () => {
                       handleLogout();
                       setIsOpen(false);
                     }}
-                    className="mt-2 text-sm bg-green-700 text-white hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-700"
+                    className="mt-2 text-sm bg-green-800 text-white hover:bg-green-800 dark:bg-green-800 dark:hover:bg-green-800"
                   >
                     লগআউট
                   </Button>

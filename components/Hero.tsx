@@ -12,7 +12,7 @@ export default function Hero({ categories, departments, query }: { categories?: 
                 {/* Left Side */}
                 <div className="space-y-4 w-full md:w-2/3">
                     <div className="flex flex-col">
-                        <h1 className="text-2xl md:text-3xl font-bold text-green-500">
+                        <h1 className="text-2xl md:text-3xl font-bold dark:text-green-500 text-green-600">
                             ডিপ্লোমা চাকরির সার্কুলার
                         </h1>
                         <p className="text-sm md:text-lg">
@@ -37,7 +37,7 @@ export default function Hero({ categories, departments, query }: { categories?: 
                         ].map((item, i) => (
                             <div
                                 key={i}
-                                className="bg-green-700 text-white rounded-lg p-3 text-center"
+                                className="bg-green-800 text-white rounded-lg p-3 text-center"
                             >
                                 <p className="text-base sm:text-lg font-bold">{item.count}</p>
                                 <p className="text-xs sm:text-sm font-medium">{item.label}</p>

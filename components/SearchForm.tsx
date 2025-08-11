@@ -36,14 +36,14 @@ const SearchForm = () => {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             placeholder="🔍 চাকরি খুঁজুন..."
-            className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-green-700"
+            className="w-full pl-4 pr-12 py-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-green-800"
           />
         </div>
 
         <Button
           variant="outline"
           type="submit"
-          className="px-6  py-2 text-sm sm:text-base text-white bg-green-700 rounded-lg cursor-pointer"
+          className="px-6  py-2 text-sm sm:text-base text-white bg-green-800 hover:bg-green-600 rounded-lg cursor-pointer hover:text-white"
         >
           Search
         </Button>

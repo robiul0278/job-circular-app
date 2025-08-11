@@ -470,7 +470,7 @@ const Page = () => {
                           onClick={() => handleStatusToggle(user.id, user.status === "active" ? "suspended" : "active")}
                           className={cn(
                             "hover:bg-green-50",
-                            user.status === "suspended" && "text-green-700 border-green-200"
+                            user.status === "suspended" && "text-green-800 border-green-200"
                           )}
                         >
                           {user.status === "suspended" ? <CheckCircle className="h-4 w-4" /> : <Ban className="h-4 w-4" />}

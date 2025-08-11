@@ -80,7 +80,7 @@ const BookmarkButton = ({ jobId }: Props) => {
     bg-muted/30 dark:bg-muted/40 text-sm font-medium transition-all duration-200
     hover:shadow-md hover:bg-muted/40 dark:hover:bg-muted/50
     flex items-center cursor-pointer
-    ${bookmarked ? "text-green-700 dark:text-green-400" : "text-gray-600 dark:text-gray-300"}
+    ${bookmarked ? "text-green-800 dark:text-green-400" : "text-gray-600 dark:text-gray-300"}
   `}
       type="button"
     >

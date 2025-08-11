@@ -31,8 +31,8 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
                 <Image
                     src="/govt.png"
                     alt="govt"
-                    width={30}
-                    height={30}
+                    width={25}
+                    height={25}
                 />
             );
         }
@@ -50,12 +50,12 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
       p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200
       transition-colors duration-300 ease-in-out cursor-pointer select-none
       ${category === data.category
-                        ? "border-green-700  bg-green-200 dark:bg-green-900 shadow-lg"
-                        : "hover:border-green-700  hover:bg-green-100 dark:hover:bg-green-800 "
+                        ? "border-green-800  bg-green-200 dark:bg-green-900 shadow-lg"
+                        : "hover:border-green-800  hover:bg-green-100 dark:hover:bg-green-800 "
                     }
     `}
             >
-                <CardContent className="flex items-center gap-3">
+                <CardContent className="flex items-center gap-2">
                     {/* Icon scales based on device */}
                     <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl">
                         {getIcon(data.category)}

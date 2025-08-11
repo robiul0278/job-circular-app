@@ -29,7 +29,7 @@ const DepartmentCard = ({ dept, isActive }: { dept: IDepartments; isActive?: boo
                 flex items-center justify-between group cursor-pointer rounded-lg p-1 border
                 transition-colors duration-300 ease-in-out
                 ${isActive
-                    ? "border-green-700 bg-green-200 dark:bg-green-900 shadow-lg"
+                    ? "border-green-800 bg-green-200 dark:bg-green-900 shadow-lg"
                     : "border-gray-300 dark:border-gray-700 hover:bg-green-200 dark:hover:bg-gray-700  hover:shadow-md"
                 }
               `}

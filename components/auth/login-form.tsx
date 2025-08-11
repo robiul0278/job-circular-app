@@ -109,7 +109,7 @@ export default function LoginForm({ switchForm, closeModal }: { switchForm: () =
                             // তুমি চাইলে এখানে modal/modal trigger বা router.push("/forgot-password") করতে পারো
                             alert("পাসওয়ার্ড রিসেট ফিচার এখনও অ্যাক্টিভ না!");
                         }}
-                        className="text-green-700 hover:underline focus:outline-none"
+                        className="text-green-800 hover:underline focus:outline-none"
                     >
                         পাসওয়ার্ড ভুলে গেছেন?
                     </button>
@@ -128,7 +128,7 @@ export default function LoginForm({ switchForm, closeModal }: { switchForm: () =
                     <button
                         type="button"
                         onClick={switchForm}
-                        className="text-green-700 hover:underline focus:outline-none"
+                        className="text-green-800 hover:underline focus:outline-none"
                     >
                         রেজিস্ট্রেশন করুন
                     </button>

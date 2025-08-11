@@ -23,7 +23,7 @@ const demoNotices: Notice[] = [
 export default function Blog() {
   return (
     <aside className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
-      <h4 className="font-semibold text-sm uppercase flex items-center dark:text-gray-100 text-green-700 mb-3">
+      <h4 className="font-semibold text-sm uppercase flex items-center dark:text-gray-100 text-green-800 mb-3">
         সাম্প্রতিক আপডেট
       </h4>
       <ul className="space-y-3">
@@ -34,7 +34,7 @@ export default function Blog() {
           >
             <Link
               href="#"
-              className="block hover:text-green-700 dark:hover:text-green-400"
+              className="block hover:text-green-800 dark:hover:text-green-400"
             >
               <p className="text-sm font-medium line-clamp-2">
                 {notice.title}

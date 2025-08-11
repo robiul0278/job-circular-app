@@ -9,7 +9,7 @@ export default async function PrivacyPolicyPage() {
       <section className="text-center mb-16">
         <div className="flex justify-center mb-6">
           <div className="p-4 bg-green-100 rounded-full">
-            <Shield className="h-12 w-12 text-green-700" />
+            <Shield className="h-12 w-12 text-green-800" />
           </div>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Privacy Policy</h1>
@@ -34,7 +34,7 @@ export default async function PrivacyPolicyPage() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-start space-x-3">
-                <Eye className="h-6 w-6 text-green-700 mt-1" />
+                <Eye className="h-6 w-6 text-green-800 mt-1" />
                 <div>
                   <h4 className="font-medium">Data Collection</h4>
                   <p className="text-sm text-muted-foreground">
@@ -43,7 +43,7 @@ export default async function PrivacyPolicyPage() {
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <Lock className="h-6 w-6 text-green-700 mt-1" />
+                <Lock className="h-6 w-6 text-green-800 mt-1" />
                 <div>
                   <h4 className="font-medium">Data Security</h4>
                   <p className="text-sm text-muted-foreground">
@@ -70,7 +70,7 @@ export default async function PrivacyPolicyPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <FileText className="mr-2 h-6 w-6 text-green-700" />
+              <FileText className="mr-2 h-6 w-6 text-green-800" />
               Information We Collect
             </CardTitle>
           </CardHeader>
@@ -98,7 +98,7 @@ export default async function PrivacyPolicyPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Lock className="mr-2 h-6 w-6 text-green-700" />
+              <Lock className="mr-2 h-6 w-6 text-green-800" />
               Data Security
             </CardTitle>
           </CardHeader>

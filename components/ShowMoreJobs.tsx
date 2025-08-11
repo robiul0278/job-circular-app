@@ -31,10 +31,10 @@ export default async function ShowMoreJobs() {
                                 className="block group"
                                 aria-label={`View details for ${job.title}`}
                             >
-                                <h3 className="font-semibold group-hover:text-green-700 dark:group-hover:text-green-400">
+                                <h3 className="font-semibold group-hover:text-green-800 dark:group-hover:text-green-400">
                                     {job.title}
                                 </h3>
-                                <span className="text-sm text-green-700">
+                                <span className="text-sm text-green-800">
                                     আবেদনের শেষ তারিখঃ {formatDate(job.deadline)}
                                 </span>
                             </Link>

@@ -40,7 +40,7 @@ export default function ImageWithDownload({ src, index }: ImageWithDownloadProps
             <Button
                 variant="link"
                 onClick={handleImageDownload}
-                className="text-sm text-green-700 hover:underline "
+                className="text-sm text-green-800 hover:underline "
             >
                 ডাউনলোড করুন (Image-{index + 1})
             </Button>

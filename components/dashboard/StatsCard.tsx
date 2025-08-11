@@ -38,7 +38,7 @@ export default function StatsCard({
           <div className="flex items-center mt-2 text-xs">
             <span className={cn(
               "font-medium",
-              trend === "up" ? "text-green-700" :
+              trend === "up" ? "text-green-800" :
                 trend === "down" ? "text-red-600" : "text-slate-600"
             )}>
               {trendValue}

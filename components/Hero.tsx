@@ -6,7 +6,7 @@ import SearchFormReset from "./SearchFormReset";
 
 export default function Hero({ categories, departments, query }: { categories?: string; departments?: string; query?: string; }) {
     return (
-        <section className="max-w-6xl mx-auto px-2 md:px-0 lg:px-0 py-12">
+        <section className="max-w-6xl mx-auto px-2 md:px-0 lg:px-0 py-6 md:py-12 lg:py-12">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
                 {/* Left Side */}
@@ -45,9 +45,9 @@ export default function Hero({ categories, departments, query }: { categories?: 
                             <p className="text-xs">Expires in 3 days</p>
                         </div>
                     </div>
-                    <div className="flex justify-end">
+                    <div className="flex justify-end ">
                         {(query || departments || categories) && (
-                            <div>
+                            <div className="-mb-14">
                                 <SearchFormReset />
                             </div>
                         )}

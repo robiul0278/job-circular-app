@@ -55,7 +55,7 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
                     }
     `}
             >
-                <CardContent className="flex items-center gap-2 md:gap-6">
+                <CardContent className="flex items-center gap-2 md:gap-4 p-0">
                     {/* Icon scales based on device */}
                     <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl">
                         {getIcon(data.category)}

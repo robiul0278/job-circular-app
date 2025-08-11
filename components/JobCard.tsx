@@ -1,5 +1,4 @@
-"use client"
-import { deadlineCountdown, formatDate } from "@/utils/format-date";
+import { formatDate } from "@/utils/format-date";
 import { timeAgo } from "@/utils/format-time";
 import {
   Timer,
@@ -43,12 +42,6 @@ export function JobCard({ jobs }: JobProps) {
                   className="absolute top-3 right-3 text-white"
                 >
                   {categoryToBangla(job.categories)}
-                </Badge>
-                <Badge
-                  variant="outline"
-                  className="absolute top-3 left-3 text-white"
-                >
-                  <span className="text-amber-400 text-[12px]">{deadlineCountdown(job.deadline)}</span>
                 </Badge>
               </div>
 

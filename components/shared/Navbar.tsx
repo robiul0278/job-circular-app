@@ -46,7 +46,7 @@ const Navbar = () => {
                 <span className="text-white font-bold text-sm">Diploma</span>
               </div>
               <div className="px-1.5 py-0.5">
-                <span className="text-green-800 dark:text-green-800 font-bold text-sm">Jobs BD</span>
+                <span className="text-green-800 dark:text-white font-bold text-sm">Jobs BD</span>
               </div>
             </div>
 

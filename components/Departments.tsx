@@ -25,7 +25,7 @@ const Departments = async ({ department }: { department?: string }) => {
               key={index}
               href={`?departments=${dept.department}`}
               className={`
-                flex items-center justify-between group cursor-pointer rounded-lg p-2 border
+                flex items-center justify-between group cursor-pointer rounded-lg p-1 border
                 transition-colors duration-300 ease-in-out
                 ${
                   isActive

@@ -46,7 +46,7 @@ export default async function JobsPage({ searchParams }: {
           <SearchForm />
         </div>
         <hr className="mb-8 hidden lg:flex md:flex"/>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
 
           {/* Left sidebar */}
           <aside

@@ -36,7 +36,7 @@ const DepartmentCard = ({ dept, isActive }: { dept: IDepartments; isActive?: boo
         >
             <span
                 className={`
-                  text-sm font-medium transition-colors duration-300 ease-in-out
+                  text-[13px] font-medium transition-colors duration-300 ease-in-out
                   ${isActive ? "" : "dark:text-white"}
                 `}
             >

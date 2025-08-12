@@ -45,7 +45,6 @@ export default function UpdateCircularPage({ params }: PageProps) {
                 // form.reset();
             }
         } catch (error: unknown) {
-            console.log(error);
             const err = error as { data: TGenericErrorResponse };
 
             if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {

@@ -84,7 +84,6 @@ export default function AllCircularPage() {
 
   const handleEdit = (id: string) => {
     if (!confirm('Edit this circular?')) return;
-    console.log("Edit circular:", id);
     router.push(`/dashboard/update-circular/${id}`);
   };
 
@@ -100,7 +99,6 @@ export default function AllCircularPage() {
       }
     } catch (err: unknown) {
       const error = err as { data: TGenericErrorResponse };
-      console.log(error);
       toast.error(error?.data?.message || 'Delete failed.');
     }
   };

@@ -12,7 +12,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 export async function getAllJobQuery({params}: {params?:TParams}) {
   const queryString = new URLSearchParams(params).toString();
   const res = await fetch(`${BASE_URL}/jobs?${queryString}`, {
-      next: { revalidate: 300 },
+      next: { revalidate: 3000 },
   });
   if (res.status === 404) {
     return notFound();
@@ -26,7 +26,7 @@ export async function getAllJobQuery({params}: {params?:TParams}) {
 
 export async function getJobs() {
   const res = await fetch(`${BASE_URL}/jobs`, {
-    next: { revalidate: 30 },
+    next: { revalidate: 3000 },
   });
   if (res.status === 404) {
     notFound();

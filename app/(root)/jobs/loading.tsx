@@ -41,7 +41,7 @@ export default function Loading() {
         </aside>
 
         {/* Main content skeleton */}
-        <div className="lg:col-span-8 mt-4">
+        <div className="lg:col-span-8">
           <ul role="list" className="space-y-6">
             {Array.from({ length: 6 }).map((_, i) => (
               <li

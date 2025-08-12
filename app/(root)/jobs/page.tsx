@@ -62,7 +62,7 @@ export default async function JobsPage({ searchParams }: {
             <JobCategory category={categories} />
             <JobDepartments department={departments} />
 
-            <div className="flex justify-end">
+            <div className="flex justify-end px-2 pb-2">
               {(query || departments || categories) && (
                   <SearchFormReset />
               )}

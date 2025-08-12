@@ -60,7 +60,7 @@ export async function JobCategories() {
 export async function getSingleJob(id: string) {
 
   const res = await fetch(`${BASE_URL}/jobs/single/${id}`, {
-    cache: "no-store",
+   next: { revalidate: 300 },
   });
 
   if (res.status === 404) {

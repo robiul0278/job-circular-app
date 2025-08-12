@@ -8,20 +8,11 @@ type ICategory = {
 
 const Categories = async ({ category }: { category?: string }) => {
 
-
   const { categories } = await JobCategories();
-
-  // নির্দিষ্ট ৩ ক্যাটাগরি ফিল্টার
-  const fixedCategories = ["government", "private", "autonomous"];
-  const filtered = categories?.filter((c: ICategory) =>
-    fixedCategories.includes(c.category)
-  );
-
-
 
   return (
     <div className="flex md:flex-row lg:flex-row gap-2">
-      {filtered?.map((data: ICategory, i: number) => (
+      {categories?.map((data: ICategory, i: number) => (
       <CategoryCard data={data} key={i} category={category}/>
       ))}
     </div>

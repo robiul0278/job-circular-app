@@ -1,83 +1,61 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "./ui/card";
+import * as React from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { categoryToBangla } from "@/utils/utils";
 import { useRouter } from "next/navigation";
 import { startTransition } from "react";
-import Image from "next/image";
-import { Users } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 type ICategory = {
     category: string;
     count: number;
 };
 
-const JobCategoryCard = ({ data, category }: { data: ICategory; category?: string }) => {
+export default function JobCategoryCard({
+    data,
+    category,
+}: {
+    data: ICategory[];
+    category?: string;
+}) {
     const router = useRouter();
 
-    const handlePagination = (category: string) => {
+    const handlePagination = (selectedCategory: string) => {
         startTransition(() => {
             const current = new URLSearchParams(window.location.search);
-            current.set("categories", category.toString());
+            current.set("categories", selectedCategory.toString());
             const query = current.toString();
             router.push(`?${query}`);
         });
     };
 
-    // প্রতিটা ক্যাটাগরির জন্য আইকন সিলেকশন
-    const getIcon = (category: string) => {
-        if (category === "government") {
-            return (
-                <Image
-                    src="/govt.png"
-                    alt="govt"
-                    width={20}
-                    height={20}
-                />
-            );
-        }
-        return <Users size={20}/>;
-    };
-
-
     return (
-        <div
-            onClick={() => handlePagination(data.category)}
-            className="flex-1 w-full"
-        >
-            <Card
-                className={`
-      p-2 rounded border-dashed border-green-200
-      transition-colors duration-300 ease-in-out cursor-pointer select-none
-      ${category === data.category
-                        ? "border-green-800  bg-green-200 dark:bg-green-900 shadow-lg"
-                        : "hover:border-green-800  hover:bg-green-100 dark:hover:bg-green-800 "
-                    }
-    `}
+        <div className="w-full max-w-sm">
+            <Select
+                value={category || ""}
+                onValueChange={(value) => handlePagination(value)}
             >
-                <CardContent className="flex items-center gap-1 md:gap-4 p-0">
-                    {/* Icon scales based on device */}
-                    <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl">
-                        {getIcon(data.category)}
-                    </div>
-
-                        <p
-                            className={`
-            text-xl sm:text-2xl  font-bold leading-tight
-            transition-colors duration-300 ease-in-out 
-            ${category === data.category ? "" : " dark:text-white"}
-          `}
+                <SelectTrigger className="w-full">
+                    <SelectValue placeholder="ক্যাটেগরি নির্বাচন করুন" />
+                </SelectTrigger>
+                <SelectContent>
+                    {data.map((item) => (
+                        <SelectItem
+                            key={item.category}
+                            value={item.category}
+                            className="flex w-full justify-between items-center"
                         >
-                            {data.count}
-                        </p>
-                        <p className="text-xs sm:text-sm md:text-base">
-                            {categoryToBangla(data.category)}
-                        </p>
-                </CardContent>
-            </Card>
+                            <span>{categoryToBangla(item.category)}</span>
+                            <Badge variant="outline" className="dark:bg-gray-500">
+                                {item.count}
+                            </Badge>
+                        </SelectItem>
+
+
+                    ))}
+                </SelectContent>
+            </Select>
         </div>
-
-    )
+    );
 }
-
-export default JobCategoryCard;

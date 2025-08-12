@@ -26,7 +26,7 @@ export async function getAllJobQuery({params}: {params?:TParams}) {
 
 export async function getJobs() {
   const res = await fetch(`${BASE_URL}/jobs`, {
-    next: { revalidate: 300 },
+    next: { revalidate: 30 },
   });
   if (res.status === 404) {
     notFound();

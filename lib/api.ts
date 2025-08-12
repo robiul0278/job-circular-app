@@ -53,7 +53,7 @@ export async function JobCategories() {
   }
 
   const json = await res.json();
-  return json;
+  return json.data;
 }
 
 //Get Single Job Details

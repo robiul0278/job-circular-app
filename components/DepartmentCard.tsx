@@ -10,7 +10,7 @@ type IDepartments = {
     department: string;
 };
 
-const DepartmentCard = ({ dept, isActive }: { dept: IDepartments; isActive?: boolean }) => {
+const DepartmentCard = ({ dept}: { dept: IDepartments; }) => {
     const router = useRouter();
 
     const handlePagination = (department: string) => {
@@ -25,20 +25,11 @@ const DepartmentCard = ({ dept, isActive }: { dept: IDepartments; isActive?: boo
         <Button
             onClick={() => handlePagination(dept.department)}
             variant="outline"
-            className={`
-                flex items-center justify-between group cursor-pointer rounded-lg p-1 border
-                transition-colors duration-300 ease-in-out
-                ${isActive
-                    ? "border-green-800 bg-green-200 dark:bg-green-900 shadow-lg"
-                    : "border-gray-300 dark:border-gray-700 hover:bg-green-200 dark:hover:bg-gray-700  hover:shadow-md"
-                }
-              `}
+            className="flex items-center justify-between group cursor-pointer rounded-lg p-1 border
+                transition-colors duration-300 ease-in-out"
         >
             <span
-                className={`
-                  text-[13px] font-medium transition-colors duration-300 ease-in-out
-                  ${isActive ? "" : "dark:text-white"}
-                `}
+                className="text-[13px] font-medium transition-colors duration-300 ease-in-out"
             >
                 {formatQuery(dept.department)}
             </span>

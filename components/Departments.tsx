@@ -6,7 +6,7 @@ type IDepartments = {
   department: string;
 };
 
-const Departments = async ({ department }: { department?: string }) => {
+const Departments = async () => {
   const { departments } = await JobCategories();
 
   return (
@@ -16,10 +16,8 @@ const Departments = async ({ department }: { department?: string }) => {
       </h4>
       <div className="grid grid-cols-3 md:grid-cols-3 gap-2">
         {departments?.map((dept: IDepartments, index: number) => {
-          const isActive = department === dept.department;
-
          return (
-           <DepartmentCard  dept={dept} isActive={isActive} key={index}/>
+           <DepartmentCard  dept={dept}  key={index}/>
          )
         })}
       </div>

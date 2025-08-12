@@ -12,7 +12,7 @@ type ICategory = {
     count: number;
 };
 
-const CategoryCard = ({ data, category }: { data: ICategory; category?: string }) => {
+const CategoryCard = ({ data }: { data: ICategory; }) => {
     const router = useRouter();
 
     const handlePagination = (category: string) => {
@@ -46,14 +46,8 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
             className="flex-1 w-full"
         >
             <Card
-                className={`
-      p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200
-      transition-colors duration-300 ease-in-out cursor-pointer select-none
-      ${category === data.category
-                        ? "border-green-800  bg-green-200 dark:bg-green-900 shadow-lg"
-                        : "hover:border-green-800  hover:bg-green-100 dark:hover:bg-green-800 "
-                    }
-    `}
+                className="p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200
+      transition-colors duration-300 ease-in-out cursor-pointer select-none"
             >
                 <CardContent className="flex items-center gap-2 md:gap-4 p-0">
                     {/* Icon scales based on device */}
@@ -61,18 +55,15 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
                         {getIcon(data.category)}
                     </div>
 
-                        <p
-                            className={`
-            text-xl sm:text-2xl md:text-3xl font-bold leading-tight
-            transition-colors duration-300 ease-in-out 
-            ${category === data.category ? "" : " dark:text-white"}
-          `}
-                        >
-                            {data.count}
-                        </p>
-                        <p className="text-xs sm:text-sm md:text-base">
-                            {categoryToBangla(data.category)}
-                        </p>
+                    <p
+                        className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight
+            transition-colors duration-300 ease-in-out "
+                    >
+                        {data.count}
+                    </p>
+                    <p className="text-xs sm:text-sm md:text-base">
+                        {categoryToBangla(data.category)}
+                    </p>
                 </CardContent>
             </Card>
         </div>

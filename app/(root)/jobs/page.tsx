@@ -52,21 +52,19 @@ export default async function JobsPage({ searchParams }: {
           <aside
             className="
               lg:col-span-4
-              space-y-4
+              space-y-4 rounded-lg
               lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto 
               bg-white dark:bg-gray-900 z-20
-              md:sticky md:top-0 md:z-30 pb-5
+              md:sticky md:top-0 md:z-30 p-4
               "
             style={{ minHeight: 'auto' }}
           >
             <JobCategory category={categories} />
             <Departments department={departments} />
 
-            <div className="flex justify-end mb-4">
+            <div className="flex justify-end">
               {(query || departments || categories) && (
-                <div className="-mb-10">
                   <SearchFormReset />
-                </div>
               )}
             </div>
           </aside>

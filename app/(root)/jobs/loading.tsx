@@ -9,13 +9,13 @@ export default function Loading() {
         <div className="flex items-center gap-2">
           <Skeleton className="h-8 w-48" />
         </div>
-        <Skeleton className="h-10 w-64" />
+        <Skeleton className="h-14 w-full max-w-xl rounded-2xl" />
       </div>
-      <hr className="mb-8" />
+      <hr className="mb-8 hidden lg-flex md:flex" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
         {/* Left sidebar skeleton */}
-        <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto bg-white dark:bg-gray-900 z-20 md:sticky md:top-0 md:z-30 p-4 rounded-lg">
+        <aside className="lg:col-span-4 space-y-4 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto bg-white dark:bg-gray-900 z-20 md:sticky md:top-0 md:z-30 p-4 rounded-lg">
           {/* Categories Skeleton */}
           <div className="space-y-3 border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
             <Skeleton className="h-6 w-2/3" />
@@ -29,9 +29,9 @@ export default function Loading() {
           </div>
 
           {/* Departments Skeleton */}
-          <div className="space-y-3 mt-6 border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
+          <div className="space-y-3 border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
             <Skeleton className="h-6 w-2/3" />
-            {Array.from({ length: 3 }).map((_, i) => (
+            {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center justify-between group cursor-pointer rounded-lg p-1 border">
                 <Skeleton className="h-5 w-24" />
                 <Skeleton className="h-5 w-10 rounded-md" />

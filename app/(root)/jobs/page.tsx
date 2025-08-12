@@ -45,7 +45,7 @@ export default async function JobsPage({ searchParams }: {
 
           <SearchForm />
         </div>
-        <hr className="mb-8 hidden lg:flex md:flex"/>
+        <hr className="mb-4 hidden lg:flex md:flex"/>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
 
           {/* Left sidebar */}
@@ -54,7 +54,7 @@ export default async function JobsPage({ searchParams }: {
               lg:col-span-4
               space-y-4 rounded-lg
               lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto 
-              bg-white dark:bg-gray-900 z-20
+             dark:bg-gray-900 z-20
               md:sticky md:top-0 md:z-30 p-4
               "
             style={{ minHeight: 'auto' }}
@@ -70,7 +70,7 @@ export default async function JobsPage({ searchParams }: {
           </aside>
 
           {/* Main content */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 dark:bg-gray-900 rounded-2xl p-4">
             {result.length === 0 ? (
               <div className="text-center py-8 text-slate-600 dark:text-slate-400">
                 <p className="text-xl font-medium">

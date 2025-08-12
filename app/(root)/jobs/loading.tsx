@@ -11,7 +11,7 @@ export default function Loading() {
         </div>
         <Skeleton className="h-14 w-full max-w-xl rounded-2xl" />
       </div>
-      <hr className="mb-8 hidden lg-flex md:flex" />
+      <hr className="mb-4 hidden lg-flex md:flex" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
         {/* Left sidebar skeleton */}

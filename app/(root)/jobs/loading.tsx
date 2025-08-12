@@ -19,13 +19,13 @@ export default function Loading() {
           {/* Categories Skeleton */}
           <div className="space-y-3 border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
             <Skeleton className="h-6 w-2/3" />
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="p-2 rounded border-dashed border-green-200 flex items-center gap-3">
-                <Skeleton className="h-6 w-6 rounded-full" />
-                <Skeleton className="h-6 w-10" />
-                <Skeleton className="h-4 w-20" />
+            <div className="w-full max-w-sm">
+              {/* One dropdown option skeleton */}
+              <div className="mt-2 flex items-center justify-between h-9 rounded-md px-3 bg-gray-100 dark:bg-gray-800 animate-pulse">
+                <div className="h-4 w-2/3 rounded bg-gray-200 dark:bg-gray-700" />
+                <div className="h-4 w-12 rounded bg-gray-200 dark:bg-gray-700" />
               </div>
-            ))}
+            </div>
           </div>
 
           {/* Departments Skeleton */}

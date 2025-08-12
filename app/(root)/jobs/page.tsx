@@ -5,6 +5,7 @@ import { JobCard } from "@/components/JobCard";
 import { getAllJobQuery } from "@/lib/api";
 import Pagination from "@/components/Pagination";
 import Blog from "@/components/Blog";
+import Hero from "@/components/Hero";
 
 export default async function JobsPage({ searchParams }: {
   searchParams: Promise<
@@ -31,6 +32,8 @@ export default async function JobsPage({ searchParams }: {
 
   return (
     <>
+      <Hero categories={categories} departments={departments} query={query} />
+
       <section className="max-w-7xl mx-auto px-2 pb-2 lg:p-0">
         <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 pb-4 pl-3 flex items-center">
           {(query || departments || categories)

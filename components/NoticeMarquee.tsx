@@ -1,16 +1,17 @@
-"use client";
-
+"use client"
 import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
-import { useAllNoticeQuery } from "@/redux/api/api";
 
-export const dynamic = 'force-static';
+type TNotice = {
+  _id: string;
+  notice: string;
+}
 
-export default function NoticeMarquee() {
-  const { data: notice, isLoading } = useAllNoticeQuery(undefined);
+export default function NoticeMarquee({notice}:{notice:TNotice[]}) {
+
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const notices = useMemo(() => notice?.data || [], [notice]);
+  const notices = useMemo(() => notice || [], [notice]);
   const combined = [...notices, ...notices]; // duplicate for seamless
 
   useEffect(() => {
@@ -23,7 +24,6 @@ export default function NoticeMarquee() {
 
     // Reset position to 0 first before anim start, to avoid jump on re-render
     gsap.set(el, { x: 200 });
-
     const anim = gsap.to(el, {
       x: -totalWidth,
       duration,
@@ -36,16 +36,6 @@ export default function NoticeMarquee() {
     };
   }, [notices]);
 
-  if (isLoading) {
-    return (
-      <div className="relative w-full px-2 md:px-0 lg-px-0 bg-yellow-100 dark:bg-yellow-800  py-1.5 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">
-        <div className="max-w-6xl mx-auto animate-pulse flex space-x-8 ">
-          <div className="h-5 w-20 bg-yellow-200/70 rounded" />
-          <div className="h-5 w-full bg-yellow-200/70 rounded" />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="relative w-full bg-yellow-100 dark:bg-yellow-800  py-1 overflow-hidden border-y border-yellow-300 dark:border-yellow-700">

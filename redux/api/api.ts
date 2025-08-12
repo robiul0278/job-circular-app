@@ -23,7 +23,7 @@ export const baseApi = createApi({
           url: "/jobs",
           method: "GET",
           params: params,
-          
+
         }
       },
       providesTags: ['jobs'],
@@ -163,14 +163,9 @@ export const baseApi = createApi({
       invalidatesTags: ["notice"]
     }),
     allNotice: builder.query({
-      query: () => {
-        // console.log(data);
-        return {
-          url: "/notice",
-          method: "GET",
-        }
-      },
-      providesTags: ["notice"]
+      query: () => "/notice",
+      providesTags: ["notice"],
+      keepUnusedDataFor: 300,       // ৫ মিনিট ক্যাশ রাখবে
     }),
   }),
 });

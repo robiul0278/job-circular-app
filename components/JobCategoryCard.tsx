@@ -31,12 +31,12 @@ const JobCategoryCard = ({ data, category }: { data: ICategory; category?: strin
                 <Image
                     src="/govt.png"
                     alt="govt"
-                    width={25}
-                    height={25}
+                    width={20}
+                    height={20}
                 />
             );
         }
-        return <Users />;
+        return <Users size={20}/>;
     };
 
 
@@ -55,7 +55,7 @@ const JobCategoryCard = ({ data, category }: { data: ICategory; category?: strin
                     }
     `}
             >
-                <CardContent className="flex items-center gap-2 md:gap-4 p-0">
+                <CardContent className="flex items-center gap-1 md:gap-4 p-0">
                     {/* Icon scales based on device */}
                     <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl">
                         {getIcon(data.category)}

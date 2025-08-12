@@ -17,7 +17,7 @@ const SearchForm = () => {
       const current = new URLSearchParams(window.location.search);
       current.set("query", keyword.trim());
       const query = current.toString();
-      router.push(`?${query}`);
+      router.push(`/jobs?${query}`);
     });
   };
 
@@ -43,7 +43,7 @@ const SearchForm = () => {
         <Button
           variant="outline"
           type="submit"
-          className="px-6  py-2 text-sm sm:text-base text-white bg-green-800 hover:bg-green-600 rounded-lg cursor-pointer hover:text-white"
+          className="px-6  py-2 text-sm sm:text-base text-green-600 border-green-700 hover:bg-green-600 rounded-lg cursor-pointer hover:text-white"
         >
           Search
         </Button>

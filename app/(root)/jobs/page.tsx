@@ -1,21 +1,20 @@
 
 import { ChevronRight } from "lucide-react";
-import Telegram from "@/components/Telegram";
 import { JobCard } from "@/components/JobCard";
 import { getAllJobQuery } from "@/lib/api";
 import Pagination from "@/components/Pagination";
-import Blog from "@/components/Blog";
-import Hero from "@/components/Hero";
+import Departments from "@/components/Departments";
+import SearchFormReset from "@/components/SearchFormReset";
+import SearchForm from "@/components/SearchForm";
+import JobCategory from "@/components/JobCategories";
 
 export default async function JobsPage({ searchParams }: {
-  searchParams: Promise<
-    {
-      categories?: string;
-      departments?: string;
-      query?: string;
-      page?: string
-    }
-  >
+  searchParams: Promise<{
+    categories?: string;
+    departments?: string;
+    query?: string;
+    page?: string;
+  }>;
 }) {
   const resolvedParams = await searchParams;
   const { categories, departments, query } = resolvedParams;
@@ -25,28 +24,55 @@ export default async function JobsPage({ searchParams }: {
     ...(categories ? { categories: categories } : {}),
     ...(departments ? { departments: departments } : {}),
     ...(query ? { searchTerm: query } : {}),
-    page: (currentPage).toString(),
+    page: currentPage.toString(),
   };
 
   const { result, meta } = await getAllJobQuery({ params });
 
   return (
     <>
-      <Hero categories={categories} departments={departments} query={query} />
+      <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0 relative">
+        {/* HEADER: results text + search bar */}
+        <div className="flex flex-col lg:flex-row md:flex-row justify-between my-4 gap-4">
+          <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 flex items-center">
+            {(query || departments || categories)
+              ? `Results for "${[query, departments, categories].filter(Boolean).join(' | ')}"`
+              : "সকল চাকরির বিজ্ঞপ্তি"}
+            {!query && !departments && !categories && (
+              <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
+            )}
+          </p>
 
-      <section className="max-w-7xl mx-auto px-2 pb-2 lg:p-0">
-        <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 pb-4 pl-3 flex items-center">
-          {(query || departments || categories)
-            ? `Results for "${[query, departments, categories].filter(Boolean).join(' | ')}"`
-            : "সর্বশেষ চাকরির বিজ্ঞপ্তি"}
-          {!query && !departments && !categories && (
-            <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
-          )}
-        </p>
-
+          <SearchForm />
+        </div>
+        <hr className="mb-8"/>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-2">
-          {/* Left: Job Post List */}
-          <div className="lg:col-span-9">
+
+          {/* Left sidebar */}
+          <aside
+            className="
+              lg:col-span-4
+              space-y-4
+              lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto 
+              bg-white dark:bg-gray-900 z-20
+              md:sticky md:top-0 md:z-30
+              "
+            style={{ minHeight: 'auto' }}
+          >
+            <JobCategory category={categories} />
+            <Departments department={departments} />
+
+            <div className="flex justify-end mb-4">
+              {(query || departments || categories) && (
+                <div className="-mb-10">
+                  <SearchFormReset />
+                </div>
+              )}
+            </div>
+          </aside>
+
+          {/* Main content */}
+          <div className="lg:col-span-8">
             {result.length === 0 ? (
               <div className="text-center py-8 text-slate-600 dark:text-slate-400">
                 <p className="text-xl font-medium">
@@ -57,13 +83,9 @@ export default async function JobsPage({ searchParams }: {
             ) : (
               <JobCard jobs={result} />
             )}
-            <Pagination totalPages={meta.totalPage} currentPage={currentPage}/>
+            <Pagination totalPages={meta.totalPage} currentPage={currentPage} />
           </div>
-          {/* Right */}
-          <aside className="lg:col-span-3  space-y-4">
-            <Telegram />
-            <Blog />
-          </aside>
+
         </div>
       </section>
     </>

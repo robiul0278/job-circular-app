@@ -23,7 +23,6 @@ const Categories = async ({ category }: { category?: string }) => {
     <div className="flex md:flex-row lg:flex-row gap-2">
       {filtered?.map((data: ICategory, i: number) => (
       <CategoryCard data={data} key={i} category={category}/>
-
       ))}
     </div>
   );

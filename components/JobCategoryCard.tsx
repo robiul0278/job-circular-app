@@ -12,7 +12,7 @@ type ICategory = {
     count: number;
 };
 
-const CategoryCard = ({ data, category }: { data: ICategory; category?: string }) => {
+const JobCategoryCard = ({ data, category }: { data: ICategory; category?: string }) => {
     const router = useRouter();
 
     const handlePagination = (category: string) => {
@@ -20,7 +20,7 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
             const current = new URLSearchParams(window.location.search);
             current.set("categories", category.toString());
             const query = current.toString();
-            router.push(`/jobs?${query}`);
+            router.push(`?${query}`);
         });
     };
 
@@ -47,7 +47,7 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
         >
             <Card
                 className={`
-      p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200
+      p-2 rounded border-dashed border-green-200
       transition-colors duration-300 ease-in-out cursor-pointer select-none
       ${category === data.category
                         ? "border-green-800  bg-green-200 dark:bg-green-900 shadow-lg"
@@ -63,7 +63,7 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
 
                         <p
                             className={`
-            text-xl sm:text-2xl md:text-3xl font-bold leading-tight
+            text-xl sm:text-2xl  font-bold leading-tight
             transition-colors duration-300 ease-in-out 
             ${category === data.category ? "" : " dark:text-white"}
           `}
@@ -80,4 +80,4 @@ const CategoryCard = ({ data, category }: { data: ICategory; category?: string }
     )
 }
 
-export default CategoryCard;
+export default JobCategoryCard;

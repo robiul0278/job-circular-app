@@ -22,7 +22,7 @@ export function Providers({ children }: ProvidersProps) {
     }
 
     return (
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     {children}

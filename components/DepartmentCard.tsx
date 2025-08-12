@@ -18,7 +18,7 @@ const DepartmentCard = ({ dept, isActive }: { dept: IDepartments; isActive?: boo
             const current = new URLSearchParams(window.location.search);
             current.set("departments", department.toString());
             const query = current.toString();
-            router.push(`?${query}`);
+            router.push(`/jobs?${query}`);
         });
     };
     return (

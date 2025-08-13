@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
-import { Bookmark, BookmarkCheck } from "lucide-react";
+import { Heart } from "lucide-react";
 import { RootState } from "@/redux/store";
 import {
   useAddBookmarkMutation,
@@ -70,30 +70,28 @@ const BookmarkButton = ({ jobId }: Props) => {
   };
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={toggleBookmark}
-      disabled={isAdding || isRemoving || isFetching}
-      aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
-      className={`group rounded-full px-4 py-2 border border-muted-foreground/20 backdrop-blur-sm
-    bg-muted/30 dark:bg-muted/40 text-sm font-medium transition-all duration-200
-    hover:shadow-md hover:bg-muted/40 dark:hover:bg-muted/50
-    flex items-center cursor-pointer
-    ${bookmarked ? "text-green-800 dark:text-green-400" : "text-gray-600 dark:text-gray-300"}
+<Button
+  variant="ghost"
+  onClick={toggleBookmark}
+  disabled={isAdding || isRemoving || isFetching}
+  aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
+  className={`
+    relative flex items-center justify-center rounded-full 
+    w-8 h-8 p-0 backdrop-blur-sm transition-all duration-300
+    hover:shadow-lg  hover:scale-105 
+    focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer
+    ${bookmarked 
+      ? "bg-green-700 dark:bg-green-800 text-white hover:bg-green-700 dark:text-green-400" 
+      : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-700"}
   `}
-      type="button"
-    >
-      {bookmarked ? (
-        <BookmarkCheck className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
-      ) : (
-        <Bookmark className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
-      )}
-      <span className="text-[12px] md:text-sm lg:text-sm">
-        {bookmarked ? "Bookmarked" : "Bookmark"}
-      </span>
-    </Button>
-
+>
+  <Heart
+    className={`
+      w-6 h-6 transition-transform duration-200 
+      ${bookmarked ? "text-white" : "hover:scale-110"}
+    `}
+  />
+</Button>
   );
 };
 

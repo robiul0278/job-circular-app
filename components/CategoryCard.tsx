@@ -46,10 +46,13 @@ const CategoryCard = ({ data }: { data: ICategory; }) => {
             className="flex-1 w-full"
         >
             <Card
-                className="p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200
+                className="relative p-2 sm:p-3 md:p-4 rounded border-dashed border-green-200 
       transition-colors duration-300 ease-in-out cursor-pointer select-none"
             >
-                <CardContent className="flex items-center gap-2 md:gap-4 p-0">
+                  {/* Gradient wrapper only light mode */}
+  <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
+
+                <CardContent className="elative z-10 flex items-center gap-2 md:gap-4 p-0">
                     {/* Icon scales based on device */}
                     <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl">
                         {getIcon(data.category)}

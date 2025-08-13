@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness } from "lucide-react";
 import NoticeMarquee from "@/components/NoticeMarquee";
 import Telegram from "@/components/Telegram";
 import { JobCard } from "@/components/JobCard";
@@ -20,8 +20,8 @@ export default async function Home() {
       <Hero />
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0">
         <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 pb-4 flex items-center">
+          <BriefcaseBusiness className="size-8 pr-2 pb-1 text-slate-700 dark:text-slate-300" />
           সর্বশেষ চাকরির বিজ্ঞপ্তি
-          <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-2">
           {/* Left: Job Post List */}

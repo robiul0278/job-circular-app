@@ -6,7 +6,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Views from "@/components/Views";
-import BookmarkButton from "@/components/BookmarkButton";
 import CircularTime from "@/components/CircularTime";
 import Telegram from "@/components/Telegram";
 import { getSingleJob } from "@/lib/api";
@@ -40,7 +39,6 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
               {/* Top: Title and Bookmark */}
               <div className="flex justify-between items-start gap-2">
                 <CardTitle className="text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
-                <div className="absolute right-1"><BookmarkButton jobId={_id} /></div>
               </div>
               <div className="text-sm font-medium text-green-800">
                 {companyName}

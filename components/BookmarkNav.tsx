@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { Bookmark } from "lucide-react";
+import {  Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGetBookmarkQuery } from "@/redux/api/api";
 import { RootState } from "@/redux/store";
@@ -23,7 +23,7 @@ const BookmarkNavButton = () => {
                     variant="ghost"
                     className="  hover:text-green-800 dark:hover:text-white transition-all cursor-pointer"
                 >
-                    <Bookmark className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform" />
+                    <Heart className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform" />
                 </Button>
 
                 {/* Stylish, Visible Badge */}

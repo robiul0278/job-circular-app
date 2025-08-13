@@ -67,14 +67,13 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
               <SocialShare title={title} slug={slug} />
             </CardContent>
           </Card>
-          <ShowMoreJobs />
-
         </div>
 
         {/* Sidebar */}
         <aside className="space-y-4">
 
           <Telegram />
+           <ShowMoreJobs />
         </aside>
       </div>
 

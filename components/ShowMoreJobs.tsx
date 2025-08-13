@@ -13,7 +13,7 @@ export default async function ShowMoreJobs() {
 
     return (
         <div className="border shadow p-4 rounded-lg">
-            <h2 className="text-xl font-bold mb-4 text-slate-700 dark:text-slate-200">
+            <h2 className="text-lg font-bold mb-4 text-slate-700 dark:text-slate-200">
                 সরকারি চাকরির বিজ্ঞপ্তি
             </h2>
 
@@ -22,7 +22,7 @@ export default async function ShowMoreJobs() {
                     {result.map((job: IJobCircular) => (
                         <li
                             key={job._id}
-                            className="border rounded-md p-3 hover:shadow-md transition-shadow"
+                                 className="border-b border-gray-200 dark:border-gray-700 pb-2 last:border-none"
                         >
                             <Link
                                 href={`/job/${job.slug}`}
@@ -33,7 +33,7 @@ export default async function ShowMoreJobs() {
                                     {job.title}
                                 </h3>
                                 <span className="text-sm text-green-800">
-                                    আবেদনের শেষ তারিখঃ {formatDate(job.deadline)}
+                                    শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
                                 </span>
                             </Link>
                         </li>

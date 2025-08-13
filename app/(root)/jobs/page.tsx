@@ -51,7 +51,7 @@ export default async function JobsPage({ searchParams }: {
           {/* Left sidebar */}
           <aside
             className="
-              lg:col-span-4
+              lg:col-span-3
               space-y-4 rounded-lg
               lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto bg-gray-50 
              dark:bg-gray-900 z-20
@@ -70,7 +70,7 @@ export default async function JobsPage({ searchParams }: {
           </aside>
 
           {/* Main content */}
-          <div className="lg:col-span-8 bg-gray-50  dark:bg-gray-900 rounded-2xl p-0 md:p-4 lg:p-4">
+          <div className="lg:col-span-9 bg-gray-50  dark:bg-gray-900 rounded-2xl p-0 md:p-4 lg:p-4">
             {result.length === 0 ? (
               <div className="text-center py-8 text-slate-600 dark:text-slate-400">
                 <p className="text-xl font-medium">

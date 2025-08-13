@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      <NoticeMarquee notice={notice}/>
+      <NoticeMarquee notice={notice} />
       <Hero />
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0">
         <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 pb-4 flex items-center">
@@ -27,18 +27,18 @@ export default async function Home() {
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">
             <JobCard jobs={result} />
-          <div className="flex justify-center my-6">
-      <Button
-        asChild
-        size="lg"
-        className="group bg-green-700 hover:bg-green-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-      >
-        <Link href="/jobs">
-          Load All Jobs
-          <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-        </Link>
-      </Button>
-    </div>
+            <div className="flex justify-center my-6">
+              <Button
+                asChild
+                size="lg"
+                className="group bg-green-700 hover:bg-green-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Link href="/jobs">
+                  Load All Jobs
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
           </div>
           {/* Right */}
           <aside className="lg:col-span-3 space-y-4">

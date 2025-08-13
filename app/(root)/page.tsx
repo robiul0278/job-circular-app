@@ -43,7 +43,7 @@ export default async function Home() {
           {/* Right */}
           <aside className="lg:col-span-3 space-y-4">
             <Telegram />
-                <ShowMoreJobs />
+           <ShowMoreJobs />
           </aside>
         </div>
       </section>

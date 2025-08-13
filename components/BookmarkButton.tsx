@@ -52,13 +52,11 @@ const BookmarkButton = ({ jobId }: Props) => {
       if (bookmarked) {
         const res = await removeBookmark({ userId, jobId }).unwrap();
         if (res?.data?.modifiedCount > 0) {
-          toast.success("Bookmark removed successfully!");
           setBookmarked(false);
         }
       } else {
         const res = await addBookmark({ userId, jobId }).unwrap();
         if (res?.data?.modifiedCount > 0) {
-          toast.success("Bookmark added successfully!");
           setBookmarked(true);
         }
       }

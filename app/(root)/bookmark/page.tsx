@@ -17,7 +17,6 @@ export default function BookmarkPage() {
     skip: !user,
   });
 
-
   const handleRemove = async (jobId: string) => {
     if (!user?._id) {
       toast.error("User not logged in");
@@ -26,7 +25,6 @@ export default function BookmarkPage() {
     try {
       const res = await removeBookmark({ userId: user._id, jobId }).unwrap();
       if (res?.data?.modifiedCount > 0) {
-        toast.success("Bookmark removed successfully!");
       }
     } catch (err) {
       const error = err as { data: TGenericErrorResponse };
@@ -105,15 +103,6 @@ export default function BookmarkPage() {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Insert ad after every 4 items */}
-            {(index + 1) % 4 === 0 && (
-              <div className="md:col-span-2">
-                <div className="w-full h-24 bg-gray-100 border border-gray-300 flex items-center justify-center text-sm text-gray-400">
-                  Google Ad Placeholder (Mid-grid Ad)
-                </div>
-              </div>
-            )}
           </React.Fragment>
         ))}
       </div>

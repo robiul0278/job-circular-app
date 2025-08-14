@@ -26,14 +26,14 @@ export default function AuthModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="cursor-pointer text-white bg-green-700 hover:bg-green-800">
+      <DialogTrigger asChild >
+        <Button variant="outline" className="cursor-pointer text-white hover:text-white bg-green-700 hover:bg-green-800">
           লগইন
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-md rounded-xl px-6 py-5 dark:bg-gray-900">
-        <DialogTitle className="text-lg font-semibold text-center mb-4">
+      <DialogContent className="sm:max-w-md rounded-xl dark:bg-gray-900">
+        <DialogTitle className="text-lg font-bold text-green-600 text-center">
           {formType === "login"
             ? "লগইন করুন!"
             : formType === "register"

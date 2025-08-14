@@ -21,10 +21,9 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
   const singleJob = await getSingleJob(slug);
 
   const {
-    _id,
     title,
     companyName,
-    deadline,
+    deadline, 
     images,
     description,
   } = singleJob;
@@ -80,7 +79,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
 
       {/* Views */}
       <div className="fixed bottom-4 left-4 z-50">
-        <Views id={_id} />
+        <Views id={singleJob?._id} />
       </div>
     </section>
   );

@@ -10,12 +10,12 @@ const menuItems = [
 
 export default function Footer() {
   return (
-    <footer className="relative dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-12 pb-8">
+    <footer className="relative dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-10">
 
       {/* Top Divider Glow */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-40"></div>
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10 space-y-10 text-center">
+      <div className="max-w-6xl mx-auto px-6 relative z-10 space-y-6 text-center">
 
         {/* Menu Links */}
         <nav className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm font-medium text-gray-700 dark:text-gray-300">

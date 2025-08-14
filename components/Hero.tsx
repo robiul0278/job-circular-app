@@ -6,7 +6,7 @@ import StatsCard from "./StatsCard";
 
 export default function Hero() {
     return (
-        <section className="hero px-2 md:px-0 py-12">
+        <section className="hero px-2 md:px-0 py-16 lg:py-20">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-10 items-center  justify-between">
 
                 {/* Left Side */}

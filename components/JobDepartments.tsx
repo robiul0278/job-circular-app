@@ -2,7 +2,7 @@
 import { formatQuery } from "@/utils/utils";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { startTransition } from "react";
+import { startTransition, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type IDepartments = {
@@ -13,9 +13,11 @@ type IDepartments = {
 const JobDepartments = ({ departments }: { departments: IDepartments[] }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const selectedDepartment = searchParams.get("department") || "";
+  const params = searchParams.get("department") || "";
+  const [selectedDepartment, setSelectedDepartment] = useState<string>(params);
 
   const handleDepartments = (department: string) => {
+    setSelectedDepartment(department);
     startTransition(() => {
       const current = new URLSearchParams(window.location.search);
       current.set("department", department);
@@ -36,18 +38,16 @@ const JobDepartments = ({ departments }: { departments: IDepartments[] }) => {
               key={dept.department}
               onClick={() => handleDepartments(dept.department)}
               variant={isSelected ? "default" : "outline"}
-              className={`flex items-center justify-between group cursor-pointer rounded-lg px-2 transition-colors duration-300 ease-in-out ${
-                isSelected ? "bg-green-800 text-white dark:bg-green-800" : ""
-              }`}
+              className={`flex items-center justify-between group cursor-pointer rounded-lg px-2 transition-colors duration-300 ease-in-out ${isSelected ? "bg-green-800 text-white dark:bg-green-800" : ""
+                }`}
             >
               <span className="text-[13px] font-medium transition-colors duration-300 ease-in-out">
                 {formatQuery(dept.department)}
               </span>
               <Badge
                 variant="outline"
-                className={`dark:bg-gray-500 ${
-                  isSelected ? "border-white text-white" : ""
-                }`}
+                className={`dark:bg-gray-500 ${isSelected ? "border-white text-white" : ""
+                  }`}
               >
                 {dept.count}
               </Badge>

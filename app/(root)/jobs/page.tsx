@@ -3,10 +3,10 @@ import { ChevronRight } from "lucide-react";
 import { JobCard } from "@/components/JobCard";
 import { getAllJobQuery } from "@/lib/api";
 import Pagination from "@/components/Pagination";
-import SearchFormReset from "@/components/SearchFormReset";
 import SearchForm from "@/components/SearchForm";
 import JobCategory from "@/components/JobCategories";
 import JobDepartments from "@/components/JobDepartments";
+import ResetQuery from "@/components/ResetQuery";
 
 export default async function JobsPage({ searchParams }: {
   searchParams: Promise<{
@@ -64,7 +64,7 @@ export default async function JobsPage({ searchParams }: {
 
             <div className="flex justify-end px-2 pb-2">
               {(query || department || category) && (
-                  <SearchFormReset />
+                  <ResetQuery />
               )}
             </div>
           </aside>

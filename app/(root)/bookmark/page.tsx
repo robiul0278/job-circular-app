@@ -1,21 +1,23 @@
 "use client";
 
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Trash2 } from "lucide-react";
-import { toast } from "sonner";
 import { useGetBookmarkQuery, useRemoveBookmarkMutation } from "@/redux/api/api";
 import { TGenericErrorResponse, IJobCircular } from "@/types/types";
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar1, Loader2, Trash2, Users } from "lucide-react";
+import { toast } from "sonner";
+import { formatDate } from "@/utils/format-date";
 
 export default function BookmarkPage() {
   const user = useSelector((state: RootState) => state.auth.user);
-  const [removeBookmark, { isLoading: isRemoving }] = useRemoveBookmarkMutation();
-  const { data: bookmark, isLoading } = useGetBookmarkQuery(user?._id, {
-    skip: !user,
-  });
+  const { data, isLoading } = useGetBookmarkQuery(user?._id, { skip: !user });
+  const [removeBookmark] = useRemoveBookmarkMutation();
+  const [removingJobId, setRemovingJobId] = useState<string | null>(null);
+
+  const bookmarks = data?.data || [];
 
   const handleRemove = async (jobId: string) => {
     if (!user?._id) {
@@ -23,89 +25,112 @@ export default function BookmarkPage() {
       return;
     }
     try {
+      setRemovingJobId(jobId);
       const res = await removeBookmark({ userId: user._id, jobId }).unwrap();
       if (res?.data?.modifiedCount > 0) {
+        toast.success("Job removed from bookmarks");
       }
     } catch (err) {
       const error = err as { data: TGenericErrorResponse };
-      const message =
-        error?.data?.message || "Something went wrong while removing bookmark";
-      console.error("Bookmark remove error:", error);
-      toast.error(message);
+      toast.error(error?.data?.message || "Failed to remove bookmark");
+    } finally {
+      setRemovingJobId(null);
     }
   };
 
-  if (!user?._id) {
-    return (
-      <div className="flex items-center justify-center h-[70vh]">
-        <p className="text-lg text-gray-500">সংরক্ষিত চাকরিগুলো দেখতে হলে অনুগ্রহ করে লগইন করুন।</p>
-      </div>
-
-    );
-  }
-
+  // Loading state
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-[70vh]">
-        <Loader2 className="w-6 h-6 animate-spin text-primary" />
+        <Loader2 className="w-6 h-6 animate-spin text-primary" aria-label="Loading bookmarks" />
       </div>
     );
   }
 
-  if (!bookmark?.data) {
+  // Not logged in
+  if (!user?._id) {
     return (
-      <div className="flex items-center justify-center h-[70vh]">
-        <p className="text-lg text-gray-500">You haven’t saved any jobs yet.</p>
+      <div className="flex items-center justify-center h-[70vh] text-center">
+        <p className="text-lg text-muted-foreground">
+          সংরক্ষিত চাকরিগুলো দেখতে হলে অনুগ্রহ করে লগইন করুন।
+        </p>
       </div>
     );
   }
 
-  return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-8">Your Saved Jobs</h1>
-
-      {/* Google Ad placeholder */}
-      <div className="mb-6">
-        <div className="w-full h-28 bg-gray-100 border border-gray-300 flex items-center justify-center text-sm text-gray-400">
-          Google Ad Placeholder (Horizontal Banner)
-        </div>
+  // No bookmarks
+  if (bookmarks.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-[70vh] text-center">
+        <p className="text-lg text-muted-foreground">
+          You haven’t saved any jobs yet.
+        </p>
       </div>
+    );
+  }
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {bookmark?.data.map((job: IJobCircular, index: number) => (
-          <React.Fragment key={index}>
-            <Card className="shadow-md hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-xl">{job.title}</CardTitle>
-                <p className="text-sm text-muted-foreground">{job.companyName}</p>
-              </CardHeader>
-              <CardContent>
-                <div className="flex justify-between items-center">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleRemove(job._id)}
-                  >
-                    {isRemoving ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <>
-                        <Trash2 className="w-4 h-4 mr-1" /> Remove
-                      </>
-                    )}
-                  </Button>
-                  <a
-                    href={`/job/${job.slug}`}
-                    className="text-sm text-green-800 hover:underline"
-                  >
-                    View Details
-                  </a>
+  // Main content
+  return (
+    <section className="max-w-6xl mx-auto px-3 md:px-0 py-12">
+      <h1 className="text-4xl font-extrabold mb-10 text-foreground">
+        Your Saved Jobs
+      </h1>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {bookmarks.map((job: IJobCircular) => (
+          <Card
+            key={job._id}
+            className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl border border-border overflow-hidden"
+          >
+            <CardHeader>
+              <CardTitle className="text-xl font-bold">{job.title}</CardTitle>
+              <p className="text-sm text-muted-foreground">{job.companyName}</p>
+
+              <div className="flex flex-col md:flex-row gap-4 mt-3 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar1 className="w-4 h-4 text-green-600 dark:text-green-400" />
+                  <span>
+                    শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
+                  </span>
                 </div>
-              </CardContent>
-            </Card>
-          </React.Fragment>
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                  <span>
+                    ডিপ্লোমা শূন্যপদঃ <strong>{job.vacancy}</strong> টি
+                  </span>
+                </div>
+              </div>
+            </CardHeader>
+
+            <CardContent>
+              <div className="flex justify-between items-center">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-1"
+                  onClick={() => handleRemove(job._id)}
+                  disabled={removingJobId === job._id}
+                >
+                  {removingJobId === job._id ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <>
+                      <Trash2 className="w-4 h-4" /> Remove
+                    </>
+                  )}
+                </Button>
+
+                <a
+                  href={`/job/${job.slug}`}
+                  className="text-sm font-medium text-green-700 dark:text-green-400 hover:underline"
+                >
+                  View Details
+                </a>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

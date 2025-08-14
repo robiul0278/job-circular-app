@@ -34,7 +34,7 @@ export default async function JobsPage({ searchParams }: {
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0 relative">
         {/* HEADER: results text + search bar */}
         <div className="flex flex-col lg:flex-row md:flex-row justify-between my-4 gap-4">
-          <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 flex items-center">
+          <p className="text-xl md:text-2xl lg:text-2xl font-bold text-slate-700 dark:text-slate-300 flex items-center">
             {(query || department || category)
               ? `Results for "${[query, department, category].filter(Boolean).join(' | ')}"`
               : "সকল চাকরির বিজ্ঞপ্তি"}

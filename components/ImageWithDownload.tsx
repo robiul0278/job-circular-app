@@ -1,5 +1,6 @@
-"use client";
+'use client';
 
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 
@@ -9,8 +10,11 @@ type ImageWithDownloadProps = {
 };
 
 export default function ImageWithDownload({ src, index }: ImageWithDownloadProps) {
+    const [isDownloading, setIsDownloading] = useState(false);
+
     const handleImageDownload = async () => {
         try {
+            setIsDownloading(true); // Download start
             const response = await fetch(src);
             const blob = await response.blob();
 
@@ -23,7 +27,10 @@ export default function ImageWithDownload({ src, index }: ImageWithDownloadProps
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+
+            setIsDownloading(false); // Download finished
         } catch (error) {
+            setIsDownloading(false);
             console.error("Download failed:", error);
         }
     };
@@ -40,9 +47,10 @@ export default function ImageWithDownload({ src, index }: ImageWithDownloadProps
             <Button
                 variant="link"
                 onClick={handleImageDownload}
-                className="text-sm text-green-800 hover:underline "
+                className="text-sm text-green-800 hover:underline"
+                disabled={isDownloading}
             >
-                ডাউনলোড করুন (Image-{index + 1})
+                {isDownloading ? "ডাউনলোড হচ্ছে..." : `ডাউনলোড করুন (Image-${index + 1})`}
             </Button>
         </div>
     );

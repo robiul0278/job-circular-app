@@ -11,34 +11,27 @@ import {
     FormItem,
     FormMessage,
 } from "../ui/form";
-import { LoginFormType } from "@/types/auth-types";
-import { useLoginUserMutation } from "@/redux/api/api";
+import { useForgetPasswordMutation } from "@/redux/api/api";
 import { toast } from "sonner";
 import { TGenericErrorResponse } from "@/types/types";
-import { useDispatch } from "react-redux";
-import { setCredentials } from "@/redux/features/authSlice";
 
-export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { switchForm: () => void, closeModal: () => void, goToForgetForm: () => void }) {
-    const dispatch = useDispatch();
-    const [login] = useLoginUserMutation();
+type TResetForm = {
+    email: string;
+}
 
-    const form = useForm<LoginFormType>({
+export default function ForgetPasswordForm({ switchForm, closeModal }: { switchForm: () => void, closeModal: () => void }) {
+    const [Forget] = useForgetPasswordMutation();
+
+    const form = useForm<TResetForm>({
         defaultValues: {
             email: "",
-            password: "",
         },
     });
 
-
-    const onSubmit = async (data: LoginFormType) => {
+    const onSubmit = async (data: TResetForm) => {
         try {
-            const res = await login(data).unwrap();
+            const res = await Forget(data).unwrap();
             if (res.statusCode === 200) {
-                const { accessToken, user } = res.data;
-                // Save to Redux store
-                dispatch(setCredentials({ user }));
-                // Save to localStorage
-                localStorage.setItem("accessToken", accessToken);
                 toast.success(res.message);
                 closeModal();
             }
@@ -46,7 +39,7 @@ export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { 
             const err = error as { data: TGenericErrorResponse };
             if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
                 err.data.errorSources.forEach(({ path, message }) => {
-                    form.setError(path as keyof LoginFormType, {
+                    form.setError(path as keyof TResetForm, {
                         type: "server",
                         message,
                     });
@@ -69,7 +62,7 @@ export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { 
                             <FormControl>
                                 <Input
                                     id="email"
-                                    placeholder="আপনার ইমেইল লিখুন"
+                                    placeholder="রেজিস্টার করা ইমেইল লিখুন"
                                     className="focus:outline-none focus:ring-0 focus:border-transparent"
                                     {...field}
                                 />
@@ -79,53 +72,22 @@ export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { 
                     )}
                 />
 
-
-                <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                        <FormItem>
-                            <Label htmlFor="password">Password</Label>
-                            <FormControl>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    placeholder="আপনার পাসওয়ার্ড লিখুন"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                {/* 👉 Forget Password link */}
-                <div className="text-sm text-right">
-                    <button
-                        type="button"
-                        onClick={goToForgetForm}
-                        className="text-green-500 hover:underline focus:outline-none"
-                    >
-                        পাসওয়ার্ড ভুলে গেছেন?
-                    </button>
-                </div>
-
                 <Button
                     type="submit"
                     className="w-full cursor-pointer text-white bg-green-700 hover:bg-green-800"
                     disabled={form.formState.isSubmitting}
                 >
-                    {form.formState.isSubmitting ? "লগইন হচ্ছে..." : "লগইন"}
+                    {form.formState.isSubmitting ? "Forgetting ..." : "Forget Password"}
                 </Button>
 
                 <p className="text-center text-sm ">
-                    একাউন্ট নেই?{" "}
+                    Password মনে আছে ?{" "}
                     <button
                         type="button"
                         onClick={switchForm}
                         className="text-green-500 hover:underline focus:outline-none"
                     >
-                        রেজিস্ট্রেশন করুন
+                        লগইন করুন!
                     </button>
                 </p>
             </form>

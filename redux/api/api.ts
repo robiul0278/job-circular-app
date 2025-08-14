@@ -118,6 +118,17 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["auth"]
     }),
+    forgetPassword: builder.mutation({
+      query: (data) => {
+        // console.log(email);
+        return {
+          url: `/auth/forget-password`,
+          method: "POST",
+          body: data
+        }
+      },
+      invalidatesTags: ["auth"]
+    }),
     getBookmark: builder.query({
       query: (userId) => {
         // console.log("API",userId);
@@ -183,6 +194,7 @@ export const {
   //auth route
   useLoginUserMutation,
   useRegisterUserMutation,
+  useForgetPasswordMutation,
   //bookmark route
   useGetBookmarkQuery,
   useAddBookmarkMutation,

@@ -97,18 +97,18 @@ export default function RegisterForm({ switchForm }: { switchForm: () => void })
 
         <Button
           type="submit"
-          className="w-full cursor-pointer"
+          className="w-full cursor-pointer text-white bg-green-700 hover:bg-green-800"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting ? "সাইন আপ হচ্ছে..." : "সাইন আপ"}
         </Button>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm">
           ইতোমধ্যে একাউন্ট আছে?{" "}
           <button
             type="button"
             onClick={switchForm}
-            className="text-green-800 hover:underline focus:outline-none"
+            className="text-green-500 hover:underline focus:outline-none"
           >
             লগইন করুন
           </button>

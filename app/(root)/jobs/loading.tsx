@@ -1,5 +1,7 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function Loading() {
   return (
@@ -15,7 +17,7 @@ export default function Loading() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
         {/* Left sidebar skeleton */}
-        <aside className="lg:col-span-4 space-y-4 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto bg-white dark:bg-gray-900 z-20 md:sticky md:top-0 md:z-30 p-4 rounded-lg">
+        <aside className="lg:col-span-4 space-y-4 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto bg-white dark:bg-gray-900 z-20 md:sticky md:top-0 md:z-30 md:p-4 lg:p-4 rounded-lg">
           {/* Categories Skeleton */}
           <div className="space-y-3 border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
             <Skeleton className="h-6 w-2/3" />
@@ -29,16 +31,26 @@ export default function Loading() {
           </div>
 
           {/* Departments Skeleton */}
-          <div className="space-y-3 border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
-            <Skeleton className="h-6 w-2/3" />
-            <div className="w-full max-w-sm">
-              {/* One dropdown option skeleton */}
-              <div className="mt-2 flex items-center justify-between h-9 rounded-md px-3 bg-gray-100 dark:bg-gray-800 animate-pulse">
-                <div className="h-4 w-2/3 rounded bg-gray-200 dark:bg-gray-700" />
-                <div className="h-4 w-12 rounded bg-gray-200 dark:bg-gray-700" />
-              </div>
+          {/* Departments Skeleton */}
+          <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900 animate-pulse">
+            <h4 className="font-semibold text-sm flex items-center dark:text-gray-100 pb-2">
+              <Skeleton className="h-4 w-32" />
+            </h4>
+            <div className="grid grid-cols-2 gap-2">
+              {Array.from({ length: 4 }).map((_, index) => (
+                <Button
+                  key={index}
+                  variant="outline"
+                  className="flex items-center justify-between cursor-not-allowed rounded-lg px-2"
+                  disabled
+                >
+                  <Skeleton className="h-3 w-20" />
+                  <Badge variant="outline" className="h-4 w-6 rounded-md" />
+                </Button>
+              ))}
             </div>
           </div>
+
         </aside>
 
         {/* Main content skeleton */}

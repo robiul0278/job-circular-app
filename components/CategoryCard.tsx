@@ -18,7 +18,7 @@ const CategoryCard = ({ data }: { data: ICategory; }) => {
     const handlePagination = (category: string) => {
         startTransition(() => {
             const current = new URLSearchParams(window.location.search);
-            current.set("categories", category.toString());
+            current.set("category", category.toString());
             const query = current.toString();
             router.push(`/jobs?${query}`);
         });

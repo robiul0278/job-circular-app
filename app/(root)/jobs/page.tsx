@@ -10,24 +10,24 @@ import JobDepartments from "@/components/JobDepartments";
 
 export default async function JobsPage({ searchParams }: {
   searchParams: Promise<{
-    categories?: string;
-    departments?: string;
+    category?: string;
+    department?: string;
     query?: string;
     page?: string;
   }>;
 }) {
   const resolvedParams = await searchParams;
-  const { categories, departments, query } = resolvedParams;
+  const { category, department, query } = resolvedParams;
   const currentPage = parseInt(resolvedParams.page || '1');
 
   const params: Record<string, string> = {
-    ...(categories ? { categories: categories } : {}),
-    ...(departments ? { departments: departments } : {}),
+    ...(category ? { categories: category } : {}),
+    ...(department ? { departments: department } : {}),
     ...(query ? { searchTerm: query } : {}),
     page: currentPage.toString(),
   };
 
-  const { result, meta } = await getAllJobQuery({ params });
+  const { result, meta, categories, departments } = await getAllJobQuery({ params });
 
   return (
     <>
@@ -35,10 +35,10 @@ export default async function JobsPage({ searchParams }: {
         {/* HEADER: results text + search bar */}
         <div className="flex flex-col lg:flex-row md:flex-row justify-between my-4 gap-4">
           <p className="text-xl md:text-2xl lg:text-2xl font-semibold text-slate-700 dark:text-slate-300 flex items-center">
-            {(query || departments || categories)
-              ? `Results for "${[query, departments, categories].filter(Boolean).join(' | ')}"`
+            {(query || department || category)
+              ? `Results for "${[query, department, category].filter(Boolean).join(' | ')}"`
               : "সকল চাকরির বিজ্ঞপ্তি"}
-            {!query && !departments && !categories && (
+            {!query && !department && !category && (
               <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
             )}
           </p>
@@ -51,7 +51,7 @@ export default async function JobsPage({ searchParams }: {
           {/* Left sidebar */}
           <aside
             className="
-              lg:col-span-3
+              lg:col-span-4
               space-y-4 rounded-lg
               lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto bg-gray-50 
              dark:bg-gray-900 z-20
@@ -59,18 +59,18 @@ export default async function JobsPage({ searchParams }: {
               "
             style={{ minHeight: 'auto' }}
           >
-            <JobCategory category={categories} />
-            <JobDepartments department={departments} />
+            <JobCategory  categories={categories}/>
+            <JobDepartments departments={departments}/>
 
             <div className="flex justify-end px-2 pb-2">
-              {(query || departments || categories) && (
+              {(query || department || category) && (
                   <SearchFormReset />
               )}
             </div>
           </aside>
 
           {/* Main content */}
-          <div className="lg:col-span-9 bg-gray-50  dark:bg-gray-900 rounded-2xl p-0 md:p-4 lg:p-4">
+          <div className="lg:col-span-8 bg-gray-50  dark:bg-gray-900 rounded-2xl p-0 md:p-4 lg:p-4">
             {result.length === 0 ? (
               <div className="text-center py-8 text-slate-600 dark:text-slate-400">
                 <p className="text-xl font-medium">

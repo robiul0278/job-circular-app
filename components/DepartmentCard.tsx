@@ -16,7 +16,7 @@ const DepartmentCard = ({ dept}: { dept: IDepartments; }) => {
     const handlePagination = (department: string) => {
         startTransition(() => {
             const current = new URLSearchParams(window.location.search);
-            current.set("departments", department.toString());
+            current.set("department", department.toString());
             const query = current.toString();
             router.push(`/jobs?${query}`);
         });

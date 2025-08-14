@@ -1,9 +1,9 @@
-import { JobCategories } from "@/lib/api";
+import { getJobs} from "@/lib/api";
 import JobDepartmentCard from "./JobDepartmentCard";
 
 
 const JobDepartments = async ({ department }: { department?: string }) => {
-  const { departments } = await JobCategories();
+ const { departments } = await getJobs();
 
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">

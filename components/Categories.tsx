@@ -1,4 +1,4 @@
-import { JobCategories } from "@/lib/api";
+import { getJobs } from "@/lib/api";
 import CategoryCard from "./CategoryCard";
 
 type ICategory = {
@@ -8,7 +8,7 @@ type ICategory = {
 
 const Categories = async () => {
 
-  const { categories } = await JobCategories();
+  const { categories } = await getJobs();
 
   return (
     <div className="flex md:flex-row lg:flex-row gap-2">

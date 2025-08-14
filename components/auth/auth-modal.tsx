@@ -27,7 +27,7 @@ export default function AuthModal() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="cursor-pointer">
+        <Button variant="outline" className="cursor-pointer text-white bg-green-700 hover:bg-green-800">
           লগইন
         </Button>
       </DialogTrigger>

@@ -32,7 +32,7 @@ export default function ContactPage() {
   return (
     <section className="max-w-6xl mx-auto px-6 py-20">
       <div className="text-center mb-14">
-        <h1 className="text-5xl font-extrabold mb-4 text-primary">যোগাযোগ করুন</h1>
+        <h1 className="text-3xl font-extrabold mb-4 text-primary">যোগাযোগ করুন</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           আমরা ডিপ্লোমা ইঞ্জিনিয়ারদের সাহায্য করতে এখানে আছি। আপনার কোনো প্রশ্ন আছে বা সহায়তা প্রয়োজন? আমাদের সাথে যোগাযোগ করুন।
         </p>
@@ -56,23 +56,23 @@ export default function ContactPage() {
           <div className="flex items-center gap-4">
             <Phone className="w-5 h-5 text-primary" />
             <a href="tel:+8801234567890" className="hover:underline">
-              +৮৮০ ১২৩৪ ৫৬৭ ৮৯০
+              +8801811325705
             </a>
           </div>
 
           <div className="flex items-center gap-4">
             <MapPin className="w-5 h-5 text-primary" />
-            <span>১২৩ ডিপ্লোমা স্ট্রিট, ঢাকা, বাংলাদেশ</span>
+            <span>ঢাকা, বাংলাদেশ</span>
           </div>
 
           <div className="flex gap-6 pt-4">
-            <Link href="https://facebook.com/diplomajobsbd" target="_blank">
+            <Link href="#" target="_blank">
               <Facebook className="w-5 h-5 hover:text-primary" />
             </Link>
-            <Link href="https://twitter.com/diplomajobsbd" target="_blank">
+            <Link href="#" target="_blank">
               <Twitter className="w-5 h-5 hover:text-primary" />
             </Link>
-            <Link href="https://linkedin.com/company/diplomajobsbd" target="_blank">
+            <Link href="#" target="_blank">
               <Linkedin className="w-5 h-5 hover:text-primary" />
             </Link>
           </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
 
       <div className="mt-16 text-center">
         <Link href="/">
-          <Button variant="outline" className="inline-flex items-center gap-2">
+          <Button variant="outline" className="inline-flex items-center gap-2 cursor-pointer">
             হোমপেইজে ফিরে যান <ArrowRight className="w-4 h-4" />
           </Button>
         </Link>

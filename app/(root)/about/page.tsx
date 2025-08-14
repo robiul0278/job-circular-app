@@ -9,7 +9,7 @@ export default function AboutPage() {
     <>
       <section className="max-w-5xl mx-auto px-4 py-16">
         <div className="mb-14 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary">আমাদের সম্পর্কে</h1>
+          <h1 className="text-4xl md:text-3xl font-extrabold mb-4 text-primary">আমাদের সম্পর্কে</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য নির্ভরযোগ্য একটি প্ল্যাটফর্ম যেখানে পাবেন যাচাইকৃত চাকরির বিজ্ঞপ্তি, ক্যারিয়ার গাইডলাইন ও সাফল্যের সুযোগ।
           </p>

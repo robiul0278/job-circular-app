@@ -12,7 +12,7 @@ export default function Hero() {
                 {/* Left Side */}
                 <div className="space-y-4 w-full md:w-2/3">
                     <div className="flex flex-col">
-                        <h1 className="text-2xl md:text-3xl font-bold dark:text-green-600 text-green-700">
+                        <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold dark:text-green-600 text-green-700">
                             ডিপ্লোমা জব সার্কুলার
                         </h1>
                         <p className="text-sm md:text-lg">

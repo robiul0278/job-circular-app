@@ -19,7 +19,6 @@ import {
   Eye,
   Search,
   Filter,
-  Building,
   TimerReset,
   Loader,
   User,
@@ -67,6 +66,7 @@ export default function AllCircularPage() {
   );
 
   const tableData = data?.data.result;
+
   // Reset to first page when filters change
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
@@ -83,7 +83,7 @@ export default function AllCircularPage() {
   };
 
   const handleEdit = (id: string) => {
-    if (!confirm('Edit this circular?')) return;
+    // if (!confirm('Edit this circular?')) return;
     router.push(`/dashboard/update-circular/${id}`);
   };
 
@@ -177,10 +177,8 @@ export default function AllCircularPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="text-foreground font-semibold">Job Title</TableHead>
-                  <TableHead className="text-foreground font-semibold">Categories</TableHead>
                   <TableHead className="text-foreground font-semibold">Organization</TableHead>
-                  <TableHead className="text-foreground font-semibold">Vacancy</TableHead>
-                  <TableHead className="text-foreground font-semibold">Deadline</TableHead>
+                  <TableHead className="text-foreground font-semibold">Departments/Vacancy</TableHead>
                   <TableHead className="text-foreground font-semibold">Views</TableHead>
                   <TableHead className="text-foreground font-semibold text-right">Action</TableHead>
                 </TableRow>
@@ -189,34 +187,37 @@ export default function AllCircularPage() {
                 {tableData?.map((circular: IJobCircular, index: number) => (
                   <TableRow key={index} className="hover:bg-muted/50">
                     <TableCell>
-                      <div className="space-y-1">
-                        <div className="font-medium text-foreground">{circular.title}</div>
+                      <div className="space-y-2">
+                        <h1 className="font-medium text-foreground">{circular.title}</h1>
+                        <div className="text-xs text-muted-foreground flex items-center">
+                          <TimerReset className="h-3 w-3 mr-1" />
+                          Deadline:<span className="text-red-500"> {formatDate(circular.deadline)}</span>
+                        </div>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div className="space-y-1">
-                        <div className="font-medium text-foreground">{categoryToBangla(circular.categories)}</div>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center text-foreground">
-                        <Building className="h-4 w-4 mr-2 text-muted-foreground" />
+                      <div className="flex flex-col gap-2">
                         {circular.companyName}
+                        <div className="text-xs text-muted-foreground">
+                          {categoryToBangla(circular.categories)}</div>
                       </div>
-
                     </TableCell>
                     <TableCell>
-                      <div className="text-xs text-muted-foreground flex items-center">
+                      <div className="text-xs  flex items-center gap-1">
+                        {circular.departments.map((d, index) => (
+                          <span key={index}>
+                            {formatQuery(d)}
+                            {index < circular.departments.length - 1 && " |"}
+                          </span>
+                        ))}
+                      </div>
+                           <div className="text-xs text-muted-foreground flex items-center">
                         <User className="h-3 w-3 mr-1" />
                         {circular.vacancy}
                       </div>
                     </TableCell>
-                    <TableCell>
-                      <div className="text-xs text-muted-foreground flex items-center">
-                        <TimerReset className="h-3 w-3 mr-1" />
-                        {formatDate(circular.deadline)}
-                      </div>
-                    </TableCell>
+
+                
                     <TableCell>
                       <div className="flex items-center text-muted-foreground">
                         <Eye className="h-4 w-4 mr-1" />

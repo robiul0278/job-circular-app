@@ -17,8 +17,7 @@ import ImageUploadInput from './ImageUploadInput';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import MultiImageUploadInput from './MultiImageUploadInput';
 import { Textarea } from '../ui/textarea';
-import { X } from 'lucide-react';
-import { Badge } from '../ui/badge';
+import { formatQuery } from '@/utils/utils';
 
 const categories = [
     { value: "government", name: "সরকারি চাকরি" },
@@ -46,8 +45,8 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <Card className="border rounded-lg overflow-hidden">
-                    <CardContent className="p-6 space-y-8">
-                        <div className="grid grid-cols-1 gap-6">
+                    <CardContent className="grid grid-cols-2 gap-6">
+                        <div className="space-y-8">
                             {/*Title*/}
                             <FormField
                                 control={form.control}
@@ -83,7 +82,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                             />
                         </div>
                         {/*Title, Company Name, Vacancy,*/}
-                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                        <div className="space-y-4">
                             {/*Category Post*/}
                             <FormField
                                 control={form.control}
@@ -149,16 +148,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                         </div>
                     </CardContent>
                 </Card>
-                <Card className="border rounded-lg overflow-hidden">
-                    <CardContent className="space-y-8 flex flex-col md:flex-row">
-                        <div className="flex-2/6">
-                            <ImageUploadInput control={form.control} name="banner" label="ব্যানার আপলোডঃ" />
-                        </div>
-                        <div className="flex-4/6">
-                            <MultiImageUploadInput control={form.control} name="images" label="বিজ্ঞপ্তির ছবি আপলোডঃ" />
-                        </div>
-                    </CardContent>
-                </Card>
+
                 <Card className="border rounded-lg overflow-hidden">
                     <CardContent className="">
                         <FormField
@@ -185,46 +175,27 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                                     }}
                                                     className="text-left py-2 px-3"
                                                 >
-                                                    {department}
+                                                    {formatQuery(department)}
                                                 </Button>
                                             );
                                         })}
                                     </div>
-
-                                    {field.value?.length > 0 && (
-                                        <div className="space-y-2 mt-2">
-                                            <Label>Selected:</Label>
-                                            <div className="flex flex-wrap gap-2">
-                                                {field.value.map((department: string) => (
-                                                    <Badge
-                                                        key={department}
-                                                        variant="secondary"
-                                                        className="px-3 py-1"
-                                                    >
-                                                        {department}
-                                                        <Button
-                                                            type="button"
-                                                            variant="ghost"
-                                                            size="sm"
-                                                            onClick={() =>
-                                                                field.onChange(field.value.filter((t: string) => t !== department))
-                                                            }
-                                                            className="ml-1 h-4 w-4 p-0"
-                                                        >
-                                                            <X className="h-3 w-3" />
-                                                        </Button>
-                                                    </Badge>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
                     </CardContent>
                 </Card>
-
+                <Card className="border rounded-lg overflow-hidden">
+                    <CardContent className="space-y-8 flex flex-col md:flex-row">
+                        <div className="flex-2/6">
+                            <ImageUploadInput control={form.control} name="banner" label="ব্যানার আপলোডঃ" />
+                        </div>
+                        <div className="flex-4/6">
+                            <MultiImageUploadInput control={form.control} name="images" label="বিজ্ঞপ্তির ছবি আপলোডঃ" />
+                        </div>
+                    </CardContent>
+                </Card>
                 {/* Markdown Editor */}
                 <Card className="border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg overflow-hidden">
                     <CardHeader className="py-0">

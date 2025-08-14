@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       className="fixed bottom-5 right-5 z-50"
     >
-      <WhatsappIcon size={40} className="rounded"/>
+      <WhatsappIcon size={33} className="rounded"/>
     </a>
   );
 }

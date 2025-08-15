@@ -2,9 +2,9 @@
 
 import { categoryToBangla } from "@/utils/utils";
 import { Badge } from "./ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Button } from "./ui/button";
 import { startTransition, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type ICategory = {
     category: string;
@@ -14,44 +14,45 @@ type ICategory = {
 const JobCategory = ({ categories }: { categories: ICategory[] }) => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const selectedCategory = searchParams.get("category") || "";
-    const [selectedCategories, setSelectedCategory] = useState<string>(selectedCategory);
+    const params = searchParams.get("category") || "";
+    const [selectedCategory, setSelectedCategory] = useState<string>(params);
 
-    const handlePagination = (category: string) => {
+    const handleCategory = (category: string) => {
         setSelectedCategory(category);
         startTransition(() => {
             const current = new URLSearchParams(window.location.search);
-            current.set("category", category.toString());
-            const query = current.toString();
-            router.push(`?${query}`);
+            current.set("category", category);
+            router.push(`?${current.toString()}`);
         });
     };
+
     return (
         <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
-            <h1 className="font-semibold text-sm flex items-center dark:text-gray-100 pb-2">Organization Type</h1>
-            <div className="w-full max-w-sm">
-                <Select
-                    value={selectedCategories || ""}
-                    onValueChange={(value) => handlePagination(value)}
-                >
-                    <SelectTrigger className="w-full">
-                        <SelectValue placeholder="ক্যাটেগরি নির্বাচন করুন" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {categories.map((item) => (
-                            <SelectItem
-                                key={item.category}
-                                value={item.category}
-                                className="flex w-full justify-between items-center"
+            <h4 className="font-semibold text-sm flex items-center dark:text-gray-100 pb-2">
+                Organization Type
+            </h4>
+            <div className="grid grid-cols-2 gap-2">
+                {categories.map((cat) => {
+                    const isSelected = selectedCategory === cat.category;
+                    return (
+                        <Button
+                            key={cat.category}
+                            onClick={() => handleCategory(cat.category)}
+                            variant={isSelected ? "default" : "outline"}
+                            className={`flex items-center justify-between group cursor-pointer rounded-lg px-2 transition-colors duration-300 ease-in-out ${isSelected ? "bg-green-800 text-white dark:bg-green-800" : ""}`}
+                        >
+                            <span className="text-[13px] font-medium transition-colors duration-300 ease-in-out">
+                                {categoryToBangla(cat.category)}
+                            </span>
+                            <Badge
+                                variant="outline"
+                                className={`dark:bg-gray-500 ${isSelected ? "border-white text-white" : ""}`}
                             >
-                                <span>{categoryToBangla(item.category)}</span>
-                                <Badge variant="outline" className="dark:bg-gray-500">
-                                    {item.count}
-                                </Badge>
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+                                {cat.count}
+                            </Badge>
+                        </Button>
+                    );
+                })}
             </div>
         </div>
     );

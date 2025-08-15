@@ -20,9 +20,8 @@ import { Textarea } from '../ui/textarea';
 import { formatQuery } from '@/utils/utils';
 
 const categories = [
-    { value: "government", name: "সরকারি চাকরি" },
+    { value: "govt", name: "সরকারি চাকরি" },
     { value: "private", name: "বেসরকারি চাকরি" },
-    { value: "autonomous", name: "স্বায়ত্তশাসিত" },
 ];
 
 const departments = [

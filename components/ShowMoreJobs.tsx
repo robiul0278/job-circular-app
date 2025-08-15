@@ -5,7 +5,7 @@ import { getAllJobQuery } from "@/lib/api";
 
 export default async function ShowMoreJobs() {
     const params: Record<string, string> = {
-        categories: "government",
+        categories: "govt",
         limit: "5",
     };
 

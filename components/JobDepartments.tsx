@@ -30,7 +30,7 @@ const JobDepartments = ({ departments }: { departments: IDepartments[] }) => {
       <h4 className="font-semibold text-sm flex items-center dark:text-gray-100 pb-2">
         Job by Departments
       </h4>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-3 gap-2">
         {departments.map((dept) => {
           const isSelected = selectedDepartment === dept.department;
           return (

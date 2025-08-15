@@ -33,21 +33,34 @@ export default async function JobsPage({ searchParams }: {
     <>
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0 relative">
         {/* HEADER: results text + search bar */}
-        <div className="flex flex-col lg:flex-row md:flex-row justify-between my-4  md:mx-4 lg:mx-4 gap-4">
-          <p className="text-xl md:text-2xl lg:text-2xl  font-bold text-slate-700 dark:text-slate-300 flex items-center">
+        <div className="flex flex-col lg:flex-row md:flex-row justify-between my-4 md:mx-4 lg:mx-4 gap-4">
+          {/* Mobile view - always show */}
+          <p className="text-xl font-bold text-slate-700 dark:text-slate-300 flex items-center md:hidden">
+            সকল চাকরির বিজ্ঞপ্তি
+            <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
+          </p>
+
+          {/* Desktop / Tablet view - show dynamic results */}
+          <p className="hidden md:flex text-xl md:text-2xl lg:text-2xl font-bold text-slate-700 dark:text-slate-300 items-center">
             {(query || department || category)
-              ? `Results for "${[query, department, category].filter(Boolean).join(' | ')}"`
+              ? (
+                <span className="flex gap-2">
+                  <span>Results for</span>
+                  <span className="text-amber-600">
+                    {[query, department, category].filter(Boolean).join(" | ")}
+                  </span>
+                </span>
+              )
               : "সকল চাকরির বিজ্ঞপ্তি"}
             {!query && !department && !category && (
               <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
             )}
           </p>
-
           <SearchForm />
         </div>
-        <hr className="mb-4 hidden lg:flex md:flex"/>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
 
+        <hr className="mb-4 hidden lg:flex md:flex" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
           {/* Left sidebar */}
           <aside
             className="
@@ -59,13 +72,29 @@ export default async function JobsPage({ searchParams }: {
               "
             style={{ minHeight: 'auto' }}
           >
-            <JobCategory  categories={categories}/>
-            <JobDepartments departments={departments}/>
+            <JobCategory categories={categories} />
+            <JobDepartments departments={departments} />
 
-            <div className="flex justify-end px-2 pb-2">
-              {(query || department || category) && (
+            <div className="flex items-center my-4 mx-4 gap-2">
+              {/* Left content */}
+              <div className="flex-1">
+                {query || department || category ? (
+                  <p className="text-sm font-bold text-slate-700 dark:text-slate-300 text-left md:text-left md:hidden">
+                    Results for{" "}
+                    <span className="text-amber-600">
+                      {[query, department, category].filter(Boolean).join(" | ")}
+                    </span>
+                  </p>
+                ) : (
+                  <div className="md:hidden" />
+                )}
+              </div>
+              {/* Always right aligned */}
+              <div className="flex justify-end">
+                {(query || department || category) && (
                   <ResetQuery />
-              )}
+                )}
+              </div>
             </div>
           </aside>
 

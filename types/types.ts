@@ -1,4 +1,4 @@
-export type Categories = "government" | "private" | "autonomous" 
+export type Categories = "govt" | "private";
 
 export interface IJobCircular {
   _id: string;

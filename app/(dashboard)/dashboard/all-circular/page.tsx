@@ -24,7 +24,7 @@ import {
   User,
   View,
 } from "lucide-react";
-import { useDeleteJobMutation, useGetAllJobsQuery, useGetCategoriesQuery } from "@/redux/api/api";
+import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";
 import { TGenericErrorResponse, IJobCircular } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
@@ -55,7 +55,6 @@ export default function AllCircularPage() {
   };
   const [DeleteJob] = useDeleteJobMutation()
   const { data, isLoading } = useGetAllJobsQuery(params);
-  const { data: categories } = useGetCategoriesQuery(undefined);
 
 
   if (isLoading) return (
@@ -66,6 +65,7 @@ export default function AllCircularPage() {
   );
 
   const tableData = data?.data.result;
+  const categories = data?.data.categories;
 
   // Reset to first page when filters change
   const handleSearchChange = (value: string) => {
@@ -149,7 +149,7 @@ export default function AllCircularPage() {
                       <span>সব ট্রেড</span>
                     </div>
                   </SelectItem>
-                  {categories?.data.categories.map((trade: TCategories, index: number) => (
+                  {categories?.map((trade: TCategories, index: number) => (
                     <SelectItem
                       key={index}
                       value={trade.category}
@@ -204,7 +204,7 @@ export default function AllCircularPage() {
                     </TableCell>
                     <TableCell>
                       <div className="text-xs  flex items-center gap-1">
-                        {circular.departments.map((d, index) => (
+                        {circular?.departments.map((d, index) => (
                           <span key={index}>
                             {formatQuery(d)}
                             {index < circular.departments.length - 1 && " |"}

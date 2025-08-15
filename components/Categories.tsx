@@ -23,7 +23,7 @@ const Categories = ({categories}:{categories:TCategories[]}) => {
 
   // প্রতিটা ক্যাটাগরির জন্য আইকন সিলেকশন
   const getIcon = (category: string) => {
-    if (category === "government") {
+    if (category === "govt") {
       return (
         <Image
           src="/govt.png"
@@ -68,7 +68,7 @@ const Categories = ({categories}:{categories:TCategories[]}) => {
           <p className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight transition-colors duration-300 ease-in-out">
             {category.count}
           </p>
-          <p className="text-xs sm:text-sm md:text-base">
+          <p className="text-sm font-medium md:text-xl">
             {categoryToBangla(category.category)}
           </p>
         </CardContent>

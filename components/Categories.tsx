@@ -55,7 +55,7 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
                   : "border-dashed border-green-800 hover:bg-green-50 dark:hover:bg-green-900"
                 }`}
             >
-              {/* Hide gradient for selected */}
+              {/* Gradient overlay, show only if not selected */}
               {!isSelected && (
                 <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
               )}

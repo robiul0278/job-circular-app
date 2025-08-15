@@ -27,6 +27,8 @@ const JobDepartments = ({ departments }: { departments: IDepartments[] }) => {
 
   return (
     <div className="relative border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
+      {/* Gradient overlay over the main div, behind all buttons */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
       <h4 className="relative z-10 font-semibold text-sm flex items-center dark:text-gray-100 pb-2">
         Job by Departments
       </h4>
@@ -34,11 +36,6 @@ const JobDepartments = ({ departments }: { departments: IDepartments[] }) => {
         {departments.map((dept) => {
           const isSelected = selectedDepartment === dept.department;
           return (
-            <>
-              {/* Hide gradient for selected */}
-              {!isSelected && (
-                <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
-              )}
               <Button
                 key={dept.department}
                 onClick={() => handleDepartments(dept.department)}
@@ -57,7 +54,6 @@ const JobDepartments = ({ departments }: { departments: IDepartments[] }) => {
                   {dept.count}
                 </Badge>
               </Button>
-            </>
           );
         })}
       </div>

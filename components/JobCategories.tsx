@@ -27,30 +27,36 @@ const JobCategory = ({ categories }: { categories: ICategory[] }) => {
     };
 
     return (
-        <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
-            <h4 className="font-semibold text-sm flex items-center dark:text-gray-100 pb-2">
+        <div className="relative border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
+            <h4 className="relative font-semibold z-10 text-sm flex items-center dark:text-gray-100 pb-2">
                 Organization Type
             </h4>
             <div className="grid grid-cols-2 gap-2">
-                {categories.map((cat) => {
+                {categories.map((cat, i: number) => {
                     const isSelected = selectedCategory === cat.category;
                     return (
-                        <Button
-                            key={cat.category}
-                            onClick={() => handleCategory(cat.category)}
-                            variant={isSelected ? "default" : "outline"}
-                            className={`flex items-center justify-between group cursor-pointer rounded-lg px-2 transition-colors duration-300 ease-in-out ${isSelected ? "bg-green-800 text-white dark:bg-green-800" : ""}`}
-                        >
-                            <span className="text-[13px] font-medium transition-colors duration-300 ease-in-out">
-                                {categoryToBangla(cat.category)}
-                            </span>
-                            <Badge
-                                variant="outline"
-                                className={`dark:bg-gray-500 ${isSelected ? "border-white text-white" : ""}`}
+                        <>
+                            {/* Hide gradient for selected */}
+                            {!isSelected && (
+                                <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
+                            )}
+                            <Button
+                                key={i}
+                                onClick={() => handleCategory(cat.category)}
+                                variant={isSelected ? "default" : "outline"}
+                                className={`flex  items-center justify-between z-20 group cursor-pointer rounded-lg px-2 transition-colors duration-300 ease-in-out ${isSelected ? "bg-green-800 text-white dark:bg-green-800" : ""}`}
                             >
-                                {cat.count}
-                            </Badge>
-                        </Button>
+                                <span className="text-[13px] font-medium transition-colors duration-300 ease-in-out">
+                                    {categoryToBangla(cat.category)}
+                                </span>
+                                <Badge
+                                    variant="outline"
+                                    className={`dark:bg-gray-500 ${isSelected ? "border-white text-white" : ""}`}
+                                >
+                                    {cat.count}
+                                </Badge>
+                            </Button>
+                        </>
                     );
                 })}
             </div>

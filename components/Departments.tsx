@@ -25,33 +25,39 @@ const Departments = ({ departments }: { departments: TDepartments[] }) => {
     });
   };
   return (
-    <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
+    <div className="relative border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
       <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
         {departments?.map((dept: IDepartments, index: number) => {
           const isSelected = selectedDepartment === dept.department;
           return (
-            <Button
-              key={index}
-              onClick={() => handleDepartment(dept.department)}
-              variant="outline"
-              className={`flex items-center justify-between group cursor-pointer rounded-lg p-2 border
+            <>
+              {/* Hide gradient for selected */}
+              {!isSelected && (
+                <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
+              )}
+              <Button
+                key={index}
+                onClick={() => handleDepartment(dept.department)}
+                variant="outline"
+                className={`flex items-center justify-between z-10 group cursor-pointer rounded-lg p-2 border
                 transition-colors duration-300 ease-in-out
                    ${isSelected
-                  ? "bg-green-800 text-white"
-                  : ""}`}
-            >
-              <span
-                className="text-[13px] font-medium transition-colors duration-300 ease-in-out"
+                    ? "bg-green-800 text-white"
+                    : ""}`}
               >
-                {formatQuery(dept.department)}
-              </span>
-              <Badge variant="outline"
-                className={`dark:bg-gray-500 ${isSelected
-                  ? " text-white"
-                  : ""}`}>
-                {dept.count}
-              </Badge>
-            </Button>
+                <span
+                  className="text-[13px] font-medium transition-colors duration-300 ease-in-out"
+                >
+                  {formatQuery(dept.department)}
+                </span>
+                <Badge variant="outline"
+                  className={`dark:bg-gray-500 ${isSelected
+                    ? " text-white"
+                    : ""}`}>
+                  {dept.count}
+                </Badge>
+              </Button>
+            </>
           )
         })}
       </div>

@@ -26,7 +26,7 @@ const Departments = ({ departments }: { departments: TDepartments[] }) => {
   };
   return (
     <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
-      <div className="grid grid-cols-3 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
         {departments?.map((dept: IDepartments, index: number) => {
           const isSelected = selectedDepartment === dept.department;
           return (
@@ -34,7 +34,7 @@ const Departments = ({ departments }: { departments: TDepartments[] }) => {
               key={index}
               onClick={() => handleDepartment(dept.department)}
               variant="outline"
-              className={`flex items-center justify-between group cursor-pointer rounded-lg p-1 border
+              className={`flex items-center justify-between group cursor-pointer rounded-lg p-2 border
                 transition-colors duration-300 ease-in-out
                    ${isSelected
                   ? "bg-green-800 text-white"

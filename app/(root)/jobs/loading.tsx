@@ -11,7 +11,7 @@ export default function Loading() {
         <div className="flex items-center gap-2">
           <Skeleton className="h-8 w-48" />
         </div>
-        <Skeleton className="h-14 w-full max-w-xl rounded-2xl" />
+        <Skeleton className="h-14 w-full max-w-sm rounded-2xl hidden lg:flex" />
       </div>
       <hr className="mb-4 hidden lg-flex md:flex" />
 

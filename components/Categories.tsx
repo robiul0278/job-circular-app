@@ -7,8 +7,8 @@ import { Users } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { categoryToBangla } from "@/utils/utils";
 
-const Categories = ({categories}:{categories:TCategories[]}) => {
-    const router = useRouter();
+const Categories = ({ categories }: { categories: TCategories[] }) => {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   const handlePagination = (category: string) => {
@@ -41,40 +41,40 @@ const Categories = ({categories}:{categories:TCategories[]}) => {
     <div className="flex md:flex-row lg:flex-row gap-2">
       {categories?.map((category: TCategories, i: number) => {
         const isSelected = selectedCategory === category.category;
-          return(
-        <div
-      key={i}
-      onClick={() => handlePagination(category.category)}
-      className="flex-1 w-full"
-    >
-      <Card
-        className={`relative p-2 sm:p-3 md:p-4 rounded 
+        return (
+          <div
+            key={i}
+            onClick={() => handlePagination(category.category)}
+            className="flex-1 w-full"
+          >
+            <Card
+              className={`relative p-2 sm:p-3 md:p-4 rounded 
           transition-all duration-300 ease-in-out cursor-pointer select-none 
-          ${
-            isSelected
-              ? "bg-green-800 text-white border border-green-600 shadow-lg"
-              : "border-dashed border-green-800 hover:bg-green-50 dark:hover:bg-green-900"
-          }`}
-      >
-        {/* Hide gradient for selected */}
-        {!isSelected && (
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
-        )}
+          ${isSelected
+                  ? "bg-green-800 text-white border border-green-600 shadow-lg"
+                  : "border-dashed border-green-800 hover:bg-green-50 dark:hover:bg-green-900"
+                }`}
+            >
+              {/* Hide gradient for selected */}
+              {!isSelected && (
+                <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
+              )}
 
-        <CardContent className="relative z-10 flex items-center gap-2 md:gap-4 p-0">
-          <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl">
-            {getIcon(category.category)}
+              <CardContent className="relative z-10 flex items-center justify-center gap-2 md:gap-2">
+                <div className="text-lg sm:text-xl md:text-2xl">
+                  {getIcon(category.category)}
+                </div>
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight transition-colors duration-300 ease-in-out">
+                  {category.count}
+                </p>
+                <p className="text-sm font-medium md:text-xl text-center">
+                  {categoryToBangla(category.category)}
+                </p>
+              </CardContent>
+
+            </Card>
           </div>
-          <p className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight transition-colors duration-300 ease-in-out">
-            {category.count}
-          </p>
-          <p className="text-sm font-medium md:text-xl">
-            {categoryToBangla(category.category)}
-          </p>
-        </CardContent>
-      </Card>
-    </div>
-  )
+        )
       })}
     </div>
   );

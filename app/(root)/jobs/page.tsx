@@ -56,7 +56,9 @@ export default async function JobsPage({ searchParams }: {
               <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
             )}
           </p>
-          <SearchForm />
+          <div className="hidden lg:flex md:flex">
+            <SearchForm />
+          </div>
         </div>
 
         <hr className="mb-4 hidden lg:flex md:flex" />

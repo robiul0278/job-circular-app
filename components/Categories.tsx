@@ -49,8 +49,7 @@ const Categories = ({categories}:{categories:TCategories[]}) => {
     >
       <Card
         className={`relative p-2 sm:p-3 md:p-4 rounded 
-          transition-all duration-300 ease-in-out cursor-pointer select-none
-          hover:scale-[1.02] 
+          transition-all duration-300 ease-in-out cursor-pointer select-none 
           ${
             isSelected
               ? "bg-green-800 text-white border border-green-600 shadow-lg"

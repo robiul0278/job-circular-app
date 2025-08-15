@@ -52,7 +52,7 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
           transition-all duration-300 ease-in-out cursor-pointer select-none 
           ${isSelected
                   ? "bg-green-800 text-white border border-green-600 shadow-lg"
-                  : "border-dashed border-green-800 hover:bg-green-50 dark:hover:bg-green-900"
+                  : "border-dashed border-green-800 hover:bg-green-50 dark:bg-gray-900 dark:hover:bg-green-900"
                 }`}
             >
               {/* Gradient overlay, show only if not selected */}

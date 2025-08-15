@@ -33,6 +33,21 @@ export function categoryToBangla(category: string): string {
 }
 
 
+export function departmentToBangla(dept: string): string {
+  const enToBnDept: Record<string, string> = {
+    engineering: 'ইঞ্জিনিয়ারিং',
+    marine: 'মেরিন',
+    textile: 'টেক্সটাইল',
+    agriculture: 'কৃষি',
+    livestock: 'পশুপালন',
+    fisheries: 'মৎস্য',
+    forestry: 'বন বিভাগ',
+  };
+
+  return enToBnDept[dept] || dept;
+}
+
+
 
 export function generateSlug(input: string): string {
   return input

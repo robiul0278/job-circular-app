@@ -7,6 +7,7 @@ import SearchForm from "@/components/SearchForm";
 import JobCategory from "@/components/JobCategories";
 import JobDepartments from "@/components/JobDepartments";
 import ResetQuery from "@/components/ResetQuery";
+import { categoryToBangla, departmentToBangla } from "@/utils/utils";
 
 export default async function JobsPage({ searchParams }: {
   searchParams: Promise<{
@@ -41,13 +42,19 @@ export default async function JobsPage({ searchParams }: {
           </p>
 
           {/* Desktop / Tablet view - show dynamic results */}
-          <p className="hidden md:flex text-xl md:text-2xl lg:text-2xl font-bold text-slate-700 dark:text-slate-300 items-center">
+          <p className="hidden md:flex text-xl md:text-2xl lg:text-2xl font-bold text-slate-700 dark:text-slate-300 items-center ">
             {(query || department || category)
               ? (
                 <span className="flex gap-2">
                   <span>Results for</span>
                   <span className="text-amber-600">
-                    {[query, department, category].filter(Boolean).join(" | ")}
+                    {[query, department, category]
+                      .filter(Boolean)
+                      .map((item) => {
+                        if (item === department) return departmentToBangla(item as string);
+                        return categoryToBangla(item as string);
+                      })
+                      .join(" | ")}
                   </span>
                 </span>
               )
@@ -84,7 +91,13 @@ export default async function JobsPage({ searchParams }: {
                   <p className="text-sm font-bold text-slate-700 dark:text-slate-300 text-left md:text-left md:hidden">
                     Results for{" "}
                     <span className="text-amber-600">
-                      {[query, department, category].filter(Boolean).join(" | ")}
+                      {[query, department, category]
+                        .filter(Boolean)
+                        .map((item) => {
+                          if (item === department) return departmentToBangla(item as string);
+                          return categoryToBangla(item as string);
+                        })
+                        .join(" | ")}
                     </span>
                   </p>
                 ) : (
@@ -114,7 +127,6 @@ export default async function JobsPage({ searchParams }: {
             )}
             <Pagination totalPages={meta.totalPage} currentPage={currentPage} />
           </div>
-
         </div>
       </section>
     </>

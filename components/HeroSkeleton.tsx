@@ -34,10 +34,8 @@ export default function HeroSkeleton() {
               ))}
             </div>
           </div>
-
           {/* Search Bar Skeleton */}
           <Skeleton className="w-full h-12 rounded-md" />
-
           {/* Stats Cards Skeleton */}
           <div className="grid grid-cols-4 gap-2">
             {[1, 2, 3, 4].map((_, i) => (
@@ -48,7 +46,6 @@ export default function HeroSkeleton() {
             ))}
           </div>
         </div>
-
         {/* Right Side Skeleton (Image placeholder) */}
         <div className="justify-center hidden md:flex lg:flex">
           <Skeleton className="w-[300px] h-[300px] rounded-md" />

@@ -29,7 +29,7 @@ const Departments = ({ departments }: { departments: TDepartments[] }) => {
   {/* Gradient overlay over the main div, behind all buttons */}
   <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
 
-  <div className="grid grid-cols-3 md:grid-cols-5 gap-2 relative z-10">
+  <div className="grid grid-cols-3 md:grid-cols-6 gap-2 relative z-10">
     {departments?.map((dept: IDepartments, index: number) => {
       const isSelected = selectedDepartment === dept.department;
       return (

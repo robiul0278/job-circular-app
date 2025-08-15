@@ -23,8 +23,11 @@ export default function Pagination({
       const current = new URLSearchParams(window.location.search);
       current.set("page", page.toString());
       const query = current.toString();
-      window.scrollTo({ top: 0, behavior: "smooth" });
       router.push(`/jobs?${query}`);
+     // navigation এর পরে scroll করো
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
     });
   };
 

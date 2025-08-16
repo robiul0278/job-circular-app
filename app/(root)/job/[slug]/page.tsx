@@ -37,11 +37,11 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
             <CardHeader className="px-2 relative">
               {/* Top: Title and Bookmark */}
               <div className="flex justify-between items-start gap-2">
-                <CardTitle className="text-2xl lg:text-2xl dark:text-slate-200">{title}</CardTitle>
+                <CardTitle className="text-xl  dark:text-slate-200">{title}</CardTitle>
               </div>
-              <div className="text-sm font-medium text-green-700">
+              <h2 className="font-medium text-green-600">
                 {companyName}
-              </div>
+              </h2>
             </CardHeader>
 
             <CardContent className="space-y-4 px-2">
@@ -63,7 +63,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
                 </div>
               )}
               {/* ✅ Social Share Buttons */}
-              <SocialShare title={title} slug={slug} />
+              <SocialShare/>
             </CardContent>
           </Card>
         </div>

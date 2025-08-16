@@ -7,9 +7,13 @@ import {
     WhatsappIcon,
     TelegramIcon,
 } from "react-share";
+import { usePathname } from "next/navigation";
 
-const SocialShare = ({ title, slug }: { title: string; slug: string }) => {
-    const slugs = decodeURIComponent(slug);
+const SocialShare = () => {
+    const pathname = usePathname();
+    const slugs = decodeURIComponent(pathname);
+    const fullUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${slugs}`;
+
     return (
         <div className="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
             <h3 className="text-sm font-medium mb-2">শেয়ার করুন:</h3>
@@ -19,8 +23,7 @@ const SocialShare = ({ title, slug }: { title: string; slug: string }) => {
                     return (
                         <ShareBtn
                             key={idx}
-                            url={`http://localhost:3000/circular/${slugs}`}
-                            title={title}
+                            url={fullUrl}
                             className="transition-transform hover:scale-110 hover:shadow-lg rounded-full"
                         >
                             <Icon size={30} round />

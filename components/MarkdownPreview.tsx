@@ -51,32 +51,32 @@ export default async function MarkdownPreview({ description, className = '' }: M
     },
 
     h1({ children }) {
-      return <h1 className="text-3xl font-bold text-gray-900 dark:text-white mt-8 mb-4 first:mt-0">{children}</h1>;
+      return <h1 className="text-lg font-bold text-gray-900 dark:text-white mt-8 mb-4 first:mt-0">{children}</h1>;
     },
     h2({ children }) {
       return (
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mt-8 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
           {children}
         </h2>
       );
     },
     h3({ children }) {
-      return <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">{children}</h3>;
+      return <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-1">{children}</h3>;
     },
     h4({ children }) {
-      return <h4 className="text-lg font-semibold text-gray-900 dark:text-white mt-4 mb-2">{children}</h4>;
+      return <h4 className="text-lg font-semibold text-gray-900 dark:text-white mt-4 mb-1">{children}</h4>;
     },
     h5({ children }) {
-      return <h5 className="text-base font-semibold text-gray-900 dark:text-white mt-4 mb-2">{children}</h5>;
+      return <h5 className="text-base font-semibold text-gray-900 dark:text-white mt-4 mb-1">{children}</h5>;
     },
     h6({ children }) {
-      return <h6 className="text-sm font-semibold text-gray-900 dark:text-white mt-4 mb-2">{children}</h6>;
+      return <h6 className="text-sm font-semibold text-gray-900 dark:text-white mt-4 mb-1">{children}</h6>;
     },
     p({ children }) {
       return <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">{children}</p>;
     },
     ul({ children }) {
-      return <ul className="text-gray-700 dark:text-gray-300 space-y-2 mb-4 list-disc list-inside">{children}</ul>;
+      return <ul className="text-gray-700 dark:text-gray-300 space-y- mb-4 list-disc list-inside">{children}</ul>;
     },
     ol({ children }) {
       return <ol className="text-gray-700 dark:text-gray-300 space-y-2 mb-4 list-decimal list-inside">{children}</ol>;

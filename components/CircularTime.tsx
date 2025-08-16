@@ -10,11 +10,7 @@ import { deadlineCountdown, formatDate } from "@/utils/format-date";
 
 export default async function JobCircularTimeTable({deadline}:{deadline: string}) {
     return (
-        <div className="mt-2">
-            <h3 className="flex items-center font-semibold text-gray-900 dark:text-gray-100">
-                সার্কুলার সময়সূচীঃ
-            </h3>
-
+        <div className="mt-4">
             <Table>
                 <TableBody className="">
                     <TableRow>

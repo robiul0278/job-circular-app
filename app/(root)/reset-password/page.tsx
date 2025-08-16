@@ -32,6 +32,7 @@ const ResetPasswordPage = () => {
   });
 
   const onSubmit = async (data: ResetPasswordFormValues) => {
+    setServerError('')
     try {
       const payload = {
         email,
@@ -79,7 +80,6 @@ const ResetPasswordPage = () => {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-
               {/* নতুন পাসওয়ার্ড */}
               <FormField
                 control={form.control}
@@ -96,9 +96,9 @@ const ResetPasswordPage = () => {
                         className="border-gray-300 focus:border-green-500 focus:ring focus:ring-indigo-200"
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-amber-600 text-sm" />
                     {serverError && (
-                      <p className="text-red-500 text-sm">{serverError}</p>
+                      <p className="text-amber-600 text-sm">{serverError}</p>
                     )}
                   </FormItem>
                 )}

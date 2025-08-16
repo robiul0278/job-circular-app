@@ -27,7 +27,7 @@ const JobCategory = ({ categories }: { categories: ICategory[] }) => {
     };
 
     return (
-        <div className="relative border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-900">
+        <div className="relative border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm p-2 bg-white dark:bg-gray-900">
             {/* Gradient overlay over the main div, behind all buttons */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 dark:hidden rounded-xl pointer-events-none"></div>
             <h4 className="relative font-semibold z-10 text-sm flex items-center dark:text-gray-100 pb-2">

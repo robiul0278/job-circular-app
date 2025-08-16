@@ -27,7 +27,7 @@ export function JobCard({ jobs }: JobProps) {
           <div className="relative flex flex-col sm:flex-row 
   dark:bg-gray-900 
   border border-gray-200 dark:border-gray-700 
-  rounded-xl overflow-hidden 
+  rounded-lg overflow-hidden 
   shadow-sm hover:shadow-md transition-shadow duration-300"
           >
             {/* Image Left */}

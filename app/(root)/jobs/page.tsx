@@ -40,7 +40,7 @@ export default async function JobsPage({ searchParams }: {
  
 
           {/* Page Title */}
-          <h1 className="text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 bg-slate-100 dark:bg-gray-900 px-3 py-1 rounded-lg shadow-sm">
+          <h1 className="text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2  dark:bg-gray-900 px-3 py-1 rounded-lg shadow-sm">
             সকল চাকরির বিজ্ঞপ্তি
             <ChevronRight className="w-5 h-5 text-slate-500 dark:text-slate-400" />
           </h1>
@@ -59,7 +59,7 @@ export default async function JobsPage({ searchParams }: {
           <aside
             className="
               lg:col-span-4
-              space-y-4 rounded-lg
+              space-y-2 rounded-lg
               lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto bg-gray-50 
              dark:bg-gray-900 z-20
               md:sticky md:top-0 md:z-30 p-0 md:p-4 lg:p-4

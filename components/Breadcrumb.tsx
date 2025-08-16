@@ -7,7 +7,7 @@ type BreadcrumbProps = {
 
 const Breadcrumb = ({ pageName }: BreadcrumbProps) => {
   return (
-    <nav className="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 space-x-1 md:space-x-2">
+    <nav className="hidden lg:flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 space-x-1 md:space-x-2">
       {/* Home link */}
       <Link
         href="/"

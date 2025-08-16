@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 
 type ImageWithDownloadProps = {
     src: string;
@@ -38,7 +38,7 @@ export default function ImageWithDownload({ src,index, title}: ImageWithDownload
 
     return (
         <div className="flex flex-col items-center space-y-2">
-            <CldImage
+            <Image
                 src={src}
                  alt={title}
                 width={1200}

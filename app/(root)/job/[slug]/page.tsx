@@ -34,20 +34,18 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
         {/* Main Content */}
         <div className="lg:col-span-3 space-y-8">
           <Card className="rounded-lg px-1 py-3">
-            <CardHeader className="px-2 relative">
+            <CardHeader className="px-2 pt-2 relative">
               {/* Top: Title and Bookmark */}
-              <div className="flex justify-between items-start gap-2">
                 <CardTitle className="text-xl  dark:text-slate-200">{title}</CardTitle>
-              </div>
               <h2 className="font-medium text-green-600">
                 {companyName}
               </h2>
             </CardHeader>
 
-            <CardContent className="space-y-4 px-2">
+            <CardContent className="px-2">
               {/*CircularTime */}
               <CircularTime deadline={deadline} />
-              <div className="flex items-center gap-2 my-4">
+              <div className="flex items-center gap-2 my-2">
                 <hr className="flex-grow border-gray-300" />
                 <p className="text-center text-sm font-medium whitespace-nowrap">বিস্তারিত</p>
                 <hr className="flex-grow border-gray-300" />

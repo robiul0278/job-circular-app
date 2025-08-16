@@ -8,6 +8,7 @@ import JobCategory from "@/components/JobCategories";
 import JobDepartments from "@/components/JobDepartments";
 import ResetQuery from "@/components/ResetQuery";
 import { categoryToBangla, departmentToBangla } from "@/utils/utils";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default async function JobsPage({ searchParams }: {
   searchParams: Promise<{
@@ -33,41 +34,25 @@ export default async function JobsPage({ searchParams }: {
   return (
     <>
       <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0 relative">
-        {/* HEADER: results text + search bar */}
-        <div className="flex flex-col lg:flex-row md:flex-row justify-between my-4 md:mx-4 lg:mx-4 gap-4">
-          {/* Mobile view - always show */}
-          <p className="text-xl font-bold text-slate-700 dark:text-slate-300 flex items-center md:hidden">
-            সকল চাকরির বিজ্ঞপ্তি
-            <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
-          </p>
+        {/* HEADER: Breadcrumb + search bar */}
+        <div className="flex flex-col-reverse md:flex-row justify-between items-start md:items-center
+        py-2 gap-2">
+ 
 
-          {/* Desktop / Tablet view - show dynamic results */}
-          <p className="hidden md:flex text-xl md:text-2xl lg:text-2xl font-bold text-slate-700 dark:text-slate-300 items-center ">
-            {(query || department || category)
-              ? (
-                <span className="flex gap-2">
-                  <span>Results for</span>
-                  <span className="text-amber-600">
-                    {[query, department, category]
-                      .filter(Boolean)
-                      .map((item) => {
-                        if (item === department) return departmentToBangla(item as string);
-                        return categoryToBangla(item as string);
-                      })
-                      .join(" | ")}
-                  </span>
-                </span>
-              )
-              : "সকল চাকরির বিজ্ঞপ্তি"}
-            {!query && !department && !category && (
-              <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
-            )}
-          </p>
-          <div className="hidden lg:flex md:flex">
+          {/* Page Title */}
+          <h1 className="text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 bg-slate-100 dark:bg-gray-900 px-3 py-1 rounded-lg shadow-sm">
+            সকল চাকরির বিজ্ঞপ্তি
+            <ChevronRight className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+          </h1>
+
+                   {/* Breadcrumb */}
+          <Breadcrumb pageName="Jobs" />
+
+          {/* Search Form (desktop only) */}
+          <div className="hidden md:flex lg:flex justify-end">
             <SearchForm />
           </div>
         </div>
-
         <hr className="mb-4 hidden lg:flex md:flex" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-2">
           {/* Left sidebar */}
@@ -88,7 +73,7 @@ export default async function JobsPage({ searchParams }: {
               {/* Left content */}
               <div className="flex-1">
                 {query || department || category ? (
-                  <p className="text-sm font-bold text-slate-700 dark:text-slate-300 text-left md:text-left md:hidden">
+                  <p className="text-sm font-bold text-slate-700 dark:text-slate-300 text-left md:text-left">
                     Results for{" "}
                     <span className="text-amber-600">
                       {[query, department, category]

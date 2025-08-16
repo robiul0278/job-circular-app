@@ -7,14 +7,11 @@ import {
     WhatsappIcon,
     TelegramIcon,
 } from "react-share";
-import { usePathname } from "next/navigation";
 
 const SocialShare = () => {
-    const pathname = usePathname();
-    const slugs = decodeURIComponent(pathname);
-    const fullUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${slugs}`;
-
-    console.log(fullUrl, "SocialShare URL");
+    // Get the full URL dynamically
+    const fullUrl = typeof window !== "undefined" ? window.location.href : "";
+    const slugs = decodeURIComponent(fullUrl);
 
     return (
         <div className="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
@@ -25,7 +22,7 @@ const SocialShare = () => {
                     return (
                         <ShareBtn
                             key={idx}
-                            url={fullUrl}
+                            url={slugs}
                             className="transition-transform hover:scale-110 hover:shadow-lg rounded-full"
                         >
                             <Icon size={30} round />

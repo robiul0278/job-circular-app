@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { TGenericErrorResponse } from "@/types/types";
 import { useResetPasswordMutation } from "@/redux/api/api";
 import { useState } from "react";
@@ -18,7 +18,6 @@ type ResetPasswordFormValues = {
 };
 
 const ResetPasswordPage = () => {
-  const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
   const { setOpen, setFormType } = useAuthModal();
 
@@ -46,7 +45,6 @@ const ResetPasswordPage = () => {
       if (res.statusCode === 200) {
         // Save to localStorage
         toast.success(res.message);
-        router.push("/");
         // AuthModal auto open
         setFormType("login");
         setOpen(true);
@@ -80,7 +78,7 @@ const ResetPasswordPage = () => {
     <div className="min-h-[70vh] flex items-center justify-center px-4">
       <Card className="w-full max-w-md shadow-xl border-2 border-transparent rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-gray-300">নতুন পাসওয়ার্ড সেট করুন</CardTitle>
+          <CardTitle className="text-2xl font-bold dark:text-gray-300">নতুন পাসওয়ার্ড সেট করুন</CardTitle>
         </CardHeader>
 
         <CardContent>
@@ -114,7 +112,7 @@ const ResetPasswordPage = () => {
                   type="submit"
                   className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
-                  পাসওয়ার্ড আপডেট করুন
+                   {form.formState.isSubmitting ? "আপডেট হচ্ছে..." : "পাসওয়ার্ড আপডেট করুন"}
                 </Button>
               </CardFooter>
             </form>

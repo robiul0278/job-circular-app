@@ -17,9 +17,11 @@ import { toast } from "sonner";
 import { TGenericErrorResponse } from "@/types/types";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/redux/features/authSlice";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { switchForm: () => void, closeModal: () => void, goToForgetForm: () => void }) {
     const dispatch = useDispatch();
+    const router = useRouter();
     const [login] = useLoginUserMutation();
 
     const form = useForm<LoginFormType>({
@@ -41,6 +43,7 @@ export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { 
                 localStorage.setItem("accessToken", accessToken);
                 toast.success(res.message);
                 closeModal();
+                router.push("/");
             }
         } catch (error: unknown) {
             const err = error as { data: TGenericErrorResponse };

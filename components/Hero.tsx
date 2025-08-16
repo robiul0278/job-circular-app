@@ -20,7 +20,7 @@ export default function Hero({categories, departments}:{categories: TCategories[
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-10 items-center  justify-between">
 
                 {/* Left Side */}
-                <div className="space-y-4 w-full md:w-2/3">
+                <div className="space-y-3 w-full md:w-2/3">
                     <div className="flex flex-col">
                         <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold dark:text-green-600 text-green-700">
                             ডিপ্লোমা জব সার্কুলার

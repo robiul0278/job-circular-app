@@ -48,7 +48,7 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
             className="flex-1 w-full"
           >
             <Card
-              className={`relative p-2 sm:p-3 md:p-4 rounded-lg shadow-sm
+              className={`relative p-4 md:p-4 rounded-lg shadow-sm
           transition-all duration-300 ease-in-out cursor-pointer select-none 
           ${isSelected
                   ? "bg-green-800 text-white border border-green-600 shadow-lg"

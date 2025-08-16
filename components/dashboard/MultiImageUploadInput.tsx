@@ -59,7 +59,7 @@ export default function MultiImageUploadInput<T extends FieldValues>({
 
       const data = new FormData();
       data.append("file", file);
-      data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET!);
+      data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NOTICE!);
       data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!);
       data.append("public_id", `uploads/${slugFileName}`); // path optional
 
@@ -68,7 +68,6 @@ export default function MultiImageUploadInput<T extends FieldValues>({
           `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
           data
         );
-        console.log(res);
         uploadedUrls.push(res.data.secure_url);
       } catch (err) {
         console.error(err);

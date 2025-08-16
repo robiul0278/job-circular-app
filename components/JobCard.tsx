@@ -6,12 +6,12 @@ import {
   Eye,
   Calendar1,
 } from "lucide-react";
-import { CldImage } from 'next-cloudinary';
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { categoryToBangla } from "@/utils/utils";
 import { IJobCircular } from "@/types/types";
 import BookmarkButton from "./BookmarkButton";
+import Image from "next/image";
 
 export interface JobProps {
   jobs: IJobCircular[] | null;
@@ -32,7 +32,7 @@ export function JobCard({ jobs }: JobProps) {
           >
             {/* Image Left */}
             <Link href={`/job/${job.slug}`} className="sm:w-1/3 h-48 sm:h-auto relative cursor-pointer">
-              <CldImage
+              <Image
                 src={job.banner}
                 alt={`ডিপ্লোমা চাকরি সার্কুলার – ${job.title}`}
                 width={600}

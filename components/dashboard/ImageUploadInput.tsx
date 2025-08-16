@@ -63,7 +63,7 @@ export default function ImageUploadInput<T extends FieldValues>({
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET!);
+    formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_BANNER!);
     formData.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!);
     formData.append("public_id", `uploads/${slugFileName}`); // path optional
 

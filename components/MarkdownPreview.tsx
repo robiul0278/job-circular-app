@@ -86,8 +86,8 @@ export default async function MarkdownPreview({ description, className = '' }: M
     },
     blockquote({ children }) {
       return (
-        <blockquote className="border-l-4 border-green-800 pl-6 py-2 my-6 bg-gray-50 dark:bg-gray-800 rounded-r-lg">
-          <div className="text-gray-700 dark:text-gray-300 italic">{children}</div>
+        <blockquote className="border-l-4 border-green-800 pl-4 p-2 bg-gray-50 dark:bg-gray-800 rounded-r-lg">
+          <div className="text-sm text-gray-700 dark:text-gray-300 italic">{children}</div>
         </blockquote>
       );
     },

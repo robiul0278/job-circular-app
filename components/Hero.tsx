@@ -2,7 +2,7 @@ import SearchForm from "./SearchForm";
 import Categories from "./Categories";
 import Departments from "./Departments";
 import StatsCard from "./StatsCard";
-import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 
 export type TCategories = {
   category: string;
@@ -40,7 +40,7 @@ export default function Hero({categories, departments}:{categories: TCategories[
 
                 {/* Right Side (Illustration) */}
                 <div className="hidden md:flex w-full md:w-1/3 items-center justify-center">
-                    <CldImage
+                    <Image
                         src="https://res.cloudinary.com/dhnkviblq/image/upload/v1754932901/rwz6mlllfhil3ycmhl2w.png"
                         alt="Hero Image"
                         width={400}

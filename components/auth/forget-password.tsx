@@ -62,6 +62,7 @@ export default function ForgetPasswordForm({ switchForm, closeModal }: { switchF
                             <FormControl>
                                 <Input
                                     id="email"
+                                    type="email"
                                     placeholder="রেজিস্টার করা ইমেইল লিখুন"
                                     className="focus:outline-none focus:ring-0 focus:border-transparent"
                                     {...field}

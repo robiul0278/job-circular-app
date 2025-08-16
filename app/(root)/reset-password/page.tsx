@@ -1,8 +1,6 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,40 +10,32 @@ import { toast } from "sonner";
 import { useRouter, useSearchParams } from "next/navigation";
 import { TGenericErrorResponse } from "@/types/types";
 import { useResetPasswordMutation } from "@/redux/api/api";
+import { useState } from "react";
 
-// Zod validation
-const resetPasswordSchema = z
-  .object({
-    password: z.string().min(6, "পাসওয়ার্ড অন্তত ৬ অক্ষরের হতে হবে"),
-    confirmPassword: z.string().min(6, "পুনরায় পাসওয়ার্ড অন্তত ৬ অক্ষরের হতে হবে"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "পাসওয়ার্ড এবং পুনরায় পাসওয়ার্ড মিলছে না",
-    path: ["confirmPassword"],
-  });
-
-type ResetPasswordFormValues = z.infer<typeof resetPasswordSchema>;
+type ResetPasswordFormValues = {
+  newPassword: string;
+};
 
 const ResetPasswordPage = () => {
   const router = useRouter();
+  const [serverError, setServerError] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
   const token = searchParams.get("token") || "";
+
   const [Reset] = useResetPasswordMutation();
 
   const form = useForm<ResetPasswordFormValues>({
-    resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
-      password: "",
-      confirmPassword: "",
+      newPassword: "",
     },
   });
 
   const onSubmit = async (data: ResetPasswordFormValues) => {
     try {
       const payload = {
-        email, 
-        password: data.password,
+        email,
+        newPassword: data.newPassword,
         token,
       };
       const res = await Reset(payload).unwrap();
@@ -56,16 +46,26 @@ const ResetPasswordPage = () => {
       }
     } catch (error: unknown) {
       const err = error as { data: TGenericErrorResponse };
+
       if (err?.data?.errorSources && Array.isArray(err.data.errorSources)) {
+        // শুধু field error গুলো handle করবো
         err.data.errorSources.forEach(({ path, message }) => {
-          form.setError(path as keyof ResetPasswordFormValues, {
-            type: "server",
-            message,
-          });
-        });
-      } else {
-        toast.error(err?.data?.message);
+          if (path === "newPassword") {
+            form.setError(path as keyof ResetPasswordFormValues, {
+              type: "server",
+              message,
+            });
+          } else {
+            // বাকিগুলার জন্য শুধু message show করবো
+            if (err?.data?.message) {
+              setServerError(err.data.message);
+            } else {
+              toast.error("কিছু সমস্যা হয়েছে, আবার চেষ্টা করুন!");
+            }
+          }
+        })
       }
+
     }
   };
 
@@ -79,13 +79,14 @@ const ResetPasswordPage = () => {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+
               {/* নতুন পাসওয়ার্ড */}
               <FormField
                 control={form.control}
-                name="password"
+                name="newPassword"
                 render={({ field }) => (
                   <FormItem className="space-y-1">
-                    <Label htmlFor="password">নতুন পাসওয়ার্ড</Label>
+                    <Label htmlFor="newPassword">নতুন পাসওয়ার্ড</Label>
                     <FormControl>
                       <Input
                         {...field}
@@ -96,31 +97,12 @@ const ResetPasswordPage = () => {
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-sm" />
+                    {serverError && (
+                      <p className="text-red-500 text-sm">{serverError}</p>
+                    )}
                   </FormItem>
                 )}
               />
-
-              {/* পুনরায় পাসওয়ার্ড */}
-              <FormField
-                control={form.control}
-                name="confirmPassword"
-                render={({ field }) => (
-                  <FormItem className="space-y-1">
-                    <Label htmlFor="confirmPassword">পাসওয়ার্ড পুনরায় লিখুন</Label>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        id="confirmPassword"
-                        type="password"
-                        placeholder="পাসওয়ার্ড পুনরায় লিখুন"
-                        className="border-gray-300 focus:border-green-500 focus:ring focus:ring-indigo-200"
-                      />
-                    </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
-                  </FormItem>
-                )}
-              />
-
               <CardFooter className="p-0">
                 <Button
                   type="submit"

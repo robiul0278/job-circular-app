@@ -26,12 +26,12 @@ export default function MultiImageUploadInput<T extends FieldValues>({
   label = "Upload Images",
   onUpload,
 }: MultiImageUploadInputProps<T>) {
-    const watchedValue = useWatch({ control, name }); 
+  const watchedValue = useWatch({ control, name });
   const [previews, setPreviews] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
+  useEffect(() => {
     if (watchedValue) {
       setPreviews(watchedValue);
     }
@@ -51,16 +51,24 @@ export default function MultiImageUploadInput<T extends FieldValues>({
     for (const file of Array.from(files)) {
       tempPreviews.push(URL.createObjectURL(file));
 
+      const fileName = file.name.replace(/\.[^/.]+$/, ""); // remove extension
+      const slugFileName = fileName
+        .toLowerCase()
+        .replace(/\s+/g, "-")        // space → dash
+        .replace(/[^\w\-]/g, "");   // remove special chars
+
       const data = new FormData();
       data.append("file", file);
       data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET!);
       data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!);
+      data.append("public_id", `uploads/${slugFileName}`); // path optional
 
       try {
         const res = await axios.post(
           `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
           data
         );
+        console.log(res);
         uploadedUrls.push(res.data.secure_url);
       } catch (err) {
         console.error(err);

@@ -1,15 +1,16 @@
 'use client';
 
 import { useState } from "react";
-import Image from "next/image";
 import { Button } from "./ui/button";
+import { CldImage } from "next-cloudinary";
 
 type ImageWithDownloadProps = {
     src: string;
     index: number;
+    title: string;
 };
 
-export default function ImageWithDownload({ src, index }: ImageWithDownloadProps) {
+export default function ImageWithDownload({ src,index, title}: ImageWithDownloadProps) {
     const [isDownloading, setIsDownloading] = useState(false);
 
     const handleImageDownload = async () => {
@@ -37,9 +38,9 @@ export default function ImageWithDownload({ src, index }: ImageWithDownloadProps
 
     return (
         <div className="flex flex-col items-center space-y-2">
-            <Image
+            <CldImage
                 src={src}
-                alt="Image preview"
+                 alt={title}
                 width={1200}
                 height={600}
                 className="w-full h-auto rounded-md"

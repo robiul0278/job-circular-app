@@ -58,7 +58,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
               {images.length > 0 && (
                 <div className="mt-4 grid grid-cols-1 gap-4">
                   {images.map((src: string, idx: number) => (
-                    <ImageWithDownload key={idx} src={src} index={idx} />
+                    <ImageWithDownload key={idx} src={src} index={idx}  title={title} />
                   ))}
                 </div>
               )}

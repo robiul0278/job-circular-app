@@ -6,7 +6,7 @@ import {
   Eye,
   Calendar1,
 } from "lucide-react";
-import Image from "next/image";
+import { CldImage } from 'next-cloudinary';
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { categoryToBangla } from "@/utils/utils";
@@ -32,12 +32,12 @@ export function JobCard({ jobs }: JobProps) {
           >
             {/* Image Left */}
             <Link href={`/job/${job.slug}`} className="sm:w-1/3 h-48 sm:h-auto relative cursor-pointer">
-              <Image
+              <CldImage
                 src={job.banner}
-                alt={job.title}
+                alt={`ডিপ্লোমা চাকরি সার্কুলার – ${job.title}`}
                 width={600}
                 height={400}
-                className="w-full h-full p-2 rounded-2xl"
+                className="w-full h-auto p-2 rounded-2xl"
               />
               <Badge
                 variant="outline"

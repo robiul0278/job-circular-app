@@ -43,11 +43,11 @@ export default function ImageUploadInput<T extends FieldValues>({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-  if (watchedValue) {
-    setPreview(watchedValue);
-    setUploadedUrl(watchedValue);
-  }
-}, [watchedValue]);
+    if (watchedValue) {
+      setPreview(watchedValue);
+      setUploadedUrl(watchedValue);
+    }
+  }, [watchedValue]);
 
   const handleUpload = async (file: File) => {
     setError(null);
@@ -55,10 +55,17 @@ export default function ImageUploadInput<T extends FieldValues>({
     const localPreview = URL.createObjectURL(file);
     setPreview(localPreview);
 
+    const fileName = file.name.replace(/\.[^/.]+$/, ""); // remove extension
+    const slugFileName = fileName
+      .toLowerCase()
+      .replace(/\s+/g, "-")        // space → dash
+      .replace(/[^\w\-]/g, "");   // remove special chars
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET!);
     formData.append("cloud_name", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!);
+    formData.append("public_id", `uploads/${slugFileName}`); // path optional
 
     try {
       const res = await axios.post(

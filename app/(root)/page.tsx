@@ -18,12 +18,12 @@ export default async function Home() {
     <>
       <NoticeMarquee notice={notice} />
       <Hero categories={categories} departments={departments}/>
-      <section className="max-w-6xl mx-auto px-2 pb-2 lg:p-0">
-        <p className="text-xl md:text-2xl lg:text-2xl font-bold text-slate-700 dark:text-slate-300 pb-1 md:pb-2 lg:pb-2 flex items-center">
+      <section className="max-w-6xl space-y-4 mx-auto px-2 pb-2 lg:p-0">
+        <h1 className="text-xl md:text-2xl lg:text-2xl font-bold pt-2 pl-2  dark:bg-gray-900 text-slate-700 dark:text-slate-300 flex items-center rounded-lg shadow-sm">
           <BriefcaseBusiness className="size-8 pr-2 pb-1 text-slate-700 dark:text-slate-300" />
           সর্বশেষ চাকরির বিজ্ঞপ্তি 
           <ChevronRight className="size-7 pb-1 text-slate-700 dark:text-slate-300" />
-        </p>
+        </h1>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-2">
           {/* Left: Job Post List */}
           <div className="lg:col-span-9">

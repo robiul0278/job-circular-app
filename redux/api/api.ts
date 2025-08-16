@@ -129,6 +129,20 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["auth"]
     }),
+    resetPassword: builder.mutation({
+      query:  ({ email, password, token }: { email: string; password: string; token: string }) => {
+        // console.log(email);
+        return {
+          url: `/auth/reset-password`,
+          method: "POST",
+          body: { email, password},
+          headers:{
+            Authorization: `Bearer ${token}`
+          }
+        }
+      },
+      invalidatesTags: ["auth"]
+    }),
     getBookmark: builder.query({
       query: (userId) => {
         // console.log("API",userId);
@@ -195,6 +209,7 @@ export const {
   useLoginUserMutation,
   useRegisterUserMutation,
   useForgetPasswordMutation,
+  useResetPasswordMutation,
   //bookmark route
   useGetBookmarkQuery,
   useAddBookmarkMutation,

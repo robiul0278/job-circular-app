@@ -32,24 +32,19 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
     <section className="max-w-6xl mx-auto py-2 md:py-4 lg:py-4 px-2 md:px-0 lg-px-0 ">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         {/* Main Content */}
-        <div className="lg:col-span-3 space-y-8">
-          <Card className="rounded-lg px-1 py-3">
-            <CardHeader className="px-2 pt-2 relative">
+        <div className="lg:col-span-3 ">
+          <Card className="rounded-lg px-2 py-2">
+            <CardHeader className="p-2 pt-2 relative dark:bg-gray-800 rounded-lg shadow-sm">
               {/* Top: Title and Bookmark */}
                 <CardTitle className="text-xl  dark:text-slate-200">{title}</CardTitle>
-              <h2 className="font-medium text-green-600">
+              <h2 className="font-medium text-green-600 dark:text-green-400">
                 {companyName}
               </h2>
+                    {/*CircularTime */}
+              <CircularTime deadline={deadline} />
             </CardHeader>
 
             <CardContent className="px-2">
-              {/*CircularTime */}
-              <CircularTime deadline={deadline} />
-              <div className="flex items-center gap-2 my-2">
-                <hr className="flex-grow border-gray-300" />
-                <p className="text-center text-sm font-medium whitespace-nowrap">বিস্তারিত</p>
-                <hr className="flex-grow border-gray-300" />
-              </div>
               {/*Markdown Preview */}
               <MarkdownPreview description={description} />
               {/*Job Image Preview */}

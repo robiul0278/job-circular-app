@@ -34,7 +34,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
         {/* Main Content */}
         <div className="lg:col-span-3 ">
           <Card className="rounded-lg p-0 md:p-2 lg:p-2 gap-0">
-            <CardHeader className="p-2 pt-2 dark:bg-gray-800 rounded-lg shadow-sm">
+            <CardHeader className="m-1 p-2 pt-2 dark:bg-gray-800 rounded-lg shadow-sm">
               {/* Top: Title and Bookmark */}
                 <CardTitle className="text-xl  dark:text-slate-200">{title}</CardTitle>
               <h2 className="font-medium text-green-600 dark:text-green-400">

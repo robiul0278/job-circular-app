@@ -33,8 +33,8 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* Main Content */}
         <div className="lg:col-span-3 ">
-          <Card className="rounded-lg p-0 md:p-2 lg:p-2">
-            <CardHeader className="p-2 pt-2 relative dark:bg-gray-800 rounded-lg shadow-sm">
+          <Card className="rounded-lg p-0 md:p-2 lg:p-2 gap-0">
+            <CardHeader className="p-2 pt-2 dark:bg-gray-800 rounded-lg shadow-sm">
               {/* Top: Title and Bookmark */}
                 <CardTitle className="text-xl  dark:text-slate-200">{title}</CardTitle>
               <h2 className="font-medium text-green-600 dark:text-green-400">
@@ -44,7 +44,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
               <CircularTime deadline={deadline} />
             </CardHeader>
 
-            <CardContent className="px-2">
+            <CardContent className="px-2 pb-3">
               {/*Markdown Preview */}
               <MarkdownPreview description={description} />
               {/*Job Image Preview */}

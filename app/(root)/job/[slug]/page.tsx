@@ -29,11 +29,11 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
   } = singleJob;
 
   return (
-    <section className="max-w-6xl mx-auto py-2 md:py-4 lg:py-4 px-2 md:px-0 lg-px-0 ">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
+    <section className="max-w-6xl mx-auto  md:py-4 lg:py-4 p-1 lg-p-0 ">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* Main Content */}
         <div className="lg:col-span-3 ">
-          <Card className="rounded-lg px-2 py-2">
+          <Card className="rounded-lg p-0 md:p-2 lg:p-2">
             <CardHeader className="p-2 pt-2 relative dark:bg-gray-800 rounded-lg shadow-sm">
               {/* Top: Title and Bookmark */}
                 <CardTitle className="text-xl  dark:text-slate-200">{title}</CardTitle>

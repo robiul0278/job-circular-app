@@ -16,17 +16,17 @@ export default async function JobCircularTimeTable({deadline}:{deadline: string}
             </h3>
 
             <Table>
-                <TableBody>
+                <TableBody className="">
                     <TableRow>
-                        <TableCell className="flex items-center space-x-3">
+                        <TableCell className="flex items-center space-x-1">
                             <Clock4 className="w-4 h-4" />
                             <span >আবেদনের শেষ তারিখঃ</span>
                         </TableCell>
-                        <TableCell className="text-right font-medium">{formatDate(deadline)}</TableCell>
+                        <TableCell className="text-right">{formatDate(deadline)}</TableCell>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell className="flex items-center space-x-3">
+                        <TableCell className="flex items-center space-x-1">
                             <Hourglass className="w-4 h-4 animate-pulse" />
                             <span >আবেদন শেষ হতেঃ</span>
                         </TableCell>

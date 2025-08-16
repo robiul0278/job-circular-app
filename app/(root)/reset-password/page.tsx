@@ -11,6 +11,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { TGenericErrorResponse } from "@/types/types";
 import { useResetPasswordMutation } from "@/redux/api/api";
 import { useState } from "react";
+import { useAuthModal } from "@/context/AuthModalContext";
 
 type ResetPasswordFormValues = {
   newPassword: string;
@@ -19,6 +20,8 @@ type ResetPasswordFormValues = {
 const ResetPasswordPage = () => {
   const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
+  const { setOpen, setFormType } = useAuthModal();
+
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
   const token = searchParams.get("token") || "";
@@ -44,6 +47,9 @@ const ResetPasswordPage = () => {
         // Save to localStorage
         toast.success(res.message);
         router.push("/");
+        // AuthModal auto open
+        setFormType("login");
+        setOpen(true);
       }
     } catch (error: unknown) {
       const err = error as { data: TGenericErrorResponse };

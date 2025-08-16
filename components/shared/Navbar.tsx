@@ -13,6 +13,7 @@ import DarkButton from "../DarkButton";
 import { Button } from "../ui/button";
 import AuthModal from "../auth/auth-modal";
 import BookmarkNavButton from "../BookmarkNav";
+import { useAuthModal } from "@/context/AuthModalContext";
 
 const menuItems = [
   { name: "হোম", href: "/" },
@@ -27,11 +28,17 @@ const Navbar = () => {
   const router = useRouter();
   const { user } = useSelector((state: RootState) => state.auth);
   const [isOpen, setIsOpen] = useState(false);
+  const { setOpen, setFormType } = useAuthModal();
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     dispatch(logout());
     router.replace('/');
+  };
+
+    const handleLoginClick = () => {
+    setFormType("login"); // আপনি চাইলে "register" বা "forget" ও দিতে পারেন
+    setOpen(true);
   };
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -86,7 +93,13 @@ const Navbar = () => {
                 </Button>
               </>
             ) : (
-              <AuthModal />
+              <Button
+              onClick={handleLoginClick}
+                variant="outline"
+                className="cursor-pointer text-white hover:text-white bg-green-700 hover:bg-green-800"
+              >
+                লগইন
+              </Button>
             )}
           </div>
 

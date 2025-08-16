@@ -37,7 +37,7 @@ export function JobCard({ jobs }: JobProps) {
                 alt={`ডিপ্লোমা চাকরি সার্কুলার – ${job.title}`}
                 width={600}
                 height={400}
-                className="w-full h-auto p-2 rounded-2xl"
+                className="w-full h-full p-2 rounded-2xl"
               />
               <Badge
                 variant="outline"

@@ -69,13 +69,13 @@ export default async function JobsPage({ searchParams }: {
             <JobCategory categories={categories} />
             <JobDepartments departments={departments} />
 
-            <div className="flex items-center my-4 mx-4 gap-2">
+            <div className="flex items-center my-4 mx-2 gap-2">
               {/* Left content */}
               <div className="flex-1">
                 {query || department || category ? (
                   <p className="text-sm font-bold text-slate-700 dark:text-slate-300 text-left md:text-left">
                     Results for{" "}
-                    <span className="text-amber-600">
+                    <span className="text-amber-600 font-normal lg:text-[14px]">
                       {[query, department, category]
                         .filter(Boolean)
                         .map((item) => {

@@ -31,3 +31,6 @@ export function deadlineCountdown(deadline: string | Date): string {
   // fallback return
   return "(১ সেকেন্ড বাকি)";
 }
+
+
+//date formatting for job post

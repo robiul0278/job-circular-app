@@ -4,8 +4,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5000/api/v1',
-    // baseUrl: 'https://job-circular-server.vercel.app/api/v1',
+    // baseUrl: 'http://localhost:5000/api/v1',
+    baseUrl: 'https://job-circular-server.vercel.app/api/v1',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken');
 
@@ -76,15 +76,6 @@ export const baseApi = createApi({
         }
       },
       invalidatesTags: ["jobs"]
-    }),
-    getCategories: builder.query({
-      query: () => {
-        return {
-          url: `/jobs/categories`,
-          method: "GET",
-        }
-      },
-      providesTags: ["jobs"]
     }),
     analytics: builder.query({
       query: () => {
@@ -204,7 +195,6 @@ export const {
   useGetSingleJobQuery,
   useUpdateViewsMutation,
   useDeleteJobMutation,
-  useGetCategoriesQuery,
   //auth route
   useLoginUserMutation,
   useRegisterUserMutation,

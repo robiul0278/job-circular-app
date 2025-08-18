@@ -48,7 +48,7 @@ export default function ImageWithDownload({ src,index, title}: ImageWithDownload
             <Button
                 variant="link"
                 onClick={handleImageDownload}
-                className="text-sm text-green-800 hover:underline"
+                className="text-sm text-green-500 hover:underline cursor-pointer"
                 disabled={isDownloading}
             >
                 {isDownloading ? "ডাউনলোড হচ্ছে..." : `ডাউনলোড করুন (Image-${index + 1})`}

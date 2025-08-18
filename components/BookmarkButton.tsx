@@ -12,6 +12,7 @@ import {
 } from "@/redux/api/api";
 import { Button } from "./ui/button";
 import { IJobCircular } from "@/types/types";
+import { useAuthModal } from "@/context/AuthModalContext";
 
 type Props = {
   jobId: string;
@@ -20,6 +21,7 @@ type Props = {
 const BookmarkButton = ({ jobId }: Props) => {
   const user = useSelector((state: RootState) => state.auth.user);
   const userId = user?._id;
+  const { setOpen, setFormType } = useAuthModal();
 
   const [bookmarked, setBookmarked] = useState(false);
 
@@ -45,6 +47,8 @@ const BookmarkButton = ({ jobId }: Props) => {
   const toggleBookmark = async () => {
     if (!userId) {
       toast.error("অনুগ্রহ করে আগে লগইন করুন!");
+      setFormType("login");
+      setOpen(true);
       return;
     }
 
@@ -68,28 +72,28 @@ const BookmarkButton = ({ jobId }: Props) => {
   };
 
   return (
-<Button
-  variant="ghost"
-  onClick={toggleBookmark}
-  disabled={isAdding || isRemoving || isFetching}
-  aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
-  className={`
+    <Button
+      variant="ghost"
+      onClick={toggleBookmark}
+      disabled={isAdding || isRemoving || isFetching}
+      aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
+      className={`
     relative flex items-center justify-center rounded-full 
     w-8 h-8 p-0 backdrop-blur-sm transition-all duration-300
     hover:shadow-lg  hover:scale-105 
     focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer
-    ${bookmarked 
-      ? "bg-green-700 dark:bg-green-800 text-white hover:bg-green-700 dark:text-green-400" 
-      : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-700"}
+    ${bookmarked
+          ? "bg-green-700 dark:bg-green-800 text-white hover:bg-green-700 dark:text-green-400"
+          : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-700"}
   `}
->
-  <Heart
-    className={`
+    >
+      <Heart
+        className={`
       w-6 h-6 transition-transform duration-200 
       ${bookmarked ? "text-white" : "hover:scale-110"}
     `}
-  />
-</Button>
+      />
+    </Button>
   );
 };
 

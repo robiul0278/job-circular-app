@@ -8,10 +8,8 @@ import { logout } from "@/redux/features/authSlice";
 import { RootState } from "@/redux/store";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
 import DarkButton from "../DarkButton";
 import { Button } from "../ui/button";
-import AuthModal from "../auth/auth-modal";
 import BookmarkNavButton from "../BookmarkNav";
 import { useAuthModal } from "@/context/AuthModalContext";
 
@@ -30,18 +28,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { setOpen, setFormType } = useAuthModal();
 
-  const handleLogout = () => {
+const handleLogout = () => {
     localStorage.removeItem("accessToken");
     dispatch(logout());
     router.replace('/');
   };
 
-    const handleLoginClick = () => {
-    setFormType("login"); // আপনি চাইলে "register" বা "forget" ও দিতে পারেন
+const handleLoginClick = () => {
+    setFormType("login");
     setOpen(true);
   };
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <header className="w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 sticky top-0 z-50">
@@ -94,7 +92,7 @@ const Navbar = () => {
               </>
             ) : (
               <Button
-              onClick={handleLoginClick}
+                onClick={handleLoginClick}
                 variant="outline"
                 className="cursor-pointer text-white hover:text-white bg-green-700 hover:bg-green-800"
               >
@@ -153,7 +151,13 @@ const Navbar = () => {
                   </Button>
                 </>
               ) : (
-                <AuthModal />
+                <Button
+                  onClick={handleLoginClick}
+                  variant="outline"
+                  className="cursor-pointer text-white hover:text-white bg-green-700 hover:bg-green-800"
+                >
+                  লগইন
+                </Button>
               )}
             </div>
           </motion.div>

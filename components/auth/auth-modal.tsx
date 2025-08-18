@@ -6,7 +6,6 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "../ui/button";
 import LoginForm from "./login-form";
 import RegisterForm from "./register-form";
 import ForgetPasswordForm from "./forget-password";
@@ -29,12 +28,6 @@ const switchForm = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
-          variant="outline"
-          className="cursor-pointer text-white hover:text-white bg-green-700 hover:bg-green-800"
-        >
-          লগইন
-        </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-md rounded-xl dark:bg-gray-900">

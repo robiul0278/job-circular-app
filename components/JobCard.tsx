@@ -61,7 +61,7 @@ export function JobCard({ jobs }: JobProps) {
 
                 <div className="flex justify-between text-sm text-gray-700 dark:text-gray-300">
                   <div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Calendar1 className="size-4" />
                       <span className="font-medium">
                         শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
@@ -70,14 +70,14 @@ export function JobCard({ jobs }: JobProps) {
 
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Users className="size-4 text-gray-500 dark:text-gray-400" />
                       <span className="font-medium">
                         ডিপ্লোমা শূন্যপদঃ <strong>{job.vacancy}</strong> টি
                       </span>
                     </div>
                   </div>
-                  <div className="flex gap-4 items-center">
+                  <div className="flex gap-2 md:gap-4 lg:gap-4 items-center">
                     <Link
                       href={`/job/${job.slug}`}
                       className="px-3 py-1 rounded bg-green-700 text-white text-sm font-medium hover:bg-green-700 transition-colors duration-200"

@@ -31,7 +31,7 @@ export default async function Home() {
             <div className="flex justify-center my-6">
               <Button
                 asChild
-                size="lg"
+                size="sm"
                 className="group bg-green-700 hover:bg-green-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Link href="/jobs">

@@ -3,7 +3,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
 import LoginForm from "./login-form";
@@ -27,8 +26,8 @@ const switchForm = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-      </DialogTrigger>
+      {/* <DialogTrigger asChild>
+      </DialogTrigger> */}
 
       <DialogContent className="sm:max-w-md rounded-xl dark:bg-gray-900">
         <DialogTitle className="text-lg font-bold text-green-600 text-center">

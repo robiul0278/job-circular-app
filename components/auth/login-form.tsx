@@ -18,10 +18,14 @@ import { TGenericErrorResponse } from "@/types/types";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/redux/features/authSlice";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { switchForm: () => void, closeModal: () => void, goToForgetForm: () => void }) {
     const dispatch = useDispatch();
     const router = useRouter();
+    const [showPassword, setShowPassword] = useState(false);
+
     const [login] = useLoginUserMutation();
 
     const form = useForm<LoginFormType>({
@@ -86,20 +90,39 @@ export default function LoginForm({ switchForm, closeModal, goToForgetForm }: { 
                 <FormField
                     control={form.control}
                     name="password"
-                    render={({ field }) => (
-                        <FormItem>
-                            <Label htmlFor="password">Password</Label>
-                            <FormControl>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    placeholder="আপনার পাসওয়ার্ড লিখুন"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
+                    render={({ field }) => {
+                        return (
+                            <FormItem>
+                                <Label htmlFor="password">Password</Label>
+                                <div className="relative">
+                                    <FormControl>
+                                        <Input
+                                            id="password"
+                                            type={showPassword ? "text" : "password"}
+                                            placeholder="আপনার পাসওয়ার্ড লিখুন"
+                                            {...field}
+                                        />
+                                    </FormControl>
+
+                                    {/* 👁 Toggle button */}
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        className="absolute right-2 top-1/2 -translate-y-1/2"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? (
+                                            <EyeOff className="h-4 w-4" />
+                                        ) : (
+                                            <Eye className="h-4 w-4" />
+                                        )}
+                                    </Button>
+                                </div>
+                                <FormMessage />
+                            </FormItem>
+                        );
+                    }}
                 />
 
                 {/* 👉 Forget Password link */}

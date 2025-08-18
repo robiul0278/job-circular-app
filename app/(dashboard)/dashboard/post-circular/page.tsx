@@ -55,7 +55,7 @@ export default function PostCircularPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-foreground">নতুন চাকরির সার্কুলার যুক্ত করুন</h1>
+                    <h1 className="text-xl md:text-3xl font-bold text-foreground">নতুন চাকরির সার্কুলার যুক্ত করুন</h1>
                     <p className="text-sm mt-1 text-muted-foreground">
                         সার্কুলারের শিরোনাম, প্রতিষ্ঠান, ট্রেড, ডেডলাইন সহ প্রয়োজনীয় তথ্য যুক্ত করুন
                     </p>

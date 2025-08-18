@@ -44,8 +44,8 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <Card className="border rounded-lg overflow-hidden">
-                    <CardContent className="grid grid-cols-2 gap-6">
-                        <div className="space-y-8">
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                        <div className=" space-y-8">
                             {/*Title*/}
                             <FormField
                                 control={form.control}

@@ -9,9 +9,11 @@ import { toast } from "sonner";
 import { RegisterFormType } from "@/types/auth-types";
 import { useRegisterUserMutation } from "@/redux/api/api";
 import { TGenericErrorResponse } from "@/types/types";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function RegisterForm({ switchForm }: { switchForm: () => void }) {
-
+const [showPassword, setShowPassword] = useState(false);
   const [Register] = useRegisterUserMutation()
 
   const form = useForm<RegisterFormType>({
@@ -75,25 +77,43 @@ export default function RegisterForm({ switchForm }: { switchForm: () => void })
             </FormItem>
           )}
         />
+                <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => {
+                        return (
+                            <FormItem>
+                                <Label htmlFor="password">Password</Label>
+                                <div className="relative">
+                                    <FormControl>
+                                        <Input
+                                            id="password"
+                                            type={showPassword ? "text" : "password"}
+                                            placeholder="আপনার পাসওয়ার্ড লিখুন"
+                                            {...field}
+                                        />
+                                    </FormControl>
 
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <Label htmlFor="password">Password</Label>
-              <FormControl>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="কমপক্ষে ৬ অক্ষর"
-                  {...field}
+                                    {/* 👁 Toggle button */}
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        className="absolute right-2 top-1/2 -translate-y-1/2"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? (
+                                            <EyeOff className="h-4 w-4" />
+                                        ) : (
+                                            <Eye className="h-4 w-4" />
+                                        )}
+                                    </Button>
+                                </div>
+                                <FormMessage />
+                            </FormItem>
+                        );
+                    }}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
 
         <Button
           type="submit"

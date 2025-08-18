@@ -12,6 +12,7 @@ import { TGenericErrorResponse } from "@/types/types";
 import { useResetPasswordMutation } from "@/redux/api/api";
 import { useState } from "react";
 import { useAuthModal } from "@/context/AuthModalContext";
+import { Eye, EyeOff } from "lucide-react";
 
 type ResetPasswordFormValues = {
   newPassword: string;
@@ -20,7 +21,8 @@ type ResetPasswordFormValues = {
 const ResetPasswordPage = () => {
   const [serverError, setServerError] = useState<string | null>(null);
   const { setOpen, setFormType } = useAuthModal();
-
+ const [showPassword, setShowPassword] = useState(false);
+ 
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
   const token = searchParams.get("token") || "";
@@ -91,15 +93,31 @@ const ResetPasswordPage = () => {
                 render={({ field }) => (
                   <FormItem className="space-y-1">
                     <Label htmlFor="newPassword">নতুন পাসওয়ার্ড</Label>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        id="password"
-                        type="password"
-                        placeholder="নতুন পাসওয়ার্ড লিখুন"
-                        className="border-gray-300 focus:border-green-500 focus:ring focus:ring-indigo-200"
-                      />
-                    </FormControl>
+     <div className="relative">
+                                    <FormControl>
+                                        <Input
+                                            id="password"
+                                            type={showPassword ? "text" : "password"}
+                                            placeholder="আপনার পাসওয়ার্ড লিখুন"
+                                            {...field}
+                                        />
+                                    </FormControl>
+
+                                    {/* 👁 Toggle button */}
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        className="absolute right-2 top-1/2 -translate-y-1/2"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? (
+                                            <EyeOff className="h-4 w-4" />
+                                        ) : (
+                                            <Eye className="h-4 w-4" />
+                                        )}
+                                    </Button>
+                                </div>
                     <FormMessage className="text-amber-600 text-sm" />
                     {serverError && (
                       <p className="text-amber-600 text-sm">{serverError}</p>

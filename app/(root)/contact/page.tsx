@@ -9,6 +9,31 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "যোগাযোগ করুন | Diploma Jobs BD",
+  description:
+    "Diploma Jobs BD টিমের সাথে যোগাযোগ করুন যেকোন প্রশ্ন, সহযোগিতা বা বিজ্ঞাপন সংক্রান্ত তথ্যের জন্য।",
+  alternates: {
+    canonical: "https://diplomajobsbd.com/contact",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://diplomajobsbd.com/contact",
+    title: "যোগাযোগ করুন | Diploma Jobs BD",
+    description:
+      "Diploma Jobs BD টিমের সাথে যোগাযোগ করুন যেকোন প্রশ্ন বা সহযোগিতার জন্য।",
+    images: [
+      {
+        url: "https://diplomajobsbd.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Diploma Jobs BD",
+      },
+    ],
+  },
+};
 
 const faqs = [
   {

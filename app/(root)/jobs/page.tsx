@@ -9,6 +9,43 @@ import JobDepartments from "@/components/JobDepartments";
 import ResetQuery from "@/components/ResetQuery";
 import { categoryToBangla, departmentToBangla } from "@/utils/utils";
 import Breadcrumb from "@/components/Breadcrumb";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "সকল চাকরির সার্কুলার | Diploma Jobs BD",
+  description:
+    "ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সর্বশেষ সকল সরকারি ও বেসরকারি চাকরির সার্কুলার এক জায়গায়। সহজ ফিল্টারিং অপশনে দ্রুত খুঁজে নিন আপনার উপযুক্ত চাকরি।",
+  alternates: {
+    canonical: "https://diplomajobsbd.com/jobs",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://diplomajobsbd.com/jobs",
+    title: "সকল চাকরির সার্কুলার | Diploma Jobs BD",
+    description:
+      "ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সরকারি, বেসরকারি, টেক্সটাইলসহ বিভিন্ন চাকরির সার্কুলার দেখুন ও ফিল্টার করুন।",
+    images: [
+      {
+        url: "https://diplomajobsbd.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "সকল চাকরির সার্কুলার - Diploma Jobs BD",
+      },
+    ],
+  },
+  keywords: [
+    "ডিপ্লোমা চাকরি",
+    "সকল চাকরির সার্কুলার",
+    "ডিপ্লোমা সরকারি চাকরি",
+    "ডিপ্লোমা বেসরকারি চাকরি",
+    "Diploma engineer jobs in Bangladesh",
+    "ডিপ্লোমা চাকরির খবর",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default async function JobsPage({ searchParams }: {
   searchParams: Promise<{

@@ -1,5 +1,31 @@
 import { CheckCircle, FileText, Scale, Shield, XCircle } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "শর্তাবলী | Diploma Jobs BD",
+  description:
+    "Diploma Jobs BD ব্যবহারের জন্য প্রযোজ্য সকল শর্তাবলী এবং নীতিমালা। আমাদের প্ল্যাটফর্ম ব্যবহার করার আগে শর্তাবলী ভালোভাবে পড়ুন।",
+  alternates: {
+    canonical: "https://diplomajobsbd.com/terms-of-service",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://diplomajobsbd.com/terms-of-service",
+    title: "শর্তাবলী | Diploma Jobs BD",
+    description:
+      "Diploma Jobs BD ব্যবহারের শর্তাবলী ও নীতিমালা।",
+    images: [
+      {
+        url: "https://diplomajobsbd.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Terms of Service - Diploma Jobs BD",
+      },
+    ],
+  },
+};
+
 
 export default async function TermsOfServicePage() {
   return (

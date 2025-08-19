@@ -1,6 +1,31 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, FileText, Lock, Shield, Users } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "প্রাইভেসি পলিসি | Diploma Jobs BD",
+  description:
+    "Diploma Jobs BD এর প্রাইভেসি পলিসি: আমরা আপনার ব্যক্তিগত তথ্যের সুরক্ষা এবং ডেটা গোপনীয়তাকে সর্বাধিক গুরুত্ব দেই।",
+  alternates: {
+    canonical: "https://diplomajobsbd.com/privacy-policy",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://diplomajobsbd.com/privacy-policy",
+    title: "প্রাইভেসি পলিসি | Diploma Jobs BD",
+    description:
+      "Diploma Jobs BD ব্যবহারকারীর তথ্যের নিরাপত্তা ও প্রাইভেসি নিশ্চিত করে।",
+    images: [
+      {
+        url: "https://diplomajobsbd.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy Diploma Jobs BD",
+      },
+    ],
+  },
+};
 
 export default async function PrivacyPolicyPage() {
   return (

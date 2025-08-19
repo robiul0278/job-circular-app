@@ -3,6 +3,31 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "আমাদের সম্পর্কে | Diploma Jobs BD",
+  description:
+    "Diploma Jobs BD হলো ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সর্বশেষ সরকারি ও বেসরকারি চাকরির সার্কুলার প্রকাশের নির্ভরযোগ্য প্ল্যাটফর্ম। আমাদের লক্ষ্য ডিপ্লোমা পাশ করা শিক্ষার্থীদের জন্য সহজ চাকরি অনুসন্ধান ও ক্যারিয়ার গাইডলাইন প্রদান।",
+  alternates: {
+    canonical: "https://diplomajobsbd.com/about",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://diplomajobsbd.com/about",
+    title: "আমাদের সম্পর্কে | Diploma Jobs BD",
+    description:
+      "Diploma Jobs BD – শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির সার্কুলার ও ক্যারিয়ার তথ্য।",
+    images: [
+      {
+        url: "https://diplomajobsbd.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "About Diploma Jobs BD",
+      },
+    ],
+  },
+};
 
 export default function AboutPage() {
   return (

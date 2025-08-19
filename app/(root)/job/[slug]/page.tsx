@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardContent,
@@ -16,64 +15,158 @@ import SocialShare from "@/components/SocialShare";
 
 export const dynamic = "force-static";
 
+type Job = {
+  _id: string;
+  title: string;
+  description: string;
+  companyName: string;
+  deadline: string;
+  slug: string;
+  images: string[];
+  location?: string;
+  createdAt?: string;
+};
+
+// ✅ Dynamic Metadata
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const slug = (await params).slug;
+  const slugs = decodeURIComponent(slug);
+  const job: Job = await getSingleJob(slug);
+
+  return {
+    title: `${job.title} | ${job.companyName} - Diploma Jobs BD`,
+    description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
+    alternates: {
+      canonical: `https://diplomajobsbd.com/jobs/${slugs}`,
+    },
+    openGraph: {
+      type: "article",
+      url: `https://diplomajobsbd.com/jobs/${slugs}`,
+      title: `${job.title} | ${job.companyName}`,
+      description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
+      siteName: "Diploma Jobs BD",
+      images: job.images?.length
+        ? job.images.map((src) => ({
+            url: src,
+            width: 1200,
+            height: 630,
+            alt: `${job.title} - Diploma Jobs BD`,
+          }))
+        : [
+            {
+              url: "https://diplomajobsbd.com/og-image.jpg",
+              width: 1200,
+              height: 630,
+              alt: `${job.title} - Diploma Jobs BD`,
+            },
+          ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${job.title} | ${job.companyName}`,
+      description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
+      images: job.images?.length
+        ? job.images
+        : ["https://diplomajobsbd.com/og-image.jpg"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+// ✅ Page Component
 const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const slug = (await params).slug;
-  const singleJob = await getSingleJob(slug);
+  const job: Job = await getSingleJob(slug);
 
   const {
+    _id,
     title,
     companyName,
-    deadline, 
-    images,
+    deadline,
+    images = [],
     description,
-  } = singleJob;
+    location = "Bangladesh",
+    createdAt,
+  } = job;
 
   return (
-    <section className="max-w-6xl mx-auto  md:py-4 lg:py-4 p-1 lg-p-0 ">
+    <section className="max-w-6xl mx-auto md:py-4 lg:py-4 p-1 lg-p-0">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* Main Content */}
-        <div className="lg:col-span-3 ">
+        <div className="lg:col-span-3">
           <Card className="rounded-lg p-0 md:p-2 lg:p-2 gap-0">
             <CardHeader className="m-1 p-2 pt-2 dark:bg-gray-800 rounded-lg shadow-sm">
-              {/* Top: Title and Bookmark */}
-                <CardTitle className="text-xl  dark:text-slate-200">{title}</CardTitle>
+              <CardTitle className="text-xl dark:text-slate-200">{title}</CardTitle>
               <h2 className="font-medium text-green-600 dark:text-green-400">
                 {companyName}
               </h2>
-                    {/*CircularTime */}
               <CircularTime deadline={deadline} />
             </CardHeader>
 
             <CardContent className="px-2 pb-3">
-              {/*Markdown Preview */}
               <MarkdownPreview description={description} />
-              {/*Job Image Preview */}
+
               {images.length > 0 && (
                 <div className="mt-4 grid grid-cols-1 gap-4">
-                  {images.map((src: string, idx: number) => (
-                    <ImageWithDownload key={idx} src={src} index={idx}  title={title} />
+                  {images.map((src, idx) => (
+                    <ImageWithDownload key={idx} src={src} index={idx} title={title} />
                   ))}
                 </div>
               )}
-              {/* ✅ Social Share Buttons */}
-              <SocialShare/>
+
+              <SocialShare />
             </CardContent>
           </Card>
         </div>
 
         {/* Sidebar */}
         <aside className="space-y-4">
-
           <Telegram />
-           <ShowMoreJobs />
+          <ShowMoreJobs />
         </aside>
       </div>
 
-
       {/* Views */}
       <div className="fixed bottom-4 left-4 z-50">
-        <Views id={singleJob?._id} />
+        <Views id={_id} />
       </div>
+
+      {/* ✅ JSON-LD JobPosting Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "JobPosting",
+            title,
+            description,
+            hiringOrganization: {
+              "@type": "Organization",
+              name: companyName,
+              sameAs: "https://diplomajobsbd.com",
+              logo: "https://diplomajobsbd.com/logo.png",
+            },
+            jobLocation: {
+              "@type": "Place",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: location,
+                addressCountry: "BD",
+              },
+            },
+            datePosted: createdAt || new Date().toISOString(),
+            validThrough: new Date(deadline).toISOString(),
+            employmentType: "FULL_TIME",
+            applicantLocationRequirements: {
+              "@type": "Country",
+              name: "Bangladesh",
+            },
+          }),
+        }}
+      />
     </section>
   );
 };

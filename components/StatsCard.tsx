@@ -12,7 +12,7 @@ const StatsCard = () => {
     { label: "চাকরির প্রস্তুতি", icon: BookOpen },
     { label: "পরীক্ষার সময়সূচী", icon: Calendar },
     { label: "পরীক্ষার ফলাফল", icon: CheckCircle },
-    { label: "ব্লগ", icon: FileText },
+    { label: "ব্লগ/নিউজ", icon: FileText },
   ];
 
   return (

@@ -15,24 +15,11 @@ import SocialShare from "@/components/SocialShare";
 
 export const dynamic = "force-static";
 
-type Job = {
-  _id: string;
-  title: string;
-  description: string;
-  companyName: string;
-  deadline: string;
-  slug: string;
-  images: string[];
-  banner?: string;
-  location?: string;
-  createdAt?: string;
-};
-
 // ✅ Dynamic Metadata
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
   const slugs = decodeURIComponent(slug);
-  const job: Job = await getSingleJob(slug);
+  const job = await getSingleJob(slug);
 
   const bannerImage = job.banner
     ? job.banner
@@ -65,6 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
       images: [bannerImage],
     },
+  
     robots: {
       index: true,
       follow: true,
@@ -75,17 +63,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // ✅ Page Component
 const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const slug = (await params).slug;
-  const job: Job = await getSingleJob(slug);
+  const job = await getSingleJob(slug);
 
   const {
     _id,
     title,
     companyName,
     deadline,
-    images = [],
+    images,
     description,
-    location = "Bangladesh",
-    createdAt,
   } = job;
 
   return (
@@ -107,7 +93,7 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
 
               {images.length > 0 && (
                 <div className="mt-4 grid grid-cols-1 gap-4">
-                  {images.map((src, idx) => (
+                  {images.map((src: string, idx: number) => (
                     <ImageWithDownload key={idx} src={src} index={idx} title={title} />
                   ))}
                 </div>
@@ -129,40 +115,6 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
       <div className="fixed bottom-4 left-4 z-50">
         <Views id={_id} />
       </div>
-
-      {/* ✅ JSON-LD JobPosting Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "JobPosting",
-            title,
-            description,
-            hiringOrganization: {
-              "@type": "Organization",
-              name: companyName,
-              sameAs: "https://diplomajobsbd.com",
-              logo: "https://diplomajobsbd.com/logo.png",
-            },
-            jobLocation: {
-              "@type": "Place",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: location,
-                addressCountry: "BD",
-              },
-            },
-            datePosted: createdAt || new Date().toISOString(),
-            validThrough: new Date(deadline).toISOString(),
-            employmentType: "FULL_TIME",
-            applicantLocationRequirements: {
-              "@type": "Country",
-              name: "Bangladesh",
-            },
-          }),
-        }}
-      />
     </section>
   );
 };

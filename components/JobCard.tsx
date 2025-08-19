@@ -77,10 +77,10 @@ export function JobCard({ jobs }: JobProps) {
                       </span>
                     </div>
                   </div>
-                  <div className="flex gap-2 md:gap-4 lg:gap-4 items-center">
+                  <div className="flex gap-1 md:gap-4 lg:gap-4 items-center">
                     <Link
                       href={`/job/${job.slug}`}
-                      className="px-3 py-1 rounded bg-green-700 text-white text-sm font-medium hover:bg-green-700 transition-colors duration-200"
+                      className="px-1 md:px-3 lg:px-3 py-1 rounded bg-green-700 text-white text-sm font-medium hover:bg-green-700 transition-colors duration-200"
                     >
                       বিস্তারিত দেখুন
                     </Link>

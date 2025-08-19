@@ -23,6 +23,7 @@ type Job = {
   deadline: string;
   slug: string;
   images: string[];
+  banner?: string;
   location?: string;
   createdAt?: string;
 };
@@ -32,6 +33,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const slug = (await params).slug;
   const slugs = decodeURIComponent(slug);
   const job: Job = await getSingleJob(slug);
+
+  const bannerImage = job.banner
+    ? job.banner
+    : "https://diplomajobsbd.com/og-image.jpg"; // fallback
 
   return {
     title: `${job.title} | ${job.companyName} - Diploma Jobs BD`,
@@ -45,29 +50,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${job.title} | ${job.companyName}`,
       description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
       siteName: "Diploma Jobs BD",
-      images: job.images?.length
-        ? job.images.map((src) => ({
-            url: src,
-            width: 1200,
-            height: 630,
-            alt: `${job.title} - Diploma Jobs BD`,
-          }))
-        : [
-            {
-              url: "https://diplomajobsbd.com/og-image.jpg",
-              width: 1200,
-              height: 630,
-              alt: `${job.title} - Diploma Jobs BD`,
-            },
-          ],
+      images: [
+        {
+          url: bannerImage,
+          width: 1200,
+          height: 630,
+          alt: `${job.title} - Diploma Jobs BD`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${job.title} | ${job.companyName}`,
       description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
-      images: job.images?.length
-        ? job.images
-        : ["https://diplomajobsbd.com/og-image.jpg"],
+      images: [bannerImage],
     },
     robots: {
       index: true,

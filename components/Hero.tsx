@@ -1,6 +1,5 @@
 import SearchForm from "./SearchForm";
 import Categories from "./Categories";
-import Departments from "./Departments";
 import StatsCard from "./StatsCard";
 import Image from "next/image";
 
@@ -14,7 +13,7 @@ export type TDepartments = {
   department: string;
 };
 
-export default function Hero({categories, departments}:{categories: TCategories[]; departments:TDepartments[]}) {
+export default function Hero({categories,}:{categories: TCategories[]; departments:TDepartments[]}) {
     return (
         <section className="hero px-2 md:px-0 py-12 lg:py-16">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-10 items-center  justify-between">
@@ -33,7 +32,7 @@ export default function Hero({categories, departments}:{categories: TCategories[
                     <SearchForm />
                     {/* Stats Cards */}
                     <Categories categories={categories}/>
-                    <Departments departments={departments}/>
+                    {/* <Departments departments={departments}/> */}
                     {/* Stats Row */}
                     <StatsCard />
                 </div>

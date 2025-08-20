@@ -1,11 +1,9 @@
-
 import { ChevronRight } from "lucide-react";
 import { JobCard } from "@/components/JobCard";
 import { getAllJobQuery } from "@/lib/api";
 import Pagination from "@/components/Pagination";
 import SearchForm from "@/components/SearchForm";
 import JobCategory from "@/components/JobCategories";
-import JobDepartments from "@/components/JobDepartments";
 import ResetQuery from "@/components/ResetQuery";
 import { categoryToBangla, departmentToBangla } from "@/utils/utils";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -66,7 +64,7 @@ export default async function JobsPage({ searchParams }: {
     page: currentPage.toString(),
   };
 
-  const { result, meta, categories, departments } = await getAllJobQuery({ params });
+  const { result, meta, categories } = await getAllJobQuery({ params });
 
   return (
     <>
@@ -104,7 +102,7 @@ export default async function JobsPage({ searchParams }: {
             style={{ minHeight: 'auto' }}
           >
             <JobCategory categories={categories} />
-            <JobDepartments departments={departments} />
+            {/* <JobDepartments departments={departments} />  */}
 
             <div className="flex items-center my-4 mx-2 gap-2">
               {/* Left content */}

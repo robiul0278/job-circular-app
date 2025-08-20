@@ -13,7 +13,7 @@ export type TDepartments = {
   department: string;
 };
 
-export default function Hero({categories,}:{categories: TCategories[]; departments:TDepartments[]}) {
+export default function Hero({categories}:{categories: TCategories[]}) {
     return (
         <section className="hero px-2 md:px-0 py-12 lg:py-16">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-10 items-center  justify-between">

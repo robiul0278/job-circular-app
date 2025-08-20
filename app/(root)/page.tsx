@@ -11,13 +11,13 @@ import ShowMoreJobs from "@/components/ShowMoreJobs";
 export const dynamic = "force-static";
 
 export default async function Home() {
-  const { result, categories, departments } = await getJobs();
+  const { result, categories } = await getJobs();
   const notice = await getNotice();
 
   return (
     <>
       <NoticeMarquee notice={notice} />
-      <Hero categories={categories} departments={departments}/>
+      <Hero categories={categories}/>
       <section className="max-w-6xl space-y-2 mx-auto px-2 pb-2 lg:p-0">
         <h1 className="text-xl md:text-2xl lg:text-2xl font-bold pt-2 pb-1 pl-2 text-slate-700 dark:text-slate-300 flex items-center ">
           <BriefcaseBusiness className="size-8 pr-2 pb-1 text-slate-700 dark:text-slate-300" />

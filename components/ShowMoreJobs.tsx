@@ -16,14 +16,12 @@ export default async function ShowMoreJobs() {
             <h2 className="text-lg font-bold mb-3 text-slate-700  dark:text-slate-200">
                 সরকারি চাকরির বিজ্ঞপ্তি
             </h2>
-
             {result.length > 0 ? (
                 <ul className="space-y-2">
                     {result.map((job: IJobCircular) => (
                         <li
                             key={job._id}
-                            className="border-b border-gray-200 dark:border-gray-700 pb-2 last:border-none"
-                        >
+                            className="border-b border-gray-200 dark:border-gray-700 pb-2 last:border-none">
                             <Link
                                 href={`/job/${job.slug}`}
                                 className="block group"

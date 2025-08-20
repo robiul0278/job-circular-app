@@ -49,7 +49,7 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
         className="flex-1 min-w-[140px]" // ensures each card uses space evenly
       >
         <Card
-          className={`relative p-4 rounded-lg shadow-sm transition-all duration-300 ease-in-out cursor-pointer select-none
+          className={`relative p-4 rounded-lg shadow-sm transition-all duration-300 ease-in-out cursor-pointer select-none px-0
             ${isSelected
               ? "bg-green-800 text-white border border-green-600 shadow-lg"
               : "border-dashed border-green-800 hover:bg-green-50 dark:bg-gray-900 dark:hover:bg-green-900"

@@ -9,7 +9,7 @@ export function formatDate(date: string) {
 
 export function formatDateTime(date: string) {
   return new Date(date).toLocaleString('en-GB', {
-    month: 'long',
+    month: 'short',
     day: 'numeric',
     year: 'numeric',
     hour: '2-digit',
@@ -18,7 +18,6 @@ export function formatDateTime(date: string) {
     timeZone: 'Asia/Dhaka',
   });
 }
-
 
 export function deadlineCountdown(deadline: string | Date): string {
   // Always get "now" in Dhaka time

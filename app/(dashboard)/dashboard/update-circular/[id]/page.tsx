@@ -27,7 +27,7 @@ export default function UpdateCircularPage({ params }: PageProps) {
             vacancy: "",
             deadline: undefined,
             categories: undefined,
-            departments: [],
+            // departments: [],
             description: "",
             banner: "",
             images: [],

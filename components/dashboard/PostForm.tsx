@@ -17,14 +17,13 @@ import ImageUploadInput from './ImageUploadInput';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import MultiImageUploadInput from './MultiImageUploadInput';
 import { Textarea } from '../ui/textarea';
-import { formatQuery } from '@/utils/utils';
 
 const categories = [
     { value: "govt", name: "সরকারি চাকরি" },
     { value: "private", name: "বেসরকারি চাকরি" },
 ];
 
-const departments = [
+export const departments = [
     'engineering',
     'marine',
     'textile',
@@ -147,7 +146,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                     </CardContent>
                 </Card>
 
-                <Card className="border rounded-lg overflow-hidden">
+                {/* <Card className="border rounded-lg overflow-hidden">
                     <CardContent className="">
                         <FormField
                             control={form.control}
@@ -183,7 +182,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                             )}
                         />
                     </CardContent>
-                </Card>
+                </Card> */}
                 <Card className="border rounded-lg overflow-hidden">
                     <CardContent className="space-y-8 flex flex-col md:flex-row">
                         <div className="flex-2/6">

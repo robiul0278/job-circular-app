@@ -178,7 +178,7 @@ export default function AllCircularPage() {
                 <TableRow>
                   <TableHead className="text-foreground font-semibold">Job Title</TableHead>
                   <TableHead className="text-foreground font-semibold">Organization</TableHead>
-                  <TableHead className="text-foreground font-semibold">Departments/Vacancy</TableHead>
+                  <TableHead className="text-foreground font-semibold">Vacancy</TableHead>
                   <TableHead className="text-foreground font-semibold">Views</TableHead>
                   <TableHead className="text-foreground font-semibold text-right">Action</TableHead>
                 </TableRow>
@@ -203,14 +203,6 @@ export default function AllCircularPage() {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div className="text-xs  flex items-center gap-1">
-                        {circular?.departments.map((d, index) => (
-                          <span key={index}>
-                            {formatQuery(d)}
-                            {index < circular.departments.length - 1 && " |"}
-                          </span>
-                        ))}
-                      </div>
                            <div className="text-xs text-muted-foreground flex items-center">
                         <User className="h-3 w-3 mr-1" />
                         {circular.vacancy}

@@ -10,7 +10,7 @@ export interface IJobCircular {
   vacancy: string;
   deadline: string;
   categories: Categories;
-  departments: string[];
+  departments?: string[];
   description: string;
   views: number;
   createdAt: string;

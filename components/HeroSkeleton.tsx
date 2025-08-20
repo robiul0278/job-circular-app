@@ -14,15 +14,6 @@ export default function HeroSkeleton() {
             <Skeleton className="w-64 h-6 rounded-md" />
           </div>
 
-          {/* Categories & Departments Skeleton (like Cards) */}
-          <div className="flex flex-col md:flex-row lg:flex-row gap-2">
-            {[1, 2, 3].map((_, i) => (
-              <Skeleton
-                key={i}
-                className="flex-1 h-16 rounded-md"
-              />
-            ))}
-          </div>
           <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
             <Skeleton className="w-full h-6 rounded-md mb-4" />
             <div className="grid grid-cols-3 md:grid-cols-3 gap-2">

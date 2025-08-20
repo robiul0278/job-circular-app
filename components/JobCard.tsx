@@ -23,7 +23,6 @@ export function JobCard({ jobs }: JobProps) {
     <ul>
       {jobs?.map((job) => (
         <li key={job._id} className="list-none w-full mb-4 group">
-
           <div className="relative flex flex-col sm:flex-row 
   dark:bg-gray-900 
   border border-gray-200 dark:border-gray-700 
@@ -46,7 +45,6 @@ export function JobCard({ jobs }: JobProps) {
                 {categoryToBangla(job.categories)}
               </Badge>
             </Link>
-
             {/* Right Content */}
             <div className="relative flex flex-col sm:w-2/3 p-3">
               <div className="flex-1 pb-6">
@@ -58,16 +56,13 @@ export function JobCard({ jobs }: JobProps) {
                     {job.companyName}
                   </div>
                 </Link>
-
                 <div className="flex justify-between text-sm text-gray-700 dark:text-gray-300">
                   <div>
                     <div className="flex items-center gap-1">
                       <Calendar1 className="size-4" />
                       <span className="font-medium">
                         শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
-
                       </span>
-
                     </div>
 
                     <div className="flex items-center gap-1">
@@ -88,7 +83,6 @@ export function JobCard({ jobs }: JobProps) {
                   </div>
                 </div>
               </div>
-
               {/* Sticky Footer */}
               <div className="absolute bottom-0 left-0 w-full px-3 py-1 border-t border-gray-200 dark:border-gray-700  dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 ">
                 <div className="flex items-center gap-1">

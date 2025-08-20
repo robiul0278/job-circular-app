@@ -31,8 +31,8 @@ const departments = [
     'agriculture',
     'nursing',
     'medical',
+    'pharmacy'
 ];
-
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {
     ssr: false,

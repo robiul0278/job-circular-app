@@ -5,7 +5,7 @@ import {
     TableCell,
     TableRow,
 } from "@/components/ui/table";
-import { deadlineCountdown, formatDate } from "@/utils/format-date";
+import { deadlineCountdown, formatDateTime } from "@/utils/format-date";
 
 
 export default async function JobCircularTimeTable({deadline}:{deadline: string}) {
@@ -18,7 +18,7 @@ export default async function JobCircularTimeTable({deadline}:{deadline: string}
           <Clock4 className="w-4 h-4" />
           <span>আবেদনের শেষ তারিখঃ</span>
         </TableCell>
-        <TableCell className="text-right px-0 py-1">{formatDate(deadline)}</TableCell>
+        <TableCell className="text-right px-0 py-1">{formatDateTime(deadline)}</TableCell>
       </TableRow>
 
       <TableRow>

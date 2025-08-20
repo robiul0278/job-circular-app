@@ -7,7 +7,7 @@ import 'ldrs/react/Ping.css';
 const PingLoader = () => {
   const { theme } = useTheme();
 
-  const pingColor = theme === 'dark' ? 'white' : 'black';
+  const pingColor = theme === 'dark' ? 'white' : 'green';
 
   return (
     <Ping

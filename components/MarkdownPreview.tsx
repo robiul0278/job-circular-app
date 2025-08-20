@@ -73,7 +73,7 @@ export default async function MarkdownPreview({ description, className = '' }: M
       return <h6 className="text-sm font-semibold text-gray-900 dark:text-white mt-4 mb-1">{children}</h6>;
     },
     p({ children }) {
-      return <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">{children}</p>;
+      return <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">{children}</p>;
     },
     ul({ children }) {
       return <ul className="text-gray-700 dark:text-gray-300 space-y- mb-4 list-disc list-inside">{children}</ul>;

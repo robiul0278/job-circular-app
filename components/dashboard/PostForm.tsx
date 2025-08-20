@@ -29,9 +29,8 @@ const departments = [
     'marine',
     'textile',
     'agriculture',
-    'livestock',
-    'fisheries',
-    'forestry',
+    'nursing',
+    'medical',
 ];
 
 

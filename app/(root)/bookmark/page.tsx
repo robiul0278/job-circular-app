@@ -71,7 +71,7 @@ export default function BookmarkPage() {
 
   // Main content
   return (
-    <section className="max-w-6xl mx-auto px-3 md:px-0 py-12">
+    <section className="max-w-6xl mx-auto px-3 md:px-2 lg:px-0 py-12">
       <h1 className="text-4xl font-extrabold mb-10 text-foreground">
         Your Saved Jobs
       </h1>

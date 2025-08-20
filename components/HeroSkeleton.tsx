@@ -2,7 +2,7 @@ import { Skeleton } from "./ui/skeleton";
 
 export default function HeroSkeleton() {
   return (
-    <section className="hero px-2 md:px-0 lg:px-0 py-6 md:py-12 lg:py-12">
+    <section className="hero px-2 md:px-2 lg:px-0 py-6 md:py-12 lg:py-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
         {/* Left Side */}

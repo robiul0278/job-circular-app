@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 
 export default function Loading() {
   return (
-    <section className="max-w-6xl mx-auto py-2 px-2 md:px-0 lg:px-0">
+    <section className="max-w-6xl mx-auto py-2 px-2 md:px-2 lg:px-0">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         {/* Main Content */}
         <div className="lg:col-span-3 space-y-8">

@@ -12,8 +12,8 @@ export default async function ShowMoreJobs() {
     const { result } = await getAllJobQuery({ params });
 
     return (
-        <div className="border shadow p-4 rounded-lg">
-            <h2 className="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">
+        <div className="border shadow p-4 rounded-lg dark:bg-gray-900">
+            <h2 className="text-lg font-bold mb-3 text-slate-700  dark:text-slate-200">
                 সরকারি চাকরির বিজ্ঞপ্তি
             </h2>
 

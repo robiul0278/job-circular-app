@@ -37,7 +37,6 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
     return <Users />;
   };
 
-
   return (
 <div className="flex flex-wrap gap-2 md:gap-2 lg:gap-2">
   {categories?.map((category: TCategories, i: number) => {

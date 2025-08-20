@@ -61,10 +61,8 @@ const toggleMenu = () => setIsOpen(!isOpen);
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center justify-center flex-grow gap-6">
             {menuItems.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <span className="text-[16px] font-medium text-gray-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition">
-                  {item.name}
-                </span>
+              <Link key={item.name} href={item.href} className="hover:text-green-600 dark:hover:text-green-400 transition-colors duration-200 relative after:absolute after:-bottom-0.5 after:left-0 after:w-0 after:h-[2px] after:bg-green-500 after:transition-all hover:after:w-full">
+              {item.name}
               </Link>
             ))}
           </div>

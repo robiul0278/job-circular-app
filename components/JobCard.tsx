@@ -22,7 +22,7 @@ export function JobCard({ jobs }: JobProps) {
   return (
     <ul>
       {jobs?.map((job) => (
-        <li key={job._id} className="list-none w-full mb-4">
+        <li key={job._id} className="list-none w-full mb-4 group">
 
           <div className="relative flex flex-col sm:flex-row 
   dark:bg-gray-900 
@@ -50,11 +50,11 @@ export function JobCard({ jobs }: JobProps) {
             {/* Right Content */}
             <div className="relative flex flex-col sm:w-2/3 p-3">
               <div className="flex-1 pb-6">
-                <Link href={`/job/${job.slug}`} className="cursor-pointer" >
-                  <h3 className="text-lg leading-tight font-semibold group-hover:text-green-800 dark:group-hover:text-green-400 transition-colors">
+                <Link href={`/job/${job.slug}`} className=" cursor-pointer" >
+                  <h3 className="text-lg leading-tight font-semibold group-hover:underline dark:group-hover:underline ">
                     {job.title}
                   </h3>
-                  <div className="text-sm font-medium text-green-800 dark:text-green-600 flex items-center gap-1 mb-2">
+                  <div className="text-sm font-medium text-green-700 dark:text-green-500 flex items-center gap-1 mb-2">
                     {job.companyName}
                   </div>
                 </Link>

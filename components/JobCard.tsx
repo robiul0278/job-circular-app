@@ -92,7 +92,7 @@ export function JobCard({ jobs }: JobProps) {
               {/* Sticky Footer */}
               <div className="absolute bottom-0 left-0 w-full px-3 py-1 border-t border-gray-200 dark:border-gray-700  dark:bg-gray-900 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 ">
                 <div className="flex items-center gap-1">
-                  <Clock size={13} />
+                  <Clock size={13} className="mb-0.5" />
                   {timeAgo(job.createdAt)}
                 </div>
                 <div className="flex items-center gap-1">

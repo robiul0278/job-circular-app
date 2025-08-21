@@ -22,7 +22,6 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
     });
   };
 
-  // প্রতিটা ক্যাটাগরির জন্য আইকন সিলেকশন
   const getIcon = (category: string) => {
     if (category === "govt") {
       return (

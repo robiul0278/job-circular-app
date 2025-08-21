@@ -15,7 +15,6 @@ export default function PostCircularPage() {
         defaultValues: {
             title: "",
             companyName: "",
-            vacancy: "",
             deadline: undefined,
             categories: undefined,
             description: "",

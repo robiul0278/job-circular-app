@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
     Card,
@@ -78,7 +77,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 )}
                             />
                         </div>
-                        {/*Title, Company Name, Vacancy,*/}
+                        {/*Title, Company Name*/}
                         <div className="space-y-4">
                             {/*Category Post*/}
                             <FormField
@@ -100,20 +99,6 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                                     ))}
                                                 </SelectContent>
                                             </Select>
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            {/*Vacancy*/}
-                            <FormField
-                                control={form.control}
-                                name="vacancy"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="vacancy">ডিপ্লোমাদের জন্য শূন্য পদঃ</Label>
-                                        <FormControl>
-                                            <Input id="vacancy" placeholder="N" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

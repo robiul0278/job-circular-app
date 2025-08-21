@@ -7,7 +7,7 @@ import { useGetBookmarkQuery, useRemoveBookmarkMutation } from "@/redux/api/api"
 import { TGenericErrorResponse, IJobCircular } from "@/types/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar1, Loader2, Trash2, Users } from "lucide-react";
+import { Calendar1, Loader2, Trash2} from "lucide-react";
 import { toast } from "sonner";
 import { formatDate } from "@/utils/format-date";
 
@@ -91,12 +91,6 @@ export default function BookmarkPage() {
                   <Calendar1 className="w-4 h-4 text-green-600 dark:text-green-400" />
                   <span>
                     শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                  <span>
-                    ডিপ্লোমা শূন্যপদঃ <strong>{job.vacancy}</strong> টি
                   </span>
                 </div>
               </div>

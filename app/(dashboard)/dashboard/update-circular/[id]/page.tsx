@@ -24,7 +24,6 @@ export default function UpdateCircularPage({ params }: PageProps) {
         values: SingleJob?.data || {
             title: "",
             companyName: "",
-            vacancy: "",
             deadline: undefined,
             categories: undefined,
             description: "",

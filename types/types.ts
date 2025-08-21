@@ -7,7 +7,6 @@ export interface IJobCircular {
   companyName: string;
   banner: string;
   images: string[];
-  vacancy: string;
   deadline: string;
   categories: Categories;
   description: string;

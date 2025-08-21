@@ -36,11 +36,7 @@ export default function Loading() {
               </div>
 
               <hr />
-
-              {/* Vacancy Section */}
-              <Skeleton className="h-5 w-1/2" />
               <Skeleton className="h-4 w-1/6" />
-
               <hr />
 
               {/* Markdown description */}

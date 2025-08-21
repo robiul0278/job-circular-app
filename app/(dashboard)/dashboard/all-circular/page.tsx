@@ -178,7 +178,6 @@ export default function AllCircularPage() {
                 <TableRow>
                   <TableHead className="text-foreground font-semibold">Job Title</TableHead>
                   <TableHead className="text-foreground font-semibold">Organization</TableHead>
-                  <TableHead className="text-foreground font-semibold">Vacancy</TableHead>
                   <TableHead className="text-foreground font-semibold">Views</TableHead>
                   <TableHead className="text-foreground font-semibold text-right">Action</TableHead>
                 </TableRow>
@@ -202,14 +201,6 @@ export default function AllCircularPage() {
                           {categoryToBangla(circular.categories)}</div>
                       </div>
                     </TableCell>
-                    <TableCell>
-                           <div className="text-xs text-muted-foreground flex items-center">
-                        <User className="h-3 w-3 mr-1" />
-                        {circular.vacancy}
-                      </div>
-                    </TableCell>
-
-                
                     <TableCell>
                       <div className="flex items-center text-muted-foreground">
                         <Eye className="h-4 w-4 mr-1" />

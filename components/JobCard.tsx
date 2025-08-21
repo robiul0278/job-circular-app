@@ -1,7 +1,6 @@
 import { formatDate } from "@/utils/format-date";
 import { timeAgo } from "@/utils/format-time";
 import {
-  Users,
   Clock,
   Eye,
   Calendar1,
@@ -62,13 +61,6 @@ export function JobCard({ jobs }: JobProps) {
                       <Calendar1 className="size-4" />
                       <span className="font-medium">
                         শেষ তারিখঃ <strong>{formatDate(job.deadline)}</strong>
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <Users className="size-4 text-gray-500 dark:text-gray-400" />
-                      <span className="font-medium">
-                        ডিপ্লোমা শূন্যপদঃ <strong>{job.vacancy}</strong> টি
                       </span>
                     </div>
                   </div>

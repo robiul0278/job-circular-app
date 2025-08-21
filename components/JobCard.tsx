@@ -55,7 +55,7 @@ export function JobCard({ jobs }: JobProps) {
                     {job.companyName}
                   </div>
                 </Link>
-                <div className="flex justify-between text-sm text-gray-700 dark:text-gray-300">
+                <div className="flex justify-between items-center text-sm text-gray-700 dark:text-gray-300">
                   <div>
                     <div className="flex items-center gap-1">
                       <Calendar1 className="size-4" />

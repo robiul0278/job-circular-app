@@ -21,7 +21,6 @@ import {
   Filter,
   TimerReset,
   Loader,
-  User,
   View,
 } from "lucide-react";
 import { useDeleteJobMutation, useGetAllJobsQuery } from "@/redux/api/api";

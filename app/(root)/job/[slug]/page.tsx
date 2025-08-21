@@ -32,14 +32,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: "The job you are looking for does not exist.",
     };
   }
+  
  const imageUrl = makeAbsoluteUrl(job.banner || "/default-banner.png");
+ const metaDescription = `${job.title} - ${job.companyName} এর নিয়োগ বিজ্ঞপ্তি। Find the latest diploma job circulars in Bangladesh.`;
 
   return {
     title: `${job.title} | Diploma Jobs BD`,
-    description: job.description?.slice(0, 150) || "Find the latest diploma job circulars in Bangladesh.",
+    description: metaDescription,
     openGraph: {
       title: `${job.title} | Diploma Jobs BD`,
-      description: job.description?.slice(0, 150) || "Find the latest diploma job circulars in Bangladesh.",
+      description: metaDescription,
       url: makeAbsoluteUrl(`/job/${slug}`),
       siteName: "Diploma Jobs BD",
       images: [
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: `${job.title} | Diploma Jobs BD`,
-      description: job.description?.slice(0, 150) || "Find the latest diploma job circulars in Bangladesh.",
+      description: metaDescription,
       images: [imageUrl],
     },
   };

@@ -27,8 +27,8 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
     if (category === "govt") {
       return (
         <Image
-          src="/govt.png"
-          alt="govt"
+          src="https://res.cloudinary.com/drt05bdfe/image/upload/v1755760189/uploads/bangladesh-govt-seeklogo.png"
+          alt="govt logo Bangladesh | Government Job | diploma job circular"
           width={25}
           height={25}
         />

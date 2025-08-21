@@ -34,8 +34,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
  const imageUrl = makeAbsoluteUrl(job.banner || "/default-banner.png");
 
- console.log(imageUrl);
-
   return {
     title: `${job.title} | Diploma Jobs BD`,
     description: job.description?.slice(0, 150) || "Find the latest diploma job circulars in Bangladesh.",

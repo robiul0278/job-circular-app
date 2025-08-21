@@ -13,6 +13,8 @@ const SocialShare = () => {
     const fullUrl = typeof window !== "undefined" ? window.location.href : "";
     const slugs = decodeURIComponent(fullUrl);
 
+    console.log(slugs);
+
     return (
         <div className="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
             <h3 className="text-sm font-medium mb-2">শেয়ার করুন:</h3>

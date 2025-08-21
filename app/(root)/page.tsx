@@ -1,9 +1,8 @@
 import { ArrowRight, BriefcaseBusiness, ChevronRight } from "lucide-react";
-import NoticeMarquee from "@/components/NoticeMarquee";
 import Telegram from "@/components/Telegram";
 import { JobCard } from "@/components/JobCard";
 import Hero from "@/components/Hero";
-import { getJobs, getNotice } from "@/lib/api";
+import { getJobs } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
@@ -12,11 +11,9 @@ export const dynamic = "force-static";
 
 export default async function Home() {
   const { result, categories } = await getJobs();
-  const notice = await getNotice();
 
   return (
     <>
-      <NoticeMarquee notice={notice} />
       <Hero categories={categories}/>
       <section className="max-w-6xl space-y-2 mx-auto px-2 pb-2 lg:p-0">
         <h1 className="text-xl md:text-2xl lg:text-2xl font-bold pt-2 pb-1 pl-2 text-slate-700 dark:text-slate-300 flex items-center ">

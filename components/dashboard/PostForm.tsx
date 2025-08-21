@@ -239,7 +239,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                 disabled={form.formState.isSubmitting}
                                 className="font-semibold py-2 cursor-pointer disabled:opacity-60"
                             >
-                                {form.formState.isSubmitting ? "🚀 Posting..." : "🚀 Click"}
+                                {form.formState.isSubmitting ? "🚀 Submitting..." : "🚀 Click"}
                             </Button>
                         </div>
                     </CardContent>

@@ -1,6 +1,5 @@
 "use client"
 import { useRouter } from "next/navigation";
-import { TDepartments } from "./Hero";
 import { Button } from "./ui/button";
 import { startTransition, useState } from "react";
 import { formatQuery } from "@/utils/utils";
@@ -11,7 +10,7 @@ type IDepartments = {
   department: string;
 };
 
-const Departments = ({ departments }: { departments: TDepartments[] }) => {
+const Departments = ({ departments }: { departments: IDepartments[] }) => {
   const router = useRouter();
   const [selectedDepartment, setSelectedDepartment] = useState<string>('');
 

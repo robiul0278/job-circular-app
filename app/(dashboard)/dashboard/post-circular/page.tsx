@@ -18,7 +18,6 @@ export default function PostCircularPage() {
             vacancy: "",
             deadline: undefined,
             categories: undefined,
-            // departments: [],
             description: "",
             banner: "",
             images: [],

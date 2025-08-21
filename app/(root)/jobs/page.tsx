@@ -102,8 +102,6 @@ export default async function JobsPage({ searchParams }: {
             style={{ minHeight: 'auto' }}
           >
             <JobCategory categories={categories} />
-            {/* <JobDepartments departments={departments} />  */}
-
             <div className="flex items-center my-4 mx-2 gap-2">
               {/* Left content */}
               <div className="flex-1">

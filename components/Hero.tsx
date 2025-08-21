@@ -8,11 +8,6 @@ export type TCategories = {
   count: number;
 };
 
-export type TDepartments = {
-  count: number;
-  department: string;
-};
-
 export default function Hero({categories}:{categories: TCategories[]}) {
     return (
         <section className="hero px-2 md:px-2 py-12 lg:py-16">
@@ -32,7 +27,6 @@ export default function Hero({categories}:{categories: TCategories[]}) {
                     <SearchForm />
                     {/* Stats Cards */}
                     <Categories categories={categories}/>
-                    {/* <Departments departments={departments}/> */}
                     {/* Stats Row */}
                     <StatsCard />
                 </div>

@@ -58,3 +58,11 @@ export function generateSlug(input: string): string {
     .replace(/^-+|-+$/g, '');     // শুরু ও শেষে dash কেটে ফেলে
 }
 
+// ---------------------
+// Helper: makeAbsoluteUrl
+// ---------------------
+export function makeAbsoluteUrl(path: string) {
+  if (!path) return "https://diplomajobsbd.com/default-banner.png";
+  if (path.startsWith("http")) return path;
+  return `https://diplomajobsbd.com${path}`;
+}

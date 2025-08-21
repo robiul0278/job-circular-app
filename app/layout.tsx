@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
   metadataBase: new URL("https://diplomajobsbd.com"),
   title: {
-    default: "ডিপ্লোমা চাকরির খবর - Diploma Jobs BD",
+    default: "Diploma Jobs in Bangladesh",
     template: "%s | ডিপ্লোমা চাকরির খবর",
   },
   description:
@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     "Diploma চাকরির খবর",
     "ডিপ্লোমা নিয়োগ বিজ্ঞপ্তি",
     "ডিপ্লোমা জবস বিডি",
+    "diploma jobs in bd",
+    "diploma jobs in bangladesh",
+    "bd gov jobs",
+    "bd govt jobs",
   ],
   alternates: {
     canonical: "https://diplomajobsbd.com",

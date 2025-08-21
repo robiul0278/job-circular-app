@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -12,67 +13,67 @@ import ShowMoreJobs from "@/components/ShowMoreJobs";
 import MarkdownPreview from "@/components/MarkdownPreview";
 import ImageWithDownload from "@/components/ImageWithDownload";
 import SocialShare from "@/components/SocialShare";
+import { makeAbsoluteUrl } from "@/utils/utils";
 
-export const dynamic = "force-static";
+// ---------------------
+// Dynamic Metadata
+// ---------------------
+type Props = {
+  params: Promise<{ slug: string }>; // Notice: params is a Promise
+};
 
-// ✅ Dynamic Metadata
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const slug = (await params).slug;
-  const slugs = decodeURIComponent(slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params; // ✅ Await before use
   const job = await getSingleJob(slug);
 
-  const bannerImage = job.banner
-    ? job.banner
-    : "https://diplomajobsbd.com/og-image.jpg"; // fallback
+  if (!job) {
+    return {
+      title: "Job not found | Diploma Jobs BD",
+      description: "The job you are looking for does not exist.",
+    };
+  }
+ const imageUrl = makeAbsoluteUrl(job.banner || "/default-banner.png");
+
+ console.log(imageUrl);
 
   return {
-    title: `${job.title} | ${job.companyName} - Diploma Jobs BD`,
-    description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
-    alternates: {
-      canonical: `https://diplomajobsbd.com/jobs/${slugs}`,
-    },
+    title: `${job.title} | Diploma Jobs BD`,
+    description: job.description?.slice(0, 150) || "Find the latest diploma job circulars in Bangladesh.",
     openGraph: {
-      type: "article",
-      url: `https://diplomajobsbd.com/jobs/${slugs}`,
-      title: `${job.title} | ${job.companyName}`,
-      description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
+      title: `${job.title} | Diploma Jobs BD`,
+      description: job.description?.slice(0, 150) || "Find the latest diploma job circulars in Bangladesh.",
+      url: makeAbsoluteUrl(`/job/${slug}`),
       siteName: "Diploma Jobs BD",
       images: [
         {
-          url: bannerImage,
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${job.title} - Diploma Jobs BD`,
+          alt: job.title,
         },
       ],
+      locale: "bn_BD",
+      type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${job.title} | ${job.companyName}`,
-      description: `${job.companyName} এ ${job.title} পদের জন্য নিয়োগ বিজ্ঞপ্তি। আবেদন করার শেষ তারিখ: ${job.deadline}.`,
-      images: [bannerImage],
-    },
-  
-    robots: {
-      index: true,
-      follow: true,
+      title: `${job.title} | Diploma Jobs BD`,
+      description: job.description?.slice(0, 150) || "Find the latest diploma job circulars in Bangladesh.",
+      images: [imageUrl],
     },
   };
 }
 
-// ✅ Page Component
+// ---------------------
+// Page UI Component (unchanged)
+// ---------------------
+export const dynamic = "force-static";
+
 const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const slug = (await params).slug;
   const job = await getSingleJob(slug);
 
-  const {
-    _id,
-    title,
-    companyName,
-    deadline,
-    images,
-    description,
-  } = job;
+  const { _id, title, companyName, deadline, images, description } = job;
 
   return (
     <section className="max-w-6xl mx-auto md:py-4 lg:py-4 p-1 lg-p-0">

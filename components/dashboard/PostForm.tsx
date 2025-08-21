@@ -3,7 +3,6 @@ import { Label } from '@/components/ui/label';
 import {
     Card,
     CardContent,
-    CardDescription,
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
@@ -15,7 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import ImageUploadInput from './ImageUploadInput';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import MultiImageUploadInput from './MultiImageUploadInput';
-import { Textarea } from '../ui/textarea';
+import { Input } from '../ui/input';
 
 const categories = [
     { value: "govt", name: "সরকারি চাকরি" },
@@ -41,8 +40,8 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <Card className="border rounded-lg overflow-hidden">
-                    <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                        <div className=" space-y-8">
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                        <div className=" space-y-4">
                             {/*Title*/}
                             <FormField
                                 control={form.control}
@@ -51,11 +50,10 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                     <FormItem>
                                         <Label htmlFor="title">চাকরির শিরোনামঃ</Label>
                                         <FormControl>
-                                            <Textarea
+                                            <Input
                                                 {...field}
                                                 id="title"
                                                 placeholder="চাকরির নাম লিখুন (যেমন: উপ-সহকারী প্রকৌশলী)"
-                                                rows={5}
                                             />
                                         </FormControl>
                                         <FormMessage />
@@ -70,7 +68,7 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                                     <FormItem>
                                         <Label htmlFor="companyName">কোন কোম্পানিতে চাকরিঃ</Label>
                                         <FormControl>
-                                            <Textarea id="companyName" placeholder="কোম্পানির নাম লিখুন" {...field} />
+                                            <Input id="companyName" placeholder="কোম্পানির নাম লিখুন" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -182,9 +180,6 @@ const PostForm = ({ onSubmit, form }: TFormProps) => {
                 <Card className="border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg overflow-hidden">
                     <CardHeader className="py-0">
                         <CardTitle className="text-lg font-semibold">📝 Job Description</CardTitle>
-                        <CardDescription className="text-sm mt-1">
-                            Write the job details using **markdown** format
-                        </CardDescription>
                     </CardHeader>
                     <CardContent className="px-6 space-y-3">
                         <div className="space-y-2">

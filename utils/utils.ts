@@ -1,6 +1,5 @@
 
 
-
 export const formatQuery = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
 
@@ -47,16 +46,6 @@ export function departmentToBangla(dept: string): string {
   return enToBnDept[dept] || dept;
 }
 
-
-
-export function generateSlug(input: string): string {
-  return input
-    .toLowerCase()
-    .replace(/[^\u0980-\u09FFa-zA-Z0-9\s-]/g, '') // বাংলা, ইংরেজি, সংখ্যা, স্পেস রাখে
-    .replace(/\s+/g, '-')         // স্পেস → dash
-    .replace(/-+/g, '-')          // একাধিক dash → একটাই
-    .replace(/^-+|-+$/g, '');     // শুরু ও শেষে dash কেটে ফেলে
-}
 
 // ---------------------
 // Helper: makeAbsoluteUrl

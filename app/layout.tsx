@@ -37,22 +37,25 @@ export const metadata: Metadata = {
     siteName: "Diploma Jobs BD",
     images: [
       {
-        url: "https://diplomajobsbd.com/og-image.jpg",
+        url: "https://diplomajobsbd.com/default-banner.png",
         width: 1200,
         height: 630,
         alt: "Diploma Jobs BD - ডিপ্লোমা চাকরির খবর",
       },
     ],
+    locale: "bn_BD",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@diplomajobsbd", // যদি টুইটার অ্যাকাউন্ট থাকে
+    site: "@diplomajobsbd", // যদি official Twitter handle থাকে
     title: "ডিপ্লোমা চাকরির খবর - Diploma Jobs BD",
     description:
       "ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সরকারি ও বেসরকারি চাকরির সার্কুলার ও ক্যারিয়ার আপডেট।",
-    images: ["https://diplomajobsbd.com/og-image.jpg"],
+    images: ["https://diplomajobsbd.com/default-banner.png"],
   },
   authors: [{ name: "Diploma Jobs BD Team", url: "https://diplomajobsbd.com" }],
+  creator: "Diploma Jobs BD",
+  publisher: "Diploma Jobs BD",
   robots: {
     index: true,
     follow: true,
@@ -64,8 +67,8 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  category: "Jobs",
 };
-
 
 export default function RootLayout({
   children,
@@ -73,7 +76,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-   <html lang="bn">
+    <html lang="bn">
+      <head>
+        {/* Performance optimization */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
       <body style={{ fontFamily: "var(--font-bangla)" }}>
         <Providers>{children}</Providers>
         <Toaster />

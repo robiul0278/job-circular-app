@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import { usePathname } from "next/navigation";
 import {
     FacebookShareButton,
     WhatsappShareButton,
@@ -9,11 +10,8 @@ import {
 } from "react-share";
 
 const SocialShare = () => {
-    // Get the full URL dynamically
-    const fullUrl = typeof window !== "undefined" ? window.location.href : "";
-    const slugs = decodeURIComponent(fullUrl);
-
-    console.log(slugs);
+    const pathname = usePathname();
+    const fullUrl = `https://diplomajobsbd.com${pathname}`; 
 
     return (
         <div className="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4">
@@ -24,7 +22,7 @@ const SocialShare = () => {
                     return (
                         <ShareBtn
                             key={idx}
-                            url={slugs}
+                            url={fullUrl}
                             className="transition-transform hover:scale-110 hover:shadow-lg rounded-full"
                         >
                             <Icon size={30} round />
@@ -33,7 +31,7 @@ const SocialShare = () => {
                 })}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default SocialShare;

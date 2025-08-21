@@ -32,7 +32,7 @@ export default async function Home() {
                 className="group bg-green-700 hover:bg-green-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Link href="/jobs">
-                  Load All Jobs
+                  সকল চাকরি
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>

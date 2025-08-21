@@ -6,15 +6,17 @@ import { TGenericErrorResponse, IJobCircular } from '@/types/types';
 import { Form } from '@/components/ui/form';
 import PostForm from '@/components/dashboard/PostForm';
 import { useForm } from 'react-hook-form';
-import { generateSlug } from '@/utils/utils';
 import { use } from 'react';
+import { slugify as transliterateSlug } from "transliteration";
+import { useRouter } from 'next/navigation';
+
 
 type PageProps = {
     params: Promise<{ id: string }>;
 };
 
 export default function UpdateCircularPage({ params }: PageProps) {
-
+    const router = useRouter();
     const { id } = use(params);
     const { data: SingleJob } = useGetSingleJobQuery(id)
     const [Update] = useUpdateJobMutation();
@@ -33,14 +35,16 @@ export default function UpdateCircularPage({ params }: PageProps) {
     });
 
     const onSubmit = async (data: IJobCircular) => {
-        const slug = generateSlug(data.title);
+
+        // Bangla → Latin (Banglish) + slugify
+        const slug = transliterateSlug(data.title, { lowercase: true, separator: "-" });
         const payload = { ...data, slug };
 
         try {
             const res = await Update(payload).unwrap();
             if (res.statusCode === 200) {
                 toast.success(res.message);
-                // form.reset();
+                router.push("/dashboard/all-circular");
             }
         } catch (error: unknown) {
             const err = error as { data: TGenericErrorResponse };

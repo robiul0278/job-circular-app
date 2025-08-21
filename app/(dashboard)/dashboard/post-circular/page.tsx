@@ -6,7 +6,7 @@ import { TGenericErrorResponse, IJobCircular } from '@/types/types';
 import { Form } from '@/components/ui/form';
 import PostForm from '@/components/dashboard/PostForm';
 import { useForm } from 'react-hook-form';
-import { generateSlug } from '@/utils/utils';
+import { slugify as transliterateSlug } from "transliteration";
 
 export default function PostCircularPage() {
     const [Post] = useCreateJobMutation();
@@ -24,7 +24,8 @@ export default function PostCircularPage() {
     });
 
     const onSubmit = async (data: IJobCircular) => {
-        const slug = generateSlug(data.title);
+        // Bangla → Latin (Banglish) + slugify
+        const slug = transliterateSlug(data.title, { lowercase: true, separator: "-" });
         const payload = { ...data, slug };
 
         try {

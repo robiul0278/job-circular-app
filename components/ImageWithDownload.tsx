@@ -43,6 +43,8 @@ export default function ImageWithDownload({ src,index, title}: ImageWithDownload
                  alt={title}
                 width={1200}
                 height={600}
+                priority={false}
+                loading="lazy"
                 className="w-full h-auto rounded-md"
             />
             <Button

@@ -32,9 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: "The job you are looking for does not exist.",
     };
   }
-  
+
  const imageUrl = makeAbsoluteUrl(job.banner || "/default-banner.png");
- const metaDescription = `${job.title} - ${job.companyName} এর নিয়োগ বিজ্ঞপ্তি। Find the latest diploma job circulars in Bangladesh.`;
+ const metaDescription = `${job.companyName} এ নতুন নিয়োগ বিজ্ঞপ্তি: ${job.title}. Find the latest diploma job circulars in Bangladesh.`;
 
   return {
     title: `${job.title} | Diploma Jobs BD`,

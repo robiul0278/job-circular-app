@@ -19,7 +19,7 @@ export default function Hero({categories}:{categories: TCategories[]}) {
                         <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold dark:text-green-600 text-green-700">
                             ডিপ্লোমা জব সার্কুলার
                         </h1>
-                        <p className="text-sm md:text-lg">
+                        <p className="text-sm font-bold md:text-lg">
                             Diploma Engineer চাকরির খবর এক জায়গায় এক ক্লিকে!
                         </p>
                     </div>

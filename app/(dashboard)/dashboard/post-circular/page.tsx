@@ -7,8 +7,10 @@ import { Form } from '@/components/ui/form';
 import PostForm from '@/components/dashboard/PostForm';
 import { useForm } from 'react-hook-form';
 import { slugify as transliterateSlug } from "transliteration";
+import { useRouter } from 'next/navigation';
 
 export default function PostCircularPage() {
+    const router = useRouter();
     const [Post] = useCreateJobMutation();
 
     const form = useForm<IJobCircular>({
@@ -32,7 +34,7 @@ export default function PostCircularPage() {
             const res = await Post(payload).unwrap();
             if (res.statusCode === 200) {
                 toast.success(res.message);
-                form.reset();
+               router.push("/dashboard/all-circular");
             }
         } catch (error: unknown) {
             const err = error as { data: TGenericErrorResponse };

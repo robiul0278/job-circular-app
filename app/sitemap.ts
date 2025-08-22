@@ -1,12 +1,17 @@
-import { getJobs } from "@/lib/api";
+import { getAllJobQuery } from "@/lib/api";
 import { IJobCircular } from "@/types/types";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.diplomajobsbd.com";
 
+  const params: Record<string, string> = {
+    fields: 'slug,updatedAt',
+    limit: '1000',
+  };
+
   // 1️⃣ fetch all job circulars
-  const {result} = await getJobs();
+  const { result } = await getAllJobQuery({ params });
 
   // 2️⃣ All jobs page
   const allJobsUrl: MetadataRoute.Sitemap = [

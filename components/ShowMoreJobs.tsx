@@ -7,6 +7,7 @@ export default async function ShowMoreJobs() {
     const params: Record<string, string> = {
         categories: "govt",
         limit: "5",
+        fields: "slug,title,deadline",
     };
 
     const { result } = await getAllJobQuery({ params });

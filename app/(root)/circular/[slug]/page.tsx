@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ---------------------
 export const dynamic = "force-static";
 
-const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const CircularDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const slug = (await params).slug;
   const job = await getSingleJob(slug);
 
@@ -120,4 +120,4 @@ const JobDetailsPage = async ({ params }: { params: Promise<{ slug: string }> })
   );
 };
 
-export default JobDetailsPage;
+export default CircularDetailsPage;

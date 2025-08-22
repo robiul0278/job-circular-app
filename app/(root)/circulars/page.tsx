@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function JobsPage({ searchParams }: {
+export default async function AllCircularPage({ searchParams }: {
   searchParams: Promise<{
     category?: string;
     department?: string;

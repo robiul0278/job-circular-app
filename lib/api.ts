@@ -5,6 +5,8 @@ type TParams = {
   page?: string;
   departments?: string;
   categories?: string;
+  limit?: string;
+  fields?: string;
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
@@ -23,21 +25,6 @@ export async function getAllJobQuery({params}: {params?:TParams}) {
   const json = await res.json();
   return json.data;
 }
-
-export async function getJobs() {
-  const res = await fetch(`${BASE_URL}/circulars`, {
-    next: { revalidate: 300 },
-  });
-  if (res.status === 404) {
-    notFound();
-  }
-  if (!res.ok) {
-    throw new Error("আমরা সার্কুলার লোড করতে পারছি না। দয়া করে আবার চেষ্টা করুন।");
-  }
-  const json = await res.json();
-  return json.data;
-}
-
 
 //Get Single Job Details
 export async function getSingleJob(id: string) {

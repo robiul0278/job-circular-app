@@ -2,7 +2,7 @@ import { ArrowRight, BriefcaseBusiness, ChevronRight } from "lucide-react";
 import Telegram from "@/components/Telegram";
 import { JobCard } from "@/components/JobCard";
 import Hero from "@/components/Hero";
-import { getJobs } from "@/lib/api";
+import { getAllJobQuery} from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
@@ -10,7 +10,11 @@ import ShowMoreJobs from "@/components/ShowMoreJobs";
 export const dynamic = "force-static";
 
 export default async function Home() {
-  const { result, categories } = await getJobs();
+    const params: Record<string, string> = {
+    limit: '10',
+  };
+
+  const { result,categories } = await getAllJobQuery({ params });
 
   return (
     <>

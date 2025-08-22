@@ -15,7 +15,7 @@ import { useAuthModal } from "@/context/AuthModalContext";
 
 const menuItems = [
   { name: "হোম", href: "/" },
-  { name: "জবস", href: "/jobs" },
+  { name: "জবস", href: "/circulars" },
   { name: "ব্লগ", href: "/blog" },
   { name: "আমাদের সম্পর্কে", href: "/about" },
   { name: "যোগাযোগ", href: "/contact" },

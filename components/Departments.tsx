@@ -20,7 +20,7 @@ const Departments = ({ departments }: { departments: IDepartments[] }) => {
       const current = new URLSearchParams(window.location.search);
       current.set("department", department.toString());
       const query = current.toString();
-      router.push(`/jobs?${query}`);
+      router.push(`/circulars?${query}`);
     });
   };
   return (

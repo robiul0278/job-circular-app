@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${job.title} | Diploma Jobs BD`,
       description: metaDescription,
-      url: makeAbsoluteUrl(`/job/${slug}`),
+      url: makeAbsoluteUrl(`/circular/${slug}`),
       siteName: "Diploma Jobs BD",
       images: [
         {

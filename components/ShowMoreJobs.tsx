@@ -23,7 +23,7 @@ export default async function ShowMoreJobs() {
                             key={job._id}
                             className="border-b border-gray-200 dark:border-gray-700 pb-2 last:border-none">
                             <Link
-                                href={`/job/${job.slug}`}
+                                href={`/circular/${job.slug}`}
                                 className="block group"
                                 aria-label={`View details for ${job.title}`}
                             >

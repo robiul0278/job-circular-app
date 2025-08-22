@@ -208,7 +208,7 @@ export default function AllCircularPage() {
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end space-x-2">
-                        <Link href={`/job/${circular.slug}`}>
+                        <Link href={`/circular/${circular.slug}`}>
                           <Button
                             variant="outline"
                             size="sm"
@@ -247,7 +247,7 @@ export default function AllCircularPage() {
               <span className="text-sm text-muted-foreground">প্রতি পৃষ্ঠায় দেখান:</span>
               <Select
                 value={itemsPerPage.toString()}
-                onValueChange={(value) => {
+                onValueChange={(value:string) => {
                   setItemsPerPage(Number(value))
                   setCurrentPage(1)
                 }}

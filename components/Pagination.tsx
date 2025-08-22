@@ -23,7 +23,7 @@ export default function Pagination({
       const current = new URLSearchParams(window.location.search);
       current.set("page", page.toString());
       const query = current.toString();
-      router.push(`/jobs?${query}`);
+      router.push(`/circulars?${query}`);
      // navigation এর পরে scroll করো
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });

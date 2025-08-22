@@ -11,7 +11,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 
 export async function getAllJobQuery({params}: {params?:TParams}) {
   const queryString = new URLSearchParams(params).toString();
-  const res = await fetch(`${BASE_URL}/jobs?${queryString}`, {
+  const res = await fetch(`${BASE_URL}/circulars?${queryString}`, {
       next: { revalidate: 300},
   });
   if (res.status === 404) {
@@ -25,7 +25,7 @@ export async function getAllJobQuery({params}: {params?:TParams}) {
 }
 
 export async function getJobs() {
-  const res = await fetch(`${BASE_URL}/jobs`, {
+  const res = await fetch(`${BASE_URL}/circulars`, {
     next: { revalidate: 300 },
   });
   if (res.status === 404) {
@@ -38,28 +38,11 @@ export async function getJobs() {
   return json.data;
 }
 
-//Get Job Categories
-export async function JobCategories() {
-
-  const res = await fetch(`${BASE_URL}/jobs/categories`, {
-    next: { revalidate: 300 },
-  });
-
-  if (res.status === 404) {
-    return notFound();
-  }
-  if (!res.ok) {
-    throw new Error("আমরা categories লোড করতে পারছি না। দয়া করে আবার চেষ্টা করুন।");
-  }
-
-  const json = await res.json();
-  return json.data;
-}
 
 //Get Single Job Details
 export async function getSingleJob(id: string) {
 
-  const res = await fetch(`${BASE_URL}/jobs/single/${id}`, {
+  const res = await fetch(`${BASE_URL}/circulars/single/${id}`, {
    next: { revalidate: 300 },
   });
 

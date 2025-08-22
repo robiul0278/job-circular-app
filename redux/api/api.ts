@@ -15,75 +15,75 @@ export const baseApi = createApi({
       return headers;
     }
   }),
-  tagTypes: ["jobs", "auth", "bookmark", "notice"],
+  tagTypes: ["circulars", "auth", "bookmark", "notice"],
   endpoints: (builder) => ({
     getAllJobs: builder.query({
       query: (params) => {
         return {
-          url: "/jobs",
+          url: "/circulars",
           method: "GET",
           params: params,
 
         }
       },
-      providesTags: ['jobs'],
+      providesTags: ['circulars'],
       keepUnusedDataFor: 300,
     }),
     createJob: builder.mutation({
       query: (data) => {
         return {
-          url: "/jobs/post-circular",
+          url: "/circulars/post-circular",
           method: "POST",
           body: data,
         }
       },
-      invalidatesTags: ["jobs"]
+      invalidatesTags: ["circulars"]
     }),
     updateJob: builder.mutation({
       query: (data) => {
         return {
-          url: `/jobs/update/${data._id}`,
+          url: `/circulars/update/${data._id}`,
           method: "PATCH",
           body: data,
         }
       },
-      invalidatesTags: ["jobs"]
+      invalidatesTags: ["circulars"]
     }),
     getSingleJob: builder.query({
       query: (slug) => {
         return {
-          url: `/jobs/single/${slug}`,
+          url: `/circulars/single/${slug}`,
           method: "GET",
         }
       },
-      providesTags: ["jobs"]
+      providesTags: ["circulars"]
     }),
     deleteJob: builder.mutation({
       query: (jobId) => {
         return {
-          url: `/jobs/delete/${jobId}`,
+          url: `/circulars/delete/${jobId}`,
           method: "DELETE",
         }
       },
-      invalidatesTags: ["jobs"]
+      invalidatesTags: ["circulars"]
     }),
     updateViews: builder.mutation({
       query: (id) => {
         return {
-          url: `/jobs/views/${id}`,
+          url: `/circulars/views/${id}`,
           method: "POST",
         }
       },
-      invalidatesTags: ["jobs"]
+      invalidatesTags: ["circulars"]
     }),
     analytics: builder.query({
       query: () => {
         return {
-          url: `/jobs/analytics`,
+          url: `/circulars/analytics`,
           method: "GET",
         }
       },
-      providesTags: ["jobs"]
+      providesTags: ["circulars"]
     }),
     //Auth route
     registerUser: builder.mutation({

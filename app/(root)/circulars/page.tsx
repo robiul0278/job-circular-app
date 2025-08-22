@@ -14,11 +14,11 @@ export const metadata: Metadata = {
   description:
     "ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সর্বশেষ সকল সরকারি ও বেসরকারি চাকরির সার্কুলার এক জায়গায়। সহজ ফিল্টারিং অপশনে দ্রুত খুঁজে নিন আপনার উপযুক্ত চাকরি।",
   alternates: {
-    canonical: "https://diplomajobsbd.com/jobs",
+    canonical: "https://diplomajobsbd.com/circulars",
   },
   openGraph: {
     type: "website",
-    url: "https://diplomajobsbd.com/jobs",
+    url: "https://diplomajobsbd.com/circulars",
     title: "সকল চাকরির সার্কুলার | Diploma Jobs BD",
     description:
       "ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সরকারি, বেসরকারি, টেক্সটাইলসহ বিভিন্ন চাকরির সার্কুলার দেখুন ও ফিল্টার করুন।",

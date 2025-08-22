@@ -12,6 +12,7 @@ export interface IJobCircular {
   description: string;
   views: number;
   createdAt: string;
+  updatedAt: string;
 }
 
 export type TNotice = {

@@ -17,7 +17,7 @@ const SearchForm = () => {
       const current = new URLSearchParams(window.location.search);
       current.set("query", keyword.trim());
       const query = current.toString();
-      router.push(`/jobs?${query}`);
+      router.push(`/circulars?${query}`);
     });
   };
 

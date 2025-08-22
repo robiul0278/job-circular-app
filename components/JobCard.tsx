@@ -29,7 +29,7 @@ export function JobCard({ jobs }: JobProps) {
   shadow-sm hover:shadow-md transition-shadow duration-300"
           >
             {/* Image Left */}
-            <Link href={`/job/${job.slug}`} className="sm:w-1/3 h-48 sm:h-auto relative cursor-pointer">
+            <Link href={`/circular/${job.slug}`} className="sm:w-1/3 h-48 sm:h-auto relative cursor-pointer">
               <Image
                 src={job.banner}
                 alt={`ডিপ্লোমা চাকরি সার্কুলার – ${job.title}`}
@@ -49,7 +49,7 @@ export function JobCard({ jobs }: JobProps) {
             {/* Right Content */}
             <div className="relative flex flex-col sm:w-2/3 p-3">
               <div className="flex-1 pb-6">
-                <Link href={`/job/${job.slug}`} className=" cursor-pointer" >
+                <Link href={`/circular/${job.slug}`} className=" cursor-pointer" >
                   <h3 className="text-lg leading-tight font-semibold group-hover:underline dark:group-hover:underline ">
                     {job.title}
                   </h3>
@@ -68,7 +68,7 @@ export function JobCard({ jobs }: JobProps) {
                   </div>
                   <div className="flex gap-2 md:gap-4 lg:gap-4 items-center">
                     <Link
-                      href={`/job/${job.slug}`}
+                      href={`/circular/${job.slug}`}
                       className="px-2 md:px-3 lg:px-3 py-1 rounded bg-green-700 text-white text-sm font-medium hover:bg-green-700 transition-colors duration-200"
                     >
                       বিস্তারিত দেখুন

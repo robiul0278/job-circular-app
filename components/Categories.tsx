@@ -18,7 +18,7 @@ const Categories = ({ categories }: { categories: TCategories[] }) => {
       const current = new URLSearchParams(window.location.search);
       current.set("category", category.toString());
       const query = current.toString();
-      router.push(`/jobs?${query}`);
+      router.push(`/circulars?${query}`);
     });
   };
 

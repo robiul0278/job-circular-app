@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "Diploma Jobs BD – শুধুমাত্র ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য চাকরির সার্কুলার ও ক্যারিয়ার তথ্য।",
     images: [
       {
-        url: "https://diplomajobsbd.com/og-image.jpg",
+        url: "https://diplomajobsbd.com/default-banner.png",
         width: 1200,
         height: 630,
         alt: "About Diploma Jobs BD",

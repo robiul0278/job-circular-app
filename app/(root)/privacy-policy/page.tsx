@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "প্রাইভেসি পলিসি | Diploma Jobs BD",
   description:
-    "Diploma Jobs BD এর প্রাইভেসি পলিসি: আমরা আপনার ব্যক্তিগত তথ্যের সুরক্ষা এবং ডেটা গোপনীয়তাকে সর্বাধিক গুরুত্ব দেই।",
+    "Diploma Jobs BD এর প্রাইভেসি পলিসি আমরা আপনার ব্যক্তিগত তথ্যের সুরক্ষা এবং ডেটা গোপনীয়তাকে সর্বাধিক গুরুত্ব দেই।",
   alternates: {
     canonical: "https://diplomajobsbd.com/privacy-policy",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       "Diploma Jobs BD ব্যবহারকারীর তথ্যের নিরাপত্তা ও প্রাইভেসি নিশ্চিত করে।",
     images: [
       {
-        url: "https://diplomajobsbd.com/og-image.jpg",
+        url: "https://diplomajobsbd.com/default-banner.png",
         width: 1200,
         height: 630,
         alt: "Privacy Policy Diploma Jobs BD",

@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
 
-export const dynamic = "force-static";
-
 export default async function Home() {
     const params: Record<string, string> = {
     limit: '10',

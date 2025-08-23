@@ -6,25 +6,36 @@ import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
   metadataBase: new URL("https://diplomajobsbd.com"),
   title: {
-    default: "Diploma Jobs in Bangladesh",
+    default: "ডিপ্লোমা চাকরি 2025 | Diploma Engineer Jobs in Bangladesh - Diploma Jobs BD",
     template: "%s | ডিপ্লোমা চাকরির খবর",
   },
   description:
     "ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সর্বশেষ সরকারি ও বেসরকারি চাকরির সার্কুলার, নিয়োগ বিজ্ঞপ্তি, আবেদন তথ্য এবং ক্যারিয়ার আপডেট।",
-  keywords: [
-    "ডিপ্লোমা চাকরি",
-    "ডিপ্লোমা ইঞ্জিনিয়ার চাকরি",
-    "ডিপ্লোমা সরকারি চাকরি",
-    "ডিপ্লোমা বেসরকারি চাকরি",
-    "Diploma engineer jobs in Bangladesh",
-    "Diploma চাকরির খবর",
-    "ডিপ্লোমা নিয়োগ বিজ্ঞপ্তি",
-    "ডিপ্লোমা জবস বিডি",
-    "diploma jobs in bd",
-    "diploma jobs in bangladesh",
-    "bd gov jobs",
-    "bd govt jobs",
-  ],
+keywords: [
+  // Core Keywords
+  "diploma jobs in Bangladesh",
+  "diploma engineer jobs in Bangladesh",
+  "diploma jobs BD",
+  "ডিপ্লোমা চাকরি",
+  "ডিপ্লোমা চাকরির খবর",
+  "diploma job circular",
+
+  // Long-Tail Keywords
+  "diploma govt jobs in Bangladesh",
+  "diploma private jobs in Bangladesh",
+  "diploma engineer job circular 2025",
+  "diploma job vacancy in Bangladesh",
+  "diploma job news Bangladesh",
+  "diploma career Bangladesh",
+  "diploma job portal BD",
+
+  // Department/Category Keywords
+  "diploma civil engineering jobs in Bangladesh",
+  "diploma electrical engineering jobs in Bangladesh",
+  "diploma mechanical jobs BD",
+  "diploma textile jobs Bangladesh",
+  "diploma computer jobs in BD"
+],
   alternates: {
     canonical: "https://diplomajobsbd.com",
   },

@@ -24,21 +24,38 @@ export const metadata: Metadata = {
       "ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সরকারি, বেসরকারি, টেক্সটাইলসহ বিভিন্ন চাকরির সার্কুলার দেখুন ও ফিল্টার করুন।",
     images: [
       {
-        url: "https://diplomajobsbd.com/og-image.jpg",
+        url: "https://diplomajobsbd.com/default-banner.png",
         width: 1200,
         height: 630,
         alt: "সকল চাকরির সার্কুলার - Diploma Jobs BD",
       },
     ],
   },
-  keywords: [
-    "ডিপ্লোমা চাকরি",
-    "সকল চাকরির সার্কুলার",
-    "ডিপ্লোমা সরকারি চাকরি",
-    "ডিপ্লোমা বেসরকারি চাকরি",
-    "Diploma engineer jobs in Bangladesh",
-    "ডিপ্লোমা চাকরির খবর",
-  ],
+keywords: [
+  // Core Keywords
+  "diploma jobs in Bangladesh",
+  "diploma engineer jobs in Bangladesh",
+  "diploma jobs BD",
+  "ডিপ্লোমা চাকরি",
+  "ডিপ্লোমা চাকরির খবর",
+  "diploma job circular",
+
+  // Long-Tail Keywords
+  "diploma govt jobs in Bangladesh",
+  "diploma private jobs in Bangladesh",
+  "diploma engineer job circular 2025",
+  "diploma job vacancy in Bangladesh",
+  "diploma job news Bangladesh",
+  "diploma career Bangladesh",
+  "diploma job portal BD",
+
+  // Department/Category Keywords
+  "diploma civil engineering jobs in Bangladesh",
+  "diploma electrical engineering jobs in Bangladesh",
+  "diploma mechanical jobs BD",
+  "diploma textile jobs Bangladesh",
+  "diploma computer jobs in BD"
+],
   robots: {
     index: true,
     follow: true,

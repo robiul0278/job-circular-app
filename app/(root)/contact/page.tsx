@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       "Diploma Jobs BD টিমের সাথে যোগাযোগ করুন যেকোন প্রশ্ন বা সহযোগিতার জন্য।",
     images: [
       {
-        url: "https://diplomajobsbd.com/og-image.jpg",
+        url: "https://diplomajobsbd.com/default-banner.png",
         width: 1200,
         height: 630,
         alt: "Contact Diploma Jobs BD",

@@ -34,14 +34,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
  const imageUrl = makeAbsoluteUrl(job.banner || "/default-banner.png");
- const metaDescription = `${job.companyName} এ নতুন নিয়োগ বিজ্ঞপ্তি: ${job.title}. Find the latest diploma job circulars in Bangladesh.`;
 
   return {
     title: `${job.title} | Diploma Jobs BD`,
-    description: metaDescription,
+    description: `${job.description}`,
     openGraph: {
       title: `${job.title} | Diploma Jobs BD`,
-      description: metaDescription,
+      description:  `${job.description}`,
       url: makeAbsoluteUrl(`/circular/${slug}`),
       siteName: "Diploma Jobs BD",
       images: [
@@ -58,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: `${job.title} | Diploma Jobs BD`,
-      description: metaDescription,
+      description:  `${job.description}`,
       images: [imageUrl],
     },
   };

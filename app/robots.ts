@@ -6,7 +6,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: [
-          '/',
+          '/',          // Home
+          '/*',         // Home এর under যত পেজ আছে সব
           '/about',
           '/bookmark',
           '/circular/*',
@@ -15,7 +16,11 @@ export default function robots(): MetadataRoute.Robots {
           '/privacy-policy',
           '/terms-of-service',
         ],
-        disallow: ['/dashboard/*', '/unauthorized', '/reset-password',],
+        disallow: [
+          '/dashboard/*',
+          '/unauthorized',
+          '/reset-password',
+        ],
       },
     ],
     sitemap: 'https://diplomajobsbd.com/sitemap.xml',

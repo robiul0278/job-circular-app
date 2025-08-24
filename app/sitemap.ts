@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allJobsUrl: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/circulars`,
-      lastModified: new Date(),
+      lastModified: new Date().toISOString(),
       changeFrequency: "daily",
       priority: 1,
     },
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const categories = ["govt", "private"];
   const categoryUrls: MetadataRoute.Sitemap = categories.map((cat) => ({
     url: `${baseUrl}/circulars?category=${cat}`,
-    lastModified: new Date(),
+    lastModified: new Date().toISOString(),
     changeFrequency: "daily",
     priority: 0.9,
   }));
@@ -35,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 4️⃣ Individual job detail pages with lastmod
   const jobUrls: MetadataRoute.Sitemap = result.map((job: IJobCircular) => ({
     url: `${baseUrl}/circular/${job.slug}`,
-    lastModified: job.updatedAt, // <-- fixed missing lastmod
+    lastModified: new Date(job.updatedAt).toISOString(),
     changeFrequency: "daily",
     priority: 0.8,
   }));

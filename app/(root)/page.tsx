@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Home | Diploma Jobs BD",
   description:
-    "Diploma Jobs BD - হোম পেজে সর্বশেষ সরকারি ও বেসরকারি চাকরির সার্কুলার, প্রাসঙ্গিক বিভাগ এবং অবস্থান অনুযায়ী চাকরি খুঁজে পাওয়া যাবে।",
+    "Diploma Jobs BD - ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য সর্বশেষ সরকারি ও বেসরকারি চাকরির সার্কুলার, নিয়োগ বিজ্ঞপ্তি, আবেদন তথ্য এবং ক্যারিয়ার আপডেট।",
   keywords: [
     "ডিপ্লোমা চাকরি", 
     "diploma jobs BD",

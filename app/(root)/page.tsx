@@ -9,7 +9,7 @@ import ShowMoreJobs from "@/components/ShowMoreJobs";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "হোম | ডিপ্লোমা চাকরির খবর",
+  title: "Home | Diploma Jobs BD",
   description:
     "Diploma Jobs BD - হোম পেজে সর্বশেষ সরকারি ও বেসরকারি চাকরির সার্কুলার, প্রাসঙ্গিক বিভাগ এবং অবস্থান অনুযায়ী চাকরি খুঁজে পাওয়া যাবে।",
   keywords: [

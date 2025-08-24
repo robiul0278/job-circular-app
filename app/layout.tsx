@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
   metadataBase: new URL("https://diplomajobsbd.com"),
   title: {
-    default: "Diploma Jobs BD | Diploma Engineer Jobs in Bangladesh.",
+    default: "Diploma Jobs BD | Diploma Jobs in Bangladesh.",
     template: "%s | ডিপ্লোমা চাকরির খবর",
   },
   description:

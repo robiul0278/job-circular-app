@@ -6,6 +6,24 @@ import { getAllJobQuery} from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ShowMoreJobs from "@/components/ShowMoreJobs";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "হোম | ডিপ্লোমা চাকরির খবর",
+  description:
+    "Diploma Jobs BD - হোম পেজে সর্বশেষ সরকারি ও বেসরকারি চাকরির সার্কুলার, প্রাসঙ্গিক বিভাগ এবং অবস্থান অনুযায়ী চাকরি খুঁজে পাওয়া যাবে।",
+  keywords: [
+    "ডিপ্লোমা চাকরি", 
+    "diploma jobs BD",
+    "diploma govt jobs",
+    "diploma private jobs",
+    "ডিপ্লোমা ইঞ্জিনিয়ার চাকরি"
+  ],
+  alternates: {
+    canonical: "https://diplomajobsbd.com",
+  },
+};
+
 
 export default async function Home() {
     const params: Record<string, string> = {

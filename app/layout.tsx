@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
+import { Noto_Sans, Noto_Sans_Bengali } from "next/font/google";
+
+const notoSans = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
+const notoSansBengali = Noto_Sans_Bengali({ subsets: ["bengali"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://diplomajobsbd.com"),
@@ -97,7 +101,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body style={{ fontFamily: "var(--font-bangla)" }}>
+      <body className={`${notoSans.className} ${notoSansBengali.className}`}>
         <Providers>{children}</Providers>
         <Toaster />
       </body>

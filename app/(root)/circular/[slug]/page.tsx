@@ -88,7 +88,7 @@ const CircularDetailsPage = async ({ params }: { params: Promise<{ slug: string 
               <CircularTime deadline={deadline} />
             </CardHeader>
 
-            <CardContent className="px-2 pb-3">
+            <CardContent className="px-2 pb-3 mt-5">
               <MarkdownPreview description={description} />
 
               {images.length > 0 && (

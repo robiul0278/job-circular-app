@@ -1,28 +1,22 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
+        userAgent: "*",
         allow: [
-          '/',          // Home
-          '/*',         // Home এর under যত পেজ আছে সব
-          '/about',
-          '/bookmark',
-          '/circular/*',
-          '/circulars',
-          '/contact',
-          '/privacy-policy',
-          '/terms-of-service',
+          "/",              // Homepage
+          "/circular/*",    // All job details
+          "/circulars",     // All jobs listing
         ],
         disallow: [
-          '/dashboard/*',
-          '/unauthorized',
-          '/reset-password',
+          "/dashboard/*",   // Private dashboard
+          "/unauthorized",
+          "/reset-password",
         ],
       },
     ],
-    sitemap: 'https://diplomajobsbd.com/sitemap.xml',
-  }
+    sitemap: "https://www.diplomajobsbd.com/sitemap.xml",
+  };
 }
